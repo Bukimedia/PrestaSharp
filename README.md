@@ -1,5 +1,5 @@
-PrestaSharp
-===========
+PrestaSharp - Simple .NET REST Client for Prestashop
+====================================================
 
 
 Introduction
