@@ -18,51 +18,20 @@ namespace PrestaSharp.Serializers
 
         public Entities.manufacturer Get(int ManufacturerId)
         {
-            /*
-            var request = new RestRequest();
-            request.Resource = "manufacturers/{id}";
-            request.RootElement = "manufacturer";
-            request.AddParameter("id", ManufacturerId, ParameterType.UrlSegment);
-            return this.Execute<Entities.manufacturer>(request);
-             */
-            RestRequest request = this.RequestForGet(ManufacturerId, "manufacturers/{id}", "manufacturer");
+            RestRequest request = this.RequestForGet("manufacturers", ManufacturerId, "manufacturer");
             return this.Execute<Entities.manufacturer>(request);
         }
 
         public void Add(Entities.manufacturer Manufacturer)
         {
-            /*
-            Manufacturer.id = null;
-            var request = new RestRequest();
-            request.Resource = "manufacturers/";
-            request.Method = Method.POST;
-            request.RequestFormat = DataFormat.Xml;
-            request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
-            string serialized = request.XmlSerializer.Serialize(Manufacturer);
-            serialized = serialized.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<prestashop>");
-            serialized += "\n</prestashop>";
-            request.AddParameter("xml", serialized);
-            this.Execute<Entities.manufacturer>(request);
-            /* */
-            /**/
             Manufacturer.id=null;
-            RestRequest request = this.RequestForAdd("manufacturers/", Manufacturer);
+            RestRequest request = this.RequestForAdd("manufacturers", Manufacturer);
             this.Execute<Entities.manufacturer>(request);
-            /* */
         }
 
-        public void UpdateManufacturer(Entities.manufacturer Manufacturer)
+        public void Update(Entities.manufacturer Manufacturer)
         {
-            var request = new RestRequest();
-            request.RootElement = "prestashop";
-            request.Resource = "manufacturers/{id}";
-            request.AddParameter("id", Manufacturer.id, ParameterType.UrlSegment);
-            request.Method = Method.PUT;            
-            request.RequestFormat = DataFormat.Xml;
-            request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
-            request.AddBody(Manufacturer);
-            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("<manufacturer>","<prestashop>\n<manufacturer>");
-            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</manufacturer>", "</manufacturer></prestashop>");
+            RestRequest request = this.RequestForUpdate("manufacturers", Manufacturer.id, Manufacturer);
             try
             {
                 this.Execute<Entities.manufacturer>(request);
@@ -73,14 +42,9 @@ namespace PrestaSharp.Serializers
             }
         }
 
-        public void DeleteManufacturer(Entities.manufacturer Manufacturer)
+        public void Delete(Entities.manufacturer Manufacturer)
         {
-            var request = new RestRequest();
-            request.RootElement = "prestashop";
-            request.Resource = "manufacturers/" + Manufacturer.id;
-            request.Method = Method.DELETE;
-            request.RequestFormat = DataFormat.Xml;
-            request.AddBody(Manufacturer);
+            RestRequest request = this.RequestForDelete("manufacturers", Manufacturer.id);
             this.Execute<Entities.manufacturer>(request);
         }
 
