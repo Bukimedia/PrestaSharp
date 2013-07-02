@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace PrestaSharp.Entities
 {
-    public class manufacturer
+    public class manufacturer:prestashopentity
     {
         public int? id { get; set; }
         public name name { get; set; }
