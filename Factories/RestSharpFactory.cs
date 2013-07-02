@@ -61,12 +61,11 @@ namespace PrestaSharp.Serializers
             }
         }
 
-        protected RestRequest RequestForGet(int Id, string Resource, string RoolElement)
+        protected RestRequest RequestForGet(string Resource, int Id, string RootElement)
         {
             var request = new RestRequest();
-            request.Resource = Resource;
-            request.RootElement = RoolElement;
-            request.AddParameter("id", Id, ParameterType.UrlSegment);
+            request.Resource = Resource + "/" + Id;
+            request.RootElement = RootElement;
             return request;
         }
 
@@ -81,6 +80,39 @@ namespace PrestaSharp.Serializers
             serialized = serialized.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<prestashop>");
             serialized += "\n</prestashop>";
             request.AddParameter("xml", serialized);
+            return request;
+        }
+
+        protected RestRequest RequestForUpdate(string Resource, int? Id, Entities.prestashopentity PrestashopEntity)
+        {
+            if (Id == null)
+            {
+                throw new ApplicationException("Id is required to update something.");
+            }
+            var request = new RestRequest();
+            request.RootElement = "prestashop";
+            request.Resource = Resource;
+            request.AddParameter("id", Id, ParameterType.UrlSegment);
+            request.Method = Method.PUT;
+            request.RequestFormat = DataFormat.Xml;
+            request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
+            request.AddBody(PrestashopEntity);
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("<" + PrestashopEntity.GetType().Name+">", "<prestashop>\n<" + PrestashopEntity.GetType().Name + ">");
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</" + PrestashopEntity.GetType().Name + ">", "</" + PrestashopEntity.GetType().Name + "></prestashop>");
+            return request;
+        }
+
+        protected RestRequest RequestForDelete(string Resource, int? Id)
+        {
+            if (Id == null)
+            {
+                throw new ApplicationException("Id is required to delete something.");
+            }
+            var request = new RestRequest();
+            request.RootElement = "prestashop";
+            request.Resource = Resource + "/" + Id;
+            request.Method = Method.DELETE;
+            request.RequestFormat = DataFormat.Xml;
             return request;
         }
 
