@@ -1,0 +1,18 @@
+﻿Para activar el modo debug y poder visualizar los errores que genera Prestashop a través de su API, realizar lo siguiente:
+
+	1) Descargar fichero /config/defines.inc.php
+
+	2) Editar el fichero descargado y cambiar la siguiente línea de código (línea 28):
+
+			define('_PS_MODE_DEV_', false);
+
+		por:
+
+			define('_PS_MODE_DEV_', true);
+
+	3) Guardar cambios y subir de nuevo al servidor.
+
+Más información en http://doc.prestashop.com/display/PS15/Setting+up+your+local+development+environment
+
+
+
