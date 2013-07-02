@@ -11,7 +11,7 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 Basic usage
 -----------
 
-1. Initiate a client instance:
+1) Initiate a client instance:
 
 ```
 	string BaseUrl = "http://www.myweb.com/api";
@@ -20,7 +20,7 @@ Basic usage
 	ManufacturerFactory ManufacturerFactory = new ManufacturerFactory(BaseUrl, Account, Password);
 ```
 
-2. Perform CRUD actions through the client:
+2) Perform CRUD actions through the client:
 
 ```
 	PrestaSharp.Entities.manufacturer Manufacturer = ManufacturerFactory.Get(6);
