@@ -13,20 +13,23 @@ Basic Usage
 
 1. Initiate a client instance:
 
-  ```string BaseUrl = "http://www.myweb.com/api";
-  ```string Account = "ASDLKJOIQWEPROQWUPRPOQPPRQOW";
-  ```string Password = "";
-  ```ManufacturerFactory ManufacturerFactory = new ManufacturerFactory(BaseUrl, Account, Password);
-
+```
+	string BaseUrl = "http://www.myweb.com/api";
+	string Account = "ASDLKJOIQWEPROQWUPRPOQPPRQOW";
+	string Password = "";
+	ManufacturerFactory ManufacturerFactory = new ManufacturerFactory(BaseUrl, Account, Password);
+```
 
 2. Perform CRUD actions through the client:
 
-  ```PrestaSharp.Entities.manufacturer Manufacturer = ManufacturerFactory.Get(6);
-  ```Manufacturer.name.value = "Iron Maiden";
-  ```Manufacturer.active = 1;        
-  ```ManufacturerFactory.Add(Manufacturer);
-  ```ManufacturerFactory.Update(Manufacturer);
-  ```ManufacturerFactory.Delete(Manufacturer);
+```
+	PrestaSharp.Entities.manufacturer Manufacturer = ManufacturerFactory.Get(6);
+	Manufacturer.name.value = "Iron Maiden";
+	Manufacturer.active = 1;        
+	ManufacturerFactory.Add(Manufacturer);
+	ManufacturerFactory.Update(Manufacturer);
+	ManufacturerFactory.Delete(Manufacturer);
+```
 
 
 Supported Resources
