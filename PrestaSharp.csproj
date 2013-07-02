@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3D494A24-06BA-475B-A158-162745683EC3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PrestaSharp</RootNamespace>
+    <AssemblyName>PrestaSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\address.cs" />
+    <Compile Include="Entities\associations.cs" />
+    <Compile Include="Entities\language.cs" />
+    <Compile Include="Entities\manufacturer.cs" />
+    <Compile Include="Entities\name.cs" />
+    <Compile Include="Factories\ManufacturerFactory.cs" />
+    <Compile Include="Factories\RestSharpFactory.cs" />
+    <Compile Include="Models\Prestashop.Context.cs">
+      <DependentUpon>Prestashop.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Prestashop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Prestashop.Designer.cs">
+      <DependentUpon>Prestashop.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\ps_access.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_accessory.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_address.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_address_format.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_advice.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_advice_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_alias.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_attachment.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_attachment_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_attribute.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_attribute_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_attribute_group_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_attribute_group_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_attribute_impact.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_attribute_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_attribute_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_badge.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_badge_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_carrier.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_carrier_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_carrier_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_carrier_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_carrier_tax_rules_group_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_carrier_zone.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_cart_rule.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_product.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_rule.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_rule_carrier.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_rule_combination.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_rule_country.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_rule_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_rule_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_rule_product_rule.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_rule_product_rule_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_rule_product_rule_value.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cart_rule_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_category.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_category_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_category_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_category_product.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_category_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cms.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cms_block.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cms_block_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cms_block_page.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cms_block_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cms_category.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cms_category_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cms_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_cms_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_compare.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_compare_product.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_condition.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_condition_advice.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_condition_badge.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_configuration.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_configuration_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_connections.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_connections_page.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_connections_source.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_contact.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_contact_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_contact_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_country.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_country_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_country_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_currency.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_currency_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_customer.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_customer_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_customer_message.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_customer_message_sync_imap.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_customer_thread.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_customization.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_customization_field.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_customization_field_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_customized_data.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_date_range.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_delivery.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_employee.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_employee_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_favorite_product.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_feature.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_feature_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_feature_product.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_feature_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_feature_value.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_feature_value_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_gender.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_gender_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_group_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_group_reduction.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_group_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_guest.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_help_access.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_homeslider.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_homeslider_slides.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_homeslider_slides_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_hook.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_hook_alias.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_hook_module.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_hook_module_exceptions.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_image.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_image_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_image_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_image_type.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_import_match.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_lang_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_linksmenutop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_linksmenutop_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_log.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_manufacturer.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_manufacturer_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_manufacturer_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_memcached_servers.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_message.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_message_readed.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_meta.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_meta_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_module.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_module_access.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_module_country.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_module_currency.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_module_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_module_preference.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_module_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_newsletter.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_operating_system.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_orders.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_carrier.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_cart_rule.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_detail.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_detail_tax.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_history.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_invoice.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_invoice_payment.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_invoice_tax.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_message.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_message_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_payment.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_return.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_return_detail.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_return_state.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_return_state_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_slip.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_slip_detail.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_state.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_order_state_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_pack.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_page.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_pagenotfound.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_page_type.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_page_viewed.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_attachment.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_attribute.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_attribute_combination.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_attribute_image.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_attribute_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_carrier.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_country_tax.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_download.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_group_reduction_cache.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_sale.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_supplier.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_product_tag.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_profile.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_profile_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_quick_access.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_quick_access_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_range_price.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_range_weight.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_referrer.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_referrer_cache.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_referrer_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_reinsurance.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_reinsurance_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_request_sql.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_required_field.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_risk.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_risk_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_scene.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_scene_category.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_scene_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_scene_products.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_scene_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_search_engine.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_search_index.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_search_word.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_sekeyword.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_shop_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_shop_url.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_specific_price.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_specific_price_priority.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_specific_price_rule.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_specific_price_rule_condition.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_specific_price_rule_condition_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_state.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_statssearch.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_stock.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_stock_available.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_stock_mvt.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_stock_mvt_reason.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_stock_mvt_reason_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_store.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_store_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_supplier.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_supplier_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_supplier_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_supply_order.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_supply_order_detail.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_supply_order_history.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_supply_order_receipt_history.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_supply_order_state.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_supply_order_state_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_tab.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_tab_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_tab_module_preference.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_tag.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_tax.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_tax_lang.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_tax_rule.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_tax_rules_group.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_tax_rules_group_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_theme.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_theme_specific.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_timezone.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_warehouse.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_warehouse_carrier.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_warehouse_product_location.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_warehouse_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_webservice_account.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_webservice_account_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_webservice_permission.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_web_browser.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_zone.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ps_zone_shop.cs">
+      <DependentUpon>Prestashop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\Prestashop.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Prestashop.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.config" />
+    <None Include="Models\Prestashop.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Prestashop.edmx</DependentUpon>
+      <LastGenOutput>Prestashop.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\Prestashop.edmx.diagram">
+      <DependentUpon>Prestashop.edmx</DependentUpon>
+    </None>
+    <None Include="Models\Prestashop.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Prestashop.edmx</DependentUpon>
+      <LastGenOutput>Prestashop.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Enable display errors in Prestashop.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
