@@ -8,7 +8,7 @@ A simple REST client written in CSharp for the Prestashop API.
 PrestaSharp uses the RestSharp library to consume the Prestashop services.
 
 
-Basic Usage
+Basic usage
 -----------
 
 1. Initiate a client instance:
@@ -32,13 +32,13 @@ Basic Usage
 ```
 
 
-Supported Resources
+Supported resources
 -------------------
 
 - Manufacturers
 
 
-Supported Actions
+Supported actions
 -----------------
 
 - Read
