@@ -823,6 +823,7 @@
       <LastGenOutput>Prestashop.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Enable display errors in Prestashop.txt" />
