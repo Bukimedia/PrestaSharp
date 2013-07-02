@@ -61,5 +61,28 @@ namespace PrestaSharp.Serializers
             }
         }
 
+        protected RestRequest RequestForGet(int Id, string Resource, string RoolElement)
+        {
+            var request = new RestRequest();
+            request.Resource = Resource;
+            request.RootElement = RoolElement;
+            request.AddParameter("id", Id, ParameterType.UrlSegment);
+            return request;
+        }
+
+        protected RestRequest RequestForAdd(string Resource, Entities.prestashopentity Entity)
+        {
+            var request = new RestRequest();
+            request.Resource = Resource;
+            request.Method = Method.POST;
+            request.RequestFormat = DataFormat.Xml;
+            request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
+            string serialized = request.XmlSerializer.Serialize(Entity);
+            serialized = serialized.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<prestashop>");
+            serialized += "\n</prestashop>";
+            request.AddParameter("xml", serialized);
+            return request;
+        }
+
     }
 }

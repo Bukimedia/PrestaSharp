@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Entities\address.cs" />
     <Compile Include="Entities\associations.cs" />
+    <Compile Include="Entities\prestashopentity.cs" />
     <Compile Include="Entities\language.cs" />
     <Compile Include="Entities\manufacturer.cs" />
     <Compile Include="Entities\name.cs" />
