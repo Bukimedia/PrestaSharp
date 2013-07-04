@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PrestaSharp.Serializers
 {
@@ -61,7 +62,20 @@ namespace PrestaSharp.Serializers
             }
         }
 
-        protected RestRequest RequestForGet(string Resource, int Id, string RootElement)
+        protected List<int> ExecuteForGetIds<T>(RestRequest Request, string RootElement) where T : new()
+        {
+            var client = new RestClient();
+            client.BaseUrl = this.BaseUrl;
+            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
+            var response = client.Execute<T>(Request);
+            XDocument xDcoument = XDocument.Parse(response.Content);
+            var ids = (from doc in xDcoument.Descendants(RootElement)
+                       select int.Parse(doc.Attribute("id").Value)).ToList();
+            return ids;
+        }
+
+        protected RestRequest RequestForGet(string Resource, int? Id, string RootElement)
         {
             var request = new RestRequest();
             request.Resource = Resource + "/" + Id;

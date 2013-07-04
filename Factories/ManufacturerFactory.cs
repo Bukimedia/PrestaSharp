@@ -48,6 +48,11 @@ namespace PrestaSharp.Serializers
             this.Execute<Entities.manufacturer>(request);
         }
 
+        public List<int> GetIds()
+        {
+            RestRequest request = this.RequestForGet("manufacturers", null, "prestashop");
+            return this.ExecuteForGetIds<List<int>>(request, "manufacturer");
+        }
 
     }
 }
