@@ -62,6 +62,14 @@ namespace PrestaSharp.Serializers
             }
         }
 
+        protected RestRequest RequestForGet(string Resource, int? Id, string RootElement)
+        {
+            var request = new RestRequest();
+            request.Resource = Resource + "/" + Id;
+            request.RootElement = RootElement;
+            return request;
+        }
+
         protected List<int> ExecuteForGetIds<T>(RestRequest Request, string RootElement) where T : new()
         {
             var client = new RestClient();
@@ -73,14 +81,6 @@ namespace PrestaSharp.Serializers
             var ids = (from doc in xDcoument.Descendants(RootElement)
                        select int.Parse(doc.Attribute("id").Value)).ToList();
             return ids;
-        }
-
-        protected RestRequest RequestForGet(string Resource, int? Id, string RootElement)
-        {
-            var request = new RestRequest();
-            request.Resource = Resource + "/" + Id;
-            request.RootElement = RootElement;
-            return request;
         }
 
         protected RestRequest RequestForAdd(string Resource, Entities.prestashopentity Entity)
@@ -127,6 +127,33 @@ namespace PrestaSharp.Serializers
             request.Resource = Resource + "/" + Id;
             request.Method = Method.DELETE;
             request.RequestFormat = DataFormat.Xml;
+            return request;
+        }
+
+        protected RestRequest RequestForFilter(string Resource, string Display, Dictionary<string,string> Filter, string Sort, string Limit, string RootElement)
+        {
+            var request = new RestRequest();
+            request.Resource = Resource;
+            request.RootElement = RootElement;
+            if (Display != null)
+            {
+                request.AddParameter("display", Display);
+            }
+            if (Filter != null)
+            {
+                foreach (string Key in Filter.Keys)
+                {
+                    request.AddParameter("filter[" + Key + "]", Filter[Key]);
+                }
+            }
+            if (Sort != null)
+            {
+                request.AddParameter("sort", Sort);
+            }
+            if (Limit != null)
+            {
+                request.AddParameter("limit", Limit);
+            }
             return request;
         }
 
