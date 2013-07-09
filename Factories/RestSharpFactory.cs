@@ -1,6 +1,7 @@
 ﻿using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -97,6 +98,25 @@ namespace PrestaSharp.Serializers
             return request;
         }
 
+        /// <summary>
+        /// More information about image management: http://doc.prestashop.com/display/PS15/Chapter+9+-+Image+management
+        /// </summary>
+        /// <param name="Resource"></param>
+        /// <param name="Id"></param>
+        /// <param name="ImagePath"></param>
+        /// <returns></returns>
+        protected RestRequest RequestForAddImage(string Resource, int Id, string ImagePath)
+        {
+            var request = new RestRequest();
+            request.Resource = "/images/" + Resource + "/" + Id;
+            request.Method = Method.POST;
+            request.RequestFormat = DataFormat.Xml;
+            request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
+            byte[] ImgBytes = ImageToBinary(ImagePath);
+            request.AddParameter("images", ImgBytes);
+            return request;
+        }
+
         protected RestRequest RequestForUpdate(string Resource, int? Id, Entities.prestashopentity PrestashopEntity)
         {
             if (Id == null)
@@ -130,6 +150,16 @@ namespace PrestaSharp.Serializers
             return request;
         }
 
+        /// <summary>
+        /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
+        /// </summary>
+        /// <param name="Resource"></param>
+        /// <param name="Display"></param>
+        /// <param name="Filter"></param>
+        /// <param name="Sort"></param>
+        /// <param name="Limit"></param>
+        /// <param name="RootElement"></param>
+        /// <returns></returns>
         protected RestRequest RequestForFilter(string Resource, string Display, Dictionary<string,string> Filter, string Sort, string Limit, string RootElement)
         {
             var request = new RestRequest();
@@ -155,6 +185,15 @@ namespace PrestaSharp.Serializers
                 request.AddParameter("limit", Limit);
             }
             return request;
+        }
+
+        public static byte[] ImageToBinary(string imagePath)
+        {
+            FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
+            byte[] buffer = new byte[fileStream.Length];
+            fileStream.Read(buffer, 0, (int)fileStream.Length);
+            fileStream.Close();
+            return buffer;
         }
 
     }
