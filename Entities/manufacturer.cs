@@ -11,7 +11,7 @@ namespace PrestaSharp.Entities
     public class manufacturer:prestashopentity
     {
         public int? id { get; set; }
-        public name name { get; set; }
+        public string name { get; set; }
         public DateTime date_add { get; set; }
         public DateTime date_upd { get; set; }
         public int active { get; set; }
