@@ -54,7 +54,6 @@
     <Compile Include="Entities\prestashopentity.cs" />
     <Compile Include="Entities\language.cs" />
     <Compile Include="Entities\manufacturer.cs" />
-    <Compile Include="Entities\name.cs" />
     <Compile Include="Factories\ManufacturerFactory.cs" />
     <Compile Include="Factories\RestSharpFactory.cs" />
     <Compile Include="Models\Prestashop.Context.cs">
@@ -808,7 +807,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Prestashop.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Models\Prestashop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Prestashop.edmx</DependentUpon>

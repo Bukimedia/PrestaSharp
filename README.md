@@ -24,7 +24,7 @@ Basic usage
 
 ```
 	PrestaSharp.Entities.manufacturer Manufacturer = ManufacturerFactory.Get(6);
-	Manufacturer.name.value = "Iron Maiden";
+	Manufacturer.name = "Iron Maiden";
 	Manufacturer.active = 1;        
 	ManufacturerFactory.Add(Manufacturer);
 	ManufacturerFactory.Update(Manufacturer);
