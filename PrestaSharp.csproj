@@ -50,11 +50,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\address.cs" />
-    <Compile Include="Entities\associations.cs" />
-    <Compile Include="Entities\prestashopentity.cs" />
+    <Compile Include="Entities\AssociationsManufacturer.cs" />
+    <Compile Include="Entities\AssociationsProduct.cs" />
+    <Compile Include="Entities\category.cs" />
+    <Compile Include="Entities\combination.cs" />
+    <Compile Include="Entities\image.cs" />
+    <Compile Include="Entities\PrestashopEntity.cs" />
     <Compile Include="Entities\language.cs" />
     <Compile Include="Entities\manufacturer.cs" />
+    <Compile Include="Entities\product.cs" />
+    <Compile Include="Entities\product_option_values.cs" />
+    <Compile Include="Entities\stock_available.cs" />
+    <Compile Include="Entities\tag.cs" />
     <Compile Include="Factories\ManufacturerFactory.cs" />
+    <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Factories\RestSharpFactory.cs" />
     <Compile Include="Models\Prestashop.Context.cs">
       <DependentUpon>Prestashop.Context.tt</DependentUpon>

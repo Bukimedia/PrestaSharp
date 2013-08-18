@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PrestaSharp.Entities
 {
-    abstract public class prestashopentity
+    abstract public class PrestashopEntity
     {
+        
     }
 }

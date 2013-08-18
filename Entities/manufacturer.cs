@@ -8,18 +8,27 @@ using System.Xml.Serialization;
 
 namespace PrestaSharp.Entities
 {
-    public class manufacturer:prestashopentity
+    public class manufacturer:PrestashopEntity
     {
-        public int? id { get; set; }
+        public long? id { get; set; }
         public string name { get; set; }
-        public DateTime date_add { get; set; }
-        public DateTime date_upd { get; set; }
+        /// <summary>
+        /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
+        /// </summary>
+        public string date_add { get; set; }
+        /// <summary>
+        /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
+        /// </summary>
+        public string date_upd { get; set; }
+        /// <summary>
+        /// It´s a logical bool.
+        /// </summary>
         public int active { get; set; }
         public List<Entities.language> description { get; set; }
         public List<Entities.language> short_description { get; set; }
         public List<Entities.language> meta_title { get; set; }
         public List<Entities.language> meta_description { get; set; }
         public List<Entities.language> meta_keywords { get; set; }
-        public associations associations { get; set; }
+        public AssociationsManufacturer associations { get; set; }
     }
 }
