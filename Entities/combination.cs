@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace PrestaSharp.Entities
 {
-    public class address:PrestashopEntity
+    public class combination : PrestashopEntity
     {
         public int id { get; set; }
     }

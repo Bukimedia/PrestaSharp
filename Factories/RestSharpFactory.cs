@@ -84,7 +84,7 @@ namespace PrestaSharp.Serializers
             return ids;
         }
 
-        protected RestRequest RequestForAdd(string Resource, Entities.prestashopentity Entity)
+        protected RestRequest RequestForAdd(string Resource, Entities.PrestashopEntity Entity)
         {
             var request = new RestRequest();
             request.Resource = Resource;
@@ -117,7 +117,7 @@ namespace PrestaSharp.Serializers
             return request;
         }
 
-        protected RestRequest RequestForUpdate(string Resource, int? Id, Entities.prestashopentity PrestashopEntity)
+        protected RestRequest RequestForUpdate(string Resource, long? Id, Entities.PrestashopEntity PrestashopEntity)
         {
             if (Id == null)
             {
@@ -136,7 +136,7 @@ namespace PrestaSharp.Serializers
             return request;
         }
 
-        protected RestRequest RequestForDelete(string Resource, int? Id)
+        protected RestRequest RequestForDelete(string Resource, long? Id)
         {
             if (Id == null)
             {

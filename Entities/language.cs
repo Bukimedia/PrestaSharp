@@ -10,12 +10,13 @@ using System.Xml.Serialization;
 namespace PrestaSharp.Entities
 {
     [Serializable]
-    public class language:prestashopentity
+    public class language : PrestashopEntity
     {
         [XmlAttribute]
         public int id { get; set; }
 
         // Value is reserved word from RestSharp for loading the CDATA content from the XML file.
+        [XmlTextAttribute]
         public string Value { get; set; }
 
     }
