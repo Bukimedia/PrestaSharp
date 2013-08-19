@@ -14,7 +14,6 @@ namespace PrestaSharp.Entities
         public List<product_option_values> product_option_values { get; set; }
         public List<tag> tags { get; set; }
         public List<stock_available> stock_availables { get; set; }
-        //public List<product> accesories { get; set; }
         public List<product> product_bundle { get; set; }
     }
 }

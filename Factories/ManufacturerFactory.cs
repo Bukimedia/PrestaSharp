@@ -22,30 +22,23 @@ namespace PrestaSharp.Serializers
             return this.Execute<Entities.manufacturer>(request);
         }
 
-        public void Add(Entities.manufacturer Manufacturer)
+        public Entities.manufacturer Add(Entities.manufacturer Manufacturer)
         {
             Manufacturer.id=null;
             RestRequest request = this.RequestForAdd("manufacturers", Manufacturer);
-            this.Execute<Entities.manufacturer>(request);
+            return this.Execute<Entities.manufacturer>(request);
         }
 
-        public void AddImage(int ManufacturerId, string ManufacturerImagePath)
+        public void AddImage(long ManufacturerId, string ManufacturerImagePath)
         {
             RestRequest request = this.RequestForAddImage("manufacturers", ManufacturerId, ManufacturerImagePath);
             this.Execute<Entities.manufacturer>(request);
         }
 
-        public void Update(Entities.manufacturer Manufacturer)
+        public Entities.manufacturer Update(Entities.manufacturer Manufacturer)
         {
             RestRequest request = this.RequestForUpdate("manufacturers", Manufacturer.id, Manufacturer);
-            try
-            {
-                this.Execute<Entities.manufacturer>(request);
-            }
-            catch (ApplicationException ex)
-            {
-                ex.ToString();
-            }
+            return this.Execute<Entities.manufacturer>(request);
         }
 
         public void Delete(Entities.manufacturer Manufacturer)

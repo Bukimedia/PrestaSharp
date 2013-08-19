@@ -1,10 +1,10 @@
-PrestaSharp - Simple .NET REST Client for Prestashop
+PrestaSharp - C Sharp .Net library for the PrestaShop API via web service
 ====================================================
 
 
 Introduction
 ------------
-A simple REST client written in CSharp for the Prestashop API.
+A simple .Net REST client written in C# for the Prestashop API.
 PrestaSharp uses the RestSharp library to consume the Prestashop services.
 
 
@@ -36,6 +36,7 @@ Supported resources
 -------------------
 
 - Manufacturers
+- Products
 
 
 Supported actions

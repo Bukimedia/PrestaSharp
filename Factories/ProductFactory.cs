@@ -23,30 +23,23 @@ namespace PrestaSharp.Factories
             return this.Execute<Entities.product>(request);
         }
 
-        public void Add(Entities.product Product)
+        public Entities.product Add(Entities.product Product)
         {
             Product.id=null;
             RestRequest request = this.RequestForAdd("products", Product);
-            this.Execute<Entities.product>(request);
+            return this.Execute<Entities.product>(request);
         }
 
-        public void AddImage(int ProductId, string ProductImagePath)
+        public void AddImage(long ProductId, string ProductImagePath)
         {
             RestRequest request = this.RequestForAddImage("products", ProductId, ProductImagePath);
             this.Execute<Entities.product>(request);
         }
 
-        public void Update(Entities.product Product)
+        public Entities.product Update(Entities.product Product)
         {
             RestRequest request = this.RequestForUpdate("products", Product.id, Product);
-            try
-            {
-                this.Execute<Entities.product>(request);
-            }
-            catch (ApplicationException ex)
-            {
-                ex.ToString();
-            }
+            return this.Execute<Entities.product>(request);
         }
 
         public void Delete(Entities.product Product)

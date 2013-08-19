@@ -56,7 +56,8 @@ namespace PrestaSharp.Entities
         /// </summary>
         public int available_for_order { get; set; }
         /// <summary>
-        /// It´s a logical DateTime field. Format YYYY-MM-DD HH:MM:SS. It´s string because you can receive a string with no DateTime .Net format.
+        /// It´s a logical DateTime field. Format YYYY-MM-DD HH:MM:SS.
+        /// It´s string because you can receive a string with no DateTime .Net format.
         /// </summary>
         public string available_date { get; set; }
         public string condition { get; set; }
