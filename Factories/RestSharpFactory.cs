@@ -31,7 +31,7 @@ namespace PrestaSharp.Serializers
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
             var response = client.Execute<T>(Request);
-            if (response.ErrorException != null)
+            if (response.StatusCode == HttpStatusCode.InternalServerError)
             {
                 const string message = "Error retrieving response.  Check inner details for more info.";
                 var Exception = new ApplicationException(message, response.ErrorException);
@@ -105,15 +105,13 @@ namespace PrestaSharp.Serializers
         /// <param name="Id"></param>
         /// <param name="ImagePath"></param>
         /// <returns></returns>
-        protected RestRequest RequestForAddImage(string Resource, int Id, string ImagePath)
+        protected RestRequest RequestForAddImage(string Resource, long Id, string ImagePath)
         {
             var request = new RestRequest();
             request.Resource = "/images/" + Resource + "/" + Id;
             request.Method = Method.POST;
             request.RequestFormat = DataFormat.Xml;
-            request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
-            byte[] ImgBytes = ImageToBinary(ImagePath);
-            request.AddParameter("images", ImgBytes);
+            request.AddFile("image", ImagePath);
             return request;
         }
 
