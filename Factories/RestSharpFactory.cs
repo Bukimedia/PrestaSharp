@@ -31,7 +31,8 @@ namespace PrestaSharp.Serializers
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
             var response = client.Execute<T>(Request);
-            if (response.StatusCode == HttpStatusCode.InternalServerError)
+            if (response.StatusCode == HttpStatusCode.InternalServerError
+                || response.StatusCode == HttpStatusCode.BadRequest)
             {
                 const string message = "Error retrieving response.  Check inner details for more info.";
                 var Exception = new ApplicationException(message, response.ErrorException);
@@ -115,6 +116,26 @@ namespace PrestaSharp.Serializers
             return request;
         }
 
+        /// <summary>
+        /// More information about image management: http://doc.prestashop.com/display/PS15/Chapter+9+-+Image+management
+        /// </summary>
+        /// <param name="Resource"></param>
+        /// <param name="Id"></param>
+        /// <param name="ImagePath"></param>
+        /// <returns></returns>
+        protected RestRequest RequestForUpdateImage(string Resource, long Id, string ImagePath)
+        {
+            var request = new RestRequest();
+            request.Resource = "/images/" + Resource + "/" + Id;
+
+            // BUG
+
+            request.Method = Method.PUT;
+            request.RequestFormat = DataFormat.Xml;
+            request.AddFile("image", ImagePath);
+            return request;
+        }
+
         protected RestRequest RequestForUpdate(string Resource, long? Id, Entities.PrestashopEntity PrestashopEntity)
         {
             if (Id == null)
@@ -131,6 +152,19 @@ namespace PrestaSharp.Serializers
             request.AddBody(PrestashopEntity);
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("<" + PrestashopEntity.GetType().Name+">", "<prestashop>\n<" + PrestashopEntity.GetType().Name + ">");
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</" + PrestashopEntity.GetType().Name + ">", "</" + PrestashopEntity.GetType().Name + "></prestashop>");
+            return request;
+        }
+        protected RestRequest RequestForDeleteImage(string Resource, long? Id)
+        {
+            if (Id == null)
+            {
+                throw new ApplicationException("Id is required to delete something.");
+            }
+            var request = new RestRequest();
+            request.RootElement = "prestashop";
+            request.Resource = "/images/" + Resource + "/" + Id;
+            request.Method = Method.DELETE;
+            request.RequestFormat = DataFormat.Xml;
             return request;
         }
 

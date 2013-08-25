@@ -30,12 +30,6 @@ namespace PrestaSharp.Factories
             return this.Execute<Entities.product>(request);
         }
 
-        public void AddImage(long ProductId, string ProductImagePath)
-        {
-            RestRequest request = this.RequestForAddImage("products", ProductId, ProductImagePath);
-            this.Execute<Entities.product>(request);
-        }
-
         public Entities.product Update(Entities.product Product)
         {
             RestRequest request = this.RequestForUpdate("products", Product.id, Product);

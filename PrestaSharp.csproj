@@ -62,6 +62,7 @@
     <Compile Include="Entities\product_option_values.cs" />
     <Compile Include="Entities\stock_available.cs" />
     <Compile Include="Entities\tag.cs" />
+    <Compile Include="Factories\ImageFactory.cs" />
     <Compile Include="Factories\ManufacturerFactory.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Factories\RestSharpFactory.cs" />

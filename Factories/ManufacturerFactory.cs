@@ -29,11 +29,6 @@ namespace PrestaSharp.Serializers
             return this.Execute<Entities.manufacturer>(request);
         }
 
-        public void AddImage(long ManufacturerId, string ManufacturerImagePath)
-        {
-            RestRequest request = this.RequestForAddImage("manufacturers", ManufacturerId, ManufacturerImagePath);
-            this.Execute<Entities.manufacturer>(request);
-        }
 
         public Entities.manufacturer Update(Entities.manufacturer Manufacturer)
         {
@@ -74,5 +69,7 @@ namespace PrestaSharp.Serializers
         {
             return this.GetByFilter(null, null, null);
         }
+
+
     }
 }

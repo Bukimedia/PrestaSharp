@@ -1,4 +1,4 @@
-PrestaSharp - C Sharp .Net library for the PrestaShop API via web service
+PrestaSharp - CSharp .Net library for the PrestaShop API via web service
 ====================================================
 
 
