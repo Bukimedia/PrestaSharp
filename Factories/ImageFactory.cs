@@ -1,4 +1,4 @@
-﻿using PrestaSharp.Serializers;
+﻿using PrestaSharp.Factories;
 using RestSharp;
 using System;
 using System.Collections.Generic;
