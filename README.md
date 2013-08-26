@@ -1,4 +1,4 @@
-PrestaSharp - CSharp .Net library for the PrestaShop API via web service
+PrestaSharp - CSharp .Net client library for the PrestaShop API via web service
 ====================================================
 
 
@@ -37,6 +37,8 @@ Supported resources
 
 - Manufacturers
 - Products
+- Categories
+- Images
 
 
 Supported actions

@@ -1,5 +1,4 @@
-﻿using RestSharp.Serializers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +7,9 @@ using System.Xml.Serialization;
 
 namespace PrestaSharp.Entities
 {
-    public class combination : PrestashopEntity
+    public class products : PrestashopEntity
     {
-        public int id { get; set; }
+        public long id { get; set; }
+        public int quantity { get; set; }
     }
 }

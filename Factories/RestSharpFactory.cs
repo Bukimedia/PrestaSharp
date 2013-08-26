@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace PrestaSharp.Serializers
+namespace PrestaSharp.Factories
 {
     public abstract class RestSharpFactory
     {
