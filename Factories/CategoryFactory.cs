@@ -30,10 +30,10 @@ namespace PrestaSharp.Factories
         }
 
 
-        public Entities.category Update(Entities.category Category)
+        public void Update(Entities.category Category)
         {
             RestRequest request = this.RequestForUpdate("categories", Category.id, Category);
-            return this.Execute<Entities.category>(request);
+            this.Execute<Entities.category>(request);
         }
 
         public void Delete(Entities.category Category)

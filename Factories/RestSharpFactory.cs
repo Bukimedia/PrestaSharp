@@ -106,8 +106,12 @@ namespace PrestaSharp.Factories
         /// <param name="Id"></param>
         /// <param name="ImagePath"></param>
         /// <returns></returns>
-        protected RestRequest RequestForAddImage(string Resource, long Id, string ImagePath)
+        protected RestRequest RequestForAddImage(string Resource, long? Id, string ImagePath)
         {
+            if (Id == null)
+            {
+                throw new ApplicationException("The Id field cannot be null.");
+            }
             var request = new RestRequest();
             request.Resource = "/images/" + Resource + "/" + Id;
             request.Method = Method.POST;

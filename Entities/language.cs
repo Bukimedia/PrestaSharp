@@ -12,6 +12,17 @@ namespace PrestaSharp.Entities
     [Serializable]
     public class language : PrestashopEntity
     {
+        public language()
+        {
+        }
+
+        public language(int id, string Value)
+        {
+            this.id = id;
+            this.Value = Value;
+        }
+
+
         [XmlAttribute]
         public int id { get; set; }
 
