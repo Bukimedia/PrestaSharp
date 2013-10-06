@@ -30,10 +30,10 @@ namespace PrestaSharp.Factories
         }
 
 
-        public Entities.manufacturer Update(Entities.manufacturer Manufacturer)
+        public void Update(Entities.manufacturer Manufacturer)
         {
             RestRequest request = this.RequestForUpdate("manufacturers", Manufacturer.id, Manufacturer);
-            return this.Execute<Entities.manufacturer>(request);
+            this.Execute<Entities.manufacturer>(request);
         }
 
         public void Delete(Entities.manufacturer Manufacturer)
