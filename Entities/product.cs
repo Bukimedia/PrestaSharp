@@ -95,16 +95,16 @@ namespace PrestaSharp.Entities
         /// It´s a logical bool.
         /// </summary>
         public int advanced_stock_management { get; set; }
-        public List<Entities.language> meta_description { get; set; }
-        public List<Entities.language> meta_keywords { get; set; }
-        public List<Entities.language> meta_title { get; set; }
-        public List<Entities.language> link_rewrite { get; set; }
-        public List<Entities.language> name { get; set; }
-        public List<Entities.language> description { get; set; }
-        public List<Entities.language> description_short { get; set; }
-        public List<Entities.language> available_now { get; set; }
-        public List<Entities.language> available_later { get; set; }
-        public AssociationsProduct associations { get; set; }
+        public List<Entities.AuxEntities.language> meta_description { get; set; }
+        public List<Entities.AuxEntities.language> meta_keywords { get; set; }
+        public List<Entities.AuxEntities.language> meta_title { get; set; }
+        public List<Entities.AuxEntities.language> link_rewrite { get; set; }
+        public List<Entities.AuxEntities.language> name { get; set; }
+        public List<Entities.AuxEntities.language> description { get; set; }
+        public List<Entities.AuxEntities.language> description_short { get; set; }
+        public List<Entities.AuxEntities.language> available_now { get; set; }
+        public List<Entities.AuxEntities.language> available_later { get; set; }
+        public AuxEntities.AssociationsProduct associations { get; set; }
 
     }
 }

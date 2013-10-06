@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrestaSharp.Entities
+namespace PrestaSharp.Entities.AuxEntities
 {
     public class AssociationsProduct : PrestashopEntity
     {
