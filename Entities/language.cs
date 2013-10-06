@@ -9,26 +9,29 @@ using System.Xml.Serialization;
 
 namespace PrestaSharp.Entities
 {
-    [Serializable]
-    public class language : PrestashopEntity
+    public class language: PrestashopEntity
     {
-        public language()
-        {
-        }
 
-        public language(long? id, string Value)
-        {
-            this.id = id;
-            this.Value = Value;
-        }
-
-
-        [XmlAttribute]
         public long? id { get; set; }
-
-        // Value is reserved word from RestSharp for loading the CDATA content from the XML file.
-        [XmlTextAttribute]
-        public string Value { get; set; }
+        public string name { get; set; }
+        public string iso_code { get; set; }
+        public string language_code { get; set; }
+        /// <summary>
+        /// It´s a logical bool.
+        /// </summary>
+        public int active { get; set; }
+        /// <summary>
+        /// It´s a logical bool.
+        /// </summary>
+        public int is_rtl { get; set; }
+        /// <summary>
+        /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
+        /// </summary>
+        public string date_format_lite { get; set; }
+        /// <summary>
+        /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
+        /// </summary>
+        public string date_format_full { get; set; }
 
     }
 }

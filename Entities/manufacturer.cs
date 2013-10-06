@@ -24,11 +24,11 @@ namespace PrestaSharp.Entities
         /// It´s a logical bool.
         /// </summary>
         public int active { get; set; }
-        public List<Entities.language> description { get; set; }
-        public List<Entities.language> short_description { get; set; }
-        public List<Entities.language> meta_title { get; set; }
-        public List<Entities.language> meta_description { get; set; }
-        public List<Entities.language> meta_keywords { get; set; }
-        public AssociationsManufacturer associations { get; set; }
+        public List<Entities.AuxEntities.language> description { get; set; }
+        public List<Entities.AuxEntities.language> short_description { get; set; }
+        public List<Entities.AuxEntities.language> meta_title { get; set; }
+        public List<Entities.AuxEntities.language> meta_description { get; set; }
+        public List<Entities.AuxEntities.language> meta_keywords { get; set; }
+        public AuxEntities.AssociationsManufacturer associations { get; set; }
     }
 }

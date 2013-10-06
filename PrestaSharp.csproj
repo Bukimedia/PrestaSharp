@@ -50,14 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\address.cs" />
-    <Compile Include="Entities\GenericAssociation.cs" />
-    <Compile Include="Entities\AssociationsCategory.cs" />
-    <Compile Include="Entities\AssociationsManufacturer.cs" />
-    <Compile Include="Entities\AssociationsProduct.cs" />
+    <Compile Include="Entities\language.cs" />
+    <Compile Include="Entities\AuxEntities\GenericAssociation.cs" />
+    <Compile Include="Entities\AuxEntities\AssociationsCategory.cs" />
+    <Compile Include="Entities\AuxEntities\AssociationsManufacturer.cs" />
+    <Compile Include="Entities\AuxEntities\AssociationsProduct.cs" />
     <Compile Include="Entities\category.cs" />
     <Compile Include="Entities\image.cs" />
     <Compile Include="Entities\PrestashopEntity.cs" />
-    <Compile Include="Entities\language.cs" />
+    <Compile Include="Entities\AuxEntities\language.cs" />
     <Compile Include="Entities\manufacturer.cs" />
     <Compile Include="Entities\product.cs" />
     <Compile Include="Entities\products.cs" />
