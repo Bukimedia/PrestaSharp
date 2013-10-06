@@ -16,9 +16,9 @@ namespace PrestaSharp.Factories
 
         }
 
-        public Entities.category Get(int CategoryID)
+        public Entities.category Get(int CategoryId)
         {
-            RestRequest request = this.RequestForGet("categories", CategoryID, "category");
+            RestRequest request = this.RequestForGet("categories", CategoryId, "category");
             return this.Execute<Entities.category>(request);
         }
 

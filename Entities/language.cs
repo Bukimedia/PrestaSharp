@@ -16,7 +16,7 @@ namespace PrestaSharp.Entities
         {
         }
 
-        public language(int id, string Value)
+        public language(long? id, string Value)
         {
             this.id = id;
             this.Value = Value;
@@ -24,7 +24,7 @@ namespace PrestaSharp.Entities
 
 
         [XmlAttribute]
-        public int id { get; set; }
+        public long? id { get; set; }
 
         // Value is reserved word from RestSharp for loading the CDATA content from the XML file.
         [XmlTextAttribute]
