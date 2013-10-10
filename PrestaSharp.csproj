@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\address.cs" />
+    <Compile Include="Entities\combination.cs" />
     <Compile Include="Entities\language.cs" />
     <Compile Include="Entities\AuxEntities\GenericAssociation.cs" />
     <Compile Include="Entities\AuxEntities\AssociationsCategory.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Entities\product_feature.cs" />
     <Compile Include="Entities\stock_available.cs" />
     <Compile Include="Factories\CategoryFactory.cs" />
+    <Compile Include="Factories\CombinationFactory.cs" />
     <Compile Include="Factories\ImageFactory.cs" />
     <Compile Include="Factories\LanguageFactory.cs" />
     <Compile Include="Factories\ManufacturerFactory.cs" />
