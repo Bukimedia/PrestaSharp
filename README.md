@@ -38,6 +38,7 @@ Supported resources
 - Manufacturers
 - Products
 - Categories
+- Languages
 - Images
 
 
