@@ -8,7 +8,7 @@ namespace PrestaSharp.Entities.AuxEntities
 {
     public class AssociationsCategory : PrestashopEntity
     {
-        public List<GenericAssociation> categories { get; set; }
-        public List<GenericAssociation> products { get; set; }
+        public List<AuxEntities.category> categories { get; set; }
+        public List<AuxEntities.product> products { get; set; }
     }
 }

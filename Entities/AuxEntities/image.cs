@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrestaSharp.Entities.AuxEntities
 {
-    public class AssociationsManufacturer : PrestashopEntity
+    public class image : GenericAssociation
     {
-        public List<AuxEntities.address> addresses { get; set; }
     }
 }

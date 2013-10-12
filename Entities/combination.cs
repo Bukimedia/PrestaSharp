@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace PrestaSharp.Entities
 {
+    [Serializable]
     public class combination : PrestashopEntity
     {
 
@@ -23,7 +24,7 @@ namespace PrestaSharp.Entities
         public decimal ecotax { get; set; }
         public decimal weight { get; set; }
         public decimal unit_price_impact { get; set; }
-        public decimal minimal_quantity { get; set; }
+        public long? minimal_quantity { get; set; }
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
@@ -33,7 +34,7 @@ namespace PrestaSharp.Entities
         /// It´s string because you can receive a string with no DateTime .Net format.
         /// </summary>
         public string available_date { get; set; }
-        public AuxEntities.AssociationsProduct associations { get; set; }
+        public AuxEntities.AssociationsCombination associations { get; set; }
 
     }
 }
