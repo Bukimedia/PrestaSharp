@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace PrestaSharp.Entities
+namespace PrestaSharp.Entities.AuxEntities
 {
     public class product_feature:PrestashopEntity
     {

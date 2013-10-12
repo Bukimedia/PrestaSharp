@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PrestaSharp.Entities
+namespace PrestaSharp.Entities.AuxEntities
 {
     public class stock_available : PrestashopEntity
     {

@@ -49,7 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\address.cs" />
+    <Compile Include="Entities\AuxEntities\AssociationsCombination.cs" />
+    <Compile Include="Entities\AuxEntities\address.cs" />
+    <Compile Include="Entities\AuxEntities\category.cs" />
+    <Compile Include="Entities\AuxEntities\combinations.cs" />
+    <Compile Include="Entities\AuxEntities\image.cs" />
+    <Compile Include="Entities\AuxEntities\product.cs" />
+    <Compile Include="Entities\AuxEntities\product_option_value.cs" />
+    <Compile Include="Entities\AuxEntities\tag.cs" />
     <Compile Include="Entities\combination.cs" />
     <Compile Include="Entities\language.cs" />
     <Compile Include="Entities\AuxEntities\GenericAssociation.cs" />
@@ -62,9 +69,9 @@
     <Compile Include="Entities\AuxEntities\language.cs" />
     <Compile Include="Entities\manufacturer.cs" />
     <Compile Include="Entities\product.cs" />
-    <Compile Include="Entities\products.cs" />
-    <Compile Include="Entities\product_feature.cs" />
-    <Compile Include="Entities\stock_available.cs" />
+    <Compile Include="Entities\AuxEntities\products.cs" />
+    <Compile Include="Entities\AuxEntities\product_feature.cs" />
+    <Compile Include="Entities\AuxEntities\stock_available.cs" />
     <Compile Include="Factories\CategoryFactory.cs" />
     <Compile Include="Factories\CombinationFactory.cs" />
     <Compile Include="Factories\ImageFactory.cs" />
