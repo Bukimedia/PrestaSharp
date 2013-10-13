@@ -44,6 +44,7 @@ Supported resources
 - Tags
 - Product Option Values
 - Stock Availables
+- Shops
 
 
 Supported actions
