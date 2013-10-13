@@ -40,13 +40,16 @@ Supported resources
 - Categories
 - Languages
 - Images
+- Combinations
+- Tags
+- Product Option Values
 
 
 Supported actions
 -----------------
 
-- Read
 - Create
+- Read
 - Update
 - Delete
 
