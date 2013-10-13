@@ -72,8 +72,10 @@
     <Compile Include="Entities\AuxEntities\products.cs" />
     <Compile Include="Entities\AuxEntities\product_feature.cs" />
     <Compile Include="Entities\AuxEntities\stock_available.cs" />
+    <Compile Include="Entities\tag.cs" />
     <Compile Include="Factories\CategoryFactory.cs" />
     <Compile Include="Factories\CombinationFactory.cs" />
+    <Compile Include="Factories\TagFactory.cs" />
     <Compile Include="Factories\ImageFactory.cs" />
     <Compile Include="Factories\LanguageFactory.cs" />
     <Compile Include="Factories\ManufacturerFactory.cs" />
