@@ -43,6 +43,7 @@ Supported resources
 - Combinations
 - Tags
 - Product Option Values
+- Stock Availables
 
 
 Supported actions
