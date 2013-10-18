@@ -30,5 +30,10 @@ namespace PrestaSharp.Entities
         public List<Entities.AuxEntities.language> meta_description { get; set; }
         public List<Entities.AuxEntities.language> meta_keywords { get; set; }
         public AuxEntities.AssociationsManufacturer associations { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return this.name == ((manufacturer)obj).name;
+        }
     }
 }
