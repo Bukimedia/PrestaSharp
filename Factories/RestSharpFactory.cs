@@ -91,10 +91,10 @@ namespace PrestaSharp.Factories
             request.Resource = Resource;
             request.Method = Method.POST;
             request.RequestFormat = DataFormat.Xml;
-            request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
-            string serialized = request.XmlSerializer.Serialize(Entity);
-            serialized = serialized.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<prestashop>");
-            serialized += "\n</prestashop>";
+            //Hack implementation in PrestaSharpSerializer to serialize PrestaSharp.Entities.AuxEntities.language
+            request.XmlSerializer = new Serializers.PrestaSharpSerializer();
+            string serialized = ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
+            serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
             request.AddParameter("xml", serialized);
             return request;
         }
