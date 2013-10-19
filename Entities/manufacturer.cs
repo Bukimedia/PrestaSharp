@@ -35,5 +35,10 @@ namespace PrestaSharp.Entities
         {
             return this.name == ((manufacturer)obj).name;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
