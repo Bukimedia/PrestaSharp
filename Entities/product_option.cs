@@ -18,6 +18,5 @@ namespace PrestaSharp.Entities
         public List<PrestaSharp.Entities.AuxEntities.language> name { get; set; }
         public List<PrestaSharp.Entities.AuxEntities.language> public_name { get; set; }
         public AuxEntities.AssociationsProductOption associations { get; set; }
-
     }
 }
