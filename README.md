@@ -42,6 +42,7 @@ Supported resources
 - Images
 - Combinations
 - Tags
+- Product Options
 - Product Option Values
 - Stock Availables
 - Shops
