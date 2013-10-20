@@ -10,7 +10,7 @@ namespace PrestaSharp.Entities.AuxEntities
 {
     public class stock_available : PrestashopEntity
     {
-        public int id { get; set; }
-        public int id_product_attribute { get; set; }
+        public long id { get; set; }
+        public long id_product_attribute { get; set; }
     }
 }

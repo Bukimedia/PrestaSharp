@@ -16,16 +16,16 @@ namespace PrestaSharp.Factories
 
         }
 
-        public Entities.stock_available Get(int StockAvailableId)
+        public Entities.stock_available Get(long StockAvailableId)
         {
             RestRequest request = this.RequestForGet("stock_availables", StockAvailableId, "stock_available");
             return this.Execute<Entities.stock_available>(request);
         }
 
-        public List<int> GetIds()
+        public List<long> GetIds()
         {
             RestRequest request = this.RequestForGet("stock_availables", null, "prestashop");
-            return this.ExecuteForGetIds<List<int>>(request, "stock_available");
+            return this.ExecuteForGetIds<List<long>>(request, "stock_available");
         }
 
         /// <summary>

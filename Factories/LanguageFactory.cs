@@ -16,7 +16,7 @@ namespace PrestaSharp.Factories
 
         }
 
-        public Entities.language Get(int LanguageId)
+        public Entities.language Get(long LanguageId)
         {
             RestRequest request = this.RequestForGet("languages", LanguageId, "language");
             return this.Execute<Entities.language>(request);
@@ -42,10 +42,10 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.language>(request);
         }
 
-        public List<int> GetIds()
+        public List<long> GetIds()
         {
             RestRequest request = this.RequestForGet("languages", null, "prestashop");
-            return this.ExecuteForGetIds<List<int>>(request, "language");
+            return this.ExecuteForGetIds<List<long>>(request, "language");
         }
 
         /// <summary>
