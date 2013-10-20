@@ -13,5 +13,28 @@ namespace PrestaSharp.Entities
         public string color { get; set; }
         public int position { get; set; }
         public List<PrestaSharp.Entities.AuxEntities.language> name { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            PrestaSharp.Entities.product_option_value Aux = (PrestaSharp.Entities.product_option_value)obj;
+            bool AreIdAttributeGroupEquals = (this.id_attribute_group == Aux.id_attribute_group);
+            bool ContainsLanguage = false;
+            for (int i = 0; i < this.name.Count(); i++)
+            {
+                foreach (PrestaSharp.Entities.AuxEntities.language Language in Aux.name)
+                {
+                    if (this.name[i].Value == Language.Value)
+                    {
+                        ContainsLanguage = true;
+                    }
+                }
+            }
+            return (AreIdAttributeGroupEquals && ContainsLanguage);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
