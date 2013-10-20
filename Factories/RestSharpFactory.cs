@@ -64,7 +64,7 @@ namespace PrestaSharp.Factories
             }
         }
 
-        protected RestRequest RequestForGet(string Resource, int? Id, string RootElement)
+        protected RestRequest RequestForGet(string Resource, long? Id, string RootElement)
         {
             var request = new RestRequest();
             request.Resource = Resource + "/" + Id;
@@ -72,7 +72,7 @@ namespace PrestaSharp.Factories
             return request;
         }
 
-        protected List<int> ExecuteForGetIds<T>(RestRequest Request, string RootElement) where T : new()
+        protected List<long> ExecuteForGetIds<T>(RestRequest Request, string RootElement) where T : new()
         {
             var client = new RestClient();
             client.BaseUrl = this.BaseUrl;
@@ -81,7 +81,7 @@ namespace PrestaSharp.Factories
             var response = client.Execute<T>(Request);
             XDocument xDcoument = XDocument.Parse(response.Content);
             var ids = (from doc in xDcoument.Descendants(RootElement)
-                       select int.Parse(doc.Attribute("id").Value)).ToList();
+                       select long.Parse(doc.Attribute("id").Value)).ToList();
             return ids;
         }
 

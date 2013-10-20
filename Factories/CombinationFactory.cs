@@ -16,7 +16,7 @@ namespace PrestaSharp.Factories
 
         }
 
-        public Entities.combination Get(int CombinationId)
+        public Entities.combination Get(long CombinationId)
         {
             RestRequest request = this.RequestForGet("combinations", CombinationId, "combination");
             return this.Execute<Entities.combination>(request);
@@ -50,10 +50,10 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.combination>(request);
         }
 
-        public List<int> GetIds()
+        public List<long> GetIds()
         {
             RestRequest request = this.RequestForGet("combinations", null, "prestashop");
-            return this.ExecuteForGetIds<List<int>>(request, "combination");
+            return this.ExecuteForGetIds<List<long>>(request, "combination");
         }
 
         /// <summary>

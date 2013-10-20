@@ -9,6 +9,6 @@ namespace PrestaSharp.Entities.AuxEntities
     public class product_feature:PrestashopEntity
     {
         public long id { get; set; }
-        public int id_feature_value { get; set; }
+        public long id_feature_value { get; set; }
     }
 }

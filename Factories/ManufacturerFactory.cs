@@ -16,7 +16,7 @@ namespace PrestaSharp.Factories
 
         }
 
-        public Entities.manufacturer Get(int ManufacturerId)
+        public Entities.manufacturer Get(long ManufacturerId)
         {
             RestRequest request = this.RequestForGet("manufacturers", ManufacturerId, "manufacturer");
             return this.Execute<Entities.manufacturer>(request);
@@ -42,10 +42,10 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.manufacturer>(request);
         }
 
-        public List<int> GetIds()
+        public List<long> GetIds()
         {
             RestRequest request = this.RequestForGet("manufacturers", null, "prestashop");
-            return this.ExecuteForGetIds<List<int>>(request, "manufacturer");
+            return this.ExecuteForGetIds<List<long>>(request, "manufacturer");
         }
         
         /// <summary>

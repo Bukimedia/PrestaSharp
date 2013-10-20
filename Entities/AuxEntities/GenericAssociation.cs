@@ -8,6 +8,6 @@ namespace PrestaSharp.Entities.AuxEntities
 {
     public class GenericAssociation : PrestashopEntity
     {
-        public int id { get; set; }
+        public long id { get; set; }
     }
 }
