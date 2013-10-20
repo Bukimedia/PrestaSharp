@@ -23,7 +23,7 @@ namespace PrestaSharp.Entities
             {
                 foreach (PrestaSharp.Entities.AuxEntities.language Language in Aux.name)
                 {
-                    if (this.name[i].Value == Language.Value)
+                    if (this.name[i].Value == Language.Value && this.name[i].id == Language.id)
                     {
                         ContainsLanguage = true;
                     }
