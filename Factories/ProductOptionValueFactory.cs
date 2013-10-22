@@ -24,18 +24,13 @@ namespace PrestaSharp.Factories
 
         public Entities.product_option_value Add(Entities.product_option_value ProductOptionValue)
         {
+            long? idAux = ProductOptionValue.id;
             ProductOptionValue.id = null;
             RestRequest request = this.RequestForAdd("product_option_values", ProductOptionValue);
-
-            /*
-             * Bug in the serializer with the serialization of id_attribute_group.
-             * It´s needed to write again the value of id_attribute_group with the same value of the object ProductOptionValue.
-             */
             Entities.product_option_value aux = this.Execute<Entities.product_option_value>(request);
-            aux.id_attribute_group = ProductOptionValue.id_attribute_group;
-            return aux;
+            ProductOptionValue.id = idAux;
+            return this.Get((long)aux.id);
         }
-
 
         public void Update(Entities.product_option_value ProductOptionValue)
         {

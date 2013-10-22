@@ -24,19 +24,13 @@ namespace PrestaSharp.Factories
 
         public Entities.combination Add(Entities.combination Combination)
         {
+            long? idAux = Combination.id;
             Combination.id = null;
             RestRequest request = this.RequestForAdd("combinations", Combination);
-
-            /*
-             * Bug in the serializer with the serialization of id_product and minimal_quantity.
-             * It´s needed to write again the value of id_product and minimal_quantity with the same value of the object Combination.
-             */
             Entities.combination aux = this.Execute<Entities.combination>(request);
-            aux.id_product = Combination.id_product;
-            aux.minimal_quantity = Combination.minimal_quantity;
-            return aux;
+            Combination.id = idAux;
+            return this.Get((long)aux.id);
         }
-
 
         public void Update(Entities.combination Combination)
         {

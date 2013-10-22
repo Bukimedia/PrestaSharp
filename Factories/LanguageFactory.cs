@@ -24,12 +24,14 @@ namespace PrestaSharp.Factories
 
         public Entities.language Add(Entities.language Language)
         {
+            long? idAux = Language.id;
             Language.id = null;
             RestRequest request = this.RequestForAdd("languages", Language);
-            return this.Execute<Entities.language>(request);
+            Entities.language aux = this.Execute<Entities.language>(request);
+            Language.id = idAux;
+            return this.Get((long)aux.id);
         }
-
-
+        
         public void Update(Entities.language Language)
         {
             RestRequest request = this.RequestForUpdate("languages", Language.id, Language);
