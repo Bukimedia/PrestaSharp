@@ -71,7 +71,8 @@ namespace PrestaSharp.Factories
         public List<long> GetIdsByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter("languages", "[id]", Filter, Sort, Limit, "languages");
-            return this.Execute<List<long>>(request);
+            List<PrestaSharp.Entities.FilterEntities.language> aux = this.Execute<List<PrestaSharp.Entities.FilterEntities.language>>(request);
+            return (List<long>)(from t in aux select t.id).ToList<long>();
         }
 
         /// <summary>
