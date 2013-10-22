@@ -24,7 +24,7 @@ namespace PrestaSharp.Factories
 
         public Entities.manufacturer Add(Entities.manufacturer Manufacturer)
         {
-            Manufacturer.id=null;
+            Manufacturer.id = null;
             RestRequest request = this.RequestForAdd("manufacturers", Manufacturer);
             return this.Execute<Entities.manufacturer>(request);
         }
