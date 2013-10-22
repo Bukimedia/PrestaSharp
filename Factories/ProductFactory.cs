@@ -25,7 +25,7 @@ namespace PrestaSharp.Factories
 
         public Entities.product Add(Entities.product Product)
         {
-            Product.id=null;
+            Product.id = null;
             RestRequest request = this.RequestForAdd("products", Product);
             return this.Execute<Entities.product>(request);
         }
