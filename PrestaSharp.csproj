@@ -56,6 +56,17 @@
     <Compile Include="Entities\AuxEntities\product_option_value.cs" />
     <Compile Include="Entities\AuxEntities\tag.cs" />
     <Compile Include="Entities\combination.cs" />
+    <Compile Include="Entities\FilterEntities\category.cs" />
+    <Compile Include="Entities\FilterEntities\combination.cs" />
+    <Compile Include="Entities\FilterEntities\tag.cs" />
+    <Compile Include="Entities\FilterEntities\stock_available.cs" />
+    <Compile Include="Entities\FilterEntities\shop.cs" />
+    <Compile Include="Entities\FilterEntities\product_option_value.cs" />
+    <Compile Include="Entities\FilterEntities\product_option.cs" />
+    <Compile Include="Entities\FilterEntities\product.cs" />
+    <Compile Include="Entities\FilterEntities\language.cs" />
+    <Compile Include="Entities\FilterEntities\GenericFilterEntity.cs" />
+    <Compile Include="Entities\FilterEntities\manufacturer.cs" />
     <Compile Include="Entities\product_option.cs" />
     <Compile Include="Entities\language.cs" />
     <Compile Include="Entities\AuxEntities\GenericAssociation.cs" />
