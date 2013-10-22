@@ -31,6 +31,67 @@ Basic usage
 	ManufacturerFactory.Delete(Manufacturer);
 ```
 
+Advanced usage
+--------------
+1) Get all. This sample retrieves the list of manufacturers:
+
+```
+	List<manufacturer> manufacturers = ManufacturerFactory.GetAll();
+```
+
+2) Get ids. This sample retrieves the list of the manufacturer ids:
+
+```
+	List<long> ids = ManufacturerFactory.GetIds();
+```
+
+3) Get by filter. This sample retrieves the list of manufacturers which name is "Metallica":
+
+```
+	Dictionary<string, string> dtn = new Dictionary<string, string>();
+	dtn.Add("name", "Metallica");
+	List<PrestaSharp.Entities.manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
+```
+
+4) Get by filter with wildcards. This sample retrieves the manufacturers which name starts with "Metall":
+
+```
+	Dictionary<string, string> dtn = new Dictionary<string, string>();
+	dtn.Add("name", "[Metall]%");
+	List<PrestaSharp.Entities.manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
+```
+
+5) Get ids by filter. This sample retrieves the list of the manufacturers ids which name is "Metallica":
+
+```
+	Dictionary<string, string> dtn = new Dictionary<string, string>();
+	dtn.Add("name", "Metallica");
+	List<long> ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
+```
+
+6) Get ids by filter with wildcards. This sample retrieves the list of the manufacturers ids which name starts with "Metall":
+
+```
+	Dictionary<string, string> dtn = new Dictionary<string, string>();
+	dtn.Add("name", "[Metall]%");
+	List<long> ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
+```
+
+7) Get by complex filter . This sample retrieves the top five manufacturers in ascendent sorting which name starts with "Metall":
+
+```
+	Dictionary<string, string> dtn = new Dictionary<string, string>();
+	dtn.Add("name", "[Metall]%");
+	List<PrestaSharp.Entities.manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "5");
+```
+
+8) Get by filter for pagination. This sample retrieves the top five manufacturers from tenth position in ascendent sorting which name starts with "Metall":
+
+```
+	Dictionary<string, string> dtn = new Dictionary<string, string>();
+	dtn.Add("name", "[Metall]%");
+	List<PrestaSharp.Entities.manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
+```
 
 Supported resources
 -------------------
