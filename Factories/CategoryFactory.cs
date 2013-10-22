@@ -24,11 +24,13 @@ namespace PrestaSharp.Factories
 
         public Entities.category Add(Entities.category Category)
         {
+            long? idAux = Category.id;
             Category.id = null;
             RestRequest request = this.RequestForAdd("categories", Category);
-            return this.Execute<Entities.category>(request);
+            Entities.category aux = this.Execute<Entities.category>(request);
+            Category.id = idAux;
+            return this.Get((long)aux.id);
         }
-
 
         public void Update(Entities.category Category)
         {

@@ -24,18 +24,14 @@ namespace PrestaSharp.Factories
 
         public Entities.tag Add(Entities.tag Tag)
         {
+            long? idAux = Tag.id;
             Tag.id = null;
             RestRequest request = this.RequestForAdd("tags", Tag);
-            /*
-             * Bug in the serializer with the serialization of id_lang.
-             * It´s needed to write again the value of id_lang with the same value of the object Tag.
-             */
             Entities.tag aux = this.Execute<Entities.tag>(request);
-            aux.id_lang = Tag.id_lang;
-            return aux;
+            Tag.id = idAux;
+            return this.Get((long)aux.id);
         }
-
-
+        
         public void Update(Entities.tag Tag)
         {
             RestRequest request = this.RequestForUpdate("tags", Tag.id, Tag);

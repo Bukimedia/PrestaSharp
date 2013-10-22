@@ -24,11 +24,13 @@ namespace PrestaSharp.Factories
 
         public Entities.manufacturer Add(Entities.manufacturer Manufacturer)
         {
+            long? idAux = Manufacturer.id;
             Manufacturer.id = null;
             RestRequest request = this.RequestForAdd("manufacturers", Manufacturer);
-            return this.Execute<Entities.manufacturer>(request);
+            Entities.manufacturer aux = this.Execute<Entities.manufacturer>(request);
+            Manufacturer.id = idAux;
+            return this.Get((long)aux.id);
         }
-
 
         public void Update(Entities.manufacturer Manufacturer)
         {

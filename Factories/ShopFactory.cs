@@ -24,20 +24,13 @@ namespace PrestaSharp.Factories
 
         public Entities.shop Add(Entities.shop Shop)
         {
+            long? idAux = Shop.id;
             Shop.id = null;
             RestRequest request = this.RequestForAdd("shops", Shop);
-
-            /*
-             * Bug in the serializer with the serialization of id_shop_group, id_category and id_theme.
-             * It´s needed to write again the value of id_shop_group, id_category and id_theme with the same value of the object Combination.
-             */
             Entities.shop aux = this.Execute<Entities.shop>(request);
-            aux.id_shop_group = Shop.id_shop_group;
-            aux.id_category = Shop.id_category;
-            aux.id_theme = Shop.id_theme;
-            return aux;
+            Shop.id = idAux;
+            return this.Get((long)aux.id);
         }
-
 
         public void Update(Entities.shop Shop)
         {
