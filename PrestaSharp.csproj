@@ -97,6 +97,7 @@
     <Compile Include="Factories\ManufacturerFactory.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Factories\RestSharpFactory.cs" />
+    <Compile Include="Lib\Functions.cs" />
     <Compile Include="Serializers\PrestaSharpSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\shop.cs" />

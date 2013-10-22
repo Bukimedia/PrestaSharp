@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrestaSharp.Lib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,5 +38,23 @@ namespace PrestaSharp.Entities
         public List<Entities.AuxEntities.language> meta_description { get; set; }
         public List<Entities.AuxEntities.language> meta_keywords { get; set; }
         public AuxEntities.AssociationsCategory associations { get; set; }
+
+        public category()
+        {
+            this.name = new List<AuxEntities.language>();
+            this.link_rewrite = new List<AuxEntities.language>();
+            this.description = new List<AuxEntities.language>();
+            this.meta_title = new List<AuxEntities.language>();
+            this.meta_description = new List<AuxEntities.language>();
+            this.meta_keywords = new List<AuxEntities.language>();
+            this.associations = new AuxEntities.AssociationsCategory();
+        }
+
+        public void AddLinkRewrite(Entities.AuxEntities.language Language)
+        {
+            Language.Value = Functions.BuildLinkRewrite(Language.Value);
+            this.link_rewrite.Add(Language);
+        }
+        
     }
 }
