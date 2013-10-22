@@ -50,7 +50,7 @@ Advanced usage
 ```
 	Dictionary<string, string> dtn = new Dictionary<string, string>();
 	dtn.Add("name", "Metallica");
-	List<PrestaSharp.Entities.manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
+	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
 ```
 
 4) Get by filter with wildcards. This sample retrieves the manufacturers which name starts with "Metall":
@@ -58,7 +58,7 @@ Advanced usage
 ```
 	Dictionary<string, string> dtn = new Dictionary<string, string>();
 	dtn.Add("name", "[Metall]%");
-	List<PrestaSharp.Entities.manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
+	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
 ```
 
 5) Get ids by filter. This sample retrieves the list of the manufacturers ids which name is "Metallica":
@@ -82,7 +82,7 @@ Advanced usage
 ```
 	Dictionary<string, string> dtn = new Dictionary<string, string>();
 	dtn.Add("name", "[Metall]%");
-	List<PrestaSharp.Entities.manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "5");
+	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "5");
 ```
 
 8) Get by filter for pagination. This sample retrieves the top five manufacturers from tenth position in ascendent sorting which name starts with "Metall":
@@ -90,7 +90,7 @@ Advanced usage
 ```
 	Dictionary<string, string> dtn = new Dictionary<string, string>();
 	dtn.Add("name", "[Metall]%");
-	List<PrestaSharp.Entities.manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
+	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
 ```
 
 Supported resources
