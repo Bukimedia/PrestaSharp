@@ -106,5 +106,18 @@ namespace PrestaSharp.Entities
         public List<Entities.AuxEntities.language> available_later { get; set; }
         public AuxEntities.AssociationsProduct associations { get; set; }
 
+        public product()
+        {
+            this.meta_description = new List<AuxEntities.language>();
+            this.meta_keywords = new List<AuxEntities.language>();
+            this.meta_title = new List<AuxEntities.language>();
+            this.link_rewrite = new List<AuxEntities.language>();
+            this.name = new List<AuxEntities.language>();
+            this.description = new List<AuxEntities.language>();
+            this.description_short = new List<AuxEntities.language>();
+            this.available_now = new List<AuxEntities.language>();
+            this.available_later = new List<AuxEntities.language>();
+            this.associations = new AuxEntities.AssociationsProduct();
+        }
     }
 }

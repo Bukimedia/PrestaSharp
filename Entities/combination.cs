@@ -36,6 +36,11 @@ namespace PrestaSharp.Entities
         public string available_date { get; set; }
         public AuxEntities.AssociationsCombination associations { get; set; }
 
+        public combination()
+        {
+            this.associations = new AuxEntities.AssociationsCombination();
+        }
+
     }
 }
 

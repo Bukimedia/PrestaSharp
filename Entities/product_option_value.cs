@@ -15,5 +15,10 @@ namespace PrestaSharp.Entities
         public int position { get; set; }
         public List<PrestaSharp.Entities.AuxEntities.language> name { get; set; }
 
+        public product_option_value()
+        {
+            this.name = new List<AuxEntities.language>();
+        }
+
     }
 }

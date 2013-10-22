@@ -77,7 +77,7 @@ Advanced usage
 	List<long> ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
 ```
 
-7) Get by complex filter . This sample retrieves the top five manufacturers in ascendent sorting which name starts with "Metall":
+7) Get by complex filter. This sample retrieves the top five manufacturers in ascendent sorting which name starts with "Metall":
 
 ```
 	Dictionary<string, string> dtn = new Dictionary<string, string>();

@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace PrestaSharp.Entities
 {
-    public class manufacturer:PrestashopEntity
+    public class manufacturer : PrestashopEntity
     {
         public long? id { get; set; }
         public string name { get; set; }
@@ -30,6 +30,16 @@ namespace PrestaSharp.Entities
         public List<Entities.AuxEntities.language> meta_description { get; set; }
         public List<Entities.AuxEntities.language> meta_keywords { get; set; }
         public AuxEntities.AssociationsManufacturer associations { get; set; }
+
+        public manufacturer()
+        {
+            this.description = new List<AuxEntities.language>();
+            this.short_description = new List<AuxEntities.language>();
+            this.meta_title = new List<AuxEntities.language>();
+            this.meta_description = new List<AuxEntities.language>();
+            this.meta_keywords = new List<AuxEntities.language>();
+            this.associations = new AuxEntities.AssociationsManufacturer();
+        }
 
         public override bool Equals(object obj)
         {
