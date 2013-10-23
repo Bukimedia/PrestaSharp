@@ -38,9 +38,9 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.tag>(request);
         }
 
-        public void Delete(Entities.tag Tag)
+        public void Delete(long TagId)
         {
-            RestRequest request = this.RequestForDelete("tags", Tag.id);
+            RestRequest request = this.RequestForDelete("tags", TagId);
             this.Execute<Entities.tag>(request);
         }
 
