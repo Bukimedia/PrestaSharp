@@ -60,7 +60,7 @@ namespace PrestaSharp.Factories
         public List<Entities.tag> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter("tags", "full", Filter, Sort, Limit, "tags");
-            return this.Execute<List<Entities.tag>>(request);
+            return this.ExecuteForFilter<List<Entities.tag>>(request);
         }
 
         /// <summary>

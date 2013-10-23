@@ -60,7 +60,7 @@ namespace PrestaSharp.Factories
         public List<Entities.category> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter("categories", "full", Filter, Sort, Limit, "categories");
-            return this.Execute<List<Entities.category>>(request);
+            return this.ExecuteForFilter<List<Entities.category>>(request);
         }
 
         /// <summary>

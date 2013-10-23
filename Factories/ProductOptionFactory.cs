@@ -60,7 +60,7 @@ namespace PrestaSharp.Factories
         public List<Entities.product_option> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter("product_options", "full", Filter, Sort, Limit, "product_options");
-            return this.Execute<List<Entities.product_option>>(request);
+            return this.ExecuteForFilter<List<Entities.product_option>>(request);
         }
 
         /// <summary>

@@ -64,12 +64,23 @@ namespace PrestaSharp.Factories
             }
         }
 
-        protected RestRequest RequestForGet(string Resource, long? Id, string RootElement)
+        protected T ExecuteForFilter<T>(RestRequest Request) where T : new()
         {
-            var request = new RestRequest();
-            request.Resource = Resource + "/" + Id;
-            request.RootElement = RootElement;
-            return request;
+            var client = new RestClient();
+            client.BaseUrl = this.BaseUrl;
+            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
+            client.ClearHandlers();
+            client.AddHandler("text/xml", new PrestaSharp.Deserializers.PrestaSharpDeserializer());
+            var response = client.Execute<T>(Request);
+            if (response.StatusCode == HttpStatusCode.InternalServerError
+                || response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                const string message = "Error retrieving response.  Check inner details for more info.";
+                var Exception = new ApplicationException(message, response.ErrorException);
+                throw Exception;
+            }
+            return response.Data;
         }
 
         protected List<long> ExecuteForGetIds<T>(RestRequest Request, string RootElement) where T : new()
@@ -83,6 +94,14 @@ namespace PrestaSharp.Factories
             var ids = (from doc in xDcoument.Descendants(RootElement)
                        select long.Parse(doc.Attribute("id").Value)).ToList();
             return ids;
+        }
+
+        protected RestRequest RequestForGet(string Resource, long? Id, string RootElement)
+        {
+            var request = new RestRequest();
+            request.Resource = Resource + "/" + Id;
+            request.RootElement = RootElement;
+            return request;
         }
 
         protected RestRequest RequestForAdd(string Resource, Entities.PrestashopEntity Entity)
