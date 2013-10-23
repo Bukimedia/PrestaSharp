@@ -14,8 +14,10 @@ namespace PrestaSharp.Entities
         public long? id_supplier { get; set; }
         public long? id_manufacturer { get; set; }
         public long? id_category_default { get; set; }
-        public long id_shop_default { get; set; }
+        public long id_default_image { get; set; }
+        public long id_default_combination { get; set; }
         public long id_tax_rules_group { get; set; }
+        public long id_shop_default { get; set; }
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
@@ -36,10 +38,10 @@ namespace PrestaSharp.Entities
         public string reference { get; set; }
         public string supplier_reference { get; set; }
         public string location { get; set; }
-        public decimal width { get; set; }
-        public decimal height { get; set; }
-        public decimal depth { get; set; }
-        public decimal weight { get; set; }
+        public float width { get; set; }
+        public float height { get; set; }
+        public float depth { get; set; }
+        public float weight { get; set; }
         public long out_of_stock { get; set; }
         public int? quantity_discount { get; set; }
         public sbyte customizable { get; set; }
