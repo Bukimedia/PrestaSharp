@@ -38,7 +38,7 @@ namespace PrestaSharp.Factories
         public List<Entities.stock_available> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter("stock_availables", "full", Filter, Sort, Limit, "stock_availables");
-            return this.Execute<List<Entities.stock_available>>(request);
+            return this.ExecuteForFilter<List<Entities.stock_available>>(request);
         }
 
         /// <summary>

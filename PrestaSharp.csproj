@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Deserializers\PrestaSharpDeserializer.cs" />
     <Compile Include="Entities\AuxEntities\AssociationsCombination.cs" />
     <Compile Include="Entities\AuxEntities\address.cs" />
     <Compile Include="Entities\AuxEntities\category.cs" />
