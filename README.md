@@ -1,16 +1,11 @@
-PrestaSharp - CSharp .Net client library for the PrestaShop API via web service
-====================================================
+#PrestaSharp
+###CSharp .Net client library for the PrestaShop API via web service
 
-
-Introduction
-------------
+##Introduction
 A simple .Net REST client written in C# for the Prestashop API.
 PrestaSharp uses the RestSharp library to consume the Prestashop services.
 
-
-Basic usage
------------
-
+##Basic usage
 1) Initiate a client instance:
 
 ```
@@ -31,8 +26,7 @@ Basic usage
 	ManufacturerFactory.Delete(Manufacturer);
 ```
 
-Advanced usage
---------------
+##Advanced usage
 1) Get all. This sample retrieves the list of manufacturers:
 
 ```
@@ -93,9 +87,7 @@ Advanced usage
 	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
 ```
 
-Supported resources
--------------------
-
+##Supported resources
 - Manufacturers
 - Products
 - Categories
@@ -108,26 +100,22 @@ Supported resources
 - Stock Availables
 - Shops
 
-
-Supported actions
------------------
-
+##Supported actions
 - Create
 - Read
 - Update
 - Delete
 
-
-Roadmap
--------
-
+##Roadmap
 - Add other resources
 
-License
--------
-
+##License
 Copyright (C) 2013 Bukimedia
+
 PrestaSharp is GNU General Public License (GPL)
-Bukimedia http://www.bukimedia.com/
+
+- Bukimedia: http://www.bukimedia.com/
+- Twitter: http://twitter.com/bukimedia
+- GitHub: https://github.com/bukimedia
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
