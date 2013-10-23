@@ -14,7 +14,7 @@ namespace PrestaSharp.Entities
         public long? id_supplier { get; set; }
         public long? id_manufacturer { get; set; }
         public long? id_category_default { get; set; }
-        public long id_default_image { get; set; }
+        public long? id_default_image { get; set; }
         public long? id_default_combination { get; set; }
         public long? id_tax_rules_group { get; set; }
         public long id_shop_default { get; set; }
