@@ -38,9 +38,9 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.product_option>(request);
         }
 
-        public void Delete(Entities.product_option ProductOption)
+        public void Delete(long ProducOptiontId)
         {
-            RestRequest request = this.RequestForDelete("product_options", ProductOption.id);
+            RestRequest request = this.RequestForDelete("product_options", ProducOptiontId);
             this.Execute<Entities.product_option>(request);
         }
 

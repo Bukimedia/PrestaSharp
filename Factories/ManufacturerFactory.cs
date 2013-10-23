@@ -38,9 +38,9 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.manufacturer>(request);
         }
 
-        public void Delete(Entities.manufacturer Manufacturer)
+        public void Delete(long ManufacturerId)
         {
-            RestRequest request = this.RequestForDelete("manufacturers", Manufacturer.id);
+            RestRequest request = this.RequestForDelete("manufacturers", ManufacturerId);
             this.Execute<Entities.manufacturer>(request);
         }
 

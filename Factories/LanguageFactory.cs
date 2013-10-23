@@ -38,9 +38,9 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.language>(request);
         }
 
-        public void Delete(Entities.language Language)
+        public void Delete(long LanguageId)
         {
-            RestRequest request = this.RequestForDelete("languages", Language.id);
+            RestRequest request = this.RequestForDelete("languages", LanguageId);
             this.Execute<Entities.language>(request);
         }
 

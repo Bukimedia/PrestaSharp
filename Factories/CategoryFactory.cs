@@ -38,9 +38,9 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.category>(request);
         }
 
-        public void Delete(Entities.category Category)
+        public void Delete(long CategoryId)
         {
-            RestRequest request = this.RequestForDelete("categories", Category.id);
+            RestRequest request = this.RequestForDelete("categories", CategoryId);
             this.Execute<Entities.category>(request);
         }
 
