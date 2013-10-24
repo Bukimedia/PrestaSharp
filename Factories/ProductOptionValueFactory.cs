@@ -44,6 +44,11 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.product_option_value>(request);
         }
 
+        public void Delete(Entities.product_option_value ProductOptionValue)
+        {
+            this.Delete((long)ProductOptionValue.id);
+        }
+
         public List<long> GetIds()
         {
             RestRequest request = this.RequestForGet("product_option_values", null, "prestashop");
