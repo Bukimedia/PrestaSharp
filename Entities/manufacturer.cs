@@ -41,14 +41,5 @@ namespace PrestaSharp.Entities
             this.associations = new AuxEntities.AssociationsManufacturer();
         }
 
-        public override bool Equals(object obj)
-        {
-            return this.name == ((manufacturer)obj).name;
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
     }
 }
