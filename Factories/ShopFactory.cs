@@ -44,6 +44,11 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.shop>(request);
         }
 
+        public void Delete(Entities.shop Shop)
+        {
+            this.Delete((long)Shop.id);
+        }
+
         public List<long> GetIds()
         {
             RestRequest request = this.RequestForGet("shops", null, "prestashop");

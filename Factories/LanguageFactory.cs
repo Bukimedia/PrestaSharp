@@ -44,6 +44,11 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.language>(request);
         }
 
+        public void Delete(Entities.language Language)
+        {
+            this.Delete((long)Language.id);
+        }
+
         public List<long> GetIds()
         {
             RestRequest request = this.RequestForGet("languages", null, "prestashop");
