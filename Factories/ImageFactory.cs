@@ -114,5 +114,6 @@ namespace PrestaSharp.Factories
         }
 
         #endregion Category images
+
     }
 }

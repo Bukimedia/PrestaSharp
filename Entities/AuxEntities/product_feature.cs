@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 
 namespace PrestaSharp.Entities.AuxEntities
 {
+    [XmlType(Namespace = "PrestaSharp/Entities/AuxEntities")]
     public class product_feature:PrestashopEntity
     {
         public long id { get; set; }
