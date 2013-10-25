@@ -12,6 +12,7 @@ namespace PrestaSharp.Entities.AuxEntities
 {
     [Serializable]
     [DataContract]
+    [XmlType(Namespace = "PrestaSharp/Entities/AuxEntities")]
     public class language: PrestashopEntity
     {
         public language()
