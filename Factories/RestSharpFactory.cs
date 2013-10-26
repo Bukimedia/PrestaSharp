@@ -177,15 +177,19 @@ namespace PrestaSharp.Factories
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</" + PrestashopEntity.GetType().Name + ">", "</" + PrestashopEntity.GetType().Name + "></prestashop>");
             return request;
         }
-        protected RestRequest RequestForDeleteImage(string Resource, long? Id)
+        protected RestRequest RequestForDeleteImage(string Resource, long? ResourceId, long? ImageId)
         {
-            if (Id == null)
+            if (ResourceId == null)
             {
                 throw new ApplicationException("Id is required to delete something.");
             }
             var request = new RestRequest();
             request.RootElement = "prestashop";
-            request.Resource = "/images/" + Resource + "/" + Id;
+            request.Resource = "/images/" + Resource + "/" + ResourceId;
+            if (ImageId != null)
+            {
+                request.Resource += "/" + ImageId;
+            }
             request.Method = Method.DELETE;
             request.RequestFormat = DataFormat.Xml;
             return request;
