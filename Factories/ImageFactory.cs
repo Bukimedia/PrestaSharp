@@ -29,15 +29,15 @@ namespace PrestaSharp.Factories
             this.Execute<Entities.image>(request);
         }
 
-        protected void UpdateImage(string Resource, long? Id, string ImagePath)
+        protected void UpdateImage(string Resource, long? ResourceId, long? ImageId, string ImagePath)
         {
-            this.DeleteImage(Resource, Id);
-            this.AddImage(Resource, Id, ImagePath);
+            this.DeleteImage(Resource, ResourceId,ImageId);
+            this.AddImage(Resource, ResourceId, ImagePath);
         }
 
-        protected void DeleteImage(string Resource, long? Id)
+        protected void DeleteImage(string Resource, long? ResourceId, long? ImageId)
         {
-            RestRequest request = this.RequestForDeleteImage(Resource, Id);
+            RestRequest request = this.RequestForDeleteImage(Resource, ResourceId, ImageId);
             this.Execute<Entities.image>(request);
         }
 
@@ -57,12 +57,12 @@ namespace PrestaSharp.Factories
 
         public void UpdateManufacturerImage(long ManufacturerId, string ManufacturerImagePath)
         {
-            this.UpdateImage("manufacturers", ManufacturerId, ManufacturerImagePath);
+            this.UpdateImage("manufacturers", ManufacturerId, null, ManufacturerImagePath);
         }
 
         public void DeleteManufacturerImage(long ManufacturerID)
         {
-            this.DeleteImage("manufacturers", ManufacturerID);
+            this.DeleteImage("manufacturers", ManufacturerID, null);
         }
 
         #endregion Manufacturer images
@@ -79,14 +79,14 @@ namespace PrestaSharp.Factories
             this.AddImage("products", ProductId, ProductImagePath);
         }
 
-        public void UpdateProductImage(long ProductId, string ProductImagePath)
+        public void UpdateProductImage(long ProductId, long ImageId, string ProductImagePath)
         {
-            this.UpdateImage("products", ProductId, ProductImagePath);
+            this.UpdateImage("products", ProductId, ImageId, ProductImagePath);
         }
 
-        public void DeleteProductImage(long? ProductId)
+        public void DeleteProductImage(long ProductId,long ImageId)
         {
-            this.DeleteImage("products", ProductId);
+            this.DeleteImage("products", ProductId, ImageId);
         }
 
         #endregion Product images
@@ -105,12 +105,12 @@ namespace PrestaSharp.Factories
 
         public void UpdateCategoryImage(long CategoryId, string CategoryImagePath)
         {
-            this.UpdateImage("categories", CategoryId, CategoryImagePath);
+            this.UpdateImage("categories", CategoryId, null, CategoryImagePath);
         }
 
         public void DeleteCategoryImage(long CategoryID)
         {
-            this.DeleteImage("categories", CategoryID);
+            this.DeleteImage("categories", null, CategoryID);
         }
 
         #endregion Category images
