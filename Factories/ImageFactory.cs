@@ -23,6 +23,21 @@ namespace PrestaSharp.Factories
             return this.Execute<List<Entities.image>>(request);
         }
 
+        protected List<Entities.FilterEntities.declination> GetImagesByInstance(string Resource, long Id)
+        {
+            RestRequest request = this.RequestForFilter("images/" + Resource + "/" + Id, "full", null, null, null, "image");
+            List<Entities.FilterEntities.declination> Declinations = this.Execute<List<Entities.FilterEntities.declination>>(request);
+            List<Entities.FilterEntities.declination> AuxDeclinations = new List<Entities.FilterEntities.declination>();
+            foreach (Entities.FilterEntities.declination Declination in Declinations)
+            {
+                if (!AuxDeclinations.Contains(Declination))
+                {
+                    AuxDeclinations.Add(Declination);
+                }
+            }
+            return AuxDeclinations;
+        }
+
         protected void AddImage(string Resource, long? Id, string ImagePath)
         {
             RestRequest request = this.RequestForAddImage(Resource, Id, ImagePath);
@@ -72,6 +87,11 @@ namespace PrestaSharp.Factories
         public List<Entities.image> GetAllProductImages()
         {
             return this.GetAllImages("products");
+        }
+
+        public List<Entities.FilterEntities.declination> GetProductImages(long ProductId)
+        {
+            return this.GetImagesByInstance("products", ProductId);
         }
 
         public void AddProductImage(long ProductId, string ProductImagePath)

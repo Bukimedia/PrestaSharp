@@ -57,6 +57,7 @@
     <Compile Include="Entities\AuxEntities\product_option_value.cs" />
     <Compile Include="Entities\AuxEntities\tag.cs" />
     <Compile Include="Entities\combination.cs" />
+    <Compile Include="Entities\FilterEntities\declination.cs" />
     <Compile Include="Entities\FilterEntities\product_feature.cs" />
     <Compile Include="Entities\product_feature.cs" />
     <Compile Include="Entities\FilterEntities\category.cs" />
