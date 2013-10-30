@@ -11,5 +11,14 @@ namespace PrestaSharp.Entities.AuxEntities
     public class GenericAssociation : PrestashopEntity
     {
         public long id { get; set; }
+
+        public GenericAssociation()
+        {
+        }
+
+        public GenericAssociation(long id)
+        {
+            this.id = id;
+        }
     }
 }

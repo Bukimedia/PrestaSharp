@@ -10,5 +10,14 @@ namespace PrestaSharp.Entities.AuxEntities
     [XmlType(Namespace = "PrestaSharp/Entities/AuxEntities")]
     public class category : GenericAssociation
     {
+        public category():base()
+        {
+        }
+
+        public category(long id)
+            : base(id)
+        {
+        }
+
     }
 }
