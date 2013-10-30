@@ -34,8 +34,7 @@ namespace PrestaSharp.Factories
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.BadRequest)
             {
-                const string message = "Error retrieving response.  Check inner details for more info.";
-                var Exception = new ApplicationException(message, response.ErrorException);
+                var Exception = new ApplicationException(response.Content, response.ErrorException);
                 throw Exception;
             }
             return response.Data;
@@ -76,8 +75,7 @@ namespace PrestaSharp.Factories
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.BadRequest)
             {
-                const string message = "Error retrieving response.  Check inner details for more info.";
-                var Exception = new ApplicationException(message, response.ErrorException);
+                var Exception = new ApplicationException(response.Content, response.ErrorException);
                 throw Exception;
             }
             return response.Data;
