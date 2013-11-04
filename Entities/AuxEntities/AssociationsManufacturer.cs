@@ -11,5 +11,11 @@ namespace PrestaSharp.Entities.AuxEntities
     public class AssociationsManufacturer : PrestashopEntity
     {
         public List<AuxEntities.address> addresses { get; set; }
+
+        public AssociationsManufacturer()
+        {
+            this.addresses = new List<address>();
+        }
+
     }
 }
