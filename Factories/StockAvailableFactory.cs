@@ -22,6 +22,12 @@ namespace PrestaSharp.Factories
             return this.Execute<Entities.stock_available>(request);
         }
 
+        public void Update(Entities.stock_available StockAvailable)
+        {
+            RestRequest request = this.RequestForUpdate("stock_availables", StockAvailable.id, StockAvailable);
+            this.Execute<Entities.stock_available>(request);
+        }
+
         public List<long> GetIds()
         {
             RestRequest request = this.RequestForGet("stock_availables", null, "prestashop");

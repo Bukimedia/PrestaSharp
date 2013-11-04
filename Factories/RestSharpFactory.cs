@@ -32,7 +32,8 @@ namespace PrestaSharp.Factories
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
-                || response.StatusCode == HttpStatusCode.BadRequest)
+                || response.StatusCode == HttpStatusCode.BadRequest 
+                || response.StatusCode == HttpStatusCode.MethodNotAllowed)
             {
                 var Exception = new ApplicationException(response.Content, response.ErrorException);
                 throw Exception;
@@ -73,7 +74,8 @@ namespace PrestaSharp.Factories
             client.AddHandler("text/xml", new PrestaSharp.Deserializers.PrestaSharpDeserializer());
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
-                || response.StatusCode == HttpStatusCode.BadRequest)
+                || response.StatusCode == HttpStatusCode.BadRequest
+                || response.StatusCode == HttpStatusCode.MethodNotAllowed)
             {
                 var Exception = new ApplicationException(response.Content, response.ErrorException);
                 throw Exception;
