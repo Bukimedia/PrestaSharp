@@ -12,5 +12,12 @@ namespace PrestaSharp.Entities.AuxEntities
     {
         public List<AuxEntities.category> categories { get; set; }
         public List<AuxEntities.product> products { get; set; }
+
+        public AssociationsCategory()
+        {
+            this.categories = new List<category>();
+            this.products = new List<product>();
+        }
+
     }
 }

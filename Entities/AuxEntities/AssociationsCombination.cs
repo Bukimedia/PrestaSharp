@@ -11,5 +11,12 @@ namespace PrestaSharp.Entities.AuxEntities
     {
         public List<AuxEntities.product_option_value> product_option_values { get; set; }
         public List<AuxEntities.image> images { get; set; }
+
+        public AssociationsCombination()
+        {
+            this.product_option_values = new List<product_option_value>();
+            this.images = new List<image>();
+        }
+
     }
 }
