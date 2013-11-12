@@ -52,12 +52,15 @@
     <Compile Include="Entities\AuxEntities\category.cs" />
     <Compile Include="Entities\AuxEntities\combinations.cs" />
     <Compile Include="Entities\AuxEntities\AssociationsProductOption.cs" />
+    <Compile Include="Entities\AuxEntities\product_feature_value.cs" />
     <Compile Include="Entities\AuxEntities\group.cs" />
     <Compile Include="Entities\AuxEntities\image.cs" />
     <Compile Include="Entities\AuxEntities\product.cs" />
     <Compile Include="Entities\AuxEntities\product_option_value.cs" />
     <Compile Include="Entities\AuxEntities\tag.cs" />
     <Compile Include="Entities\combination.cs" />
+    <Compile Include="Entities\FilterEntities\product_feature_value.cs" />
+    <Compile Include="Entities\product_feature_value.cs" />
     <Compile Include="Entities\FilterEntities\group.cs" />
     <Compile Include="Entities\group.cs" />
     <Compile Include="Entities\FilterEntities\declination.cs" />
@@ -94,6 +97,7 @@
     <Compile Include="Entities\tag.cs" />
     <Compile Include="Factories\CategoryFactory.cs" />
     <Compile Include="Factories\CombinationFactory.cs" />
+    <Compile Include="Factories\ProductFeatureValueFactory.cs" />
     <Compile Include="Factories\GroupFactory.cs" />
     <Compile Include="Factories\ProductFeatureFactory.cs" />
     <Compile Include="Factories\ProductOptionFactory.cs" />
