@@ -83,7 +83,7 @@ namespace PrestaSharp.Factories
         }
 
         /// <summary>
-        /// Get all product_options.
+        /// Get all product_featrues.
         /// </summary>
         /// <returns>A list of product_features</returns>
         public List<Entities.product_feature> GetAll()
