@@ -32,10 +32,11 @@ namespace PrestaSharp.Factories
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
-                || response.StatusCode == HttpStatusCode.BadRequest 
-                || response.StatusCode == HttpStatusCode.MethodNotAllowed)
+                || response.StatusCode == HttpStatusCode.BadRequest
+                || response.StatusCode == HttpStatusCode.MethodNotAllowed
+                || response.StatusCode == 0)
             {
-                var Exception = new ApplicationException(response.Content, response.ErrorException);
+                var Exception = new ApplicationException(response.Content + " " + response.ErrorMessage, response.ErrorException);
                 throw Exception;
             }
             return response.Data;
