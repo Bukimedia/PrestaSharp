@@ -104,7 +104,7 @@ namespace PrestaSharp.Factories
             return request;
         }
 
-        protected RestRequest RequestForAdd(string Resource, Entities.PrestashopEntity Entity)
+        protected RestRequest RequestForAdd(string Resource, List<Entities.PrestashopEntity> Entities)
         {
             var request = new RestRequest();
             request.Resource = Resource;
@@ -112,7 +112,11 @@ namespace PrestaSharp.Factories
             request.RequestFormat = DataFormat.Xml;
             //Hack implementation in PrestaSharpSerializer to serialize PrestaSharp.Entities.AuxEntities.language
             request.XmlSerializer = new Serializers.PrestaSharpSerializer();
-            string serialized = ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
+            string serialized = "";
+            foreach (Entities.PrestashopEntity Entity in Entities)
+            {
+                serialized += ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
+            }
             serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
             request.AddParameter("xml", serialized);
             return request;

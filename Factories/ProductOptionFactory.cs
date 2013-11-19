@@ -26,7 +26,9 @@ namespace PrestaSharp.Factories
         {
             long? idAux = ProductOption.id;
             ProductOption.id = null;
-            RestRequest request = this.RequestForAdd("product_options", ProductOption);
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            Entities.Add(ProductOption);
+            RestRequest request = this.RequestForAdd("product_options", Entities);
             Entities.product_option aux = this.Execute<Entities.product_option>(request);
             ProductOption.id = idAux;
             return this.Get((long)aux.id);
@@ -90,5 +92,23 @@ namespace PrestaSharp.Factories
         {
             return this.GetByFilter(null, null, null);
         }
+
+        /// <summary>
+        /// Add a list of product_options.
+        /// </summary>
+        /// <param name="ProductOptions"></param>
+        /// <returns></returns>
+        public List<Entities.product_option> AddList(List<Entities.product_option> ProductOptions)
+        {
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            foreach (Entities.product_option ProductOption in ProductOptions)
+            {
+                ProductOption.id = null;
+                Entities.Add(ProductOption);
+            }
+            RestRequest request = this.RequestForAdd("product_options", Entities);
+            return this.Execute<List<Entities.product_option>>(request);
+        }
+
     }
 }

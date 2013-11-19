@@ -69,5 +69,23 @@ namespace PrestaSharp.Factories
         {
             return this.GetByFilter(null, null, null);
         }
+
+        /// <summary>
+        /// Add a list of stock_vailables.
+        /// </summary>
+        /// <param name="StockAvailables"></param>
+        /// <returns></returns>
+        public List<Entities.stock_available> AddList(List<Entities.stock_available> StockAvailables)
+        {
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            foreach (Entities.stock_available StockAvailable in StockAvailables)
+            {
+                StockAvailable.id = null;
+                Entities.Add(StockAvailable);
+            }
+            RestRequest request = this.RequestForAdd("stock_availables", Entities);
+            return this.Execute<List<Entities.stock_available>>(request);
+        }
+
     }
 }

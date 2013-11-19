@@ -26,7 +26,9 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Category.id;
             Category.id = null;
-            RestRequest request = this.RequestForAdd("categories", Category);
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            Entities.Add(Category);
+            RestRequest request = this.RequestForAdd("categories", Entities);
             Entities.category aux = this.Execute<Entities.category>(request);
             Category.id = idAux;
             return this.Get((long)aux.id);
@@ -90,5 +92,23 @@ namespace PrestaSharp.Factories
         {
             return this.GetByFilter(null, null, null);
         }
+
+        /// <summary>
+        /// Add a list of categories.
+        /// </summary>
+        /// <param name="Categories"></param>
+        /// <returns></returns>
+        public List<Entities.category> AddList(List<Entities.category> Categories)
+        {
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            foreach (Entities.category Category in Categories)
+            {
+                Category.id = null;
+                Entities.Add(Category);
+            }
+            RestRequest request = this.RequestForAdd("categories", Entities);
+            return this.Execute<List<Entities.category>>(request);
+        }
+
     }
 }
