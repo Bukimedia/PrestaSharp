@@ -26,7 +26,9 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Tag.id;
             Tag.id = null;
-            RestRequest request = this.RequestForAdd("tags", Tag);
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            Entities.Add(Tag);
+            RestRequest request = this.RequestForAdd("tags", Entities);
             Entities.tag aux = this.Execute<Entities.tag>(request);
             Tag.id = idAux;
             return this.Get((long)aux.id);
@@ -90,5 +92,23 @@ namespace PrestaSharp.Factories
         {
             return this.GetByFilter(null, null, null);
         }
+
+        /// <summary>
+        /// Add a list of tags.
+        /// </summary>
+        /// <param name="Tags"></param>
+        /// <returns></returns>
+        public List<Entities.tag> AddList(List<Entities.tag> Tags)
+        {
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            foreach (Entities.tag Tag in Tags)
+            {
+                Tag.id = null;
+                Entities.Add(Tag);
+            }
+            RestRequest request = this.RequestForAdd("tags", Entities);
+            return this.Execute<List<Entities.tag>>(request);
+        }
+
     }
 }

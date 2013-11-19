@@ -26,7 +26,9 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Manufacturer.id;
             Manufacturer.id = null;
-            RestRequest request = this.RequestForAdd("manufacturers", Manufacturer);
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            Entities.Add(Manufacturer);
+            RestRequest request = this.RequestForAdd("manufacturers", Entities);
             Entities.manufacturer aux = this.Execute<Entities.manufacturer>(request);
             Manufacturer.id = idAux;
             return this.Get((long)aux.id);
@@ -90,7 +92,23 @@ namespace PrestaSharp.Factories
         {
             return this.GetByFilter(null, null, null);
         }
-
-
+        
+        /// <summary>
+        /// Add a list of manufacturers.
+        /// </summary>
+        /// <param name="Manufacturers"></param>
+        /// <returns></returns>
+        public List<Entities.manufacturer> AddList(List<Entities.manufacturer> Manufacturers)
+        {
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            foreach (Entities.manufacturer Manufacturer in Manufacturers)
+            {
+                Manufacturer.id = null;
+                Entities.Add(Manufacturer);
+            }
+            RestRequest request = this.RequestForAdd("manufacturers", Entities);
+            return this.Execute<List<Entities.manufacturer>>(request);
+        }
+        
     }
 }

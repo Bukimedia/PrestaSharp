@@ -26,7 +26,9 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Combination.id;
             Combination.id = null;
-            RestRequest request = this.RequestForAdd("combinations", Combination);
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            Entities.Add(Combination);
+            RestRequest request = this.RequestForAdd("combinations", Entities);
             Entities.combination aux = this.Execute<Entities.combination>(request);
             Combination.id = idAux;
             return this.Get((long)aux.id);
@@ -90,5 +92,23 @@ namespace PrestaSharp.Factories
         {
             return this.GetByFilter(null, null, null);
         }
+
+        /// <summary>
+        /// Add a list of combinations.
+        /// </summary>
+        /// <param name="Combinations"></param>
+        /// <returns></returns>
+        public List<Entities.combination> AddList(List<Entities.combination> Combinations)
+        {
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            foreach (Entities.combination Combination in Combinations)
+            {
+                Combination.id = null;
+                Entities.Add(Combination);
+            }
+            RestRequest request = this.RequestForAdd("combinations", Entities);
+            return this.Execute<List<Entities.combination>>(request);
+        }
+
     }
 }

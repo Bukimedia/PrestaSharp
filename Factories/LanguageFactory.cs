@@ -26,7 +26,9 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Language.id;
             Language.id = null;
-            RestRequest request = this.RequestForAdd("languages", Language);
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            Entities.Add(Language);
+            RestRequest request = this.RequestForAdd("languages", Entities);
             Entities.language aux = this.Execute<Entities.language>(request);
             Language.id = idAux;
             return this.Get((long)aux.id);
@@ -90,5 +92,23 @@ namespace PrestaSharp.Factories
         {
             return this.GetByFilter(null, null, null);
         }
+
+        /// <summary>
+        /// Add a list of languages.
+        /// </summary>
+        /// <param name="Languages"></param>
+        /// <returns></returns>
+        public List<Entities.language> AddList(List<Entities.language> Languages)
+        {
+            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            foreach (Entities.language Language in Languages)
+            {
+                Language.id = null;
+                Entities.Add(Language);
+            }
+            RestRequest request = this.RequestForAdd("languages", Entities);
+            return this.Execute<List<Entities.language>>(request);
+        }
+
     }
 }
