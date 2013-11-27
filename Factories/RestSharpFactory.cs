@@ -143,6 +143,27 @@ namespace PrestaSharp.Factories
             request.AddFile("image", ImagePath);
             return request;
         }
+        
+         /// <summary>
+        /// More information about image management: http://doc.prestashop.com/display/PS15/Chapter+9+-+Image+management
+        /// </summary>
+        /// <param name="Resource"></param>
+        /// <param name="Id"></param>
+        /// <param name="Image"></param>
+        /// <returns></returns>
+        protected RestRequest RequestForAddImage(string Resource, long? Id, byte[] Image)
+        {
+            if (Id == null)
+            {
+                throw new ApplicationException("The Id field cannot be null.");
+            }
+            var request = new RestRequest();
+            request.Resource = "/images/" + Resource + "/" + Id;
+            request.Method = Method.POST;
+            request.RequestFormat = DataFormat.Xml;
+            request.AddFile("image", Image, "dummy.png");
+            return request;
+        }
 
         /// <summary>
         /// More information about image management: http://doc.prestashop.com/display/PS15/Chapter+9+-+Image+management
