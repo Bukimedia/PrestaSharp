@@ -43,6 +43,12 @@ namespace PrestaSharp.Factories
             RestRequest request = this.RequestForAddImage(Resource, Id, ImagePath);
             this.Execute<Entities.image>(request);
         }
+        
+        protected void AddImage(string Resource, long? Id, byte[] Image)
+        {
+            RestRequest request = this.RequestForAddImage(Resource, Id, Image);
+            this.Execute<Entities.image>(request);
+        }
 
         protected void UpdateImage(string Resource, long? ResourceId, long? ImageId, string ImagePath)
         {
@@ -68,6 +74,11 @@ namespace PrestaSharp.Factories
         public void AddManufacturerImage(long ManufacturerId, string ManufacturerImagePath)
         {
             this.AddImage("manufacturers", ManufacturerId, ManufacturerImagePath);
+        }
+        
+        public void AddManufacturerImage(long ManufacturerId, byte[] ManufacturerImage)
+        {
+            this.AddImage("manufacturers", ManufacturerId, ManufacturerImage);
         }
 
         public void UpdateManufacturerImage(long ManufacturerId, string ManufacturerImagePath)
@@ -98,6 +109,11 @@ namespace PrestaSharp.Factories
         {
             this.AddImage("products", ProductId, ProductImagePath);
         }
+        
+        public void AddProductImage(long ProductId, byte[] ProductImage)
+        {
+            this.AddImage("products", ProductId, ProductImage);
+        }
 
         public void UpdateProductImage(long ProductId, long ImageId, string ProductImagePath)
         {
@@ -121,6 +137,11 @@ namespace PrestaSharp.Factories
         public void AddCategoryImage(long? CategoryId, string CategoryImagePath)
         {
             this.AddImage("categories", CategoryId, CategoryImagePath);
+        }
+        
+        public void AddCategoryImage(long? CategoryId, byte[] CategoryImage)
+        {
+            this.AddImage("categories", CategoryId, CategoryImage);
         }
 
         public void UpdateCategoryImage(long CategoryId, string CategoryImagePath)
