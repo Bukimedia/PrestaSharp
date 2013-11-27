@@ -104,7 +104,7 @@ namespace PrestaSharp.Serializers
                 }
                 else if (obj.GetType().FullName.Equals("PrestaSharp.Entities.AuxEntities.language") && root.Name.LocalName.Equals("language") && name.Equals("Value"))
                 {
-                    XText xtext = new XText(rawValue.ToString());
+                    XText xtext = new XText(rawValue == null ? "" : rawValue.ToString());
                     root.Add(xtext);
                     continue;
 
