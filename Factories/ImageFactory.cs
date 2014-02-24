@@ -151,7 +151,7 @@ namespace PrestaSharp.Factories
 
         public void DeleteCategoryImage(long CategoryID)
         {
-            this.DeleteImage("categories", null, CategoryID);
+            this.DeleteImage("categories", CategoryID, null);
         }
 
         #endregion Category images
