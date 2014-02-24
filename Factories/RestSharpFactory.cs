@@ -34,6 +34,7 @@ namespace PrestaSharp.Factories
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.BadRequest
                 || response.StatusCode == HttpStatusCode.MethodNotAllowed
+                || response.StatusCode==HttpStatusCode.Forbidden
                 || response.StatusCode == 0)
             {
                 var Exception = new ApplicationException(response.Content + " " + response.ErrorMessage, response.ErrorException);
