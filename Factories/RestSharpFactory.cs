@@ -33,8 +33,9 @@ namespace PrestaSharp.Factories
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.BadRequest
+                || response.StatusCode == HttpStatusCode.Unauthorized
                 || response.StatusCode == HttpStatusCode.MethodNotAllowed
-                || response.StatusCode==HttpStatusCode.Forbidden
+                || response.StatusCode == HttpStatusCode.Forbidden
                 || response.StatusCode == 0)
             {
                 var Exception = new ApplicationException(response.Content + " " + response.ErrorMessage, response.ErrorException);
@@ -72,12 +73,16 @@ namespace PrestaSharp.Factories
             client.BaseUrl = this.BaseUrl;
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
-            client.ClearHandlers();
-            client.AddHandler("text/xml", new PrestaSharp.Deserializers.PrestaSharpDeserializer());
+            //Disabled for using the default RestSharp deserializer
+            //client.ClearHandlers();
+            //client.AddHandler("text/xml", new PrestaSharp.Deserializers.PrestaSharpDeserializer());
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.BadRequest
-                || response.StatusCode == HttpStatusCode.MethodNotAllowed)
+                || response.StatusCode == HttpStatusCode.Unauthorized
+                || response.StatusCode == HttpStatusCode.MethodNotAllowed
+                || response.StatusCode == HttpStatusCode.Forbidden
+                || response.StatusCode == 0)
             {
                 var Exception = new ApplicationException(response.Content, response.ErrorException);
                 throw Exception;
