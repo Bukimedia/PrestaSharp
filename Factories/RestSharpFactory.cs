@@ -73,9 +73,8 @@ namespace PrestaSharp.Factories
             client.BaseUrl = this.BaseUrl;
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
-            //Disabled for using the default RestSharp deserializer
-            //client.ClearHandlers();
-            //client.AddHandler("text/xml", new PrestaSharp.Deserializers.PrestaSharpDeserializer());
+            client.ClearHandlers();
+            client.AddHandler("text/xml", new PrestaSharp.Deserializers.PrestaSharpDeserializer());
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.BadRequest

@@ -186,8 +186,16 @@ namespace PrestaSharp.Deserializers
                 }
                 else if (type == typeof(Decimal))
                 {
-                    value = Decimal.Parse(value.ToString(), Culture);
-                    prop.SetValue(x, value, null);
+                    //Hack for non defined price
+                    if (value.Equals(""))
+                    {
+                        prop.SetValue(x, 0.0m, null);
+                    }
+                    else
+                    {
+                        value = Decimal.Parse(value.ToString(), Culture);
+                        prop.SetValue(x, value, null);
+                    }
                 }
                 else if (type == typeof(Guid))
                 {
