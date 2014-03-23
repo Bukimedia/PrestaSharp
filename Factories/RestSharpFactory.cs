@@ -30,6 +30,11 @@ namespace PrestaSharp.Factories
             client.BaseUrl = this.BaseUrl;
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
+            if (Request.Method == Method.GET)
+            {
+                client.ClearHandlers();
+                client.AddHandler("text/xml", new PrestaSharp.Deserializers.PrestaSharpDeserializer());
+            }
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.BadRequest
