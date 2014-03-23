@@ -389,12 +389,10 @@ namespace PrestaSharp.Deserializers
         {
             var lowerName = name.LocalName.ToLower().AsNamespaced(name.NamespaceName);
             var camelName = name.LocalName.ToCamelCase(Culture).AsNamespaced(name.NamespaceName);
-
             if (root.Element(name) != null)
             {
                 return root.Element(name);
             }
-
             if (root.Element(lowerName) != null)
             {
                 return root.Element(lowerName);
