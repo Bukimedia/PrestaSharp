@@ -88,7 +88,7 @@ namespace PrestaSharp.Factories
                 || response.StatusCode == HttpStatusCode.Forbidden
                 || response.StatusCode == 0)
             {
-                var Exception = new ApplicationException(response.Content, response.ErrorException);
+                var Exception = new ApplicationException(response.Content + " " + response.ErrorMessage, response.ErrorException);
                 throw Exception;
             }
             return response.Data;
