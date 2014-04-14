@@ -43,7 +43,7 @@ namespace PrestaSharp.Factories
                 || response.StatusCode == HttpStatusCode.Forbidden
                 || response.StatusCode == 0)
             {
-                var Exception = new ApplicationException(response.Content + " " + response.ErrorMessage, response.ErrorException);
+                var Exception = new PrestaSharpException(response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
                 throw Exception;
             }
             return response.Data;
@@ -88,7 +88,7 @@ namespace PrestaSharp.Factories
                 || response.StatusCode == HttpStatusCode.Forbidden
                 || response.StatusCode == 0)
             {
-                var Exception = new ApplicationException(response.Content + " " + response.ErrorMessage, response.ErrorException);
+                var Exception = new PrestaSharpException(response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
                 throw Exception;
             }
             return response.Data;
