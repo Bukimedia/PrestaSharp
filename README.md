@@ -117,7 +117,7 @@ PrestaSharp is GNU General Public License (GPL)
 
 This program is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantabilty or fitness for a particular purpose. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-Copyright (C) 2013 Bukimedia
+Copyright (C) 2014 Bukimedia
 - Bukimedia: http://www.bukimedia.com/
 - Twitter: http://twitter.com/bukimedia
 - GitHub: https://github.com/bukimedia

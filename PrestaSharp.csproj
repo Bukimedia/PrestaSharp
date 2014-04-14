@@ -116,6 +116,7 @@
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Factories\RestSharpFactory.cs" />
     <Compile Include="Lib\Functions.cs" />
+    <Compile Include="PrestaSharpException.cs" />
     <Compile Include="Serializers\PrestaSharpSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\shop.cs" />
