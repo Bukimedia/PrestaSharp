@@ -15,7 +15,6 @@ namespace PrestaSharp.Entities
         public long? id_warehouse { get; set; }
         public long? id_country { get; set; }
         public long? id_state { get; set; }
-
         public string alias { get; set; }
         public string company { get; set; }
         public string lastname { get; set; }
@@ -26,14 +25,10 @@ namespace PrestaSharp.Entities
         public string postcode { get; set; }
         public string city { get; set; }
         public string other { get; set; }
-
         public string phone { get; set; }
         public string phone_mobile { get; set; }
-
         public string dni { get; set; }
-
         public sbyte deleted { get; set; }
-
 		/// <summary>
 		/// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
 		/// </summary>
@@ -46,5 +41,6 @@ namespace PrestaSharp.Entities
 		public address()
 		{
 		}
+
 	}
 }
