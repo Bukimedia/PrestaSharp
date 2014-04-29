@@ -79,8 +79,8 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<long> GetIdsByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
-			RestRequest request = this.RequestForFilter("addresses", "[id]", Filter, Sort, Limit, "addresses");
-			List<PrestaSharp.Entities.FilterEntities.address> aux = this.Execute<List<PrestaSharp.Entities.FilterEntities.address>>(request);
+            RestRequest request = this.RequestForFilter("addresses", "[id]", Filter, Sort, Limit, "addresses");
+            List<PrestaSharp.Entities.FilterEntities.address> aux = this.Execute<List<PrestaSharp.Entities.FilterEntities.address>>(request);
             return (List<long>)(from t in aux select t.id).ToList<long>();
         }
 

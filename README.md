@@ -88,6 +88,7 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 ```
 
 ##Supported resources
+- Address
 - Categories
 - Combinations
 - Groups
@@ -100,6 +101,7 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 - Product Options
 - Product Option Values
 - Shops
+- Specific Price
 - Stock Availables
 - Tags
 

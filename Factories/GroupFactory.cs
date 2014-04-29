@@ -64,7 +64,7 @@ namespace PrestaSharp.Factories
         /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
         /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
         /// <returns></returns>
-        public List<Entities.group> GetByFilter(Dictionary<string,string>Filter, string Sort, string Limit)
+        public List<Entities.group> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter("groups", "full", Filter, Sort, Limit, "groups");
             return this.ExecuteForFilter<List<Entities.group>>(request);
