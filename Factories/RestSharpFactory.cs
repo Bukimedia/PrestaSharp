@@ -211,6 +211,9 @@ namespace PrestaSharp.Factories
             request.AddBody(PrestashopEntity);
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("<" + PrestashopEntity.GetType().Name+">", "<prestashop>\n<" + PrestashopEntity.GetType().Name + ">");
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</" + PrestashopEntity.GetType().Name + ">", "</" + PrestashopEntity.GetType().Name + "></prestashop>");
+            //issue #36 fixed
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("xmlns=\"PrestaSharp/Entities\"", "xmlns=\"\"");
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("xmlns=\"PrestaSharp/Entities/AuxEntities\"", "xmlns=\"\"");
             return request;
         }
         protected RestRequest RequestForDeleteImage(string Resource, long? ResourceId, long? ImageId)
