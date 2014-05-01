@@ -154,7 +154,7 @@ namespace PrestaSharp.Factories
             return request;
         }
         
-         /// <summary>
+        /// <summary>
         /// More information about image management: http://doc.prestashop.com/display/PS15/Chapter+9+-+Image+management
         /// </summary>
         /// <param name="Resource"></param>
@@ -216,6 +216,7 @@ namespace PrestaSharp.Factories
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("xmlns=\"PrestaSharp/Entities/AuxEntities\"", "xmlns=\"\"");
             return request;
         }
+
         protected RestRequest RequestForDeleteImage(string Resource, long? ResourceId, long? ImageId)
         {
             if (ResourceId == null)
