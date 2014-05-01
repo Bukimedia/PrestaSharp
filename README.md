@@ -26,6 +26,14 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 	ManufacturerFactory.Delete(Manufacturer);
 ```
 
+3) Add an image:
+
+```
+	PrestaSharp.Entities.product MyProduct = new PrestaSharp.Entities.product()
+	MyProduct = ProductFactory.Add(MyProduct)
+	ImageFactory.AddProductImage((long)MyProduct.id, "C:\\MyImage.jpg");
+```
+
 ##Advanced usage
 1) Get all. This sample retrieves the list of manufacturers:
 
@@ -85,14 +93,6 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 	Dictionary<string, string> dtn = new Dictionary<string, string>();
 	dtn.Add("name", "[Metall]%");
 	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
-```
-
-9) Add an image. This sample adds and image product:
-
-```
-	PrestaSharp.Entities.product MyProduct= new PrestaSharp.Entities.product()
-	MyProduct = ProductFactory.Add(MyProduct)
-	ImageFactory.AddProductImage(MyProduct.id, "C://MyFolder/MyImage.jpg");
 ```
 
 ##Supported resources
