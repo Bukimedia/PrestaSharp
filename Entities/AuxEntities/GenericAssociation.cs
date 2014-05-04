@@ -20,6 +20,5 @@ namespace PrestaSharp.Entities.AuxEntities
         {
             this.id = id;
         }
-
     }
 }

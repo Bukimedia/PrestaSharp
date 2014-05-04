@@ -16,6 +16,5 @@ namespace PrestaSharp.Entities.AuxEntities
         {
 			this.groups = new List<group>();
         }
-
     }
 }

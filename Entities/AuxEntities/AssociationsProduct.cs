@@ -30,6 +30,5 @@ namespace PrestaSharp.Entities.AuxEntities
             this.stock_availables = new List<stock_available>();
             this.product_bundle = new List<products>();
         }
-
     }
 }
