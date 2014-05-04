@@ -18,6 +18,5 @@ namespace PrestaSharp.Entities.AuxEntities
             this.categories = new List<category>();
             this.products = new List<product>();
         }
-
     }
 }

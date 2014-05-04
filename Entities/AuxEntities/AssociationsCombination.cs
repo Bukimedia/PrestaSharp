@@ -17,6 +17,5 @@ namespace PrestaSharp.Entities.AuxEntities
             this.product_option_values = new List<product_option_value>();
             this.images = new List<image>();
         }
-
     }
 }

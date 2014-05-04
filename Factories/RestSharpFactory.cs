@@ -41,6 +41,7 @@ namespace PrestaSharp.Factories
                 || response.StatusCode == HttpStatusCode.Unauthorized
                 || response.StatusCode == HttpStatusCode.MethodNotAllowed
                 || response.StatusCode == HttpStatusCode.Forbidden
+                || response.StatusCode == HttpStatusCode.NotFound
                 || response.StatusCode == 0)
             {
                 var Exception = new PrestaSharpException(response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
@@ -86,6 +87,7 @@ namespace PrestaSharp.Factories
                 || response.StatusCode == HttpStatusCode.Unauthorized
                 || response.StatusCode == HttpStatusCode.MethodNotAllowed
                 || response.StatusCode == HttpStatusCode.Forbidden
+                || response.StatusCode == HttpStatusCode.NotFound
                 || response.StatusCode == 0)
             {
                 var Exception = new PrestaSharpException(response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
