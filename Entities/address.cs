@@ -28,11 +28,11 @@ namespace PrestaSharp.Entities
         public string phone { get; set; }
         public string phone_mobile { get; set; }
         public string dni { get; set; }
-        public sbyte deleted { get; set; }
+        public int deleted { get; set; }
 		/// <summary>
 		/// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
 		/// </summary>
-        public string date_add { get; set; }
+        public int date_add { get; set; }
 		/// <summary>
 		/// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
 		/// </summary>
