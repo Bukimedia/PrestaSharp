@@ -18,7 +18,6 @@ namespace PrestaSharp.Entities
 		public long? id_shop_group { get; set; }
 		public long? id_risk { get; set; }
 		public long? id_gender { get; set; }
-
 		/// <summary>
 		/// Required. MaxSize = 32. Default MinSize = 5 (can change depending on the shop settings)
 		/// If you don't change the passwd after getting the entity, the password won't change when saving.
@@ -44,7 +43,6 @@ namespace PrestaSharp.Entities
 		/// Must be an url
 		/// </summary>
 		public string website { get; set; }
-
 		public string company { get; set; }
 		public string siret { get; set; }
 		public string ape { get; set; }
@@ -56,32 +54,30 @@ namespace PrestaSharp.Entities
 		/// Must be clean html. MaxSize = 65000.
 		/// </summary>
 		public string note { get; set; }
-
 		/// <summary>
 		/// It´s a logical bool.
 		/// </summary>
-		public sbyte deleted { get; set; }
+		public int deleted { get; set; }
 		/// <summary>
 		/// It´s a logical bool.
 		/// </summary>
-		public sbyte optin { get; set; }
+		public int optin { get; set; }
 		/// <summary>
 		/// It´s a logical bool.
 		/// </summary>
-		public sbyte newsletter { get; set; }
+		public int newsletter { get; set; }
 		/// <summary>
 		/// It´s a logical bool.
 		/// </summary>
-		public sbyte is_guest { get; set; }
+		public int is_guest { get; set; }
 		/// <summary>
 		/// It´s a logical bool.
 		/// </summary>
-		public sbyte show_public_prices { get; set; }
+		public int show_public_prices { get; set; }
 		/// <summary>
         /// It´s a logical bool.
         /// </summary>
-		public sbyte active { get; set; }
-
+		public int active { get; set; }
 		/// <summary>
 		/// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
 		/// </summary>
@@ -97,8 +93,7 @@ namespace PrestaSharp.Entities
         /// <summary>
         /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
         /// </summary>
-        public string date_upd { get; set; }       
-
+        public string date_upd { get; set; }
         public AuxEntities.AssociationsCustomer associations { get; set; }
 
         public customer()

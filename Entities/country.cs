@@ -22,16 +22,16 @@ namespace PrestaSharp.Entities
 		/// Required. maxSize = 3
 		/// </summary>
 		public String iso_code { get; set; }
-		public sbyte? active { get; set; }
+		public int? active { get; set; }
 		/// <summary>
 		/// Required
 		/// </summary>
-		public sbyte contains_states { get; set; }
+		public int contains_states { get; set; }
 		/// <summary>
 		/// Required
 		/// </summary>
-		public sbyte need_identification_number { get; set; }
-		public sbyte? need_zip_code { get; set; }
+		public int need_identification_number { get; set; }
+		public int? need_zip_code { get; set; }
 		/// <summary>
 		/// Must be like "NNNNN" or "LNL NLN" where N=Number and L=Letter
 		/// </summary>
@@ -39,7 +39,7 @@ namespace PrestaSharp.Entities
 		/// <summary>
 		///  Required
 		/// </summary>
-		public sbyte display_tax_label { get; set; }
+		public int display_tax_label { get; set; }
 		/// <summary>
 		/// Required. Maxsize = 64
 		/// </summary>

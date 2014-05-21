@@ -15,6 +15,15 @@ namespace PrestaSharp.Entities.AuxEntities
     [XmlType(Namespace = "PrestaSharp/Entities/AuxEntities")]
     public class language: PrestashopEntity
     {
+        [XmlAttribute]
+        [DataMember]
+        public long id { get; set; }
+
+        // Value is reserved word from RestSharp for loading the CDATA content from the XML file.
+        [XmlTextAttribute]
+        [DataMember]
+        public string Value { get; set; }
+
         public language()
         {
         }
@@ -24,16 +33,6 @@ namespace PrestaSharp.Entities.AuxEntities
             this.id = id;
             this.Value = Value;
         }
-
-
-        [XmlAttribute]
-        [DataMember]
-        public long id { get; set; }
-
-        // Value is reserved word from RestSharp for loading the CDATA content from the XML file.
-        [XmlTextAttribute]
-        [DataMember]
-        public string Value { get; set; }
 
     }
 }

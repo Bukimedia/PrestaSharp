@@ -97,12 +97,18 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 
 ##Supported resources
 - Address
+- Carriers
+- Carts
 - Categories
 - Combinations
+- Currencies
+- Customers
 - Groups
 - Images
 - Languages
 - Manufacturers
+- Orders
+- Order States
 - Products
 - Product Features
 - Product Feature Values
