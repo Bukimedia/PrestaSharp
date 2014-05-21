@@ -44,9 +44,9 @@ namespace PrestaSharp.Entities
         public decimal depth { get; set; }
         public decimal weight { get; set; }
         public int? quantity_discount { get; set; }
-        public int customizable { get; set; }
-        public int uploadable_files { get; set; }
-        public int text_fields { get; set; }
+        public sbyte customizable { get; set; }
+        public sbyte uploadable_files { get; set; }
+        public sbyte text_fields { get; set; }
         /// <summary>
         /// It´s a logical bool.
         /// </summary>

@@ -115,7 +115,7 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 - Product Options
 - Product Option Values
 - Shops
-- Specific Price
+- Specific Prices
 - Stock Availables
 - Tags
 
