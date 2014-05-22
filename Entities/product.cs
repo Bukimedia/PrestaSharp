@@ -120,14 +120,6 @@ namespace PrestaSharp.Entities
             this.available_now = new List<AuxEntities.language>();
             this.available_later = new List<AuxEntities.language>();
             this.associations = new AuxEntities.AssociationsProduct();
-            this.associations.categories = new List<AuxEntities.category>();
-            this.associations.combinations = new List<AuxEntities.combinations>();
-            this.associations.images = new List<AuxEntities.image>();
-            this.associations.product_bundle = new List<AuxEntities.products>();
-            this.associations.product_features = new List<AuxEntities.product_feature>();
-            this.associations.product_option_values = new List<AuxEntities.product_option_value>();
-            this.associations.stock_availables = new List<AuxEntities.stock_available>();
-            this.associations.tags = new List<AuxEntities.tag>();
         }
 
         public void AddLinkRewrite(Entities.AuxEntities.language Language)
