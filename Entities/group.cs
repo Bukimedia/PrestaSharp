@@ -9,7 +9,7 @@ using PrestaSharp.Lib;
 namespace PrestaSharp.Entities
 {
     [XmlType(Namespace = "PrestaSharp/Entities")]
-    public class group : PrestashopEntity
+    public class group : PrestaShopEntity
     {
         public long? id { get; set; }
         public decimal reduction { get; set; }

@@ -26,7 +26,7 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Cart.id;
             Cart.id = null;
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             Entities.Add(Cart);
             RestRequest request = this.RequestForAdd("carts", Entities);
             Entities.cart aux = this.Execute<Entities.cart>(request);
@@ -100,7 +100,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.cart> AddList(List<Entities.cart> Carts)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.cart Cart in Carts)
             {
                 Cart.id = null;

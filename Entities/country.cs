@@ -9,7 +9,7 @@ using PrestaSharp.Lib;
 namespace PrestaSharp.Entities
 {
     [XmlType(Namespace = "PrestaSharp/Entities")]
-    public class country : PrestashopEntity
+    public class country : PrestaShopEntity
     {
         public long? id { get; set; }
 		public long? id_zone { get; set; }

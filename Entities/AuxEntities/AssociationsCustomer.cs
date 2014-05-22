@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace PrestaSharp.Entities.AuxEntities
 {
     [XmlType(Namespace = "PrestaSharp/Entities/AuxEntities")]
-    public class AssociationsCustomer : PrestashopEntity
+    public class AssociationsCustomer : PrestaShopEntity
     {
         public List<AuxEntities.group> groups { get; set; }
 

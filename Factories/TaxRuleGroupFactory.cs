@@ -26,7 +26,7 @@ namespace PrestaSharp.Factories
         {
             long? idAux = TaxRuleGroup.id;
             TaxRuleGroup.id = null;
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             Entities.Add(TaxRuleGroup);
             RestRequest request = this.RequestForAdd("tax_rule_groups", Entities);
             Entities.tax_rule_group aux = this.Execute<Entities.tax_rule_group>(request);
@@ -100,7 +100,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.tax_rule_group> AddList(List<Entities.tax_rule_group> TaxRuleGroups)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.tax_rule_group TaxRuleGroup in TaxRuleGroups)
             {
                 TaxRuleGroup.id = null;

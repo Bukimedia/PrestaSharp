@@ -26,7 +26,7 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Currency.id;
             Currency.id = null;
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             Entities.Add(Currency);
             RestRequest request = this.RequestForAdd("currencies", Entities);
             Entities.currency aux = this.Execute<Entities.currency>(request);
@@ -100,7 +100,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.currency> AddList(List<Entities.currency> Currencies)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.currency Currency in Currencies)
             {
                 Currency.id = null;

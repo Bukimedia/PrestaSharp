@@ -26,7 +26,7 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Carrier.id;
             Carrier.id = null;
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             Entities.Add(Carrier);
             RestRequest request = this.RequestForAdd("carriers", Entities);
             Entities.carrier aux = this.Execute<Entities.carrier>(request);
@@ -100,7 +100,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.carrier> AddList(List<Entities.carrier> Carriers)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.carrier Carrier in Carriers)
             {
                 Carrier.id = null;

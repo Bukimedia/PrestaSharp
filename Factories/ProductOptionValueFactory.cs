@@ -26,7 +26,7 @@ namespace PrestaSharp.Factories
         {
             long? idAux = ProductOptionValue.id;
             ProductOptionValue.id = null;
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             Entities.Add(ProductOptionValue);
             RestRequest request = this.RequestForAdd("product_option_values", Entities);
             Entities.product_option_value aux = this.Execute<Entities.product_option_value>(request);
@@ -100,7 +100,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.product_option_value> AddList(List<Entities.product_option_value> ProductOptionValues)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.product_option_value ProductOptionValue in ProductOptionValues)
             {
                 ProductOptionValue.id = null;

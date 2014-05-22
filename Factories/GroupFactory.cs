@@ -26,7 +26,7 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Group.id;
             Group.id = null;
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             Entities.Add(Group);
             RestRequest request = this.RequestForAdd("groups", Entities);
             Entities.group aux = this.Execute<Entities.group>(request);
@@ -100,7 +100,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.group> AddList(List<Entities.group> Groups)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.group Group in Groups)
             {
                 Group.id = null;

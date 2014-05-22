@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace PrestaSharp.Entities
 {
     [XmlType(Namespace = "PrestaSharp/Entities")]
-    public class cart_row : PrestashopEntity
+    public class cart_row : PrestaShopEntity
     {
         public long? id_product { get; set; }
 		public long? id_product_attribute { get; set; }

@@ -26,7 +26,7 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Country.id;
             Country.id = null;
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             Entities.Add(Country);
             RestRequest request = this.RequestForAdd("countries", Entities);
             Entities.country aux = this.Execute<Entities.country>(request);
@@ -100,7 +100,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.country> AddList(List<Entities.country> Countries)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.country Country in Countries)
             {
                 Country.id = null;

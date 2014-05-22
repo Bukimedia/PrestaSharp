@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace PrestaSharp.Entities
 {
     [XmlType(Namespace = "PrestaSharp/Entities")]
-    abstract public class PrestashopEntity
+    abstract public class PrestaShopEntity
     {
         
     }

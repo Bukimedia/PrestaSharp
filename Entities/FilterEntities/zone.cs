@@ -8,8 +8,7 @@ using System.Xml.Serialization;
 namespace PrestaSharp.Entities.FilterEntities
 {
     [XmlType(Namespace = "PrestaSharp/Entities/FilterEntities")]
-    public class GenericFilterEntity:PrestaShopEntity
+    public class zone : GenericFilterEntity
     {
-        public long id { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace PrestaSharp.Entities
 {
     [Serializable]
     [XmlType(Namespace = "PrestaSharp/Entities")]
-    public class combination : PrestashopEntity
+    public class combination : PrestaShopEntity
     {
 
         public long? id { get; set; }

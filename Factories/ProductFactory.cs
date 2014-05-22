@@ -27,7 +27,7 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Product.id;
             Product.id = null;
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             Entities.Add(Product);
             RestRequest request = this.RequestForAdd("products", Entities);
             Entities.product aux = this.Execute<Entities.product>(request);
@@ -101,7 +101,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.product> AddList(List<Entities.product> Products)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.product Product in Products)
             {
                 Product.id = null;
