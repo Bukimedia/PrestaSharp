@@ -103,6 +103,7 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 - Combinations
 - Currencies
 - Customers
+- Guests
 - Groups
 - Images
 - Languages
@@ -118,6 +119,7 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 - Specific Prices
 - Stock Availables
 - Tags
+- Tax Rule Groups
 
 ##Supported actions
 - Create
