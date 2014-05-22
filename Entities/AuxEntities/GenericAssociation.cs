@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace PrestaSharp.Entities.AuxEntities
 {
     [XmlType(Namespace = "PrestaSharp/Entities/AuxEntities")]
-    public class GenericAssociation : PrestashopEntity
+    public class GenericAssociation : PrestaShopEntity
     {
         public long id { get; set; }
 

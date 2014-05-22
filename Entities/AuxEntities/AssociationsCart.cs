@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace PrestaSharp.Entities.AuxEntities
 {
     [XmlType(Namespace = "PrestaSharp/Entities/AuxEntities")]
-    public class AssociationsCart : PrestashopEntity
+    public class AssociationsCart : PrestaShopEntity
     {
         public List<cart_row> cart_rows { get; set; }
 

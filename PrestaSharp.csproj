@@ -70,6 +70,8 @@
     <Compile Include="Entities\cart.cs" />
     <Compile Include="Entities\cart_row.cs" />
     <Compile Include="Entities\carrier.cs" />
+    <Compile Include="Entities\FilterEntities\zone.cs" />
+    <Compile Include="Entities\zone.cs" />
     <Compile Include="Entities\FilterEntities\guest.cs" />
     <Compile Include="Entities\guest.cs" />
     <Compile Include="Entities\FilterEntities\tax_rule_group.cs" />
@@ -118,7 +120,7 @@
     <Compile Include="Entities\AuxEntities\AssociationsProduct.cs" />
     <Compile Include="Entities\category.cs" />
     <Compile Include="Entities\image.cs" />
-    <Compile Include="Entities\PrestashopEntity.cs" />
+    <Compile Include="Entities\PrestaShopEntity.cs" />
     <Compile Include="Entities\AuxEntities\language.cs" />
     <Compile Include="Entities\manufacturer.cs" />
     <Compile Include="Entities\product.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="Factories\CombinationFactory.cs" />
     <Compile Include="Factories\CartFactory.cs" />
     <Compile Include="Factories\CarrierFactory.cs" />
+    <Compile Include="Factories\ZoneFactory.cs" />
     <Compile Include="Factories\GuestFactory.cs" />
     <Compile Include="Factories\TaxRuleGroupFactory.cs" />
     <Compile Include="Factories\OrderStateFactory.cs" />

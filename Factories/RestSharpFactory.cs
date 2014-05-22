@@ -117,7 +117,7 @@ namespace PrestaSharp.Factories
             return request;
         }
 
-        protected RestRequest RequestForAdd(string Resource, List<Entities.PrestashopEntity> Entities)
+        protected RestRequest RequestForAdd(string Resource, List<Entities.PrestaShopEntity> Entities)
         {
             var request = new RestRequest();
             request.Resource = Resource;
@@ -126,7 +126,7 @@ namespace PrestaSharp.Factories
             //Hack implementation in PrestaSharpSerializer to serialize PrestaSharp.Entities.AuxEntities.language
             request.XmlSerializer = new Serializers.PrestaSharpSerializer();
             string serialized = "";
-            foreach (Entities.PrestashopEntity Entity in Entities)
+            foreach (Entities.PrestaShopEntity Entity in Entities)
             {
                 serialized += ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
             }
@@ -197,7 +197,7 @@ namespace PrestaSharp.Factories
             return request;
         }
 
-        protected RestRequest RequestForUpdate(string Resource, long? Id, Entities.PrestashopEntity PrestashopEntity)
+        protected RestRequest RequestForUpdate(string Resource, long? Id, Entities.PrestaShopEntity PrestashopEntity)
         {
             if (Id == null)
             {

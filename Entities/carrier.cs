@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace PrestaSharp.Entities
 {
     [XmlType(Namespace = "PrestaSharp/Entities")]
-    public class carrier : PrestashopEntity
+    public class carrier : PrestaShopEntity
     {
         public long? id { get; set; }
         /// <summary>

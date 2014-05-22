@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace PrestaSharp.Entities
 {
     [XmlType(Namespace = "PrestaSharp/Entities")]
-    public class stock_available : PrestashopEntity
+    public class stock_available : PrestaShopEntity
     {
         public long? id { get; set; }
         public long? id_product { get; set; }

@@ -26,7 +26,7 @@ namespace PrestaSharp.Factories
         {
 			long? idAux = Address.id;
 			Address.id = null;
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
 			Entities.Add(Address);
 			RestRequest request = this.RequestForAdd("addresses", Entities);
 			Entities.address aux = this.Execute<Entities.address>(request);
@@ -100,7 +100,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
 		public List<Entities.address> AddList(List<Entities.address> Addresses)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
 			foreach (Entities.address Address in Addresses)
             {
 				Address.id = null;

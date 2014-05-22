@@ -26,7 +26,7 @@ namespace PrestaSharp.Factories
         {
             long? idAux = Order.id;
             Order.id = null;
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             Entities.Add(Order);
             RestRequest request = this.RequestForAdd("orders", Entities);
             Entities.order aux = this.Execute<Entities.order>(request);
@@ -100,7 +100,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.order> AddList(List<Entities.order> Orders)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.order Order in Orders)
             {
                 Order.id = null;

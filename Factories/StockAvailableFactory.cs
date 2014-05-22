@@ -77,7 +77,7 @@ namespace PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.stock_available> AddList(List<Entities.stock_available> StockAvailables)
         {
-            List<PrestaSharp.Entities.PrestashopEntity> Entities = new List<PrestaSharp.Entities.PrestashopEntity>();
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.stock_available StockAvailable in StockAvailables)
             {
                 StockAvailable.id = null;
