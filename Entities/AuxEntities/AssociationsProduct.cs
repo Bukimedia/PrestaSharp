@@ -18,6 +18,7 @@ namespace PrestaSharp.Entities.AuxEntities
         public List<AuxEntities.tag> tags { get; set; }
         public List<AuxEntities.stock_available> stock_availables { get; set; }
         public List<AuxEntities.products> product_bundle { get; set; }
+        public List<AuxEntities.product> accessories { get; set; }
 
         public AssociationsProduct()
         {
@@ -29,6 +30,7 @@ namespace PrestaSharp.Entities.AuxEntities
             this.tags = new List<tag>();
             this.stock_availables = new List<stock_available>();
             this.product_bundle = new List<products>();
+            this.accessories = new List<product>();
         }
     }
 }
