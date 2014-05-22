@@ -48,7 +48,7 @@ namespace PrestaSharp.Entities
         public int max_width { get; set; }
         public int max_height { get; set; }
         public int max_depth { get; set; }
-        public int max_weight { get; set; }
+        public decimal max_weight { get; set; }
         public int grade { get; set; }
         public string external_module_name { get; set; }
         public int need_range { get; set; }
