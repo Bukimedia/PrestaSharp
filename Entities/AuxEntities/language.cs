@@ -12,7 +12,7 @@ namespace Bukimedia.PrestaSharp.Entities.AuxEntities
 {
     [Serializable]
     [DataContract]
-    [XmlType(Namespace = "PrestaSharp/Entities/AuxEntities")]
+    [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities/AuxEntities")]
     public class language: PrestaShopEntity
     {
         [XmlAttribute]

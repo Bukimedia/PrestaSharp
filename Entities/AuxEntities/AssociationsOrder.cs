@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities.AuxEntities
 {
-    [XmlType(Namespace = "PrestaSharp/Entities/AuxEntities")]
+    [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities/AuxEntities")]
     public class AssociationsOrder : PrestaShopEntity
     {
         public List<order_row> order_rows { get; set; }
