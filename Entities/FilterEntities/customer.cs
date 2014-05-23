@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PrestaSharp.Entities.FilterEntities
+namespace Bukimedia.PrestaSharp.Entities.FilterEntities
 {
     [XmlType(Namespace = "PrestaSharp/Entities/FilterEntities")]
     public class customer : GenericFilterEntity

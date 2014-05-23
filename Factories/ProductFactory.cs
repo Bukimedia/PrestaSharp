@@ -1,4 +1,4 @@
-﻿using PrestaSharp.Factories;
+﻿using Bukimedia.PrestaSharp.Factories;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PrestaSharp.Factories
+namespace Bukimedia.PrestaSharp.Factories
 {
     public class ProductFactory : RestSharpFactory
     {

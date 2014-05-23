@@ -7,8 +7,8 @@
     <ProjectGuid>{3D494A24-06BA-475B-A158-162745683EC3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PrestaSharp</RootNamespace>
-    <AssemblyName>PrestaSharp</AssemblyName>
+    <RootNamespace>Bukimedia.PrestaSharp</RootNamespace>
+    <AssemblyName>Bukimedia.PrestaSharp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

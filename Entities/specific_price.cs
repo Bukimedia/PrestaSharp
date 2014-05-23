@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace PrestaSharp.Entities
+namespace Bukimedia.PrestaSharp.Entities
 {
 	[XmlType(Namespace = "PrestaSharp/Entities")]
 	public class specific_price : PrestaShopEntity

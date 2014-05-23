@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PrestaSharp.Entities
+namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "PrestaSharp/Entities")]
     public class product_option_value : PrestaShopEntity

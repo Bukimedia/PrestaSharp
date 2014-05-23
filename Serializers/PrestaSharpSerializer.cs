@@ -8,7 +8,7 @@ using System.Xml.Linq;
 using RestSharp.Extensions;
 using System.Collections;
 
-namespace PrestaSharp.Serializers
+namespace Bukimedia.PrestaSharp.Serializers
 {
     class PrestaSharpSerializer : XmlSerializer 
     {

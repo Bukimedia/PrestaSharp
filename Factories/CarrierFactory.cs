@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PrestaSharp.Factories
+namespace Bukimedia.PrestaSharp.Factories
 {
     public class CarrierFactory : RestSharpFactory
     {

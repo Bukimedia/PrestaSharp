@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace PrestaSharp.Factories
+namespace Bukimedia.PrestaSharp.Factories
 {
     public abstract class RestSharpFactory
     {
@@ -33,7 +33,7 @@ namespace PrestaSharp.Factories
             if (Request.Method == Method.GET)
             {
                 client.ClearHandlers();
-                client.AddHandler("text/xml", new PrestaSharp.Deserializers.PrestaSharpDeserializer());
+                client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
             }
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
@@ -80,7 +80,7 @@ namespace PrestaSharp.Factories
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
             client.ClearHandlers();
-            client.AddHandler("text/xml", new PrestaSharp.Deserializers.PrestaSharpDeserializer());
+            client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.BadRequest
