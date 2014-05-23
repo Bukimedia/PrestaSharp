@@ -18,7 +18,7 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 2) Perform CRUD actions through the client:
 
 ```
-	PrestaSharp.Entities.manufacturer Manufacturer = ManufacturerFactory.Get(6);
+	Bukimedia.PrestaSharp.Entities.manufacturer Manufacturer = ManufacturerFactory.Get(6);
 	Manufacturer.name = "Iron Maiden";
 	Manufacturer.active = 1;        
 	ManufacturerFactory.Add(Manufacturer);
@@ -29,7 +29,7 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 3) Add an image:
 
 ```
-	PrestaSharp.Entities.product MyProduct = new PrestaSharp.Entities.product()
+	Bukimedia.PrestaSharp.Entities.product MyProduct = new Bukimedia.PrestaSharp.Entities.product()
 	MyProduct = ProductFactory.Add(MyProduct)
 	ImageFactory.AddProductImage((long)MyProduct.id, "C:\\MyImage.jpg");
 ```
