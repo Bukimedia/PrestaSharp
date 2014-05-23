@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 using RestSharp.Serializers;
 using System.Runtime.Serialization;
 
-namespace PrestaSharp.Entities.AuxEntities
+namespace Bukimedia.PrestaSharp.Entities.AuxEntities
 {
     [Serializable]
     [DataContract]

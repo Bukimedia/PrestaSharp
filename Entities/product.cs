@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using PrestaSharp.Lib;
+using Bukimedia.PrestaSharp.Lib;
 
-namespace PrestaSharp.Entities
+namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "PrestaSharp/Entities")]
     public class product : PrestaShopEntity

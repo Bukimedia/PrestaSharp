@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace PrestaSharp.Entities
+namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "PrestaSharp/Entities")]
     public class language: PrestaShopEntity

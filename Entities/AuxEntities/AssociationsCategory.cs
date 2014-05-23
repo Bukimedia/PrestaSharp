@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PrestaSharp.Entities.AuxEntities
+namespace Bukimedia.PrestaSharp.Entities.AuxEntities
 {
     [XmlType(Namespace = "PrestaSharp/Entities/AuxEntities")]
     public class AssociationsCategory : PrestaShopEntity

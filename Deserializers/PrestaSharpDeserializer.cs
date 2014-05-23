@@ -12,7 +12,7 @@ using System.ComponentModel;
 using RestSharp.Deserializers;
 using RestSharp;
 
-namespace PrestaSharp.Deserializers
+namespace Bukimedia.PrestaSharp.Deserializers
 {
     public class PrestaSharpDeserializer : IDeserializer
     {

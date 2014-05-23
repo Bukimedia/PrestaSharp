@@ -1,4 +1,4 @@
-﻿using PrestaSharp.Factories;
+﻿using Bukimedia.PrestaSharp.Factories;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrestaSharp.Factories
+namespace Bukimedia.PrestaSharp.Factories
 {
     public class ImageFactory : RestSharpFactory
     {
