@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace Bukimedia.PrestaSharp.Entities
 {
     [Serializable]
-    [XmlType(Namespace = "PrestaSharp/Entities")]
+    [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class combination : PrestaShopEntity
     {
 

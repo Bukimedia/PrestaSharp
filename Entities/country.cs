@@ -8,7 +8,7 @@ using Bukimedia.PrestaSharp.Lib;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
-    [XmlType(Namespace = "PrestaSharp/Entities")]
+    [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class country : PrestaShopEntity
     {
         public long? id { get; set; }
