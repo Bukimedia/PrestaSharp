@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>PrestaSharp by Bukimedia</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>PrestaSharp</h1>
+        <p>CSharp .Net client library for the PrestaShop API via web service</p>
+
+        <p class="view"><a href="https://github.com/Bukimedia/PrestaSharp">View the Project on GitHub <small>Bukimedia/PrestaSharp</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/Bukimedia/PrestaSharp/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Bukimedia/PrestaSharp/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Bukimedia/PrestaSharp">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="prestasharp" class="anchor" href="#prestasharp"><span class="octicon octicon-link"></span></a>PrestaSharp</h1>
+
+<h3>
+<a name="csharp-net-client-library-for-the-prestashop-api-via-web-service" class="anchor" href="#csharp-net-client-library-for-the-prestashop-api-via-web-service"><span class="octicon octicon-link"></span></a>CSharp .Net client library for the PrestaShop API via web service</h3>
+
+<h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>A simple .Net REST client written in C# for the Prestashop API.
+PrestaSharp uses the RestSharp library to consume the Prestashop services.</p>
+
+<h2>
+<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic usage</h2>
+
+<p>1) Initiate a client instance:</p>
+
+<pre><code>    string BaseUrl = "http://www.myweb.com/api";
+    string Account = "ASDLKJOIQWEPROQWUPRPOQPPRQOW";
+    string Password = "";
+    ManufacturerFactory ManufacturerFactory = new ManufacturerFactory(BaseUrl, Account, Password);
+</code></pre>
+
+<p>2) Perform CRUD actions through the client:</p>
+
+<pre><code>    Bukimedia.PrestaSharp.Entities.manufacturer Manufacturer = ManufacturerFactory.Get(6);
+    Manufacturer.name = "Iron Maiden";
+    Manufacturer.active = 1;        
+    ManufacturerFactory.Add(Manufacturer);
+    ManufacturerFactory.Update(Manufacturer);
+    ManufacturerFactory.Delete(Manufacturer);
+</code></pre>
+
+<p>3) Add an image:</p>
+
+<pre><code>    Bukimedia.PrestaSharp.Entities.product MyProduct = new Bukimedia.PrestaSharp.Entities.product()
+    MyProduct = ProductFactory.Add(MyProduct)
+    ImageFactory.AddProductImage((long)MyProduct.id, "C:\\MyImage.jpg");
+</code></pre>
+
+<h2>
+<a name="advanced-usage" class="anchor" href="#advanced-usage"><span class="octicon octicon-link"></span></a>Advanced usage</h2>
+
+<p>1) Get all. This sample retrieves the list of manufacturers:</p>
+
+<pre><code>    List&lt;manufacturer&gt; manufacturers = ManufacturerFactory.GetAll();
+</code></pre>
+
+<p>2) Get ids. This sample retrieves the list of the manufacturer ids:</p>
+
+<pre><code>    List&lt;long&gt; ids = ManufacturerFactory.GetIds();
+</code></pre>
+
+<p>3) Get by filter. This sample retrieves the list of manufacturers which name is "Metallica":</p>
+
+<pre><code>    Dictionary&lt;string, string&gt; dtn = new Dictionary&lt;string, string&gt;();
+    dtn.Add("name", "Metallica");
+    List&lt;manufacturer&gt; manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
+</code></pre>
+
+<p>4) Get by filter with wildcards. This sample retrieves the manufacturers which name starts with "Metall":</p>
+
+<pre><code>    Dictionary&lt;string, string&gt; dtn = new Dictionary&lt;string, string&gt;();
+    dtn.Add("name", "[Metall]%");
+    List&lt;manufacturer&gt; manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
+</code></pre>
+
+<p>5) Get ids by filter. This sample retrieves the list of the manufacturers ids which name is "Metallica":</p>
+
+<pre><code>    Dictionary&lt;string, string&gt; dtn = new Dictionary&lt;string, string&gt;();
+    dtn.Add("name", "Metallica");
+    List&lt;long&gt; ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
+</code></pre>
+
+<p>6) Get ids by filter with wildcards. This sample retrieves the list of the manufacturers ids which name starts with "Metall":</p>
+
+<pre><code>    Dictionary&lt;string, string&gt; dtn = new Dictionary&lt;string, string&gt;();
+    dtn.Add("name", "[Metall]%");
+    List&lt;long&gt; ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
+</code></pre>
+
+<p>7) Get by complex filter. This sample retrieves the top five manufacturers in ascendent sorting which name starts with "Metall":</p>
+
+<pre><code>    Dictionary&lt;string, string&gt; dtn = new Dictionary&lt;string, string&gt;();
+    dtn.Add("name", "[Metall]%");
+    List&lt;manufacturer&gt; manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "5");
+</code></pre>
+
+<p>8) Get by filter for pagination. This sample retrieves the top five manufacturers from tenth position in ascendent sorting which name starts with "Metall":</p>
+
+<pre><code>    Dictionary&lt;string, string&gt; dtn = new Dictionary&lt;string, string&gt;();
+    dtn.Add("name", "[Metall]%");
+    List&lt;manufacturer&gt; manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
+</code></pre>
+
+<h2>
+<a name="supported-resources" class="anchor" href="#supported-resources"><span class="octicon octicon-link"></span></a>Supported resources</h2>
+
+<ul>
+<li>Address</li>
+<li>Carriers</li>
+<li>Carts</li>
+<li>Categories</li>
+<li>Combinations</li>
+<li>Currencies</li>
+<li>Customers</li>
+<li>Guests</li>
+<li>Groups</li>
+<li>Images</li>
+<li>Languages</li>
+<li>Manufacturers</li>
+<li>Orders</li>
+<li>Order States</li>
+<li>Products</li>
+<li>Product Features</li>
+<li>Product Feature Values</li>
+<li>Product Options</li>
+<li>Product Option Values</li>
+<li>Shops</li>
+<li>Specific Prices</li>
+<li>Stock Availables</li>
+<li>Tags</li>
+<li>Tax Rule Groups</li>
+<li>Zones</li>
+</ul><h2>
+<a name="supported-actions" class="anchor" href="#supported-actions"><span class="octicon octicon-link"></span></a>Supported actions</h2>
+
+<ul>
+<li>Create</li>
+<li>Read</li>
+<li>Update</li>
+<li>Delete</li>
+</ul><h2>
+<a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h2>
+
+<ul>
+<li>Add other resources</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>PrestaSharp is GNU General Public License (GPL)</p>
+
+<p>This program is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantabilty or fitness for a particular purpose. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+
+<p>Copyright (C) 2014 Bukimedia</p>
+
+<ul>
+<li>Bukimedia: <a href="http://www.bukimedia.com/">http://www.bukimedia.com/</a>
+</li>
+<li>Twitter: <a href="http://twitter.com/bukimedia">http://twitter.com/bukimedia</a>
+</li>
+<li>GitHub: <a href="https://github.com/bukimedia">https://github.com/bukimedia</a>
+</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Bukimedia">Bukimedia</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
