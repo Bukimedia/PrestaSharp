@@ -95,14 +95,14 @@ namespace Bukimedia.PrestaSharp.Serializers
                 var name = prop.Name;
                 var rawValue = prop.GetValue(obj, null);
 
-                //Hack to serialize PrestaSharp.Entities.AuxEntities.language
-                if (obj.GetType().FullName.Equals("PrestaSharp.Entities.AuxEntities.language") && root.Name.LocalName.Equals("language") && name.Equals("id"))
+                //Hack to serialize Bukimedia.PrestaSharp.Entities.AuxEntities.language
+                if (obj.GetType().FullName.Equals("Bukimedia.PrestaSharp.Entities.AuxEntities.language") && root.Name.LocalName.Equals("language") && name.Equals("id"))
                 {
 
                     root.Add(new XAttribute(XName.Get("id"), rawValue));
                     continue;
                 }
-                else if (obj.GetType().FullName.Equals("PrestaSharp.Entities.AuxEntities.language") && root.Name.LocalName.Equals("language") && name.Equals("Value"))
+                else if (obj.GetType().FullName.Equals("Bukimedia.PrestaSharp.Entities.AuxEntities.language") && root.Name.LocalName.Equals("language") && name.Equals("Value"))
                 {
                     XText xtext = new XText(rawValue == null ? "" : rawValue.ToString());
                     root.Add(xtext);
