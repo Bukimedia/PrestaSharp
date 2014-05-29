@@ -48,8 +48,8 @@ namespace Bukimedia.PrestaSharp.Entities
 		public string ape { get; set; }
 		public string ip_registration_newsletter { get; set; }
 		public string secure_key { get; set; }
-		public float? outstanding_allow_amount { get; set; }
-		public long? max_payment_days { get; set; }
+		public decimal outstanding_allow_amount { get; set; }
+		public long max_payment_days { get; set; }
 		/// <summary>
 		/// Must be clean html. MaxSize = 65000.
 		/// </summary>
