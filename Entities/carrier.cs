@@ -59,6 +59,5 @@ namespace Bukimedia.PrestaSharp.Entities
         {
             this.delay = new List<AuxEntities.language>();
         }
-
     }
 }

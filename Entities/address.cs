@@ -11,6 +11,7 @@ namespace Bukimedia.PrestaSharp.Entities
 	{
 		public long? id { get; set; }
         public long? id_customer { get; set; }
+        public long? id_manufacturer { get; set; }
         public long? id_supplier { get; set; }
         public long? id_warehouse { get; set; }
         public long? id_country { get; set; }
@@ -32,7 +33,7 @@ namespace Bukimedia.PrestaSharp.Entities
 		/// <summary>
 		/// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
 		/// </summary>
-        public int date_add { get; set; }
+        public string date_add { get; set; }
 		/// <summary>
 		/// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
 		/// </summary>
@@ -41,6 +42,5 @@ namespace Bukimedia.PrestaSharp.Entities
 		public address()
 		{
 		}
-
 	}
 }

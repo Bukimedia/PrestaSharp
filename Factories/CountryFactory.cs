@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public CountryFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.country Get(long CountryId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("countries", Entities);
             return this.Execute<List<Entities.country>>(request);
         }
-
     }
 }

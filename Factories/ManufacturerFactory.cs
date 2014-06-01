@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public ManufacturerFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.manufacturer Get(long ManufacturerId)
@@ -108,7 +107,6 @@ namespace Bukimedia.PrestaSharp.Factories
             }
             RestRequest request = this.RequestForAdd("manufacturers", Entities);
             return this.Execute<List<Entities.manufacturer>>(request);
-        }
-        
+        }        
     }
 }

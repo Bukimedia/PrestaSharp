@@ -52,6 +52,5 @@ namespace Bukimedia.PrestaSharp.Entities
         {
             this.name = new List<AuxEntities.language>();
         }
-
     }
 }

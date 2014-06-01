@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public SupplierFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.supplier Get(long SupplierId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("suppliers", Entities);
             return this.Execute<List<Entities.supplier>>(request);
         }
-
     }
 }

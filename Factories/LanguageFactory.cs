@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public LanguageFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.language Get(long LanguageId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("languages", Entities);
             return this.Execute<List<Entities.language>>(request);
         }
-
     }
 }

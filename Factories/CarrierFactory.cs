@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public CarrierFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.carrier Get(long CarrierId)
@@ -108,7 +107,6 @@ namespace Bukimedia.PrestaSharp.Factories
             }
             RestRequest request = this.RequestForAdd("carriers", Entities);
             return this.Execute<List<Entities.carrier>>(request);
-        }
-        
+        }        
     }
 }

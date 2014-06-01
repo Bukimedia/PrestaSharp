@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public ProductFeatureValueFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.product_feature_value Get(long ProductFeatureValueId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("product_feature_values", Entities);
             return this.Execute<List<Entities.product_feature_value>>(request);
         }
-
     }
 }

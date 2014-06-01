@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public CurrencyFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.currency Get(long CurrencyId)
@@ -108,7 +107,6 @@ namespace Bukimedia.PrestaSharp.Factories
             }
             RestRequest request = this.RequestForAdd("currencies", Entities);
             return this.Execute<List<Entities.currency>>(request);
-        }
-        
+        }        
     }
 }

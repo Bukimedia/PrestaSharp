@@ -19,6 +19,5 @@ namespace Bukimedia.PrestaSharp.Entities
         public cart_row()
         {
         }
-
     }
 }

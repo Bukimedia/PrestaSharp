@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public ZoneFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.zone Get(long ZoneId)
@@ -108,7 +107,6 @@ namespace Bukimedia.PrestaSharp.Factories
             }
             RestRequest request = this.RequestForAdd("zones", Entities);
             return this.Execute<List<Entities.zone>>(request);
-        }
-        
+        }        
     }
 }

@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public TaxRuleGroupFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.tax_rule_group Get(long TaxRuleGroupId)
@@ -108,7 +107,6 @@ namespace Bukimedia.PrestaSharp.Factories
             }
             RestRequest request = this.RequestForAdd("tax_rule_groups", Entities);
             return this.Execute<List<Entities.tax_rule_group>>(request);
-        }
-        
+        }        
     }
 }

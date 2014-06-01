@@ -41,6 +41,5 @@ namespace Bukimedia.PrestaSharp.Entities
             this.meta_keywords = new List<AuxEntities.language>();
             this.associations = new AuxEntities.AssociationsManufacturer();
         }
-
     }
 }

@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
 		public AddressFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
 		public Entities.address Get(long AddressId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
 			RestRequest request = this.RequestForAdd("addresses", Entities);
 			return this.Execute<List<Entities.address>>(request);
         }
-
 	}
 }

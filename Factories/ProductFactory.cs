@@ -1,5 +1,4 @@
-﻿using Bukimedia.PrestaSharp.Factories;
-using RestSharp;
+﻿using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +12,7 @@ namespace Bukimedia.PrestaSharp.Factories
     {
         public ProductFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
-        {
-            
+        {            
         }
 
         public Entities.product Get(long ProductId)
@@ -110,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("products", Entities);
             return this.Execute<List<Entities.product>>(request);
         }
-
     }
 }

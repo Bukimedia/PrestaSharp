@@ -41,6 +41,5 @@ namespace Bukimedia.PrestaSharp.Entities
 			from = "0000-00-00 00:00:00";
 			to = "0000-00-00 00:00:00";
 		}
-
 	}
 }

@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public GuestFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.guest Get(long GuestId)
@@ -108,7 +107,6 @@ namespace Bukimedia.PrestaSharp.Factories
             }
             RestRequest request = this.RequestForAdd("guests", Entities);
             return this.Execute<List<Entities.guest>>(request);
-        }
-        
+        }        
     }
 }

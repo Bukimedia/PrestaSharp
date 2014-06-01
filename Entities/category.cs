@@ -56,7 +56,6 @@ namespace Bukimedia.PrestaSharp.Entities
         {
             Language.Value = Functions.BuildLinkRewrite(Language.Value);
             this.link_rewrite.Add(Language);
-        }
-        
+        }        
     }
 }
