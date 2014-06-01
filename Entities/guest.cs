@@ -64,6 +64,5 @@ namespace Bukimedia.PrestaSharp.Entities
         public guest()
         {
         }
-
     }
 }

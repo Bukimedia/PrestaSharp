@@ -36,6 +36,5 @@ namespace Bukimedia.PrestaSharp.Entities
         public language()
         {
         }
-
     }
 }

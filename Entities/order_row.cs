@@ -26,6 +26,5 @@ namespace Bukimedia.PrestaSharp.Entities
         public order_row()
         {
         }
-
     }
 }

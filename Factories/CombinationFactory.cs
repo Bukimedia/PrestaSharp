@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public CombinationFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.combination Get(long CombinationId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("combinations", Entities);
             return this.Execute<List<Entities.combination>>(request);
         }
-
     }
 }

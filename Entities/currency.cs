@@ -38,6 +38,5 @@ namespace Bukimedia.PrestaSharp.Entities
         public currency()
         {
         }
-
     }
 }

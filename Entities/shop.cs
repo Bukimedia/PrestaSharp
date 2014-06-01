@@ -23,5 +23,9 @@ namespace Bukimedia.PrestaSharp.Entities
         /// </summary>
         public int deleted { get; set; }
         public string name { get; set; }
+
+        public shop()
+        {
+        }
     }
 }

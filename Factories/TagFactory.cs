@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public TagFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.tag Get(long TagId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("tags", Entities);
             return this.Execute<List<Entities.tag>>(request);
         }
-
     }
 }

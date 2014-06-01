@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public OrderFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.order Get(long OrderId)
@@ -108,7 +107,6 @@ namespace Bukimedia.PrestaSharp.Factories
             }
             RestRequest request = this.RequestForAdd("orders", Entities);
             return this.Execute<List<Entities.order>>(request);
-        }
-        
+        }        
     }
 }

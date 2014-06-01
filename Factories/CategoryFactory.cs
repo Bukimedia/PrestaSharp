@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public CategoryFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.category Get(long CategoryId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("categories", Entities);
             return this.Execute<List<Entities.category>>(request);
         }
-
     }
 }

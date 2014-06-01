@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public ShopFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.shop Get(long ShopId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("shops", Entities);
             return this.Execute<List<Entities.shop>>(request);
         }
-
     }
 }

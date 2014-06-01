@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public StockAvailableFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.stock_available Get(long StockAvailableId)
@@ -86,6 +85,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("stock_availables", Entities);
             return this.Execute<List<Entities.stock_available>>(request);
         }
-
     }
 }

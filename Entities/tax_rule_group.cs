@@ -21,6 +21,5 @@ namespace Bukimedia.PrestaSharp.Entities
         public tax_rule_group()
         {
         }
-
     }
 }

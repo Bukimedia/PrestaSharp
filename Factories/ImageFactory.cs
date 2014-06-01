@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public ImageFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         #region Protected methods

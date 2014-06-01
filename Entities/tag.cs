@@ -13,5 +13,9 @@ namespace Bukimedia.PrestaSharp.Entities
         public long? id { get; set; }
         public long? id_lang { get; set; }
         public string name { get; set; }
+
+        public tag()
+        {
+        }
     }
 }

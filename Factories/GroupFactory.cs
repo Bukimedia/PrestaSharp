@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public GroupFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
         public Entities.group Get(long GroupId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("groups", Entities);
             return this.Execute<List<Entities.group>>(request);
         }
-
     }
 }

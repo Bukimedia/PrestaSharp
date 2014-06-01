@@ -13,7 +13,6 @@ namespace Bukimedia.PrestaSharp.Factories
 		public SpecificPriceFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-
         }
 
 		public Entities.specific_price Get(long SpecificPriceId)
@@ -109,6 +108,5 @@ namespace Bukimedia.PrestaSharp.Factories
 			RestRequest request = this.RequestForAdd("specific_prices", Entities);
 			return this.Execute<List<Entities.specific_price>>(request);
         }
-
 	}
 }

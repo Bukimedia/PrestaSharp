@@ -53,6 +53,5 @@ namespace Bukimedia.PrestaSharp.Entities
         {
             this.associations = new AuxEntities.AssociationsCart();
         }
-
     }
 }
