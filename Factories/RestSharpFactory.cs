@@ -210,11 +210,14 @@ namespace Bukimedia.PrestaSharp.Factories
             request.RequestFormat = DataFormat.Xml;
             request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
             request.AddBody(PrestashopEntity);
-            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("<" + PrestashopEntity.GetType().Name+">", "<prestashop>\n<" + PrestashopEntity.GetType().Name + ">");
-            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</" + PrestashopEntity.GetType().Name + ">", "</" + PrestashopEntity.GetType().Name + "></prestashop>");
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("<" + PrestashopEntity.GetType().Name + ">", "<prestashop>\n<" + PrestashopEntity.GetType().Name + ">");
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</" + PrestashopEntity.GetType().Name + ">", "</" + PrestashopEntity.GetType().Name + ">\n</prestashop>");
             //issue #36 fixed
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("xmlns=\"Bukimedia/PrestaSharp/Entities\"", "xmlns=\"\"");
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("xmlns=\"Bukimedia/PrestaSharp/Entities/AuxEntities\"", "xmlns=\"\"");
+            //issue #54 fixed
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("<accessories xmlns=\"\">\r\n      <prestashop>\n<product>", "<accessories xmlns=\"\">\r\n      <product>");
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</product>\n</prestashop>\r\n    </accessories>", "</product>\r\n    </accessories>");
             return request;
         }
 
