@@ -27,6 +27,17 @@ namespace Bukimedia.PrestaSharp.Factories
             this.Execute<Entities.stock_available>(request);
         }
 
+        public void Delete(long StockAvailableId)
+        {
+            RestRequest request = this.RequestForDelete("stock_availables", StockAvailableId);
+            this.Execute<Entities.stock_available>(request);
+        }
+
+        public void Delete(Entities.stock_available StockAvailable)
+        {
+            this.Delete((long)StockAvailable.id);
+        }
+
         public List<long> GetIds()
         {
             RestRequest request = this.RequestForGet("stock_availables", null, "prestashop");
