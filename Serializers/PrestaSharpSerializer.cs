@@ -184,9 +184,13 @@ namespace Bukimedia.PrestaSharp.Serializers
             {
                 output = ((DateTime)obj).ToString(DateFormat);
             }
-            if (obj is bool)
+            else if (obj is bool)
             {
                 output = obj.ToString().ToLower();
+            }
+            else if(obj is decimal)
+            {
+                output = obj.ToString().Replace(",", ".");
             }
 
             return output.ToString();
