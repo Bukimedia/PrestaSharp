@@ -194,7 +194,6 @@ namespace Bukimedia.PrestaSharp.Serializers
             }
 
             return output.ToString();
-        }
-        
+        }        
     }
 }

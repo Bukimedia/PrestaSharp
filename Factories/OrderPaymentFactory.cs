@@ -84,7 +84,7 @@ namespace Bukimedia.PrestaSharp.Factories
         }
 
         /// <summary>
-        /// Get all order_carriers.
+        /// Get all order_payments.
         /// </summary>
         /// <returns>A list of order_payments</returns>
         public List<Entities.order_payment> GetAll()
