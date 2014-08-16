@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Deserializers\PrestaSharpDeserializer.cs" />
     <Compile Include="Entities\address.cs" />
+    <Compile Include="Entities\AuxEntities\AssociationsCustomerThread.cs" />
     <Compile Include="Entities\AuxEntities\AssociationsCombination.cs" />
     <Compile Include="Entities\AuxEntities\address.cs" />
     <Compile Include="Entities\AuxEntities\AssociationsCustomer.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Entities\AuxEntities\AssociationsOrder.cs" />
     <Compile Include="Entities\AuxEntities\AssociationsCart.cs" />
     <Compile Include="Entities\AuxEntities\country.cs" />
+    <Compile Include="Entities\AuxEntities\customer_message.cs" />
     <Compile Include="Entities\AuxEntities\specific_price.cs" />
     <Compile Include="Entities\AuxEntities\supplier.cs" />
     <Compile Include="Entities\AuxEntities\product_feature_value.cs" />
@@ -70,6 +72,10 @@
     <Compile Include="Entities\cart.cs" />
     <Compile Include="Entities\cart_row.cs" />
     <Compile Include="Entities\carrier.cs" />
+    <Compile Include="Entities\customer_thread.cs" />
+    <Compile Include="Entities\customer_message.cs" />
+    <Compile Include="Entities\FilterEntities\customer_thread.cs" />
+    <Compile Include="Entities\FilterEntities\customer_message.cs" />
     <Compile Include="Entities\FilterEntities\order_carrier.cs" />
     <Compile Include="Entities\FilterEntities\order_payment.cs" />
     <Compile Include="Entities\order_carrier.cs" />
@@ -141,6 +147,8 @@
     <Compile Include="Factories\CombinationFactory.cs" />
     <Compile Include="Factories\CartFactory.cs" />
     <Compile Include="Factories\CarrierFactory.cs" />
+    <Compile Include="Factories\CustomerThreadFactory.cs" />
+    <Compile Include="Factories\CustomerMessageFactory.cs" />
     <Compile Include="Factories\OrderCarrierFactory.cs" />
     <Compile Include="Factories\OrderPaymentFactory.cs" />
     <Compile Include="Factories\StateFactory.cs" />
