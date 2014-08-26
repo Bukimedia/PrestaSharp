@@ -12,20 +12,21 @@ namespace Bukimedia.PrestaSharp.Lib
         public static string RemoveAccents(string InputString)
         {
             string OutputString = InputString;
-            Regex replace_a_Accents = new Regex("[á|à|ä|â]", RegexOptions.Compiled);
-            Regex replace_e_Accents = new Regex("[é|è|ë|ê|ě]", RegexOptions.Compiled);
+            Regex replace_a_Accents = new Regex("[á|à|ä|â|ą]", RegexOptions.Compiled);
+            Regex replace_e_Accents = new Regex("[é|è|ë|ê|ě|ę]", RegexOptions.Compiled);
             Regex replace_i_Accents = new Regex("[í|ì|ï|î]", RegexOptions.Compiled);
-            Regex replace_o_Accents = new Regex("[ó|ò|ö|ô]", RegexOptions.Compiled);
+            Regex replace_o_Accents = new Regex("[ó|ò|ö|ô|ó]", RegexOptions.Compiled);
             Regex replace_u_Accents = new Regex("[ú|ù|ü|û|ů]", RegexOptions.Compiled);
 
-            Regex replace_s_Accents = new Regex("[š]", RegexOptions.Compiled);
-            Regex replace_c_Accents = new Regex("[č]", RegexOptions.Compiled);
+            Regex replace_s_Accents = new Regex("[š|ś]", RegexOptions.Compiled);
+            Regex replace_c_Accents = new Regex("[č|ć]", RegexOptions.Compiled);
             Regex replace_r_Accents = new Regex("[ř]", RegexOptions.Compiled);
-            Regex replace_z_Accents = new Regex("[ž]", RegexOptions.Compiled);
+            Regex replace_z_Accents = new Regex("[ž|ź|ż]", RegexOptions.Compiled);
             Regex replace_y_Accents = new Regex("[ý]", RegexOptions.Compiled);
             Regex replace_t_Accents = new Regex("[ť]", RegexOptions.Compiled);
             Regex replace_d_Accents = new Regex("[ď]", RegexOptions.Compiled);
-            Regex replace_n_Accents = new Regex("[ñ|ň]", RegexOptions.Compiled);
+            Regex replace_n_Accents = new Regex("[ñ|ň|ń]", RegexOptions.Compiled);
+            Regex replace_l_Accents = new Regex("[ł]", RegexOptions.Compiled);
 
             OutputString = replace_a_Accents.Replace(OutputString, "a");
             OutputString = replace_e_Accents.Replace(OutputString, "e");
@@ -40,6 +41,7 @@ namespace Bukimedia.PrestaSharp.Lib
             OutputString = replace_t_Accents.Replace(OutputString, "t");
             OutputString = replace_d_Accents.Replace(OutputString, "d");
             OutputString = replace_n_Accents.Replace(OutputString, "n");
+            OutputString = replace_l_Accents.Replace(OutputString, "l");
             return OutputString;
         }
 
