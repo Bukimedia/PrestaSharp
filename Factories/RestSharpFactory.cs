@@ -36,6 +36,7 @@ namespace Bukimedia.PrestaSharp.Factories
             }
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
+                || response.StatusCode == HttpStatusCode.ServiceUnavailable
                 || response.StatusCode == HttpStatusCode.BadRequest
                 || response.StatusCode == HttpStatusCode.Unauthorized
                 || response.StatusCode == HttpStatusCode.MethodNotAllowed
