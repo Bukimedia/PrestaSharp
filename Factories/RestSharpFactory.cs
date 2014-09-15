@@ -83,6 +83,7 @@ namespace Bukimedia.PrestaSharp.Factories
             client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
             var response = client.Execute<T>(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
+                || response.StatusCode == HttpStatusCode.ServiceUnavailable
                 || response.StatusCode == HttpStatusCode.BadRequest
                 || response.StatusCode == HttpStatusCode.Unauthorized
                 || response.StatusCode == HttpStatusCode.MethodNotAllowed
@@ -107,6 +108,28 @@ namespace Bukimedia.PrestaSharp.Factories
             var ids = (from doc in xDcoument.Descendants(RootElement)
                        select long.Parse(doc.Attribute("id").Value)).ToList();
             return ids;
+        }
+
+        protected byte[] ExecuteForImage(RestRequest Request)
+        {
+            var client = new RestClient();
+            client.BaseUrl = this.BaseUrl;
+            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
+            var response = client.Execute(Request);
+            if (response.StatusCode == HttpStatusCode.InternalServerError
+                || response.StatusCode == HttpStatusCode.ServiceUnavailable
+                || response.StatusCode == HttpStatusCode.BadRequest
+                || response.StatusCode == HttpStatusCode.Unauthorized
+                || response.StatusCode == HttpStatusCode.MethodNotAllowed
+                || response.StatusCode == HttpStatusCode.Forbidden
+                || response.StatusCode == HttpStatusCode.NotFound
+                || response.StatusCode == 0)
+            {
+                var Exception = new PrestaSharpException(response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
+                throw Exception;
+            }
+            return response.RawBytes;
         }
 
         protected RestRequest RequestForGet(string Resource, long? Id, string RootElement)

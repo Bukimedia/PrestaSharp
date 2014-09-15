@@ -85,9 +85,15 @@ namespace Bukimedia.PrestaSharp.Factories
             this.UpdateImage("manufacturers", ManufacturerId, null, ManufacturerImagePath);
         }
 
-        public void DeleteManufacturerImage(long ManufacturerID)
+        public void DeleteManufacturerImage(long ManufacturerId)
         {
-            this.DeleteImage("manufacturers", ManufacturerID, null);
+            this.DeleteImage("manufacturers", ManufacturerId, null);
+        }
+
+        public byte[] GetManufacturerImage(long ManufacturerId, long ImageId)
+        {
+            RestRequest request = this.RequestForGet("images/manufacturers/" + ManufacturerId, ImageId, "");
+            return this.ExecuteForImage(request);
         }
 
         #endregion Manufacturer images
@@ -124,6 +130,12 @@ namespace Bukimedia.PrestaSharp.Factories
             this.DeleteImage("products", ProductId, ImageId);
         }
 
+        public byte[] GetProductImage(long ProductId, long ImageId)
+        {
+            RestRequest request = this.RequestForGet("images/products/" + ProductId, ImageId, "");
+            return this.ExecuteForImage(request);
+        }
+
         #endregion Product images
 
         #region Category images
@@ -151,6 +163,12 @@ namespace Bukimedia.PrestaSharp.Factories
         public void DeleteCategoryImage(long CategoryID)
         {
             this.DeleteImage("categories", CategoryID, null);
+        }
+
+        public byte[] GetCategoryImage(long CategoryId, long ImageId)
+        {
+            RestRequest request = this.RequestForGet("images/categories/" + CategoryId, ImageId, "");
+            return this.ExecuteForImage(request);
         }
 
         #endregion Category images
