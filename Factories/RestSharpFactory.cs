@@ -314,6 +314,24 @@ namespace Bukimedia.PrestaSharp.Factories
             return request;
         }
 
+        protected RestRequest RequestForAddOrderHistory(string Resource, List<Entities.PrestaShopEntity> Entities)
+        {
+            var request = new RestRequest();
+            request.Resource = Resource;
+            request.Method = Method.POST;
+            request.RequestFormat = DataFormat.Xml;
+            request.XmlSerializer = new Serializers.PrestaSharpSerializer();
+            string serialized = "";
+            foreach (Entities.PrestaShopEntity Entity in Entities)
+            {
+                serialized += ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
+            }
+            serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
+            request.AddParameter("xml", serialized);
+            request.AddParameter("sendemail", 1);
+            return request;
+        }
+
         public static byte[] ImageToBinary(string imagePath)
         {
             FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
