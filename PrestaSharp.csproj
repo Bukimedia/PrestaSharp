@@ -178,6 +178,8 @@
     <Compile Include="Factories\ManufacturerFactory.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Factories\RestSharpFactory.cs" />
+    <Compile Include="Helpers\CompareHelper.cs" />
+    <Compile Include="Helpers\LanguageHelper.cs" />
     <Compile Include="Lib\Functions.cs" />
     <Compile Include="PrestaSharpException.cs" />
     <Compile Include="Serializers\PrestaSharpSerializer.cs" />
