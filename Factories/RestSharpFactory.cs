@@ -155,7 +155,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 serialized += ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
             }
             serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
-            request.AddParameter("xml", serialized, ParameterType.RequestBody);
+            request.AddParameter("application/xml", serialized, ParameterType.RequestBody);
             return request;
         }
 
@@ -326,7 +326,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 serialized += ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
             }
             serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
-            request.AddParameter("xml", serialized);
+            request.AddParameter("application/xml", serialized);
             request.AddParameter("sendemail", 1);
             return request;
         }
