@@ -27,7 +27,7 @@ namespace Bukimedia.PrestaSharp.Factories
         protected T Execute<T>(RestRequest Request) where T : new()
         {
             var client = new RestClient();
-            client.BaseUrl = this.BaseUrl;
+            client.BaseUrl = new Uri(this.BaseUrl);
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
             if (Request.Method == Method.GET)
@@ -77,7 +77,7 @@ namespace Bukimedia.PrestaSharp.Factories
         protected T ExecuteForFilter<T>(RestRequest Request) where T : new()
         {
             var client = new RestClient();
-            client.BaseUrl = this.BaseUrl;
+            client.BaseUrl = new Uri(this.BaseUrl);
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
             client.ClearHandlers();
@@ -101,7 +101,7 @@ namespace Bukimedia.PrestaSharp.Factories
         protected List<long> ExecuteForGetIds<T>(RestRequest Request, string RootElement) where T : new()
         {
             var client = new RestClient();
-            client.BaseUrl = this.BaseUrl;
+            client.BaseUrl = new Uri(this.BaseUrl);
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
             var response = client.Execute<T>(Request);
@@ -114,7 +114,7 @@ namespace Bukimedia.PrestaSharp.Factories
         protected byte[] ExecuteForImage(RestRequest Request)
         {
             var client = new RestClient();
-            client.BaseUrl = this.BaseUrl;
+            client.BaseUrl = new Uri(this.BaseUrl);
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
             var response = client.Execute(Request);
