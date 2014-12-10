@@ -47,6 +47,7 @@ namespace Bukimedia.PrestaSharp.Lib
             InputString = InputString.ToLower();
             InputString = RemoveAccents(InputString);
             InputString = InputString.Replace(", ", "-");
+            InputString = InputString.Replace(". ", "-");
             InputString = InputString.Replace(",", "-");
             InputString = InputString.Replace("& ", "-");
             InputString = InputString.Replace(": ", "-");
@@ -64,6 +65,8 @@ namespace Bukimedia.PrestaSharp.Lib
             InputString = InputString.Replace("%", "-");
             InputString = InputString.Replace("'", "-");
             InputString = InputString.Replace("'", "-");
+            InputString = InputString.Replace("ß", "b");
+            InputString = InputString.Replace("�", "-");
             InputString = InputString.Replace("&#39;", "-");
             return InputString;
         }
