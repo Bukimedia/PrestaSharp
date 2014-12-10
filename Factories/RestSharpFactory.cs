@@ -45,7 +45,12 @@ namespace Bukimedia.PrestaSharp.Factories
                 || response.StatusCode == HttpStatusCode.NotFound
                 || response.StatusCode == 0)
             {
-                var Exception = new PrestaSharpException(response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
+                string RequestParameters = Environment.NewLine;
+                foreach (RestSharp.Parameter Parameter in Request.Parameters)
+                {
+                    RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
+                }
+                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
                 throw Exception;
             }
             return response.Data;
@@ -92,7 +97,12 @@ namespace Bukimedia.PrestaSharp.Factories
                 || response.StatusCode == HttpStatusCode.NotFound
                 || response.StatusCode == 0)
             {
-                var Exception = new PrestaSharpException(response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
+                string RequestParameters = Environment.NewLine;
+                foreach (RestSharp.Parameter Parameter in Request.Parameters)
+                {
+                    RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
+                }
+                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
                 throw Exception;
             }
             return response.Data;
@@ -127,7 +137,12 @@ namespace Bukimedia.PrestaSharp.Factories
                 || response.StatusCode == HttpStatusCode.NotFound
                 || response.StatusCode == 0)
             {
-                var Exception = new PrestaSharpException(response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
+                string RequestParameters = Environment.NewLine;
+                foreach (RestSharp.Parameter Parameter in Request.Parameters)
+                {
+                    RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
+                }
+                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
                 throw Exception;
             }
             return response.RawBytes;
