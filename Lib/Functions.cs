@@ -11,6 +11,7 @@ namespace Bukimedia.PrestaSharp.Lib
     {
         internal static string RemoveAccents(string InputString)
         {
+            string OutputString = InputString;
             Regex replace_a_Accents = new Regex("[á|à|ä|â]", RegexOptions.Compiled);
             Regex replace_e_Accents = new Regex("[é|è|ë|ê|ě]", RegexOptions.Compiled);
             Regex replace_i_Accents = new Regex("[í|ì|ï|î]", RegexOptions.Compiled);
@@ -26,49 +27,51 @@ namespace Bukimedia.PrestaSharp.Lib
             Regex replace_d_Accents = new Regex("[ď]", RegexOptions.Compiled);
             Regex replace_n_Accents = new Regex("[ñ|ň]", RegexOptions.Compiled);
 
-            InputString = replace_a_Accents.Replace(InputString, "a");
-            InputString = replace_e_Accents.Replace(InputString, "e");
-            InputString = replace_i_Accents.Replace(InputString, "i");
-            InputString = replace_o_Accents.Replace(InputString, "o");
-            InputString = replace_u_Accents.Replace(InputString, "u");
-            InputString = replace_s_Accents.Replace(InputString, "s");
-            InputString = replace_c_Accents.Replace(InputString, "c");
-            InputString = replace_r_Accents.Replace(InputString, "r");
-            InputString = replace_z_Accents.Replace(InputString, "z");
-            InputString = replace_y_Accents.Replace(InputString, "y");
-            InputString = replace_t_Accents.Replace(InputString, "t");
-            InputString = replace_d_Accents.Replace(InputString, "d");
-            InputString = replace_n_Accents.Replace(InputString, "n");
-            return InputString;
+            OutputString = replace_a_Accents.Replace(OutputString, "a");
+            OutputString = replace_e_Accents.Replace(OutputString, "e");
+            OutputString = replace_i_Accents.Replace(OutputString, "i");
+            OutputString = replace_o_Accents.Replace(OutputString, "o");
+            OutputString = replace_u_Accents.Replace(OutputString, "u");
+            OutputString = replace_s_Accents.Replace(OutputString, "s");
+            OutputString = replace_c_Accents.Replace(OutputString, "c");
+            OutputString = replace_r_Accents.Replace(OutputString, "r");
+            OutputString = replace_z_Accents.Replace(OutputString, "z");
+            OutputString = replace_y_Accents.Replace(OutputString, "y");
+            OutputString = replace_t_Accents.Replace(OutputString, "t");
+            OutputString = replace_d_Accents.Replace(OutputString, "d");
+            OutputString = replace_n_Accents.Replace(OutputString, "n");
+            return OutputString;
         }
 
         internal static string BuildLinkRewrite(string InputString)
         {
-            InputString = InputString.ToLower();
-            InputString = RemoveAccents(InputString);
-            InputString = InputString.Replace(", ", "-");
-            InputString = InputString.Replace(". ", "-");
-            InputString = InputString.Replace(",", "-");
-            InputString = InputString.Replace("& ", "-");
-            InputString = InputString.Replace(": ", "-");
-            InputString = InputString.Replace(" / ", "-");
-            InputString = InputString.Replace(" % ", "-");
-            InputString = InputString.Replace("% ", "-");
-            InputString = InputString.Replace(": ", "-");
-            InputString = InputString.Replace(" : ", "-");
-            InputString = InputString.Replace(":", "-");
-            InputString = InputString.Replace(".", "");
-            InputString = InputString.Replace(" ", "-");
-            InputString = InputString.Replace(" ", "-");
-            InputString = InputString.Replace("/", "-");
-            InputString = InputString.Replace("%", "-");
-            InputString = InputString.Replace("%", "-");
-            InputString = InputString.Replace("'", "-");
-            InputString = InputString.Replace("'", "-");
-            InputString = InputString.Replace("ß", "b");
-            InputString = InputString.Replace("�", "-");
-            InputString = InputString.Replace("&#39;", "-");
-            return InputString;
+            string OutputString = InputString;
+            OutputString = OutputString.ToLower();
+            OutputString = RemoveAccents(OutputString);
+            OutputString = OutputString.Replace(", ", "-");
+            OutputString = OutputString.Replace(". ", "-");
+            OutputString = OutputString.Replace(",", "-");
+            OutputString = OutputString.Replace("& ", "-");
+            OutputString = OutputString.Replace(": ", "-");
+            OutputString = OutputString.Replace(" / ", "-");
+            OutputString = OutputString.Replace(" % ", "-");
+            OutputString = OutputString.Replace("% ", "-");
+            OutputString = OutputString.Replace(": ", "-");
+            OutputString = OutputString.Replace(" : ", "-");
+            OutputString = OutputString.Replace(":", "-");
+            OutputString = OutputString.Replace(".", "");
+            OutputString = OutputString.Replace(" ", "-");
+            OutputString = OutputString.Replace(" ", "-");
+            OutputString = OutputString.Replace(" ", "-");
+            OutputString = OutputString.Replace("/", "-");
+            OutputString = OutputString.Replace("%", "-");
+            OutputString = OutputString.Replace("%", "-");
+            OutputString = OutputString.Replace("'", "-");
+            OutputString = OutputString.Replace("'", "-");
+            OutputString = OutputString.Replace("ß", "b");
+            OutputString = OutputString.Replace("�", "-");
+            OutputString = OutputString.Replace("&#39;", "-");
+            return OutputString;
         }
 
         internal static string ReplaceFirstOccurrence(string Source, string Find, string Replace)
