@@ -124,8 +124,14 @@ namespace Bukimedia.PrestaSharp.Entities
 
         public void AddLinkRewrite(Entities.AuxEntities.language Language)
         {
-            Language.Value = Functions.BuildLinkRewrite(Language.Value);
+            Language.Value = Functions.GetLinkRewrite(Language.Value);
             this.link_rewrite.Add(Language);
+        }
+
+        public void AddName(Entities.AuxEntities.language Language)
+        {
+            Language.Value = Functions.GetPrestaShopName(Language.Value);
+            this.name.Add(Language);
         }
     }
 }
