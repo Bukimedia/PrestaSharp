@@ -46,7 +46,6 @@ namespace Bukimedia.PrestaSharp.Lib
         public static string GetLinkRewrite(string InputString)
         {
             string OutputString = InputString;
-            OutputString = OutputString.ToLower();
             OutputString = RemoveAccents(OutputString);
             OutputString = OutputString.Replace(", ", "-");
             OutputString = OutputString.Replace(". ", "-");
@@ -539,6 +538,7 @@ namespace Bukimedia.PrestaSharp.Lib
             OutputString = OutputString.Replace("ӭ", "e");
             OutputString = OutputString.Replace("ю", "yu");
             OutputString = OutputString.Replace("я", "ya");
+            OutputString = OutputString.ToLowerInvariant();
             OutputString = GetUTF8String(OutputString);
             return OutputString;
         }

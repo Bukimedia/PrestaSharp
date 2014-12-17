@@ -186,7 +186,7 @@ namespace Bukimedia.PrestaSharp.Serializers
             }
             else if (obj is bool)
             {
-                output = obj.ToString().ToLower();
+                output = obj.ToString().ToLowerInvariant();
             }
             else if(obj is decimal)
             {

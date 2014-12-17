@@ -122,7 +122,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
 
                 if (type == typeof(bool))
                 {
-                    var toConvert = value.ToString().ToLower();
+                    var toConvert = value.ToString().ToLowerInvariant();
                     prop.SetValue(x, XmlConvert.ToBoolean(toConvert), null);
                 }
                 else if (type.IsPrimitive)
@@ -304,7 +304,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
 
             if (!elements.Any())
             {
-                var lowerName = name.ToLower().AsNamespaced(Namespace);
+                var lowerName = name.ToLowerInvariant().AsNamespaced(Namespace);
                 elements = root.Descendants(lowerName);
             }
 
@@ -321,7 +321,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
 
             if (!elements.Any())
             {
-                var lowerName = name.ToLower().AsNamespaced(Namespace);
+                var lowerName = name.ToLowerInvariant().AsNamespaced(Namespace);
                 elements = root.Descendants().Where(e => e.Name.LocalName.RemoveUnderscoresAndDashes() == lowerName);
             }
 
@@ -386,7 +386,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
 
         protected virtual XElement GetElementByName(XElement root, XName name)
         {
-            var lowerName = name.LocalName.ToLower().AsNamespaced(name.NamespaceName);
+            var lowerName = name.LocalName.ToLowerInvariant().AsNamespaced(name.NamespaceName);
             var camelName = name.LocalName.ToCamelCase(Culture).AsNamespaced(name.NamespaceName);
             if (root.Element(name) != null)
             {
@@ -413,7 +413,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
                     .FirstOrDefault(d => d.Name.LocalName.RemoveUnderscoresAndDashes() == name.LocalName)
                     ?? root.Descendants()
                     .OrderBy(d => d.Ancestors().Count())
-                    .FirstOrDefault(d => d.Name.LocalName.RemoveUnderscoresAndDashes() == name.LocalName.ToLower());
+                    .FirstOrDefault(d => d.Name.LocalName.RemoveUnderscoresAndDashes() == name.LocalName.ToLowerInvariant());
 
             if (element != null)
             {
@@ -425,7 +425,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
 
         protected virtual XAttribute GetAttributeByName(XElement root, XName name)
         {
-            var lowerName = name.LocalName.ToLower().AsNamespaced(name.NamespaceName);
+            var lowerName = name.LocalName.ToLowerInvariant().AsNamespaced(name.NamespaceName);
             var camelName = name.LocalName.ToCamelCase(Culture).AsNamespaced(name.NamespaceName);
 
             if (root.Attribute(name) != null)
