@@ -79,16 +79,12 @@
     <Compile Include="Entities\FilterEntities\order_carrier.cs" />
     <Compile Include="Entities\FilterEntities\order_history.cs" />
     <Compile Include="Entities\FilterEntities\order_payment.cs" />
-    <Compile Include="Entities\FilterEntities\tax.cs" />
-    <Compile Include="Entities\FilterEntities\tax_rule.cs" />
     <Compile Include="Entities\order_carrier.cs" />
     <Compile Include="Entities\FilterEntities\state.cs" />
     <Compile Include="Entities\order_history.cs" />
     <Compile Include="Entities\order_payment.cs" />
     <Compile Include="Entities\state.cs" />
     <Compile Include="Entities\FilterEntities\zone.cs" />
-    <Compile Include="Entities\tax.cs" />
-    <Compile Include="Entities\tax_rule.cs" />
     <Compile Include="Entities\zone.cs" />
     <Compile Include="Entities\FilterEntities\guest.cs" />
     <Compile Include="Entities\guest.cs" />
@@ -159,8 +155,6 @@
     <Compile Include="Factories\OrderHistoryFactory.cs" />
     <Compile Include="Factories\OrderPaymentFactory.cs" />
     <Compile Include="Factories\StateFactory.cs" />
-    <Compile Include="Factories\TaxFactory.cs" />
-    <Compile Include="Factories\TaxRuleFactory.cs" />
     <Compile Include="Factories\ZoneFactory.cs" />
     <Compile Include="Factories\GuestFactory.cs" />
     <Compile Include="Factories\TaxRuleGroupFactory.cs" />
