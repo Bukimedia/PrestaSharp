@@ -21,5 +21,10 @@ namespace Bukimedia.PrestaSharp.Entities
         public tax_rule_group()
         {
         }
+        
+        public override string ToString()
+        {
+        	return this.name;
+        }
     }
 }
