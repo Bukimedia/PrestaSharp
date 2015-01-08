@@ -124,6 +124,8 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 - States
 - Stock Availables
 - Tags
+- Tax
+- Tax Rule
 - Tax Rule Groups
 - Zones
 
