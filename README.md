@@ -145,7 +145,7 @@ This program is distributed in the hope that it will be useful, but without any 
 
 Bukimedia reserves the right to mention of companies or individuals who use this software.
 
-Copyright (C) 2014 Bukimedia
+Copyright (C) 2015 Bukimedia
 - Bukimedia: http://www.bukimedia.com/
 - Twitter: http://twitter.com/bukimedia
 - GitHub: https://github.com/bukimedia

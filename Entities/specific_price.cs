@@ -27,6 +27,10 @@ namespace Bukimedia.PrestaSharp.Entities
 		/// Reduction type is either "amount" or "percentage"
 		/// </summary>
 		public string reduction_type { get; set; }
+        /// <summary>
+        /// It´s a logical bool.
+        /// </summary>
+        public int reduction_tax { get; set; }
 		/// <summary>
 		/// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
 		/// </summary>
