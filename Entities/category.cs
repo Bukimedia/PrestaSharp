@@ -52,16 +52,53 @@ namespace Bukimedia.PrestaSharp.Entities
             this.associations = new AuxEntities.AssociationsCategory();
         }
 
-        public void AddLinkRewrite(Entities.AuxEntities.language Language)
-        {
-            Language.Value = Functions.GetLinkRewrite(Language.Value);
-            this.link_rewrite.Add(Language);
-        }
-
         public void AddName(Entities.AuxEntities.language Language)
         {
             Language.Value = Functions.GetPrestaShopName(Language.Value);
-            this.name.Add(Language);
+            lock (this.name)
+            {
+                this.name.Add(Language);
+            }
+        }
+        public void AddLinkRewrite(Entities.AuxEntities.language Language)
+        {
+            Language.Value = Functions.GetLinkRewrite(Language.Value);
+            lock (this.link_rewrite)
+            {
+                this.link_rewrite.Add(Language);
+            }
+        }
+
+        public void AddDescription(Entities.AuxEntities.language Language)
+        {
+            lock (this.description)
+            {
+                this.description.Add(Language);
+            }
+        }
+
+        public void AddMetaTitle(Entities.AuxEntities.language Language)
+        {
+            lock (this.meta_title)
+            {
+                this.meta_title.Add(Language);
+            }
+        }
+
+        public void AddMetaDescription(Entities.AuxEntities.language Language)
+        {
+            lock (this.meta_description)
+            {
+                this.meta_description.Add(Language);
+            }
+        }
+
+        public void AddMetaKeywords(Entities.AuxEntities.language Language)
+        {
+            lock (this.meta_keywords)
+            {
+                this.meta_keywords.Add(Language);
+            }
         }
     }
 }
