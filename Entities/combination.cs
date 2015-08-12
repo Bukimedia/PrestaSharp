@@ -29,7 +29,7 @@ namespace Bukimedia.PrestaSharp.Entities
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
-        public int default_on { get; set; }
+        public int? default_on { get; set; }
         /// <summary>
         /// It´s a logical DateTime field. Format YYYY-MM-DD HH:MM:SS.
         /// It´s string because you can receive a string with no DateTime .Net format.
