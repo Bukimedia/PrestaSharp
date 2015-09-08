@@ -77,12 +77,14 @@
     <Compile Include="Entities\FilterEntities\customer_thread.cs" />
     <Compile Include="Entities\FilterEntities\customer_message.cs" />
     <Compile Include="Entities\FilterEntities\order_carrier.cs" />
+    <Compile Include="Entities\FilterEntities\order_cart_rule.cs" />
     <Compile Include="Entities\FilterEntities\order_history.cs" />
     <Compile Include="Entities\FilterEntities\order_payment.cs" />
     <Compile Include="Entities\FilterEntities\tax.cs" />
     <Compile Include="Entities\FilterEntities\tax_rule.cs" />
     <Compile Include="Entities\order_carrier.cs" />
     <Compile Include="Entities\FilterEntities\state.cs" />
+    <Compile Include="Entities\order_cart_rule.cs" />
     <Compile Include="Entities\order_history.cs" />
     <Compile Include="Entities\order_payment.cs" />
     <Compile Include="Entities\state.cs" />
@@ -156,6 +158,7 @@
     <Compile Include="Factories\CustomerThreadFactory.cs" />
     <Compile Include="Factories\CustomerMessageFactory.cs" />
     <Compile Include="Factories\OrderCarrierFactory.cs" />
+    <Compile Include="Factories\OrderCartRuleFactory.cs" />
     <Compile Include="Factories\OrderHistoryFactory.cs" />
     <Compile Include="Factories\OrderPaymentFactory.cs" />
     <Compile Include="Factories\StateFactory.cs" />
