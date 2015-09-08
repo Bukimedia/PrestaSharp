@@ -112,6 +112,7 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 - Manufacturers
 - Orders
 - Order Carriers
+- Order Cart Rules
 - Order Histories
 - Order Invoices
 - Order States
