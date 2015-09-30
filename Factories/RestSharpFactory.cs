@@ -1,4 +1,5 @@
-﻿using Bukimedia.PrestaSharp.Lib;
+﻿using Bukimedia.PrestaSharp.Deserializers;
+using Bukimedia.PrestaSharp.Lib;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using RestSharp.Authenticators;
 
 namespace Bukimedia.PrestaSharp.Factories
 {
@@ -27,6 +29,7 @@ namespace Bukimedia.PrestaSharp.Factories
         protected T Execute<T>(RestRequest Request) where T : new()
         {
             var client = new RestClient();
+            client.AddHandler("text/html", new PrestaSharpTextErrorDeserializer());
             client.BaseUrl = new Uri(this.BaseUrl);
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
