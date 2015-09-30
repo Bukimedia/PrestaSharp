@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Deserializers\PrestaSharpDeserializer.cs" />
+    <Compile Include="Deserializers\PrestaSharpTextErrorDeserializer.cs" />
     <Compile Include="Entities\address.cs" />
     <Compile Include="Entities\AuxEntities\AssociationsCustomerThread.cs" />
     <Compile Include="Entities\AuxEntities\AssociationsCombination.cs" />
