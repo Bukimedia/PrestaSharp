@@ -11,7 +11,6 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class customer_message : PrestaShopEntity
     {
-        public long? id { get; set; }
 		public long? id_employee { get; set; }
         public long? id_customer_thread { get; set; }
         public string ip_address { get; set; }

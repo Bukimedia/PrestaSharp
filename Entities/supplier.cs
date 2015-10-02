@@ -11,7 +11,6 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class supplier : PrestaShopEntity
     {
-        public long? id { get; set; }
         public string name { get; set; }
         public string link_rewrite { get; set; }
         /// <summary>

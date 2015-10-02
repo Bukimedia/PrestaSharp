@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using RestSharp.Authenticators;
+using Bukimedia.PrestaSharp.Entities;
 
 namespace Bukimedia.PrestaSharp.Factories
 {
@@ -18,14 +19,17 @@ namespace Bukimedia.PrestaSharp.Factories
         protected string BaseUrl{get;set;}
         protected string Account{get;set;}
         protected string Password{get;set;}
+        protected bool PerformGetAfterAdd { get; set; }
 
-        public RestSharpFactory(string BaseUrl, string Account, string Password)
+        protected RestSharpFactory(string BaseUrl, string Account, string Password, bool PerformGetAfterAdd)
         {
             this.BaseUrl = BaseUrl;
             this.Account = Account;
             this.Password = Password;
-        }
+            this.PerformGetAfterAdd = PerformGetAfterAdd;
 
+        }
+        
         protected T Execute<T>(RestRequest Request) where T : new()
         {
             var client = new RestClient();
@@ -120,7 +124,7 @@ namespace Bukimedia.PrestaSharp.Factories
             var response = client.Execute<T>(Request);
             XDocument xDcoument = XDocument.Parse(response.Content);
             var ids = (from doc in xDcoument.Descendants(RootElement)
-                       select long.Parse(doc.Attribute("id").Value)).ToList();
+                       select doc.Attribute("id") != null ? long.Parse(doc.Attribute("id").Value) : long.Parse(doc.Descendants().First().Value)).ToList();
             return ids;
         }
 
@@ -159,7 +163,12 @@ namespace Bukimedia.PrestaSharp.Factories
             return request;
         }
 
-        protected RestRequest RequestForAdd(string Resource, List<Entities.PrestaShopEntity> Entities)
+        protected RestRequest RequestForAdd(string Resource, List<PrestaShopEntity> Entities)
+        {
+            return RequestForAdd<PrestaShopEntity>(Resource, Entities);
+        }
+
+        protected RestRequest RequestForAdd<T>(string Resource, List<T> Entities)
         {
             var request = new RestRequest();
             request.Resource = Resource;
@@ -168,7 +177,7 @@ namespace Bukimedia.PrestaSharp.Factories
             //Hack implementation in PrestaSharpSerializer to serialize PrestaSharp.Entities.AuxEntities.language
             request.XmlSerializer = new Serializers.PrestaSharpSerializer();
             string serialized = "";
-            foreach (Entities.PrestaShopEntity Entity in Entities)
+            foreach (var Entity in Entities)
             {
                 serialized += ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
             }

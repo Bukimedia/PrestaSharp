@@ -12,7 +12,6 @@ namespace Bukimedia.PrestaSharp.Entities
     public class combination : PrestaShopEntity
     {
 
-        public long? id { get; set; }
         public long? id_product { get; set; }
         public string location { get; set; }
         public string ean13 { get; set; }

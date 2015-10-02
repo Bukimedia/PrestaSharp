@@ -11,7 +11,6 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class cart : PrestaShopEntity
     {
-        public long? id { get; set; }
 		public long? id_address_delivery { get; set; }
 		public long? id_address_invoice { get; set; }
 		public long? id_currency { get; set; }

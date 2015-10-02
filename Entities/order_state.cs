@@ -11,7 +11,6 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class order_state : PrestaShopEntity
     {
-        public long? id { get; set; }
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
