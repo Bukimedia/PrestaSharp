@@ -11,7 +11,6 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class country : PrestaShopEntity
     {
-        public long? id { get; set; }
 		public long? id_zone { get; set; }
 		public long? id_currency { get; set; }
 		public int? call_prefix { get; set; }

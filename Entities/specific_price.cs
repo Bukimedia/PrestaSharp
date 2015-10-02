@@ -9,7 +9,6 @@ namespace Bukimedia.PrestaSharp.Entities
 	[XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
 	public class specific_price : PrestaShopEntity
 	{
-		public long? id { get; set; }
 		public long? id_shop_group { get; set; }
 		public long? id_shop { get; set; }
 		public long? id_cart { get; set; }
