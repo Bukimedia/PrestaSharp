@@ -11,7 +11,6 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class order_payment : PrestaShopEntity
     {
-        public long? id { get; set; }
 		public string order_reference { get; set; }
         public long? id_currency { get; set; }
         public decimal amount { get; set; }

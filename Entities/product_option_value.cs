@@ -10,7 +10,6 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class product_option_value : PrestaShopEntity
     {
-        public long? id { get; set; }
         public long? id_attribute_group { get; set; }
         public string color { get; set; }
         public int position { get; set; }

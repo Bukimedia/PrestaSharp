@@ -158,6 +158,7 @@
     <Compile Include="Factories\CarrierFactory.cs" />
     <Compile Include="Factories\CustomerThreadFactory.cs" />
     <Compile Include="Factories\CustomerMessageFactory.cs" />
+    <Compile Include="Factories\GenericFactory.cs" />
     <Compile Include="Factories\OrderCarrierFactory.cs" />
     <Compile Include="Factories\OrderCartRuleFactory.cs" />
     <Compile Include="Factories\OrderHistoryFactory.cs" />
