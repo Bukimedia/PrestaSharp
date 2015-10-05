@@ -11,7 +11,6 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class currency : PrestaShopEntity
     {
-        public long? id { get; set; }
         public string name { get; set; }
         public string iso_code { get; set; }
         public string iso_code_num { get; set; }
