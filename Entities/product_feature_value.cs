@@ -10,6 +10,7 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class product_feature_value : PrestaShopEntity
     {
+        public long? id { get; set; }
         public long? id_feature { get; set; }
         /// <summary>
         /// It´s a logical bool.

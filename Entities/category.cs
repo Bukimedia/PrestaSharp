@@ -11,6 +11,7 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class category : PrestaShopEntity
     {
+        public long? id { get; set; }
         public long? id_parent { get; set; }
         public long id_shop_default { get; set; }
         public long nleft { get; set; }
