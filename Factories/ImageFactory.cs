@@ -10,8 +10,8 @@ namespace Bukimedia.PrestaSharp.Factories
 {
     public class ImageFactory : RestSharpFactory
     {
-        public ImageFactory(string BaseUrl, string Account, string SecretKey, bool PerformGetAfterAdd = true)
-            : base(BaseUrl, Account, SecretKey, PerformGetAfterAdd)
+        public ImageFactory(string BaseUrl, string Account, string SecretKey)
+            : base(BaseUrl, Account, SecretKey)
         {
         }
 

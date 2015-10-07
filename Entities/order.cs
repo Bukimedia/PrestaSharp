@@ -11,6 +11,7 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class order : PrestaShopEntity
     {
+        public long? id { get; set; }
 		public long? id_address_delivery { get; set; }
 		public long? id_address_invoice { get; set; }
 		public long? id_cart { get; set; }

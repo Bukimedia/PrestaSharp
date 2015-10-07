@@ -10,6 +10,7 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class stock_available : PrestaShopEntity
     {
+        public long? id { get; set; }
         public long? id_product { get; set; }
         public long? id_product_attribute { get; set; }
         public long? id_shop { get; set; }
