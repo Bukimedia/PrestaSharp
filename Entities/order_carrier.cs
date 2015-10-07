@@ -11,6 +11,7 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class order_carrier : PrestaShopEntity
     {
+        public long? id { get; set; }
 		public long? id_order { get; set; }
         public long? id_carrier { get; set; }
         public long? id_order_invoice { get; set; }

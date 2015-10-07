@@ -11,6 +11,7 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class tax : PrestaShopEntity
     {
+        public long? id { get; set; }
         public decimal rate { get; set; }
         /// <summary>
         /// It´s a logical bool.

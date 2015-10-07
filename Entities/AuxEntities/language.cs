@@ -17,7 +17,7 @@ namespace Bukimedia.PrestaSharp.Entities.AuxEntities
     {
         [XmlAttribute]
         [DataMember]
-        public override long? id { get; set; }
+        public long id { get; set; }
 
         // Value is reserved word from RestSharp for loading the CDATA content from the XML file.
         [XmlTextAttribute]

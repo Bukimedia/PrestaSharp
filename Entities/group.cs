@@ -11,6 +11,7 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class group : PrestaShopEntity
     {
+        public long? id { get; set; }
         public decimal reduction { get; set; }
         public int price_display_method{get;set;}
         /// <summary>

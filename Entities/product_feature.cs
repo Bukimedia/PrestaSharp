@@ -10,6 +10,7 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class product_feature : PrestaShopEntity
     {
+        public long? id { get; set; }
         public int position { get; set; }
         public List<PrestaSharp.Entities.AuxEntities.language> name { get; set; }
 

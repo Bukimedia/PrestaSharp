@@ -11,6 +11,7 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class guest : PrestaShopEntity
     {
+        public long? id { get; set; }
         public long? id_customer { get; set; }
         public long? id_operating_system { get; set; }
         public long? id_web_browser { get; set; }

@@ -9,7 +9,6 @@ namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     abstract public class PrestaShopEntity
-    {
-        public virtual long? id { get; set; }
+    {        
     }
 }
