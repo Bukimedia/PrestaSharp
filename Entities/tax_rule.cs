@@ -11,6 +11,7 @@ namespace Bukimedia.PrestaSharp.Entities
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class tax_rule : PrestaShopEntity
     {
+        public long? id { get; set; }
         public long? id_tax_rules_group { get; set; }
         public long? id_state { get; set; }
         public long? id_country { get; set; }
