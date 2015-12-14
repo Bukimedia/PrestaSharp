@@ -1,4 +1,4 @@
-﻿using Bukimedia.PrestaSharp.Deserializers;
+using Bukimedia.PrestaSharp.Deserializers;
 using Bukimedia.PrestaSharp.Lib;
 using RestSharp;
 using System;
@@ -31,8 +31,8 @@ namespace Bukimedia.PrestaSharp.Factories
             var client = new RestClient();
             client.AddHandler("text/html", new PrestaSharpTextErrorDeserializer());
             client.BaseUrl = new Uri(this.BaseUrl);
-            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
+            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString); // used on every request
             if (Request.Method == Method.GET)
             {
                 client.ClearHandlers();
@@ -86,8 +86,8 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(this.BaseUrl);
-            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("Account", this.Account, ParameterType.UrlSegment); // used on every request
+            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString); // used on every request
             client.ClearHandlers();
             client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
             var response = client.Execute<T>(Request);
@@ -115,8 +115,8 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(this.BaseUrl);
-            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
+            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
             var response = client.Execute<T>(Request);
             XDocument xDcoument = XDocument.Parse(response.Content);
             var ids = (from doc in xDcoument.Descendants(RootElement)
@@ -128,8 +128,8 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(this.BaseUrl);
-            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
+            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
             var response = client.Execute(Request);
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.ServiceUnavailable
