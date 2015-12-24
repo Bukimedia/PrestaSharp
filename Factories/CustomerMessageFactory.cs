@@ -33,6 +33,14 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.Get((long)aux.id);
         }
 
+        public void AddRange(List<Entities.customer_message> CustomerMessages)
+        {
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
+            Entities.AddRange(CustomerMessages);
+            RestRequest request = this.RequestForAdd("customer_messages", Entities);
+            Execute<Entities.customer_message>(request);
+        }
+
         public void Update(Entities.customer_message CustomerMessage)
         {
             RestRequest request = this.RequestForUpdate("customer_messages", CustomerMessage.id, CustomerMessage);
