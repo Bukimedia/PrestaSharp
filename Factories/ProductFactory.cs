@@ -38,7 +38,19 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForUpdate("products", Product.id, Product);
             this.Execute<Entities.product>(request);
         }
-
+        // For Update List Of Product - Start
+        public List<Entities.product> UpdateList(List<Entities.product> Products)
+        {
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
+            foreach (Entities.product Product in Products)
+            {
+                Entities.Add(Product);
+            }
+            RestRequest request = this.RequestForUpdateList("products", Entities);
+            Console.WriteLine(request);
+            return this.Execute<List<Entities.product>>(request);
+        }
+        // For Update List Of Product - End
         public void Delete(long ProductId)
         {
             RestRequest request = this.RequestForDelete("products", ProductId);
