@@ -261,7 +261,24 @@ namespace Bukimedia.PrestaSharp.Factories
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("xmlns=\"Bukimedia/PrestaSharp/Entities/AuxEntities\"", "xmlns=\"\"");
             return request;
         }
-
+       // For Update List Of Products - start
+        protected RestRequest RequestForUpdateList(string Resource, List<Entities.PrestaShopEntity> Entities)
+        {
+            var request = new RestRequest();
+            request.Resource = Resource;
+            request.Method = Method.PUT;
+            request.RequestFormat = DataFormat.Xml;
+            request.XmlSerializer = new Serializers.PrestaSharpSerializer();
+            string serialized = "";
+            foreach (Entities.PrestaShopEntity Entity in Entities)
+            {
+                serialized += ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
+            }
+            serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
+            request.AddParameter("application/xml", serialized, ParameterType.RequestBody);
+            return request;
+        }
+        // For Update List Of Products - end
         protected RestRequest RequestForDeleteImage(string Resource, long? ResourceId, long? ImageId)
         {
             if (ResourceId == null)
