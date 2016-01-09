@@ -14,6 +14,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public long? id { get; set; }
         public long? id_parent { get; set; }
         public long id_shop_default { get; set; }
+        public long? level_depth { get; set; }
         public long nleft { get; set; }
         public long nright { get; set; }
         /// <summary>
