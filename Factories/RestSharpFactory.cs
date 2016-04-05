@@ -337,11 +337,11 @@ namespace Bukimedia.PrestaSharp.Factories
                     request.AddParameter("filter[" + Key + "]", Filter[Key]);
                 }
             }
-            if (Sort != null)
+            if (!string.IsNullOrEmpty(Sort))
             {
                 request.AddParameter("sort", Sort);
             }
-            if (Limit != null)
+            if (!string.IsNullOrEmpty(Limit))
             {
                 request.AddParameter("limit", Limit);
             }
