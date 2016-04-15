@@ -294,6 +294,9 @@ namespace Bukimedia.PrestaSharp.Deserializers
                 t = type.BaseType.GetGenericArguments()[0];
             }
 
+            if (root == null)
+                throw new Exception(string.Format("root is null for the type '{0}', you probably don't define the good the root name", type.FullName));
+
 
             var list = (IList)Activator.CreateInstance(type);
 
