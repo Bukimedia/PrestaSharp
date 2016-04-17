@@ -68,7 +68,7 @@ namespace Bukimedia.PrestaSharp.Factories
         }
 
         /// <summary>
-        /// Add a list of zones.
+        /// Add a list of warehouses.
         /// </summary>
         /// <param name="Warehouses"></param>
         /// <returns></returns>
