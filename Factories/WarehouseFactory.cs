@@ -1,4 +1,10 @@
+using RestSharp;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Factories
 {
@@ -7,6 +13,36 @@ namespace Bukimedia.PrestaSharp.Factories
         public WarehouseFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
+        }
+
+        public Entities.warehouse Get(long WarehouseId)
+        {
+            RestRequest request = this.RequestForGet("warehouses", WarehouseId, "warehouse");
+            return this.Execute<Entities.warehouse>(request);
+        }
+
+        public Entities.warehouse Add(Entities.warehouse Warehouse)
+        {
+            long? idAux = Warehouse.id;
+            Warehouse.id = null;
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
+            Entities.Add(Warehouse);
+            RestRequest request = this.RequestForAdd("warehouses", Entities);
+            Entities.warehouse aux = this.Execute<Entities.warehouse>(request);
+            Warehouse.id = idAux;
+            return this.Get((long)aux.id);
+        }
+
+        public void Update(Entities.warehouse Warehouse)
+        {
+            RestRequest request = this.RequestForUpdate("warehouses", Warehouse.id, Warehouse);
+            this.Execute<Entities.warehouse>(request);
+        }
+
+        public List<long> GetIds()
+        {
+            RestRequest request = this.RequestForGet("warehouses", null, "prestashop");
+            return this.ExecuteForGetIds<List<long>>(request, "warehouse");
         }
 
         /// <summary>
@@ -29,6 +65,23 @@ namespace Bukimedia.PrestaSharp.Factories
         public List<Entities.warehouse> GetAll()
         {
             return this.GetByFilter(null, null, null);
+        }
+
+        /// <summary>
+        /// Add a list of zones.
+        /// </summary>
+        /// <param name="Warehouses"></param>
+        /// <returns></returns>
+        public List<Entities.warehouse> AddList(List<Entities.warehouse> Warehouses)
+        {
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
+            foreach (Entities.warehouse Warehouse in Warehouses)
+            {
+                Warehouse.id = null;
+                Entities.Add(Warehouse);
+            }
+            RestRequest request = this.RequestForAdd("warehouses", Entities);
+            return this.Execute<List<Entities.warehouse>>(request);
         }
     }
 }
