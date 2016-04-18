@@ -36,6 +36,13 @@ namespace Bukimedia.PrestaSharp.Deserializers
             {
                 root = doc.Root.Element(RootElement.AsNamespaced(Namespace));
             }
+            
+            // error on webservice
+            if(root == null)
+            {
+                string message = GetErrorMessage(doc);
+                throw new Exception(message);
+            }
 
             // autodetect xml namespace
             if (!Namespace.HasValue())
@@ -56,6 +63,19 @@ namespace Bukimedia.PrestaSharp.Deserializers
             }
 
             return x;
+        }
+
+        private string GetErrorMessage(XDocument xdoc)
+        {
+            System.Text.StringBuilder message = new System.Text.StringBuilder();
+            foreach (XElement e in xdoc.Root.DescendantsAndSelf())
+            {
+                if(e.Name.LocalName == "errors")
+                { 
+                    message.Append(e.FirstNode.ToString());
+                }
+            }
+            return message.ToString();
         }
 
         private void RemoveNamespace(XDocument xdoc)
