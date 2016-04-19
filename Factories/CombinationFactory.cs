@@ -108,5 +108,27 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAdd("combinations", Entities);
             return this.Execute<List<Entities.combination>>(request);
         }
+        
+        /// <summary>
+        /// Disable all attribut 'default' for the same product and put ON this combinaison. Constraint on xx_product_attribute
+        /// </summary>
+        /// <param name="default_on">the combination to set ON</param>
+        /// <param name="list_product_combination">List of all combination for the same product then default_on</param>
+        public void SetDefaultOn(Entities.combination default_on, List<Entities.combination> list_product_combination)
+        {
+            foreach(Entities.combination c in list_product_combination)
+            {
+                if (c.id == default_on.id)
+                {
+                    default_on.default_on = 1;
+                }
+                else
+                    c.default_on = null;
+
+                // update only all product but not the default_on because the process can continue by the caller
+                this.Update(c);
+            }
+            
+        }
     }
 }
