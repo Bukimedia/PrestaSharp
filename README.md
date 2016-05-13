@@ -95,6 +95,18 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
 ```
 
+9) Get by filter by range date. This sample retrieves the orders in a date range:
+
+```
+	DateTime StartDate = new DateTime (2016, 1, 1);
+	DateTime StartDate = new DateTime (2016, 1, 31);
+	Dictionary<string, string> filter = new Dictionary<string, string>();
+    string dFrom = string.Format("{0:yyyy-MM-dd HH:mm:ss}", StartDate);
+    string dTo = string.Format("{0:yyyy-MM-dd HH:mm:ss}", EndDate);
+    filter.Add("date_add", "[" + dFrom + "," + dTo + "]");
+    List<long> PrestaSharpOrderIds = this.OrderFactory.GetIdsByFilter(filter, "id_DESC", null);
+```
+
 ##Supported resources
 - Address
 - Carriers
@@ -148,7 +160,7 @@ This program is distributed in the hope that it will be useful, but without any 
 
 Bukimedia reserves the right to mention of companies or individuals who use this software.
 
-Copyright (C) 2015 Bukimedia
+Copyright (C) 2016 Bukimedia
 - Bukimedia: https://bukimedia.com/
 - Twitter: http://twitter.com/bukimedia
 - GitHub: https://github.com/bukimedia
