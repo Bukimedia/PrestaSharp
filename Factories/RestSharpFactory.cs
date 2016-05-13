@@ -345,6 +345,8 @@ namespace Bukimedia.PrestaSharp.Factories
             {
                 request.AddParameter("limit", Limit);
             }
+            // Support for filter by date range
+            request.AddParameter("date", "1");
             return request;
         }
 

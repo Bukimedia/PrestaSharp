@@ -40,13 +40,13 @@ namespace Bukimedia.PrestaSharp.Factories
         protected void AddImage(string Resource, long? Id, string ImagePath)
         {
             RestRequest request = this.RequestForAddImage(Resource, Id, ImagePath);
-            this.Execute<Entities.image>(request);
+            this.ExecuteForImage(request);
         }
         
         protected void AddImage(string Resource, long? Id, byte[] Image)
         {
             RestRequest request = this.RequestForAddImage(Resource, Id, Image);
-            this.Execute<Entities.image>(request);
+            this.ExecuteForImage(request);
         }
 
         protected void UpdateImage(string Resource, long? ResourceId, long? ImageId, string ImagePath)
