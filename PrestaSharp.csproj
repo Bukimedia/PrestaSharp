@@ -85,6 +85,7 @@
     <Compile Include="Entities\FilterEntities\order_cart_rule.cs" />
     <Compile Include="Entities\FilterEntities\order_history.cs" />
     <Compile Include="Entities\FilterEntities\order_payment.cs" />
+    <Compile Include="Entities\FilterEntities\product_supplier.cs" />
     <Compile Include="Entities\FilterEntities\tax.cs" />
     <Compile Include="Entities\FilterEntities\tax_rule.cs" />
     <Compile Include="Entities\order_carrier.cs" />
