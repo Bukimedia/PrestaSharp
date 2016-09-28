@@ -64,6 +64,7 @@
     <Compile Include="Entities\AuxEntities\country.cs" />
     <Compile Include="Entities\AuxEntities\customer_message.cs" />
     <Compile Include="Entities\AuxEntities\shop.cs" />
+    <Compile Include="Entities\AuxEntities\specific_price_rule.cs" />
     <Compile Include="Entities\AuxEntities\specific_price.cs" />
     <Compile Include="Entities\AuxEntities\stock.cs" />
     <Compile Include="Entities\AuxEntities\supplier.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Entities\FilterEntities\order_history.cs" />
     <Compile Include="Entities\FilterEntities\order_payment.cs" />
     <Compile Include="Entities\FilterEntities\product_supplier.cs" />
+    <Compile Include="Entities\FilterEntities\specific_price_rule.cs" />
     <Compile Include="Entities\FilterEntities\tax.cs" />
     <Compile Include="Entities\FilterEntities\tax_rule.cs" />
     <Compile Include="Entities\order_carrier.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Entities\order_history.cs" />
     <Compile Include="Entities\order_payment.cs" />
     <Compile Include="Entities\product_supplier.cs" />
+    <Compile Include="Entities\specific_price_rule.cs" />
     <Compile Include="Entities\state.cs" />
     <Compile Include="Entities\FilterEntities\zone.cs" />
     <Compile Include="Entities\tax.cs" />
@@ -170,6 +173,7 @@
     <Compile Include="Factories\OrderHistoryFactory.cs" />
     <Compile Include="Factories\OrderPaymentFactory.cs" />
     <Compile Include="Factories\ProductSupplierFactory.cs" />
+    <Compile Include="Factories\SpecificPriceRuleFactory.cs" />
     <Compile Include="Factories\StateFactory.cs" />
     <Compile Include="Factories\TaxFactory.cs" />
     <Compile Include="Factories\TaxRuleFactory.cs" />
