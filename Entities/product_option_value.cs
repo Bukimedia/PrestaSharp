@@ -13,7 +13,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public long? id { get; set; }
         public long? id_attribute_group { get; set; }
         public string color { get; set; }
-        public int position { get; set; }
+        public int? position { get; set; }
         public List<PrestaSharp.Entities.AuxEntities.language> name { get; set; }
 
         public product_option_value()
