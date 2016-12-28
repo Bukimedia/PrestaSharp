@@ -117,6 +117,7 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 - Customers
 - Customer Messages
 - Customer Threads
+- Employee
 - Guests
 - Groups
 - Images
