@@ -27,18 +27,16 @@ namespace Bukimedia.PrestaSharp.Entities
         public int optin { get; set; }
         public int id_profile { get; set; }
         public string bo_color { get; set; }
-
-        //<bo_color></bo_color>
-        //<default_tab><![CDATA[1]]></default_tab>
-        //<bo_theme><![CDATA[default]]></bo_theme>
-        //<bo_css><![CDATA[admin-theme.css]]></bo_css>
-        //<bo_width><![CDATA[0]]></bo_width>
-        //<bo_menu><![CDATA[1]]></bo_menu>
-        //<stats_compare_option><![CDATA[1]]></stats_compare_option>
-        //<preselect_date_range></preselect_date_range>
-        //<id_last_order><![CDATA[0]]></id_last_order>
-        //<id_last_customer_message><![CDATA[0]]></id_last_customer_message>
-        //<id_last_customer><![CDATA[0]]></id_last_customer>
+        public int default_tab { get; set; }
+        public string bo_theme { get; set; }
+        public string bo_css { get; set; }
+        public int bo_width { get; set; }
+        public int bo_menu { get; set; }
+        public int stats_compare_option { get; set; }
+        public string preselect_date_range { get; set; }
+        public int id_last_order { get; set; }
+        public int id_last_customer_message { get; set; }
+        public int id_last_customer { get; set; }
 
         public employee()
         {
