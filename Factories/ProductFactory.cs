@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Bukimedia.PrestaSharp.Entities;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,17 @@ using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Factories
 {
-    public class ProductFactory : RestSharpFactory
+    public class ProductFactory : GenericFactory<product>
     {
+
         public ProductFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
-        {            
+        {
+            this.singularEntityName = "product";
+            this.pluralEntityName = "products";
         }
 
-        public Entities.product Get(long ProductId)
+        /*public Entities.product Get(long ProductId)
         {
             RestRequest request = this.RequestForGet("products", ProductId, "product");
             return this.Execute<Entities.product>(request);
@@ -86,6 +90,28 @@ namespace Bukimedia.PrestaSharp.Factories
         /// </summary>
         /// <param name="Filter">Example: key:name value:Apple</param>
         /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
+        /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param> 
+        /// <param name="Display">Fields to display Example: ["id", "reference"]</param>
+        /// <returns></returns>
+        public List<Entities.product> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit, List<string> Display)
+        {
+            string disp = "full";
+            if (Display.Count() >= 1)
+            {
+                disp = "[";
+                Display.ForEach(d => { disp += d + ","; });
+                disp = disp.Remove(disp.Length - 1); ;
+                disp += "]";
+            }
+            RestRequest request = this.RequestForFilter("products", disp, Filter, Sort, Limit, "products");
+            return this.ExecuteForFilter<List<Entities.product>>(request);
+        }
+
+        /// <summary>
+        /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
+        /// </summary>
+        /// <param name="Filter">Example: key:name value:Apple</param>
+        /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
         /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
         /// <returns></returns>
         public List<long> GetIdsByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
@@ -119,6 +145,6 @@ namespace Bukimedia.PrestaSharp.Factories
             }
             RestRequest request = this.RequestForAdd("products", Entities);
             return this.Execute<List<Entities.product>>(request);
-        }
+        }*/
     }
 }
