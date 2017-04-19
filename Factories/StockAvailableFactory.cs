@@ -26,7 +26,17 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForUpdate("stock_availables", StockAvailable.id, StockAvailable);
             this.Execute<Entities.stock_available>(request);
         }
-
+        public List<Entities.stock_available> UpdateList(List<Entities.stock_available> StockAvailables)
+        {
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
+            foreach (Entities.stock_available StockAvailable in StockAvailables)
+            {
+                Entities.Add(StockAvailable);
+            }
+            RestRequest request = this.RequestForUpdateList("stock_availables", Entities);
+            Console.WriteLine(request);
+            return this.Execute<List<Entities.stock_available>>(request);
+        }
         public void Delete(long StockAvailableId)
         {
             RestRequest request = this.RequestForDelete("stock_availables", StockAvailableId);
