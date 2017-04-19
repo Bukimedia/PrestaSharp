@@ -10,6 +10,7 @@ using System.Xml;
 using System.ComponentModel;
 using RestSharp.Deserializers;
 using RestSharp;
+using ReflectionBridge.Extensions;
 
 namespace Bukimedia.PrestaSharp.Deserializers
 {
@@ -82,7 +83,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
             {
                 var type = prop.PropertyType;
 
-                if (!type.IsPublic || !prop.CanWrite)
+                if (!type.IsPublic() || !prop.CanWrite)
                     continue;
 
                 var name = prop.Name.AsNamespaced(Namespace);
@@ -91,9 +92,9 @@ namespace Bukimedia.PrestaSharp.Deserializers
                 if (value == null)
                 {
                     // special case for inline list items
-                    if (type.IsGenericType)
+                    if (type.IsGenericType())
                     {
-                        var genericType = type.GetGenericArguments()[0];
+                        var genericType = System.Reflection.TypeExtensions.GetGenericArguments(type)[0];
                         var first = GetElementByName(root, genericType.Name);
                         var list = (IList)Activator.CreateInstance(type);
 
@@ -109,7 +110,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
                 }
 
                 // check for nullable and extract underlying type
-                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+                if (type.IsGenericType() && type.GetGenericTypeDefinition() == typeof(Nullable<>))
                 {
                     // if the value is empty, set the property to null...
                     if (value == null || String.IsNullOrEmpty(value.ToString()))
@@ -117,7 +118,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
                         prop.SetValue(x, null, null);
                         continue;
                     }
-                    type = type.GetGenericArguments()[0];
+                    type = System.Reflection.TypeExtensions.GetGenericArguments(type)[0];
                 }
 
                 if (type == typeof(bool))
@@ -125,11 +126,11 @@ namespace Bukimedia.PrestaSharp.Deserializers
                     var toConvert = value.ToString().ToLowerInvariant();
                     prop.SetValue(x, XmlConvert.ToBoolean(toConvert), null);
                 }
-                else if (type.IsPrimitive)
+                else if (type.IsPrimitive())
                 {
                     prop.SetValue(x, value.ChangeType(type, Culture), null);
                 }
-                else if (type.IsEnum)
+                else if (type.IsEnum())
                 {
                     var converted = type.FindEnumValue(value.ToString(), Culture);
                     prop.SetValue(x, converted, null);
@@ -207,9 +208,9 @@ namespace Bukimedia.PrestaSharp.Deserializers
                     var timeSpan = XmlConvert.ToTimeSpan(value.ToString());
                     prop.SetValue(x, timeSpan, null);
                 }
-                else if (type.IsGenericType)
+                else if (type.IsGenericType())
                 {
-                    var t = type.GetGenericArguments()[0];
+                    var t = System.Reflection.TypeExtensions.GetGenericArguments(type)[0];
                     var list = (IList)Activator.CreateInstance(type);
 
                     var container = GetElementByName(root, prop.Name.AsNamespaced(Namespace));
@@ -285,13 +286,13 @@ namespace Bukimedia.PrestaSharp.Deserializers
         {
             Type t;
 
-            if (type.IsGenericType)
+            if (type.IsGenericType())
             {
-                t = type.GetGenericArguments()[0];
+                t = TypeExtensions.GetGenericArguments(type)[0];
             }
             else
             {
-                t = type.BaseType.GetGenericArguments()[0];
+                t = TypeExtensions.GetGenericArguments(type.BaseType())[0];
             }
 
 
@@ -329,7 +330,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
 
             // get properties too, not just list items
             // only if this isn't a generic type
-            if (!type.IsGenericType)
+            if (!type.IsGenericType())
             {
                 Map(list, root.Element(propName.AsNamespaced(Namespace)) ?? root); // when using RootElement, the heirarchy is different
             }
@@ -344,7 +345,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
             {
                 item = element.Value;
             }
-            else if (t.IsPrimitive)
+            else if (t.IsPrimitive())
             {
                 item = element.Value.ChangeType(t, Culture);
             }

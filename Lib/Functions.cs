@@ -551,7 +551,7 @@ namespace Bukimedia.PrestaSharp.Lib
             if (InputString != null)
             {
                 OutputString = InputString;
-                byte[] bytes = Encoding.Default.GetBytes(OutputString);
+                byte[] bytes = Encoding.UTF8.GetBytes(OutputString);
                 OutputString = Encoding.UTF8.GetString(bytes);
                 OutputString = OutputString.Replace("?", "");
             }

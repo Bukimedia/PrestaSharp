@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bukimedia.PrestaSharp
 {
-    public class PrestaSharpException : ApplicationException
+    public class PrestaSharpException : Exception
     {
         public HttpStatusCode ResponseHttpStatusCode { get; set; }
         public string ResponseContent { get; set; }
