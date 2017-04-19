@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using RestSharp.Extensions;
 using System.Collections;
+using ReflectionBridge.Extensions;
+using System.Reflection;
 
 namespace Bukimedia.PrestaSharp.Serializers
 {
@@ -139,7 +141,7 @@ namespace Bukimedia.PrestaSharp.Serializers
                 var nsName = name.AsNamespaced(Namespace);
                 var element = new XElement(nsName);
 
-                if (propType.IsPrimitive || propType.IsValueType || propType == typeof(string))
+                if (propType.IsPrimitive() || propType.IsValueType() || propType == typeof(string))
                 {
                     if (useAttribute)
                     {

@@ -188,7 +188,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             if (Id == null)
             {
-                throw new ApplicationException("The Id field cannot be null.");
+                throw new Exception("The Id field cannot be null.");
             }
             var request = new RestRequest();
             request.Resource = "/images/" + Resource + "/" + Id;
@@ -209,7 +209,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             if (Id == null)
             {
-                throw new ApplicationException("The Id field cannot be null.");
+                throw new Exception("The Id field cannot be null.");
             }
             var request = new RestRequest();
             request.Resource = "/images/" + Resource + "/" + Id;
@@ -243,7 +243,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             if (Id == null)
             {
-                throw new ApplicationException("Id is required to update something.");
+                throw new Exception("Id is required to update something.");
             }
             var request = new RestRequest();
             request.RootElement = "prestashop";
@@ -283,7 +283,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             if (ResourceId == null)
             {
-                throw new ApplicationException("Id is required to delete something.");
+                throw new Exception("Id is required to delete something.");
             }
             var request = new RestRequest();
             request.RootElement = "prestashop";
@@ -301,7 +301,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             if (Id == null)
             {
-                throw new ApplicationException("Id is required to delete something.");
+                throw new Exception("Id is required to delete something.");
             }
             var request = new RestRequest();
             request.RootElement = "prestashop";
@@ -373,7 +373,7 @@ namespace Bukimedia.PrestaSharp.Factories
             FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
             byte[] buffer = new byte[fileStream.Length];
             fileStream.Read(buffer, 0, (int)fileStream.Length);
-            fileStream.Close();
+            fileStream.Dispose();
             return buffer;
         }
     }
