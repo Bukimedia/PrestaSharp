@@ -25,10 +25,19 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             long? idAux = OrderCartRule.id; OrderCartRule.id = null;
             List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
-            Entities.Add(OrderCartRule); RestRequest request = this.RequestForAdd("order_discounts", Entities);
+            Entities.Add(OrderCartRule);
+            RestRequest request = this.RequestForAdd("order_discounts", Entities);
             Entities.order_cart_rule aux = this.Execute<Entities.order_cart_rule>(request);
             OrderCartRule.id = idAux;
             return this.Get((long)aux.id);
+        }
+
+        public void AddRange(List<Entities.order_cart_rule> OrderCartRules)
+        {
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
+            Entities.AddRange(OrderCartRules);
+            RestRequest request = this.RequestForAdd("order_discounts", Entities);
+            Execute<Entities.order_cart_rule>(request);
         }
 
         public void Update(Entities.order_cart_rule OrderCartRule)

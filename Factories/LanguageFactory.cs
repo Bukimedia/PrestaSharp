@@ -32,7 +32,15 @@ namespace Bukimedia.PrestaSharp.Factories
             Language.id = idAux;
             return this.Get((long)aux.id);
         }
-        
+
+        public void AddRange(List<Entities.language> Languages)
+        {
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
+            Entities.AddRange(Languages);
+            RestRequest request = this.RequestForAdd("languages", Entities);
+            Execute<Entities.language>(request);
+        }
+
         public void Update(Entities.language Language)
         {
             RestRequest request = this.RequestForUpdate("languages", Language.id, Language);

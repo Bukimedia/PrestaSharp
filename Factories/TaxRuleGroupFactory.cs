@@ -33,6 +33,14 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.Get((long)aux.id);
         }
 
+        public void AddRange(List<Entities.tax_rule_group> TaxRuleGroups)
+        {
+            List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
+            Entities.AddRange(TaxRuleGroups);
+            RestRequest request = this.RequestForAdd("tax_rule_groups", Entities);
+            Execute<Entities.tax_rule_group>(request);
+        }
+
         public void Update(Entities.tax_rule_group TaxRuleGroup)
         {
             RestRequest request = this.RequestForUpdate("tax_rule_groups", TaxRuleGroup.id, TaxRuleGroup);
