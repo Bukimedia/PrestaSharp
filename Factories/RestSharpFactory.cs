@@ -159,6 +159,14 @@ namespace Bukimedia.PrestaSharp.Factories
             return request;
         }
 
+        protected RestRequest RequestForGetType(string Resource, string Id, string RootElement)
+        {
+            var request = new RestRequest();
+            request.Resource = Resource + "/" + Id;
+            request.RootElement = RootElement;
+            return request;
+        }
+
         protected RestRequest RequestForAdd(string Resource, List<Entities.PrestaShopEntity> Entities)
         {
             var request = new RestRequest();

@@ -92,6 +92,7 @@
     <Compile Include="Entities\FilterEntities\tax.cs" />
     <Compile Include="Entities\FilterEntities\tax_rule.cs" />
     <Compile Include="Entities\FilterEntities\warehouse_product_location.cs" />
+    <Compile Include="Entities\imagetype.cs" />
     <Compile Include="Entities\order_carrier.cs" />
     <Compile Include="Entities\FilterEntities\state.cs" />
     <Compile Include="Entities\order_cart_rule.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Factories\ManufacturerFactory.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Factories\RestSharpFactory.cs" />
+    <Compile Include="Helpers\CompareDeclination.cs" />
     <Compile Include="Helpers\CompareHelper.cs" />
     <Compile Include="Helpers\LanguageHelper.cs" />
     <Compile Include="Lib\Functions.cs" />
