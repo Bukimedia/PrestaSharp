@@ -101,6 +101,11 @@ namespace Bukimedia.PrestaSharp.Factories
             this.UpdateImage("manufacturers", ManufacturerId, null, ManufacturerImagePath);
         }
 
+        public void UpdateManufacturerImage(long ManufacturerId, byte[] ManufacturerImage)
+        {
+            this.UpdateImage("manufacturers", ManufacturerId, null, ManufacturerImage);
+        }
+
         public void DeleteManufacturerImage(long ManufacturerId)
         {
             this.DeleteImage("manufacturers", ManufacturerId, null);
