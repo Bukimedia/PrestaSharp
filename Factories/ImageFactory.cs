@@ -22,6 +22,12 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.Execute<List<Entities.image>>(request);
         }
 
+        protected List<Entities.imagetype> GetAllImageTypes(string Resource)
+        {
+            RestRequest request = this.RequestForFilter("images/" + Resource, "full", null, null, null, "image_types");
+            return this.Execute<List<Entities.imagetype>>(request);
+        }
+
         protected List<Entities.FilterEntities.declination> GetImagesByInstance(string Resource, long Id)
         {
             RestRequest request = this.RequestForFilter("images/" + Resource + "/" + Id, "full", null, null, null, "image");
@@ -55,6 +61,12 @@ namespace Bukimedia.PrestaSharp.Factories
             this.AddImage(Resource, ResourceId, ImagePath);
         }
 
+        protected void UpdateImage(string Resource, long? ResourceId, long? ImageId, byte[] Image)
+        {
+            this.DeleteImage(Resource, ResourceId, ImageId);
+            this.AddImage(Resource, ResourceId, Image);
+        }
+
         protected void DeleteImage(string Resource, long? ResourceId, long? ImageId)
         {
             RestRequest request = this.RequestForDeleteImage(Resource, ResourceId, ImageId);
@@ -68,6 +80,10 @@ namespace Bukimedia.PrestaSharp.Factories
         public List<Entities.image> GetAllManufacturerImages()
         {
             return this.GetAllImages("manufacturers");
+        }
+        public List<Entities.imagetype> GetAllManufacturerImageTypes()
+        {
+            return this.GetAllImageTypes("manufacturers");
         }
 
         public void AddManufacturerImage(long ManufacturerId, string ManufacturerImagePath)
@@ -83,6 +99,11 @@ namespace Bukimedia.PrestaSharp.Factories
         public void UpdateManufacturerImage(long ManufacturerId, string ManufacturerImagePath)
         {
             this.UpdateImage("manufacturers", ManufacturerId, null, ManufacturerImagePath);
+        }
+
+        public void UpdateManufacturerImage(long ManufacturerId, byte[] ManufacturerImage)
+        {
+            this.UpdateImage("manufacturers", ManufacturerId, null, ManufacturerImage);
         }
 
         public void DeleteManufacturerImage(long ManufacturerId)
@@ -105,24 +126,86 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.GetAllImages("products");
         }
 
+        public List<Entities.imagetype> GetAllProductImageTypes()
+        {
+            return this.GetAllImageTypes("products");
+        }
+
         public List<Entities.FilterEntities.declination> GetProductImages(long ProductId)
         {
             return this.GetImagesByInstance("products", ProductId);
         }
 
-        public void AddProductImage(long ProductId, string ProductImagePath)
+        public long AddProductImage(long ProductId, string ProductImagePath)
         {
+            long r = 0;
+            List<Entities.FilterEntities.declination> dif, pre, post;
+            try
+            {
+                pre = this.GetProductImages(ProductId);
+            } catch(Exception e)
+            {
+                // No images...
+                pre = new List<Entities.FilterEntities.declination>();
+            }
+
             this.AddImage("products", ProductId, ProductImagePath);
+
+            try
+            {
+                post = this.GetProductImages(ProductId);
+            }
+            catch (Exception e)
+            {
+                // No images...This should not happen. Throw exception from here for better debug.
+                throw e;
+            }
+
+            dif = post.Except(pre, new Helpers.CompareDeclination()).ToList();
+            if (dif.Count > 0) r = dif[0].id;
+            
+            return r;
         }
         
-        public void AddProductImage(long ProductId, byte[] ProductImage)
+        public long AddProductImage(long ProductId, byte[] ProductImage)
         {
+            long r = 0;
+            List<Entities.FilterEntities.declination> dif, pre, post;
+            try
+            {
+                pre = this.GetProductImages(ProductId);
+            }
+            catch (Exception e)
+            {
+                // No images...
+                pre = new List<Entities.FilterEntities.declination>();
+            }
+
             this.AddImage("products", ProductId, ProductImage);
+
+            try
+            {
+                post = this.GetProductImages(ProductId);
+            }
+            catch (Exception e)
+            {
+                // No images...This should not happen. Throw exception from here for better debug.
+                throw e;
+            }
+
+            dif = post.Except(pre, new Helpers.CompareDeclination()).ToList();
+            if (dif.Count > 0) r = dif[0].id;
+            return r;
         }
 
         public void UpdateProductImage(long ProductId, long ImageId, string ProductImagePath)
         {
             this.UpdateImage("products", ProductId, ImageId, ProductImagePath);
+        }
+
+        public void UpdateProductImage(long ProductId, long ImageId, byte[] ProductImage)
+        {
+            this.UpdateImage("products", ProductId, ImageId, ProductImage);
         }
 
         public void DeleteProductImage(long ProductId,long ImageId)
@@ -145,6 +228,11 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.GetAllImages("categories");
         }
 
+        public List<Entities.imagetype> GetAllCategoryImageTypes()
+        {
+            return this.GetAllImageTypes("categories");
+        }
+
         public void AddCategoryImage(long? CategoryId, string CategoryImagePath)
         {
             this.AddImage("categories", CategoryId, CategoryImagePath);
@@ -160,6 +248,11 @@ namespace Bukimedia.PrestaSharp.Factories
             this.UpdateImage("categories", CategoryId, null, CategoryImagePath);
         }
 
+        public void UpdateCategoryImage(long CategoryId, byte[] CategoryImage)
+        {
+            this.UpdateImage("categories", CategoryId, null, CategoryImage);
+        }
+
         public void DeleteCategoryImage(long CategoryID)
         {
             this.DeleteImage("categories", CategoryID, null);
@@ -168,6 +261,12 @@ namespace Bukimedia.PrestaSharp.Factories
         public byte[] GetCategoryImage(long CategoryId, long ImageId)
         {
             RestRequest request = this.RequestForGet("images/categories/" + CategoryId, ImageId, "");
+            return this.ExecuteForImage(request);
+        }
+
+        public byte[] GetCategoryImage(long CategoryId, string TypeName)
+        {
+            RestRequest request = this.RequestForGetType("images/categories/" + CategoryId, TypeName, "");
             return this.ExecuteForImage(request);
         }
 
