@@ -84,15 +84,19 @@
     <Compile Include="Entities\FilterEntities\customer_message.cs" />
     <Compile Include="Entities\FilterEntities\order_carrier.cs" />
     <Compile Include="Entities\FilterEntities\order_cart_rule.cs" />
+    <Compile Include="Entities\FilterEntities\order_detail.cs" />
     <Compile Include="Entities\FilterEntities\order_history.cs" />
     <Compile Include="Entities\FilterEntities\order_payment.cs" />
     <Compile Include="Entities\FilterEntities\product_supplier.cs" />
     <Compile Include="Entities\FilterEntities\specific_price_rule.cs" />
     <Compile Include="Entities\FilterEntities\tax.cs" />
     <Compile Include="Entities\FilterEntities\tax_rule.cs" />
+    <Compile Include="Entities\FilterEntities\warehouse_product_location.cs" />
+    <Compile Include="Entities\imagetype.cs" />
     <Compile Include="Entities\order_carrier.cs" />
     <Compile Include="Entities\FilterEntities\state.cs" />
     <Compile Include="Entities\order_cart_rule.cs" />
+    <Compile Include="Entities\order_detail.cs" />
     <Compile Include="Entities\order_history.cs" />
     <Compile Include="Entities\order_payment.cs" />
     <Compile Include="Entities\PrestaShopFactoryEntity.cs" />
@@ -103,6 +107,7 @@
     <Compile Include="Entities\tax.cs" />
     <Compile Include="Entities\tax_rule.cs" />
     <Compile Include="Entities\warehouse.cs" />
+    <Compile Include="Entities\warehouse_product_location.cs" />
     <Compile Include="Entities\zone.cs" />
     <Compile Include="Entities\FilterEntities\guest.cs" />
     <Compile Include="Entities\guest.cs" />
@@ -172,6 +177,7 @@
     <Compile Include="Factories\GenericFactory.cs" />
     <Compile Include="Factories\OrderCarrierFactory.cs" />
     <Compile Include="Factories\OrderCartRuleFactory.cs" />
+    <Compile Include="Factories\OrderDetailFactory.cs" />
     <Compile Include="Factories\OrderHistoryFactory.cs" />
     <Compile Include="Factories\OrderPaymentFactory.cs" />
     <Compile Include="Factories\ProductSupplierFactory.cs" />
@@ -180,6 +186,7 @@
     <Compile Include="Factories\TaxFactory.cs" />
     <Compile Include="Factories\TaxRuleFactory.cs" />
     <Compile Include="Factories\WarehouseFactory.cs" />
+    <Compile Include="Factories\WarehouseProductLocationFactory.cs" />
     <Compile Include="Factories\ZoneFactory.cs" />
     <Compile Include="Factories\GuestFactory.cs" />
     <Compile Include="Factories\TaxRuleGroupFactory.cs" />
@@ -203,6 +210,7 @@
     <Compile Include="Factories\ManufacturerFactory.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Factories\RestSharpFactory.cs" />
+    <Compile Include="Helpers\CompareDeclination.cs" />
     <Compile Include="Helpers\CompareHelper.cs" />
     <Compile Include="Helpers\LanguageHelper.cs" />
     <Compile Include="Lib\Functions.cs" />

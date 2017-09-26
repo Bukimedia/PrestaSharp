@@ -79,7 +79,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             return this.GetByFilter(null, null, null);
         }
-
+       
         /// <summary>
         /// Add a list of stock_vailables.
         /// </summary>
@@ -87,6 +87,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// <returns></returns>
         public List<Entities.stock_available> AddList(List<Entities.stock_available> StockAvailables)
         {
+            // It does not work in 1.7.2
             List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (Entities.stock_available StockAvailable in StockAvailables)
             {

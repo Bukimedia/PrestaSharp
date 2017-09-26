@@ -159,6 +159,14 @@ namespace Bukimedia.PrestaSharp.Factories
             return request;
         }
 
+        protected RestRequest RequestForGetType(string Resource, string Id, string RootElement)
+        {
+            var request = new RestRequest();
+            request.Resource = Resource + "/" + Id;
+            request.RootElement = RootElement;
+            return request;
+        }
+
         protected RestRequest RequestForAdd(string Resource, List<Entities.PrestaShopEntity> Entities)
         {
             var request = new RestRequest();
@@ -257,8 +265,8 @@ namespace Bukimedia.PrestaSharp.Factories
             request.Parameters[1].Value = Functions.ReplaceFirstOccurrence(request.Parameters[1].Value.ToString(), "<" + PrestashopEntity.GetType().Name + ">", "<prestashop>\n<" + PrestashopEntity.GetType().Name + ">");
             request.Parameters[1].Value = Functions.ReplaceLastOccurrence(request.Parameters[1].Value.ToString(), "</" + PrestashopEntity.GetType().Name + ">", "</" + PrestashopEntity.GetType().Name + ">\n</prestashop>");
             //issue #36 fixed
-            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("xmlns=\"Bukimedia/PrestaSharp/Entities\"", "xmlns=\"\"");
-            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("xmlns=\"Bukimedia/PrestaSharp/Entities/AuxEntities\"", "xmlns=\"\"");
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace(" xmlns=\"Bukimedia/PrestaSharp/Entities\"", "");// "xmlns=\"\"");
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace(" xmlns=\"Bukimedia/PrestaSharp/Entities/AuxEntities\"", "");// "xmlns=\"\"");
             return request;
         }
        // For Update List Of Products - start
