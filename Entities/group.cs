@@ -9,7 +9,7 @@ using Bukimedia.PrestaSharp.Lib;
 namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-    public class group : PrestaShopEntity
+    public class group : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
         public decimal reduction { get; set; }

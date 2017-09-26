@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-    public class customer_message : PrestaShopEntity
+    public class customer_message : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
 		public long? id_employee { get; set; }

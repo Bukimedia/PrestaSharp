@@ -9,7 +9,7 @@ using Bukimedia.PrestaSharp.Lib;
 namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-    public class product : PrestaShopEntity
+    public class product : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; } 
         public long? id_manufacturer { get; set; }

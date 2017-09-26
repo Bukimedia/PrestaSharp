@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-    public class tax_rule : PrestaShopEntity
+    public class tax_rule : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
         public long? id_tax_rules_group { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
-    public class warehouse_product_location : PrestaShopEntity
+    public class warehouse_product_location : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
         public long? id_product { get; set; }

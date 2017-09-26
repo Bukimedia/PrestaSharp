@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-    public class stock_available : PrestaShopEntity
+    public class stock_available : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
         public long? id_product { get; set; }
