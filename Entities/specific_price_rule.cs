@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 namespace Bukimedia.PrestaSharp.Entities
 {
 	[XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-	public class specific_price_rule : PrestaShopEntity
+	public class specific_price_rule : PrestaShopEntity, IPrestaShopFactoryEntity
 	{
 		public long? id { get; set; }
 		public long? id_shop { get; set; }

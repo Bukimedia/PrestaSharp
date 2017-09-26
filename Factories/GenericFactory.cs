@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Bukimedia.PrestaSharp.Factories
 {
-    public class GenericFactory<T> : RestSharpFactory where T : PrestaShopEntity, IPrestaShopFactoryEntity, new()
+    public abstract class GenericFactory<T> : RestSharpFactory where T : PrestaShopEntity, IPrestaShopFactoryEntity, new()
     {
-        protected string singularEntityName;
-        protected string pluralEntityName;
+        protected abstract string singularEntityName { get; }
+        protected abstract string pluralEntityName { get; }
 
         public GenericFactory(string BaseUrl, string Account, string Password) : base(BaseUrl, Account, Password)
         {
@@ -50,7 +50,7 @@ namespace Bukimedia.PrestaSharp.Factories
             }
             
             RestRequest request = this.RequestForUpdateList(singularEntityName, EntitiesToAdd);
-            //Console.WriteLine(request);
+
             return this.Execute<List<T>>(request);
         }
 
