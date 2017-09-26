@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-    public class order_history : PrestaShopEntity
+    public class order_history : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
         public long? id_order_state { get; set; }

@@ -9,7 +9,7 @@ namespace Bukimedia.PrestaSharp.Entities
 {
     [Serializable]
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-    public class combination : PrestaShopEntity
+    public class combination : PrestaShopEntity, IPrestaShopFactoryEntity
     {
 
         public long? id { get; set; }
