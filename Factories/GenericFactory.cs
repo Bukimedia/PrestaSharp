@@ -117,7 +117,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             RestRequest request = this.RequestForFilter(pluralEntityName, "[id]", Filter, Sort, Limit, pluralEntityName);
             List<T> aux = this.Execute<List<T>>(request);
-            return (List<long>)(from t in aux select t.id);
+            return (from t in aux select t.id).ToList();
         }
 
         /// <summary>
