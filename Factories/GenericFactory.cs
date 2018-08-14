@@ -49,7 +49,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 EntitiesToAdd.Add(Entity);
             }
             
-            RestRequest request = this.RequestForUpdateList(singularEntityName, EntitiesToAdd);
+            RestRequest request = this.RequestForUpdateList(pluralEntityName, EntitiesToAdd);
 
             return this.Execute<List<T>>(request);
         }
@@ -140,7 +140,7 @@ namespace Bukimedia.PrestaSharp.Factories
             foreach (T Entity in Entities)
             {
                 Entity.id = null;
-                Entities.Add(Entity);
+                EntitiesToAdd.Add(Entity);
             }
             RestRequest request = this.RequestForAdd(pluralEntityName, EntitiesToAdd);
             return this.Execute<List<T>>(request);
