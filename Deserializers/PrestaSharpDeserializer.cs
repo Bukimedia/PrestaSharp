@@ -10,6 +10,7 @@ using System.Xml;
 using System.ComponentModel;
 using RestSharp.Deserializers;
 using RestSharp;
+using System.Text;
 
 namespace Bukimedia.PrestaSharp.Deserializers
 {
@@ -29,9 +30,12 @@ namespace Bukimedia.PrestaSharp.Deserializers
         {
             if (string.IsNullOrEmpty(response.Content))
                 return default(T);
-            byte[] ba = System.Text.Encoding.Default.GetBytes(response.Content);
-            var hexString = BitConverter.ToString(ba);
+
+            string byteOrderMarkUtf8 = Encoding.UTF8.GetString(Encoding.UTF8.GetPreamble());
+            if (response.Content.StartsWith(byteOrderMarkUtf8))
+                response.Content = response.Content.Remove(0, byteOrderMarkUtf8.Length);
             var doc = XDocument.Parse(response.Content);
+         
             var root = doc.Root;
             if (RootElement.HasValue() && doc.Root != null)
             {
