@@ -29,7 +29,8 @@ namespace Bukimedia.PrestaSharp.Deserializers
         {
             if (string.IsNullOrEmpty(response.Content))
                 return default(T);
-
+            byte[] ba = System.Text.Encoding.Default.GetBytes(response.Content);
+            var hexString = BitConverter.ToString(ba);
             var doc = XDocument.Parse(response.Content);
             var root = doc.Root;
             if (RootElement.HasValue() && doc.Root != null)
