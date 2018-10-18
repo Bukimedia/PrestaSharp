@@ -28,9 +28,6 @@ namespace Bukimedia.PrestaSharp.Factories
 
         protected T Execute<T>(RestRequest Request) where T : new()
         {
-            ServicePointManager.Expect100Continue = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            ServicePointManager.DefaultConnectionLimit = 9999;
             var client = new RestClient();
             client.AddHandler("text/html", new PrestaSharpTextErrorDeserializer());
             client.BaseUrl = new Uri(this.BaseUrl);
