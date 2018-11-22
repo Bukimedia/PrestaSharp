@@ -15,47 +15,44 @@ namespace Bukimedia.PrestaSharp.Factories
 {
     public abstract class RestSharpFactory
     {
-        protected string BaseUrl{get;set;}
-        protected string Account{get;set;}
-        protected string Password{get;set;}
+        protected string BaseUrl { get; set; }
+        protected string Account { get; set; }
+        protected string Password { get; set; }
 
         public RestSharpFactory(string BaseUrl, string Account, string Password)
         {
             this.BaseUrl = BaseUrl;
             this.Account = Account;
             this.Password = Password;
+            // If you set one time the credentials in a Factory<T> then is 
+            // not necessary to declare again because it will be cached in the
+            // static class Credentials
+            Credentials.BaseUrl = this.BaseUrl;
+            Credentials.Account = this.Account;
+            Credentials.Password = this.Password;
         }
 
-        protected T Execute<T>(RestRequest Request) where T : new()
+        public RestSharpFactory()
+        {
+            this.BaseUrl = Credentials.BaseUrl;
+            this.Account = Credentials.Account;
+            this.Password = Credentials.Password;
+        }
+
+        protected T Execute<T>(RestRequest request) where T : new()
         {
             var client = new RestClient();
             client.AddHandler("text/html", new PrestaSharpTextErrorDeserializer());
             client.BaseUrl = new Uri(this.BaseUrl);
             //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString); // used on every request
-            if (Request.Method == Method.GET)
+            request.AddParameter("ws_key", this.Account, ParameterType.QueryString); // used on every request
+            if (request.Method == Method.GET)
             {
                 client.ClearHandlers();
                 client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
             }
-            var response = client.Execute<T>(Request);
-            if (response.StatusCode == HttpStatusCode.InternalServerError
-                || response.StatusCode == HttpStatusCode.ServiceUnavailable
-                || response.StatusCode == HttpStatusCode.BadRequest
-                || response.StatusCode == HttpStatusCode.Unauthorized
-                || response.StatusCode == HttpStatusCode.MethodNotAllowed
-                || response.StatusCode == HttpStatusCode.Forbidden
-                || response.StatusCode == HttpStatusCode.NotFound
-                || response.StatusCode == 0)
-            {
-                string RequestParameters = Environment.NewLine;
-                foreach (RestSharp.Parameter Parameter in Request.Parameters)
-                {
-                    RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
-                }
-                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
-                throw Exception;
-            }
+            var response = client.Execute<T>(request);
+            this.CheckResponse(response, request);
             return response.Data;
         }
 
@@ -82,73 +79,71 @@ namespace Bukimedia.PrestaSharp.Factories
             }
         }
 
-        protected T ExecuteForFilter<T>(RestRequest Request) where T : new()
+        protected T ExecuteForFilter<T>(RestRequest request) where T : new()
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(this.BaseUrl);
             //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString); // used on every request
+            request.AddParameter("ws_key", this.Account, ParameterType.QueryString); // used on every request
             client.ClearHandlers();
             client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
-            var response = client.Execute<T>(Request);
-            if (response.StatusCode == HttpStatusCode.InternalServerError
-                || response.StatusCode == HttpStatusCode.ServiceUnavailable
-                || response.StatusCode == HttpStatusCode.BadRequest
-                || response.StatusCode == HttpStatusCode.Unauthorized
-                || response.StatusCode == HttpStatusCode.MethodNotAllowed
-                || response.StatusCode == HttpStatusCode.Forbidden
-                || response.StatusCode == HttpStatusCode.NotFound
-                || response.StatusCode == 0)
-            {
-                string RequestParameters = Environment.NewLine;
-                foreach (RestSharp.Parameter Parameter in Request.Parameters)
-                {
-                    RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
-                }
-                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
-                throw Exception;
-            }
+            var response = client.Execute<T>(request);
+            this.CheckResponse(response, request);
             return response.Data;
         }
 
-        protected List<long> ExecuteForGetIds<T>(RestRequest Request, string RootElement) where T : new()
+        protected List<long> ExecuteForGetIds<T>(RestRequest request, string RootElement) where T : new()
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(this.BaseUrl);
             //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
-            var response = client.Execute<T>(Request);
+            request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
+            var response = client.Execute<T>(request);
+            this.CheckResponse(response, request);
             XDocument xDcoument = XDocument.Parse(response.Content);
             var ids = (from doc in xDcoument.Descendants(RootElement)
                        select long.Parse(doc.Attribute("id").Value)).ToList();
             return ids;
         }
 
-        protected byte[] ExecuteForImage(RestRequest Request)
+        protected byte[] ExecuteForImage(RestRequest request)
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(this.BaseUrl);
             //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
-            var response = client.Execute(Request);
+            request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
+            var response = client.Execute(request);
+            this.CheckResponse(response, request);
+            return response.RawBytes;
+        }
+
+        protected void CheckResponse(IRestResponse response, RestRequest request)
+        {
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new PrestaSharpNotAuthorized(response.ErrorMessage);
+            }
+
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.ServiceUnavailable
                 || response.StatusCode == HttpStatusCode.BadRequest
-                || response.StatusCode == HttpStatusCode.Unauthorized
                 || response.StatusCode == HttpStatusCode.MethodNotAllowed
                 || response.StatusCode == HttpStatusCode.Forbidden
                 || response.StatusCode == HttpStatusCode.NotFound
                 || response.StatusCode == 0)
             {
+                if (response.Content.Trim().Equals(""))
+                {
+                    throw new PrestaSharpNotFoundException(response.ErrorMessage);
+                }
+
                 string RequestParameters = Environment.NewLine;
-                foreach (RestSharp.Parameter Parameter in Request.Parameters)
+                foreach (RestSharp.Parameter Parameter in request.Parameters)
                 {
                     RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
                 }
-                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
-                throw Exception;
+                throw new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
             }
-            return response.RawBytes;
         }
 
         protected RestRequest RequestForGet(string Resource, long? Id, string RootElement)
@@ -205,7 +200,7 @@ namespace Bukimedia.PrestaSharp.Factories
             request.AddFile("image", ImagePath);
             return request;
         }
-        
+
         /// <summary>
         /// More information about image management: http://doc.prestashop.com/display/PS15/Chapter+9+-+Image+management
         /// </summary>
@@ -269,7 +264,7 @@ namespace Bukimedia.PrestaSharp.Factories
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace(" xmlns=\"Bukimedia/PrestaSharp/Entities/AuxEntities\"", "");// "xmlns=\"\"");
             return request;
         }
-       // For Update List Of Products - start
+        // For Update List Of Products - start
         protected RestRequest RequestForUpdateList(string Resource, List<Entities.PrestaShopEntity> Entities)
         {
             var request = new RestRequest();
@@ -329,7 +324,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// <param name="Limit"></param>
         /// <param name="RootElement"></param>
         /// <returns></returns>
-        protected RestRequest RequestForFilter(string Resource, string Display, Dictionary<string,string> Filter, string Sort, string Limit, string RootElement)
+        protected RestRequest RequestForFilter(string Resource, string Display, Dictionary<string, string> Filter, string Sort, string Limit, string RootElement)
         {
             var request = new RestRequest();
             request.Resource = Resource;
@@ -356,6 +351,24 @@ namespace Bukimedia.PrestaSharp.Factories
             // Support for filter by date range
             request.AddParameter("date", "1");
             return request;
+        }
+
+        /// <summary>
+        ///  More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
+        /// </summary>
+        /// <param name="Resource"></param>
+        /// <param name="filter"></param>
+        /// <param name="RootElement"></param>
+        /// <returns></returns>
+        protected RestRequest RequestForFilter(string Resource, FilterFactory filter, string RootElement)
+        {
+            return this.RequestForFilter(Resource,
+                            FilterFactory.DispalyToString(filter.Display),
+                            filter.Filter,
+                            filter.Sort,
+                            filter.Limit,
+                            RootElement
+                );
         }
 
         protected RestRequest RequestForAddOrderHistory(string Resource, List<Entities.PrestaShopEntity> Entities)
