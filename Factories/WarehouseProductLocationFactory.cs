@@ -16,6 +16,11 @@ namespace Bukimedia.PrestaSharp.Factories
         public WarehouseProductLocationFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-        }        
+        }
+
+        public WarehouseProductLocationFactory()
+            : base()
+        {
+        }
     }
 }

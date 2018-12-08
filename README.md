@@ -13,6 +13,15 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 	string Account = "ASDLKJOIQWEPROQWUPRPOQPPRQOW";
 	string Password = "";
 	ManufacturerFactory ManufacturerFactory = new ManufacturerFactory(BaseUrl, Account, Password);
+
+	OR
+
+	Credentials.BaseUrl = "http://www.myweb.com/api";
+	Credentials.Account = "ASDLKJOIQWEPROQWUPRPOQPPRQOW";
+	Credentials.Password = "";
+	ManufacturerFactory ManufacturerFactory = new ManufacturerFactory();
+
+
 ```
 
 2) Perform CRUD actions through the client:
@@ -54,6 +63,12 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 	dtn.Add("name", "Metallica");
 	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
 ```
+	OR
+```
+	FilterFactory filter = new FilterFactory();
+    filter.AddFilter(nameof(manufacturer.name), "Metallica");
+    List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(filter);
+```
 
 4) Get by filter with wildcards. This sample retrieves the manufacturers which name starts with "Metall":
 
@@ -62,6 +77,12 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 	dtn.Add("name", "[Metall]%");
 	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
 ```
+	OR
+```
+	FilterFactory filter = new FilterFactory();
+    filter.AddFilterStarts(nameof(manufacturer.name), "Metall");
+    List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(filter);
+```
 
 5) Get ids by filter. This sample retrieves the list of the manufacturers ids which name is "Metallica":
 
@@ -69,6 +90,12 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 	Dictionary<string, string> dtn = new Dictionary<string, string>();
 	dtn.Add("name", "Metallica");
 	List<long> ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
+```
+	OR
+```
+	FilterFactory filter = new FilterFactory();
+    filter.AddFilter(nameof(manufacturer.name), "Metallica");
+    List<manufacturer> manufacturers = ManufacturerFactory.GetIdsByFilter(filter);
 ```
 
 6) Get ids by filter with wildcards. This sample retrieves the list of the manufacturers ids which name starts with "Metall":
@@ -86,6 +113,14 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 	dtn.Add("name", "[Metall]%");
 	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "5");
 ```
+	OR
+```
+	FilterFactory filter = new FilterFactory();
+    filter.AddFilterStarts(nameof(manufacturer.name), "Metall");
+	filter.AddSort(nameof(manufacturer.name), FilterFactory.SortType.ASC);
+    filter.SetLimit(5, 0);
+    List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(filter);
+```
 
 8) Get by filter for pagination. This sample retrieves the top five manufacturers from tenth position in ascendent sorting which name starts with "Metall":
 
@@ -93,6 +128,14 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 	Dictionary<string, string> dtn = new Dictionary<string, string>();
 	dtn.Add("name", "[Metall]%");
 	List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
+```
+	OR
+```
+	FilterFactory filter = new FilterFactory();
+    filter.AddFilterStarts(nameof(manufacturer.name), "Metall");
+	filter.AddSort(nameof(manufacturer.name), FilterFactory.SortType.ASC);
+    filter.SetLimit(5, 9);
+    List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(filter);
 ```
 
 9) Get by filter by range date. This sample retrieves the orders in a date range:
@@ -105,6 +148,31 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
     string dTo = string.Format("{0:yyyy-MM-dd HH:mm:ss}", EndDate);
     filter.Add("date_add", "[" + dFrom + "," + dTo + "]");
     List<long> PrestaSharpOrderIds = this.OrderFactory.GetIdsByFilter(filter, "id_DESC", null);
+```
+	OR
+```
+	DateTime StartDate = new DateTime (2016, 1, 1);
+	DateTime StartDate = new DateTime (2016, 1, 31);
+	string dFrom = string.Format("{0:yyyy-MM-dd HH:mm:ss}", StartDate);
+    string dTo = string.Format("{0:yyyy-MM-dd HH:mm:ss}", EndDate);
+    FilterFactory filter = new FilterFactory();
+    filter.AddFilterBetween("date_add", dFrom, dTo);
+	filter.AddSort("id", FilterFactory.SortType.ASC);
+    List<long> PrestaSharpOrderIds = this.OrderFactory.GetIdsByFilter(filter);
+```
+
+10) Verify if a product exists
+
+```
+	ProductFactory productFactory = new ProductFactory();
+    var exists = productFactory.Exists(1);
+```
+
+11) Verify if a product exists
+
+```
+	ImageFactory imageFactory = new ImageFactory();
+    var exists = imageFactory.ProductImageExists(1); // id_image
 ```
 
 ## Supported resources

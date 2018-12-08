@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Factories
 {
-	public class SpecificPriceRuleFactory : GenericFactory<specific_price_rule>
+    public class SpecificPriceRuleFactory : GenericFactory<specific_price_rule>
 	{
         protected override string singularEntityName { get { return "specific_price_rule"; } }
         protected override string pluralEntityName { get { return "specific_price_rules"; } }
@@ -18,5 +18,10 @@ namespace Bukimedia.PrestaSharp.Factories
             : base(BaseUrl, Account, SecretKey)
         {
         }
-	}
+
+        public SpecificPriceRuleFactory()
+            : base()
+        {
+        }
+    }
 }

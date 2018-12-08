@@ -18,6 +18,11 @@ namespace Bukimedia.PrestaSharp
         {
         }
 
+        public PrestaSharpException(string Message)
+            : base(Message)
+        {
+        }
+
         public PrestaSharpException(string ResponseContent, string ResponseErrorMessage, Exception ResponseErrorException)
             : base(ResponseContent + " " + ResponseErrorMessage, ResponseErrorException)
         {
@@ -32,6 +37,5 @@ namespace Bukimedia.PrestaSharp
             this.ResponseErrorMessage = ResponseErrorMessage;
             this.ResponseHttpStatusCode = ResponseHttpStatusCode;
         }
-
     }
 }

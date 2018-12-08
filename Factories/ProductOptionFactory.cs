@@ -18,5 +18,10 @@ namespace Bukimedia.PrestaSharp.Factories
             : base(BaseUrl, Account, SecretKey)
         {
         }
+
+        public ProductOptionFactory()
+            : base()
+        {
+        }
     }
 }

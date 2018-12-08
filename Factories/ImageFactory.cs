@@ -15,11 +15,27 @@ namespace Bukimedia.PrestaSharp.Factories
         {
         }
 
+        public ImageFactory()
+           : base()
+        {
+        }
+
         #region Protected methods
 
         protected List<Entities.image> GetAllImages(string Resource){
             RestRequest request = this.RequestForFilter("images/" + Resource, "full", null, null, null, "images");
             return this.Execute<List<Entities.image>>(request);
+        }
+
+        /// <summary>
+        /// Verify if a resourse exist
+        /// </summary>
+        /// <param name="Resource"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        protected bool Exists(string Resource, long id)
+        {
+            return this.GetAllImages(Resource).Exists(i=>i.id == id);
         }
 
         protected List<Entities.imagetype> GetAllImageTypes(string Resource)
@@ -115,6 +131,16 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             RestRequest request = this.RequestForGet("images/manufacturers/" + ManufacturerId, ImageId, "");
             return this.ExecuteForImage(request);
+        }
+
+        /// <summary>
+        /// Verify if a manufacturer image exist
+        /// </summary>
+        /// <param name="id_image"></param>
+        /// <returns></returns>
+        public bool ManufacturerImageExists(long id_image)
+        {
+            return this.Exists("manufacturers", id_image);
         }
 
         #endregion Manufacturer images
@@ -219,6 +245,16 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.ExecuteForImage(request);
         }
 
+        /// <summary>
+        /// Verify if a product image exist
+        /// </summary>
+        /// <param name="id_image"></param>
+        /// <returns></returns>
+        public bool ProductImageExists(long id_image)
+        {
+            return this.Exists("products", id_image);
+        }
+
         #endregion Product images
 
         #region Category images
@@ -268,6 +304,16 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             RestRequest request = this.RequestForGetType("images/categories/" + CategoryId, TypeName, "");
             return this.ExecuteForImage(request);
+        }
+
+        /// <summary>
+        /// Verify if a category image exist
+        /// </summary>
+        /// <param name="id_image"></param>
+        /// <returns></returns>
+        public bool CategoryImageExists(long id_image)
+        {
+            return this.Exists("categories", id_image);
         }
 
         #endregion Category images

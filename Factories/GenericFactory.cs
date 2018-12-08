@@ -17,6 +17,11 @@ namespace Bukimedia.PrestaSharp.Factories
         {
         }
 
+        public GenericFactory()
+        {
+
+        }
+
         public T Get(long id)
         {
             RestRequest request = this.RequestForGet(pluralEntityName, id, singularEntityName);
@@ -48,7 +53,7 @@ namespace Bukimedia.PrestaSharp.Factories
             {
                 EntitiesToAdd.Add(Entity);
             }
-            
+
             RestRequest request = this.RequestForUpdateList(singularEntityName, EntitiesToAdd);
 
             return this.Execute<List<T>>(request);
@@ -94,15 +99,23 @@ namespace Bukimedia.PrestaSharp.Factories
         /// <returns></returns>
         public List<T> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit, List<string> Display)
         {
-            string disp = "full";
-            if (Display.Count() >= 1)
-            {
-                disp = "[";
-                Display.ForEach(d => { disp += d + ","; });
-                disp = disp.Remove(disp.Length - 1); ;
-                disp += "]";
-            }
+            string disp = FilterFactory.DispalyToString(Display);
             RestRequest request = this.RequestForFilter(pluralEntityName, disp, Filter, Sort, Limit, pluralEntityName);
+            return this.ExecuteForFilter<List<T>>(request);
+        }
+
+        /// <summary>
+        /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
+        public List<T> GetByFilter(FilterFactory filter)
+        {
+            RestRequest request = this.RequestForFilter(
+                                    pluralEntityName,
+                                    filter,
+                                    pluralEntityName
+                                  );
             return this.ExecuteForFilter<List<T>>(request);
         }
 
@@ -116,6 +129,27 @@ namespace Bukimedia.PrestaSharp.Factories
         public List<long> GetIdsByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter(pluralEntityName, "[id]", Filter, Sort, Limit, pluralEntityName);
+            List<T> aux = this.Execute<List<T>>(request);
+            return (from t in aux where t.id.HasValue select t.id.Value).ToList();
+        }
+
+        /// <summary>
+        /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
+        /// Display in FilterFactory doesn't apply to this Method, 
+        /// because allways display field id
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>        
+        public List<long> GetIdsByFilter(FilterFactory filter)
+        {
+            RestRequest request = this.RequestForFilter(
+                                    pluralEntityName,
+                                    "[id]",
+                                    filter.Filter,
+                                    filter.Sort,
+                                    filter.Limit,
+                                    pluralEntityName
+                                   );
             List<T> aux = this.Execute<List<T>>(request);
             return (from t in aux where t.id.HasValue select t.id.Value).ToList();
         }
@@ -146,5 +180,18 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.Execute<List<T>>(request);
         }
 
+        /// <summary>
+        /// Verify if the Item exists
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool Exists(long id)
+        {
+            Dictionary<string, string> filter = new Dictionary<string, string>();
+            filter.Add("id", id.ToString());
+            return this.GetByFilter(filter, "id_asc", "1").Count == 0
+                ? false : true;
+        }
+        
     }
 }

@@ -630,5 +630,28 @@ namespace Bukimedia.PrestaSharp.Lib
             string result = Source.Remove(Place, Find.Length).Insert(Place, Replace);
             return result;
         }
+
+        /// <summary>
+        /// remove caracteres as in Prestashop Validate:isCatalogName($name)
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        internal static string CleanAsIsCatalogName(string str)
+        {
+            Regex replace = new Regex("^|\\)|\\(|<|>|;|=|#|{|}|\b", RegexOptions.IgnoreCase);
+            return replace.Replace(str, " ");
+        }
+
+        /// <summary>
+        /// remove caracteres as in Prestashop Validate:isGenericName($name)
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        internal static string CleanAsIsGenericName(string str)
+        {
+            Regex replace = new Regex("\\)|\\(|<|>|#|=|{|}|\b", RegexOptions.IgnoreCase);
+            return replace.Replace(str, " ");
+        }
+
     }
 }

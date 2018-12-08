@@ -17,6 +17,11 @@ namespace Bukimedia.PrestaSharp.Factories
         public ZoneFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-        }  
+        }
+
+        public ZoneFactory()
+            : base()
+        {
+        }
     }
 }

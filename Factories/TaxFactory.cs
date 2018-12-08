@@ -17,6 +17,11 @@ namespace Bukimedia.PrestaSharp.Factories
         public TaxFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-        }      
+        }
+
+        public TaxFactory()
+            : base()
+        {
+        }
     }
 }

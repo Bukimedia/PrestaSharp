@@ -17,6 +17,11 @@ namespace Bukimedia.PrestaSharp.Factories
         public OrderFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-        }      
+        }
+
+        public OrderFactory()
+            : base()
+        {
+        }
     }
 }
