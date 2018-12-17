@@ -38,6 +38,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public int? quantity_discount { get; set; }
         public string ean13 { get; set; }
         public string upc { get; set; }
+        public string isbn { get; set; }
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
