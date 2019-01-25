@@ -27,7 +27,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public decimal unit_price_impact { get; set; }
         public long? minimal_quantity { get; set; }
         public int low_stock_alert { get; set; }
-        public long low_stock_threshold { get; set; }
+        public long? low_stock_threshold { get; set; }
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
