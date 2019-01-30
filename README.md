@@ -155,11 +155,27 @@ List<long> PrestaSharpOrderIds = this.OrderFactory.GetIdsByFilter(filter, "id_DE
 ## Roadmap
 - Add other resources
 
+## Debugging
+
+Enabling debugging in PrestaShop would make PrestaSharp exceptions more verbose, to enable that, edit ```/config/defines.inc.php``` file in your PrestaShop website and edit this code block:
+
+```
+define('_PS_MODE_DEV_', false);
+```
+
+to:
+
+```
+define('_PS_MODE_DEV_', false);
+```
+
+More information in the development section of [PrestaShop's documentation](http://doc.prestashop.com/display/PS15/Setting+up+your+local+development+environment).
+
 ## Help & Discussion
 
 If your problem is how to implement anything with PrestaSharp or make a question,
-please, refer to our Slack# group with this request link: 
-https://join.slack.com/t/prestasharp/shared_invite/enQtNTEwMjQ3NDA0MTM0LTJlOGFiYmZiMzZkZjQxNjJjNDg0NzRlNWZlNTc2NWY0NTI1ZmM2YTdmMjk4NjYxM2YyNjc2MTZjOTNlNzZjYTY
+please, refer to our Slack group: 
+[PrestaSharp Slack Group](https://join.slack.com/t/prestasharp/shared_invite/enQtNTM2OTI1OTg0NzUyLTY4NDdkZDFmY2EwMGE4MTMzZjk5YzZiMTk3MzUwNzUxNTdhMWEwZjFjNDJiZTIyMjI0MDM0NTcwMzIzNGI0Njc)
 
 ## License
 PrestaSharp is GNU General Public License (GPL)
