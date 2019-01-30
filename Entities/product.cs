@@ -64,7 +64,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public decimal ecotax { get; set; }
         public long minimal_quantity { get; set; }
         public int low_stock_alert { get; set; }
-        public long low_stock_threshold { get; set; }
+        public long? low_stock_threshold { get; set; }
         public decimal price { get; set; }
         public decimal wholesale_price { get; set; }
         public string unity { get; set; }
