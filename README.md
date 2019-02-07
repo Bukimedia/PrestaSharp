@@ -5,6 +5,15 @@
 A simple .Net REST client written in C# for the Prestashop API.
 PrestaSharp uses the RestSharp library to consume the Prestashop services.
 
+# Installation
+
+PrestaSharp is [available on NuGet](https://www.nuget.org/packages/PrestaSharp/). Use the package manager
+console to install it:
+
+```
+Install-Package PrestaSharp
+```
+
 ## Basic usage
 1) Initiate a client instance:
 
