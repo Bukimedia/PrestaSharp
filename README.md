@@ -7,6 +7,8 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 
 # Installation
 
+[![NuGet](https://buildstats.info/nuget/PrestaSharp)](http://www.nuget.org/packages/PrestaSharp)
+
 PrestaSharp is [available on NuGet](https://www.nuget.org/packages/PrestaSharp/). Use the package manager
 console to install it:
 
