@@ -1,4 +1,8 @@
 # PrestaSharp
+
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/Bukimedia/PrestaSharp.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Bukimedia/PrestaSharp/alerts/)
+[![Language grade: C#](https://img.shields.io/lgtm/grade/csharp/g/Bukimedia/PrestaSharp.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Bukimedia/PrestaSharp/context:csharp)
+
 ### CSharp .Net client library for the PrestaShop API via web service
 
 ## Introduction
