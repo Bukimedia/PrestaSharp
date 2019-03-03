@@ -81,6 +81,38 @@ namespace Bukimedia.PrestaSharp.Factories
                 error.ToString();
             }
         }
+        protected async Task<T> ExecuteTaskAsync<T>(RestRequest Request) where T : new()
+        {
+            var client = new RestClient();
+            client.AddHandler("text/html", new PrestaSharpTextErrorDeserializer());
+            client.BaseUrl = new Uri(this.BaseUrl);
+            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString); // used on every request
+            if (Request.Method == Method.GET)
+            {
+                client.ClearHandlers();
+                client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
+            }
+            var response = await client.ExecuteTaskAsync<T>(Request);
+            if (response.StatusCode == HttpStatusCode.InternalServerError
+                || response.StatusCode == HttpStatusCode.ServiceUnavailable
+                || response.StatusCode == HttpStatusCode.BadRequest
+                || response.StatusCode == HttpStatusCode.Unauthorized
+                || response.StatusCode == HttpStatusCode.MethodNotAllowed
+                || response.StatusCode == HttpStatusCode.Forbidden
+                || response.StatusCode == HttpStatusCode.NotFound
+                || response.StatusCode == 0)
+            {
+                string RequestParameters = Environment.NewLine;
+                foreach (RestSharp.Parameter Parameter in Request.Parameters)
+                {
+                    RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
+                }
+                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
+                throw Exception;
+            }
+            return response.Data;
+        }
 
         protected T ExecuteForFilter<T>(RestRequest Request) where T : new()
         {
@@ -111,6 +143,35 @@ namespace Bukimedia.PrestaSharp.Factories
             return response.Data;
         }
 
+        protected async Task<T> ExecuteForFilterTaskAsync<T>(RestRequest Request) where T : new()
+        {
+            var client = new RestClient();
+            client.BaseUrl = new Uri(this.BaseUrl);
+            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString); // used on every request
+            client.ClearHandlers();
+            client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
+            var response = await client.ExecuteTaskAsync<T>(Request);
+            if (response.StatusCode == HttpStatusCode.InternalServerError
+                || response.StatusCode == HttpStatusCode.ServiceUnavailable
+                || response.StatusCode == HttpStatusCode.BadRequest
+                || response.StatusCode == HttpStatusCode.Unauthorized
+                || response.StatusCode == HttpStatusCode.MethodNotAllowed
+                || response.StatusCode == HttpStatusCode.Forbidden
+                || response.StatusCode == HttpStatusCode.NotFound
+                || response.StatusCode == 0)
+            {
+                string RequestParameters = Environment.NewLine;
+                foreach (RestSharp.Parameter Parameter in Request.Parameters)
+                {
+                    RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
+                }
+                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
+                throw Exception;
+            }
+            return response.Data;
+        }
+
         protected List<long> ExecuteForGetIds<T>(RestRequest Request, string RootElement) where T : new()
         {
             var client = new RestClient();
@@ -118,6 +179,18 @@ namespace Bukimedia.PrestaSharp.Factories
             //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
             var response = client.Execute<T>(Request);
+            XDocument xDcoument = XDocument.Parse(response.Content);
+            var ids = (from doc in xDcoument.Descendants(RootElement)
+                       select long.Parse(doc.Attribute("id").Value)).ToList();
+            return ids;
+        }
+        protected async Task<List<long>> ExecuteForGetIdsTaskAsync<T>(RestRequest Request, string RootElement) where T : new()
+        {
+            var client = new RestClient();
+            client.BaseUrl = new Uri(this.BaseUrl);
+            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
+            var response = await client.ExecuteTaskAsync<T>(Request);
             XDocument xDcoument = XDocument.Parse(response.Content);
             var ids = (from doc in xDcoument.Descendants(RootElement)
                        select long.Parse(doc.Attribute("id").Value)).ToList();
