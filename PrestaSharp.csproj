@@ -1,6 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net452</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <RootNamespace>Bukimedia.PrestaSharp</RootNamespace>
     <AssemblyName>Bukimedia.PrestaSharp</AssemblyName>
     <Company>Bukimedia</Company>
@@ -20,7 +20,7 @@
     <Version>1.0.1-SNAPSHOT</Version>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="RestSharp" Version="106.2.2" />
+    <PackageReference Include="RestSharp" Version="106.6.9" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
