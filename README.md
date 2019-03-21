@@ -137,6 +137,7 @@ List<long> PrestaSharpOrderIds = this.OrderFactory.GetIdsByFilter(filter, "id_DE
 - Images
 - Languages
 - Manufacturers
+- Messages
 - Orders
 - Order Carriers
 - Order Cart Rules
