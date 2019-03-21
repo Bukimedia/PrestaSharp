@@ -16,8 +16,6 @@ namespace Bukimedia.PrestaSharp.Entities
         public long? id_order { get; set; }
         public long? id_customer { get; set; }
         public long? id_employee { get; set; }
-
-        [XmlElement(ElementName = "message")]
         public string message { get; set; }       
         /// <summary>
         /// It´s a logical bool.
