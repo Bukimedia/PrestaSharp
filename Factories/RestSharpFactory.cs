@@ -26,19 +26,19 @@ namespace Bukimedia.PrestaSharp.Factories
             this.Password = Password;
         }
 
-        protected T Execute<T>(RestRequest Request) where T : new()
+        #region Privates
+
+        private void AddWsKey(ref RestRequest request)
         {
-            var client = new RestClient();
-            client.AddHandler("text/html", new PrestaSharpTextErrorDeserializer());
-            client.BaseUrl = new Uri(this.BaseUrl);
-            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString); // used on every request
-            if (Request.Method == Method.GET)
-            {
-                client.ClearHandlers();
-                client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
-            }
-            var response = client.Execute<T>(Request);
+            request.AddParameter("ws_key", Account, ParameterType.QueryString); // used on every request
+        }
+
+        #endregion
+        
+        #region Protected
+        
+        protected void CheckResponse(IRestResponse response, RestRequest request)
+        {
             if (response.StatusCode == HttpStatusCode.InternalServerError
                 || response.StatusCode == HttpStatusCode.ServiceUnavailable
                 || response.StatusCode == HttpStatusCode.BadRequest
@@ -48,14 +48,30 @@ namespace Bukimedia.PrestaSharp.Factories
                 || response.StatusCode == HttpStatusCode.NotFound
                 || response.StatusCode == 0)
             {
-                string RequestParameters = Environment.NewLine;
-                foreach (RestSharp.Parameter Parameter in Request.Parameters)
+                var requestParameters = Environment.NewLine;
+                foreach (var parameter in request.Parameters)
                 {
-                    RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
+                    requestParameters += parameter.Value + Environment.NewLine + Environment.NewLine;
                 }
-                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
-                throw Exception;
+                throw new PrestaSharpException(requestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
             }
+        }
+        
+        #endregion
+
+        protected T Execute<T>(RestRequest Request) where T : new()
+        {
+            var client = new RestClient();
+            client.AddHandler("text/html", new PrestaSharpTextErrorDeserializer());
+            client.BaseUrl = new Uri(this.BaseUrl);
+            AddWsKey(ref Request);
+            if (Request.Method == Method.GET)
+            {
+                client.ClearHandlers();
+                client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
+            }
+            var response = client.Execute<T>(Request);
+            CheckResponse(response, Request);
             return response.Data;
         }
 
@@ -91,23 +107,7 @@ namespace Bukimedia.PrestaSharp.Factories
             client.ClearHandlers();
             client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
             var response = client.Execute<T>(Request);
-            if (response.StatusCode == HttpStatusCode.InternalServerError
-                || response.StatusCode == HttpStatusCode.ServiceUnavailable
-                || response.StatusCode == HttpStatusCode.BadRequest
-                || response.StatusCode == HttpStatusCode.Unauthorized
-                || response.StatusCode == HttpStatusCode.MethodNotAllowed
-                || response.StatusCode == HttpStatusCode.Forbidden
-                || response.StatusCode == HttpStatusCode.NotFound
-                || response.StatusCode == 0)
-            {
-                string RequestParameters = Environment.NewLine;
-                foreach (RestSharp.Parameter Parameter in Request.Parameters)
-                {
-                    RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
-                }
-                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
-                throw Exception;
-            }
+            CheckResponse(response, Request);
             return response.Data;
         }
 
@@ -131,23 +131,7 @@ namespace Bukimedia.PrestaSharp.Factories
             //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
             var response = client.Execute(Request);
-            if (response.StatusCode == HttpStatusCode.InternalServerError
-                || response.StatusCode == HttpStatusCode.ServiceUnavailable
-                || response.StatusCode == HttpStatusCode.BadRequest
-                || response.StatusCode == HttpStatusCode.Unauthorized
-                || response.StatusCode == HttpStatusCode.MethodNotAllowed
-                || response.StatusCode == HttpStatusCode.Forbidden
-                || response.StatusCode == HttpStatusCode.NotFound
-                || response.StatusCode == 0)
-            {
-                string RequestParameters = Environment.NewLine;
-                foreach (RestSharp.Parameter Parameter in Request.Parameters)
-                {
-                    RequestParameters += Parameter.Value + Environment.NewLine + Environment.NewLine;
-                }
-                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
-                throw Exception;
-            }
+            CheckResponse(response, Request);
             return response.RawBytes;
         }
 
