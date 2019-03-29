@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Bukimedia.PrestaSharp.Entities;
 using RestSharp.Authenticators;
 
 namespace Bukimedia.PrestaSharp.Factories
@@ -31,6 +32,24 @@ namespace Bukimedia.PrestaSharp.Factories
         private void AddWsKey(ref RestRequest request)
         {
             request.AddParameter("ws_key", Account, ParameterType.QueryString); // used on every request
+        }
+
+        private void AddBody(ref RestRequest request, IEnumerable<PrestaShopEntity> entities)
+        {
+            request.RequestFormat = DataFormat.Xml;
+            request.XmlSerializer = new Serializers.PrestaSharpSerializer();
+            var serialized = string.Empty;
+            foreach (var entity in entities)
+            {
+                serialized += ((Serializers.PrestaSharpSerializer) request.XmlSerializer).PrestaSharpSerialize(entity);
+            }
+            serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
+            request.AddParameter("application/xml", serialized, ParameterType.RequestBody);
+        }
+
+        private void AddBody(ref RestRequest request, PrestaShopEntity entity)
+        {
+            AddBody(ref request, new List<PrestaShopEntity> {entity});
         }
 
         #endregion
@@ -155,17 +174,8 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var request = new RestRequest();
             request.Resource = Resource;
-            request.Method = Method.POST;
-            request.RequestFormat = DataFormat.Xml;
-            //Hack implementation in PrestaSharpSerializer to serialize PrestaSharp.Entities.AuxEntities.language
-            request.XmlSerializer = new Serializers.PrestaSharpSerializer();
-            string serialized = "";
-            foreach (Entities.PrestaShopEntity Entity in Entities)
-            {
-                serialized += ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
-            }
-            serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
-            request.AddParameter("application/xml", serialized, ParameterType.RequestBody);
+            request.Method =  Method.POST;
+            AddBody(ref request, Entities);
             return request;
         }
 
@@ -242,15 +252,7 @@ namespace Bukimedia.PrestaSharp.Factories
             request.Resource = Resource;
             request.AddParameter("id", Id, ParameterType.UrlSegment);
             request.Method = Method.PUT;
-            request.RequestFormat = DataFormat.Xml;
-            request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
-            request.AddBody(PrestashopEntity);
-            //issue #81, #54 fixed
-            request.Parameters[1].Value = Functions.ReplaceFirstOccurrence(request.Parameters[1].Value.ToString(), "<" + PrestashopEntity.GetType().Name + ">", "<prestashop>\n<" + PrestashopEntity.GetType().Name + ">");
-            request.Parameters[1].Value = Functions.ReplaceLastOccurrence(request.Parameters[1].Value.ToString(), "</" + PrestashopEntity.GetType().Name + ">", "</" + PrestashopEntity.GetType().Name + ">\n</prestashop>");
-            //issue #36 fixed
-            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace(" xmlns=\"Bukimedia/PrestaSharp/Entities\"", "");// "xmlns=\"\"");
-            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace(" xmlns=\"Bukimedia/PrestaSharp/Entities/AuxEntities\"", "");// "xmlns=\"\"");
+            AddBody(ref request, PrestashopEntity);
             return request;
         }
        // For Update List Of Products - start
@@ -259,15 +261,7 @@ namespace Bukimedia.PrestaSharp.Factories
             var request = new RestRequest();
             request.Resource = Resource;
             request.Method = Method.PUT;
-            request.RequestFormat = DataFormat.Xml;
-            request.XmlSerializer = new Serializers.PrestaSharpSerializer();
-            string serialized = "";
-            foreach (Entities.PrestaShopEntity Entity in Entities)
-            {
-                serialized += ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
-            }
-            serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
-            request.AddParameter("application/xml", serialized, ParameterType.RequestBody);
+            AddBody(ref request, Entities);
             return request;
         }
         // For Update List Of Products - end
@@ -347,15 +341,7 @@ namespace Bukimedia.PrestaSharp.Factories
             var request = new RestRequest();
             request.Resource = Resource;
             request.Method = Method.POST;
-            request.RequestFormat = DataFormat.Xml;
-            request.XmlSerializer = new Serializers.PrestaSharpSerializer();
-            string serialized = "";
-            foreach (Entities.PrestaShopEntity Entity in Entities)
-            {
-                serialized += ((Serializers.PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(Entity);
-            }
-            serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
-            request.AddParameter("application/xml", serialized);
+            AddBody(ref request, Entities);
             request.AddParameter("sendemail", 1);
             return request;
         }
