@@ -305,6 +305,16 @@ namespace Bukimedia.PrestaSharp.Deserializers
             if (!elements.Any())
             {
                 var lowerName = name.ToLowerInvariant().AsNamespaced(Namespace);
+                var firstNode = root.FirstNode;
+                if (firstNode != null)
+                {
+                    elements = ((XElement)firstNode).Elements(lowerName);
+                }
+            }
+
+            if (!elements.Any())
+            {
+                var lowerName = name.ToLowerInvariant().AsNamespaced(Namespace);
                 elements = root.Descendants(lowerName);
             }
 
