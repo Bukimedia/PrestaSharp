@@ -1,0 +1,8 @@
+title: PrestaSharp
+description: CSharp .Net client library for the PrestaShop API via web service
+google_analytics: UA-47904802-2
+show_downloads: true
+theme: jekyll-theme-minimal
+
+gems:
+  - jekyll-mentions
