@@ -21,6 +21,7 @@ namespace Bukimedia.PrestaSharp.Entities
         /// </summary>
         public int depends_on_stock { get; set; }
         public int out_of_stock { get; set; }
+        public string location { get; set; }
         public stock_available()
         {
         }
