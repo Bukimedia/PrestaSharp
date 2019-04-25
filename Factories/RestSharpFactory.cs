@@ -1,16 +1,12 @@
 using Bukimedia.PrestaSharp.Deserializers;
-using Bukimedia.PrestaSharp.Lib;
+using Bukimedia.PrestaSharp.Entities;
 using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using Bukimedia.PrestaSharp.Entities;
-using RestSharp.Authenticators;
 
 namespace Bukimedia.PrestaSharp.Factories
 {
@@ -52,6 +48,13 @@ namespace Bukimedia.PrestaSharp.Factories
             AddBody(ref request, new List<PrestaShopEntity> {entity});
         }
 
+        private void AddHandlers(ref RestClient client, RestRequest request)
+        {
+            client.ClearHandlers();
+            client.AddHandler("text/xml", () => new PrestaSharpDeserializer { RootElement = request.RootElement });
+            client.AddHandler("text/html", () => new PrestaSharpTextErrorDeserializer { RootElement = request.RootElement });
+        }
+
         #endregion
         
         #region Protected
@@ -81,14 +84,9 @@ namespace Bukimedia.PrestaSharp.Factories
         protected T Execute<T>(RestRequest Request) where T : new()
         {
             var client = new RestClient();
-            client.AddHandler("text/html", new PrestaSharpTextErrorDeserializer());
             client.BaseUrl = new Uri(this.BaseUrl);
             AddWsKey(ref Request);
-            if (Request.Method == Method.GET)
-            {
-                client.ClearHandlers();
-                client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
-            }
+            AddHandlers(ref client, Request);
             var response = client.Execute<T>(Request);
             CheckResponse(response, Request);
             return response.Data;
@@ -122,8 +120,7 @@ namespace Bukimedia.PrestaSharp.Factories
             var client = new RestClient();
             client.BaseUrl = new Uri(this.BaseUrl);
             AddWsKey(ref Request);
-            client.ClearHandlers();
-            client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
+            AddHandlers(ref client, Request);
             var response = client.Execute<T>(Request);
             CheckResponse(response, Request);
             return response.Data;
@@ -252,7 +249,7 @@ namespace Bukimedia.PrestaSharp.Factories
             AddBody(ref request, PrestashopEntity);
             return request;
         }
-       // For Update List Of Products - start
+
         protected RestRequest RequestForUpdateList(string Resource, List<Entities.PrestaShopEntity> Entities)
         {
             var request = new RestRequest();
@@ -261,7 +258,7 @@ namespace Bukimedia.PrestaSharp.Factories
             AddBody(ref request, Entities);
             return request;
         }
-        // For Update List Of Products - end
+
         protected RestRequest RequestForDeleteImage(string Resource, long? ResourceId, long? ImageId)
         {
             if (ResourceId == null)
