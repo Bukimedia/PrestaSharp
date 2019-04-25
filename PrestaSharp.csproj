@@ -18,7 +18,7 @@
     <Description>CSharp .Net client library for the PrestaShop API via web service</Description>
     <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.en.html</PackageLicenseUrl>
     <PackageId>PrestaSharp</PackageId>
-    <Version>1.0.5</Version>
+    <Version>1.0.5.1-SNAPSHOT</Version>
     <Title>Bukimedia PrestaSharp</Title>
   </PropertyGroup>
   <ItemGroup>
