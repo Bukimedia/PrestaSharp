@@ -10,10 +10,12 @@ using System.Xml;
 using System.ComponentModel;
 using RestSharp.Deserializers;
 using RestSharp;
+using RestSharp.Serialization;
+using RestSharp.Serialization.Xml;
 
 namespace Bukimedia.PrestaSharp.Deserializers
 {
-    public class PrestaSharpDeserializer : IDeserializer
+    public class PrestaSharpDeserializer : IXmlDeserializer
     {
         public string RootElement { get; set; }
         public string Namespace { get; set; }
