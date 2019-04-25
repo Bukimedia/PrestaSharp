@@ -121,8 +121,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(this.BaseUrl);
-            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString); // used on every request
+            AddWsKey(ref Request);
             client.ClearHandlers();
             client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
             var response = client.Execute<T>(Request);
@@ -134,8 +133,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(this.BaseUrl);
-            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
+            AddWsKey(ref Request);
             var response = client.Execute<T>(Request);
             XDocument xDcoument = XDocument.Parse(response.Content);
             var ids = (from doc in xDcoument.Descendants(RootElement)
@@ -147,8 +145,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(this.BaseUrl);
-            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
+            AddWsKey(ref Request);
             var response = client.Execute(Request);
             CheckResponse(response, Request);
             return response.RawBytes;
