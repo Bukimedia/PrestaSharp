@@ -38,6 +38,8 @@ namespace Bukimedia.PrestaSharp.Entities
 		/// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
 		/// </summary>
         public string date_upd { get; set; }
+	public string tax_office { get; set; } // Turkish Vat Office
+	
 
 		public address()
 		{
