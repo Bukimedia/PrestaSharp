@@ -38,7 +38,7 @@ namespace Bukimedia.PrestaSharp.Factories
             request.XmlSerializer = new PrestaSharpSerializer();
             var serialized = string.Empty;
             foreach (var entity in entities)
-                serialized += ((PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(entity);
+            serialized += ((PrestaSharpSerializer) request.XmlSerializer).PrestaSharpSerialize(entity);
             serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
             request.AddParameter("application/xml", serialized, ParameterType.RequestBody);
         }
@@ -58,6 +58,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             client.Authenticator = new RestSharp.Authenticators.HttpBasicAuthenticator(Account, Password);
         }
+
         #endregion
 
         #region Protected
