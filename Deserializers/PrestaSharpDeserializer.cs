@@ -10,10 +10,12 @@ using System.Xml;
 using System.ComponentModel;
 using RestSharp.Deserializers;
 using RestSharp;
+using RestSharp.Serialization;
+using RestSharp.Serialization.Xml;
 
 namespace Bukimedia.PrestaSharp.Deserializers
 {
-    public class PrestaSharpDeserializer : IDeserializer
+    public class PrestaSharpDeserializer : IXmlDeserializer
     {
         public string RootElement { get; set; }
         public string Namespace { get; set; }
@@ -301,6 +303,16 @@ namespace Bukimedia.PrestaSharp.Deserializers
             var elements = root.Elements(t.Name.AsNamespaced(Namespace));
 
             var name = t.Name;
+
+            if (!elements.Any())
+            {
+                var lowerName = name.ToLowerInvariant().AsNamespaced(Namespace);
+                var firstNode = root.FirstNode;
+                if (firstNode != null)
+                {
+                    elements = ((XElement)firstNode).Elements(lowerName);
+                }
+            }
 
             if (!elements.Any())
             {

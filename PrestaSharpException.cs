@@ -10,6 +10,7 @@ namespace Bukimedia.PrestaSharp
     public class PrestaSharpException : ApplicationException
     {
         public HttpStatusCode ResponseHttpStatusCode { get; set; }
+        public string RequestBody { get; set; }
         public string ResponseContent { get; set; }
         public string ResponseErrorMessage { get; set; }
 
@@ -28,6 +29,15 @@ namespace Bukimedia.PrestaSharp
         public PrestaSharpException(string ResponseContent, string ResponseErrorMessage, HttpStatusCode ResponseHttpStatusCode, Exception ResponseErrorException)
             : base(ResponseContent + " " + ResponseErrorMessage + " HttpStatusCode: " + ResponseHttpStatusCode, ResponseErrorException)
         {
+            this.ResponseContent = ResponseContent;
+            this.ResponseErrorMessage = ResponseErrorMessage;
+            this.ResponseHttpStatusCode = ResponseHttpStatusCode;
+        }
+        
+        public PrestaSharpException(string RequestBody, string ResponseContent, string ResponseErrorMessage, HttpStatusCode ResponseHttpStatusCode, Exception ResponseErrorException)
+            : base(ResponseContent + " " + ResponseErrorMessage + " HttpStatusCode: " + ResponseHttpStatusCode, ResponseErrorException)
+        {
+            this.RequestBody = RequestBody;
             this.ResponseContent = ResponseContent;
             this.ResponseErrorMessage = ResponseErrorMessage;
             this.ResponseHttpStatusCode = ResponseHttpStatusCode;

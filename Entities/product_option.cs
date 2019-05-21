@@ -15,6 +15,9 @@ namespace Bukimedia.PrestaSharp.Entities
         /// It´s a logical bool.
         /// </summary>
         public int is_color_group { get; set; }
+        /// <summary>
+        /// select, radio or color.
+        /// </summary>
         public string group_type { get; set; }
         public int position { get; set; }
         public List<PrestaSharp.Entities.AuxEntities.language> name { get; set; }

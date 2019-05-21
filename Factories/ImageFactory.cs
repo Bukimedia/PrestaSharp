@@ -17,7 +17,8 @@ namespace Bukimedia.PrestaSharp.Factories
 
         #region Protected methods
 
-        protected List<Entities.image> GetAllImages(string Resource){
+        protected List<Entities.image> GetAllImages(string Resource)
+        {
             RestRequest request = this.RequestForFilter("images/" + Resource, "full", null, null, null, "images");
             return this.Execute<List<Entities.image>>(request);
         }
@@ -48,7 +49,7 @@ namespace Bukimedia.PrestaSharp.Factories
             RestRequest request = this.RequestForAddImage(Resource, Id, ImagePath);
             this.ExecuteForImage(request);
         }
-        
+
         protected void AddImage(string Resource, long? Id, byte[] Image)
         {
             RestRequest request = this.RequestForAddImage(Resource, Id, Image);
@@ -57,7 +58,7 @@ namespace Bukimedia.PrestaSharp.Factories
 
         protected void UpdateImage(string Resource, long? ResourceId, long? ImageId, string ImagePath)
         {
-            this.DeleteImage(Resource, ResourceId,ImageId);
+            this.DeleteImage(Resource, ResourceId, ImageId);
             this.AddImage(Resource, ResourceId, ImagePath);
         }
 
@@ -90,7 +91,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             this.AddImage("manufacturers", ManufacturerId, ManufacturerImagePath);
         }
-        
+
         public void AddManufacturerImage(long ManufacturerId, byte[] ManufacturerImage)
         {
             this.AddImage("manufacturers", ManufacturerId, ManufacturerImage);
@@ -143,7 +144,8 @@ namespace Bukimedia.PrestaSharp.Factories
             try
             {
                 pre = this.GetProductImages(ProductId);
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 // No images...
                 pre = new List<Entities.FilterEntities.declination>();
@@ -163,10 +165,10 @@ namespace Bukimedia.PrestaSharp.Factories
 
             dif = post.Except(pre, new Helpers.CompareDeclination()).ToList();
             if (dif.Count > 0) r = dif[0].id;
-            
+
             return r;
         }
-        
+
         public long AddProductImage(long ProductId, byte[] ProductImage)
         {
             long r = 0;
@@ -208,7 +210,7 @@ namespace Bukimedia.PrestaSharp.Factories
             this.UpdateImage("products", ProductId, ImageId, ProductImage);
         }
 
-        public void DeleteProductImage(long ProductId,long ImageId)
+        public void DeleteProductImage(long ProductId, long ImageId)
         {
             this.DeleteImage("products", ProductId, ImageId);
         }
@@ -217,6 +219,28 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             RestRequest request = this.RequestForGet("images/products/" + ProductId, ImageId, "");
             return this.ExecuteForImage(request);
+        }
+
+        protected Task<Entities.image> AddImageTask(string Resource, long? Id, string ImagePath)
+        {
+            RestRequest request = this.RequestForAddImage(Resource, Id, ImagePath);
+            return this.ExecuteTaskAsync<Entities.image>(request);
+        }
+
+        protected Task<Entities.image> AddImageTask(string Resource, long? Id, byte[] Image, string imageFileName = null)
+        {
+            RestRequest request = this.RequestForAddImage(Resource, Id, Image, imageFileName);
+            return this.ExecuteTaskAsync<Entities.image>(request);
+        }
+
+        public async Task<long> AddProductImageTask(long ProductId, string ProductImagePath)
+        {
+            return (await this.AddImageTask("products", ProductId, ProductImagePath)).id;
+        }
+
+        public async Task<long> AddProductImageTask(long ProductId, byte[] ProductImage, string imageFileName = null)
+        {
+            return (await this.AddImageTask("products", ProductId, ProductImage, imageFileName)).id;
         }
 
         #endregion Product images
@@ -237,7 +261,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             this.AddImage("categories", CategoryId, CategoryImagePath);
         }
-        
+
         public void AddCategoryImage(long? CategoryId, byte[] CategoryImage)
         {
             this.AddImage("categories", CategoryId, CategoryImage);

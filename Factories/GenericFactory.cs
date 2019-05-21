@@ -81,7 +81,7 @@ namespace Bukimedia.PrestaSharp.Factories
         public List<T> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter(pluralEntityName, "full", Filter, Sort, Limit, pluralEntityName);
-            return this.ExecuteForFilter<List<T>>(request);
+            return this.Execute<List<T>>(request);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 disp += "]";
             }
             RestRequest request = this.RequestForFilter(pluralEntityName, disp, Filter, Sort, Limit, pluralEntityName);
-            return this.ExecuteForFilter<List<T>>(request);
+            return this.Execute<List<T>>(request);
         }
 
         /// <summary>
@@ -184,15 +184,15 @@ namespace Bukimedia.PrestaSharp.Factories
             return await this.ExecuteTaskAsync<List<T>>(request);
         }
 
-        public async Task DeleteAync(long id)
+        public async Task DeleteAsync(long id)
         {
             RestRequest request = this.RequestForDelete(pluralEntityName, id);
             await this.ExecuteTaskAsync<T>(request);
         }
 
-        public async Task DeleteAsync(T Entity)
+        public Task DeleteAsync(T Entity)
         {
-            this.Delete((long)Entity.id);
+            return this.DeleteAsync((long)Entity.id);
         }
 
         public async Task<List<long>> GetIdsAsync()
@@ -211,7 +211,7 @@ namespace Bukimedia.PrestaSharp.Factories
         public async Task<List<T>> GetByFilterAsync(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter(pluralEntityName, "full", Filter, Sort, Limit, pluralEntityName);
-            return await this.ExecuteForFilterTaskAsync<List<T>>(request);
+            return await this.ExecuteTaskAsync<List<T>>(request);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 disp += "]";
             }
             RestRequest request = this.RequestForFilter(pluralEntityName, disp, Filter, Sort, Limit, pluralEntityName);
-            return await this.ExecuteForFilterTaskAsync<List<T>>(request);
+            return await this.ExecuteTaskAsync<List<T>>(request);
         }
 
         /// <summary>

@@ -1,10 +1,10 @@
-using System;
 using RestSharp;
-using RestSharp.Deserializers;
+using RestSharp.Serialization.Xml;
+using System;
 
 namespace Bukimedia.PrestaSharp.Deserializers
 {
-    public class PrestaSharpTextErrorDeserializer : IDeserializer
+    public class PrestaSharpTextErrorDeserializer : IXmlDeserializer
     {
         public T Deserialize<T>(IRestResponse response)
         {
