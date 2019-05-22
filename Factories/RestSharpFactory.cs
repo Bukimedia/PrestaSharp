@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Bukimedia.PrestaSharp.Deserializers;
 using Bukimedia.PrestaSharp.Entities;
@@ -148,6 +149,35 @@ namespace Bukimedia.PrestaSharp.Factories
             var response = client.Execute(request);
             CheckResponse(response, request);
             return response.RawBytes;
+        }        
+
+        protected async Task<T> ExecuteTask<T>(RestRequest request) where T : new()
+        {
+            var client = new RestClient(BaseUrl);
+            AddWsKey(ref request);
+            AddHandlers(ref client, request);
+            var response = await client.ExecuteTaskAsync<T>(request);
+            CheckResponse(response, request);
+            return response.Data;
+        }
+
+        protected async Task<List<long>> ExecuteForGetIdsTask<T>(RestRequest request, string rootElement) where T : new()
+        {
+            var client = new RestClient(BaseUrl);
+            AddWsKey(ref request);
+            var response = await client.ExecuteTaskAsync<T>(request);
+            CheckResponse(response, request);
+            var xDcoument = XDocument.Parse(response.Content);
+            var ids = xDcoument.Descendants(rootElement).Select(doc => long.Parse(doc.Attribute("id").Value)).ToList();
+            return ids;
+        }
+        protected async Task<byte[]> ExecuteForImageTask(RestRequest request)
+        {
+            var client = new RestClient(BaseUrl);
+            AddWsKey(ref request);
+            var response = await client.ExecuteTaskAsync(request);
+            CheckResponse(response, request);
+            return response.RawBytes;
         }
 
         protected RestRequest RequestForGet(string resource, long? id, string rootElement)
@@ -209,7 +239,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// <param name="id"></param>
         /// <param name="image"></param>
         /// <returns></returns>
-        protected RestRequest RequestForAddImage(string resource, long? id, byte[] image)
+        protected RestRequest RequestForAddImage(string resource, long? id, byte[] image, string imageFileName = null)
         {
             if (id == null) throw new ApplicationException("The Id field cannot be null.");
 
@@ -219,7 +249,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 Method = Method.POST,
                 RequestFormat = DataFormat.Xml
             };
-            request.AddFile("image", image, "dummy.png");
+            request.AddFile("image", image, string.IsNullOrWhiteSpace(imageFileName) ? "dummy.png" : imageFileName);
             return request;
         }
 
