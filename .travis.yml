@@ -1,0 +1,10 @@
+language: csharp
+solution: PrestaSharp.sln
+script:
+  - xbuild /p:Configuration=Debug PrestaSharp.sln
+before_install:
+  - sudo apt-get install nunit-console
+before_script:
+  - nuget restore PrestaSharp.sln
+after_script:
+  - nunit-console Tests/bin/Debug/PrestaSharp.IntegrationTests.dll
