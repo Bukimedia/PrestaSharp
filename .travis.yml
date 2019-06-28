@@ -1,6 +1,16 @@
 language: csharp
 solution: PrestaSharp.sln
 
+before_cache:
+  # Save tagged docker images
+  - >
+    mkdir -p $HOME/docker && docker images -a --filter='dangling=false' --format '{{.Repository}}:{{.Tag}} {{.ID}}'
+    | xargs -n 2 -t sh -c 'test -e $HOME/docker/$1.tar.gz || docker save $0 | gzip -2 > $HOME/docker/$1.tar.gz'
+cache:
+  bundler: true
+  directories:
+  - $HOME/docker
+
 services:
   - docker
 
@@ -9,6 +19,8 @@ script:
 
 before_install:
   - sudo apt-get install nunit-console
+  # Load cached docker images
+  - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
   # create a network for containers to communicate
   - docker network create prestashop-net
   # launch mysql 5.7 container
