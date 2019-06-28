@@ -1,9 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <TargetFrameworks>net452;netcoreapp2.1</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
