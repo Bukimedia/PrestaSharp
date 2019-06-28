@@ -19,4 +19,4 @@ before_install:
 before_script:
   - nuget restore PrestaSharp.sln
 after_script:
-  - nunit-console Tests/bin/Debug/PrestaSharp.IntegrationTests.dll
+  - nunit-console PrestaSharp.IntegrationTests/bin/Debug/netcoreapp2.1/PrestaSharp.IntegrationTests.dll
