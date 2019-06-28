@@ -5,7 +5,7 @@ services:
   - docker
 
 script:
-  - xbuild /p:Configuration=Debug PrestaSharp.sln
+  - msbuild /p:Configuration=Debug PrestaSharp.sln
 
 before_install:
   - sudo apt-get install nunit-console
