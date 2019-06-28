@@ -33,6 +33,6 @@ before_install:
   - docker run -ti --name some-prestashop --network prestashop-net -e DB_SERVER=some-mysql -p 8080:80 -d prestashop/prestashop
 
 before_script:
-  - nuget restore PrestaSharp.sln
+  - dotnet restore PrestaSharp.sln
 after_script:
   - nunit-console PrestaSharp.IntegrationTests/bin/Debug/netcoreapp2.1/PrestaSharp.IntegrationTests.dll
