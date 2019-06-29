@@ -22,7 +22,6 @@ script:
   - dotnet build -c Debug PrestaSharp.sln
 
 before_install:
-  - sudo apt-get install nunit-console
   # Load cached docker images
   - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
   # create a network for containers to communicate
@@ -36,5 +35,6 @@ before_script:
   - sed -i -e 's/<TargetFrameworks>netstandard2.0;net452<\/TargetFrameworks>/<TargetFramework>netstandard2.0<\/TargetFramework>/g' "PrestaSharp/PrestaSharp.csproj"
   - sed -i -e 's/<TargetFrameworks>netcoreapp2.1;net452<\/TargetFrameworks>/<TargetFramework>netcoreapp2.1<\/TargetFramework>/g' "PrestaSharp.IntegrationTests/PrestaSharp.IntegrationTests.csproj"
   - dotnet restore PrestaSharp.sln
+
 after_script:
-  - nunit-console PrestaSharp.IntegrationTests/bin/Debug/netcoreapp2.1/PrestaSharp.IntegrationTests.dll
+  - dotnet test PrestaSharp.IntegrationTests/bin/Debug/netcoreapp2.1/PrestaSharp.IntegrationTests.dll
