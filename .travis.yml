@@ -37,4 +37,4 @@ before_script:
   - dotnet restore PrestaSharp.sln
 
 after_script:
-  - dotnet test PrestaSharp.IntegrationTests/bin/Debug/netcoreapp2.1/PrestaSharp.IntegrationTests.dll
+  - dotnet test
