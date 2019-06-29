@@ -37,4 +37,4 @@ before_script:
   - dotnet restore PrestaSharp.sln
 
 after_script:
-  - dotnet test
+  - dotnet test -v
