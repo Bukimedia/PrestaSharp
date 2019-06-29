@@ -24,12 +24,14 @@ script:
 before_install:
   # Load cached docker images
   - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
-  # create a network for containers to communicate
-  - docker network create prestashop-net
-  # launch mysql 5.7 container
-  - docker run -ti --name some-mysql --network prestashop-net -e MYSQL_ROOT_PASSWORD=admin -p 3307:3306 -d mysql:5.7
-  # launch prestashop container
-  - docker run -ti --name some-prestashop --network prestashop-net -e DB_SERVER=some-mysql -p 8080:80 -d prestashop/prestashop
+  - sudo apt-get update
+  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
+  - docker-compose --version
+  - docker-compose up
+  - docker run -it bukimedia-mysql "chmod +x /shell-scripts/mysql-setup.sh"
+  - docker run -it bukimedia-prestashop "chmod +x /shell-scripts/prestashop-setup.sh"
+  - docker run -it bukimedia-mysql "sh /shell-scripts/mysql-setup.sh"
+  - docker run -it bukimedia-prestashop "sh /shell-scripts/prestashop-setup.sh"
 
 before_script:
   - sed -i -e 's/<TargetFrameworks>netstandard2.0;net452<\/TargetFrameworks>/<TargetFramework>netstandard2.0<\/TargetFramework>/g' "PrestaSharp/PrestaSharp.csproj"
