@@ -33,6 +33,8 @@ before_install:
   - docker run -ti --name some-prestashop --network prestashop-net -e DB_SERVER=some-mysql -p 8080:80 -d prestashop/prestashop
 
 before_script:
+  - sed -i 's/<TargetFrameworks>netstandard2.0;net452</TargetFrameworks>/<TargetFramework>netstandard2.0</TargetFramework>/g' PrestaSharp/PrestaSharp.csproj
+  - sed -i 's/<TargetFrameworks>netcoreapp2.1;net452</TargetFrameworks>/<TargetFramework>netcoreapp2.1</TargetFramework>/g' PrestaSharp.IntegrationTests/PrestaSharp.IntegrationTests.csproj
   - dotnet restore PrestaSharp.sln
 after_script:
   - nunit-console PrestaSharp.IntegrationTests/bin/Debug/netcoreapp2.1/PrestaSharp.IntegrationTests.dll
