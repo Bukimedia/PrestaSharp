@@ -33,6 +33,7 @@ before_install:
 
 before_script:
   - sudo /etc/init.d/mysql stop
+  - chmod +x .docker/docker-compose-up.sh
   - .docker/docker-compose-up.sh
 
 script:
