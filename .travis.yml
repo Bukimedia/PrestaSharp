@@ -33,13 +33,13 @@ before_install:
 
 before_script:
   - sudo /etc/init.d/mysql stop
-  - docker-compose up -d
+  - docker-compose up
+
+script:
   - docker run -it bukimedia-mysql "chmod +x /shell-scripts/mysql-setup.sh"
   - docker run -it bukimedia-prestashop "chmod +x /shell-scripts/prestashop-setup.sh"
   - docker run -it bukimedia-mysql "sh /shell-scripts/mysql-setup.sh"
   - docker run -it bukimedia-prestashop "sh /shell-scripts/prestashop-setup.sh"
-
-script:
   - dotnet build -c Debug PrestaSharp.sln
 
 after_script:
