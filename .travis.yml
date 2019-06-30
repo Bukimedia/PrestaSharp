@@ -33,13 +33,14 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - docker-compose -v
   - docker -v
+
+before_script:
+  - sudo /etc/init.d/mysql stop
   - docker-compose up
   - docker run -it bukimedia-mysql "chmod +x /shell-scripts/mysql-setup.sh"
   - docker run -it bukimedia-prestashop "chmod +x /shell-scripts/prestashop-setup.sh"
   - docker run -it bukimedia-mysql "sh /shell-scripts/mysql-setup.sh"
   - docker run -it bukimedia-prestashop "sh /shell-scripts/prestashop-setup.sh"
-
-before_script:
   - sed -i -e 's/<TargetFrameworks>netstandard2.0;net452<\/TargetFrameworks>/<TargetFramework>netstandard2.0<\/TargetFramework>/g' "PrestaSharp/PrestaSharp.csproj"
   - sed -i -e 's/<TargetFrameworks>netcoreapp2.1;net452<\/TargetFrameworks>/<TargetFramework>netcoreapp2.1<\/TargetFramework>/g' "PrestaSharp.IntegrationTests/PrestaSharp.IntegrationTests.csproj"
   - dotnet restore PrestaSharp.sln
