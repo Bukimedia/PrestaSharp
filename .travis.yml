@@ -26,13 +26,13 @@ before_install:
   - docker run -ti --name bukimedia-mysql --network bukimedia-net --env-file .docker/mysql.env -p 3306:3306 -d mysql:5.5
   - docker run -ti --name bukimedia-prestashop --network bukimedia-net --env-file .docker/prestashop.env -p 8080:80 -d prestashop/prestashop:1.7
 
-before_script:
+install:
   - docker cp .docker/shell-scripts/ bukimedia-mysql:/shell-scripts
   - docker cp .docker/shell-scripts/ bukimedia-prestashop:/shell-scripts
-  - docker run -it bukimedia-mysql "chmod +x /shell-scripts/mysql-setup.sh"
-  - docker run -it bukimedia-prestashop "chmod +x /shell-scripts/prestashop-setup.sh"
-  - docker run -it bukimedia-mysql "sh /shell-scripts/mysql-setup.sh"
-  - docker run -it bukimedia-prestashop "sh /shell-scripts/prestashop-setup.sh"
+  - docker exec -ti bukimedia-mysql bash -c "chmod +x /shell-scripts/mysql-setup.sh"
+  - docker exec -ti bukimedia-prestashop bash -c "chmod +x /shell-scripts/prestashop-setup.sh"
+  - docker exec -ti bukimedia-mysql bash -c "sh /shell-scripts/mysql-setup.sh"
+  - docker exec -ti bukimedia-prestashop bash -c "sh /shell-scripts/prestashop-setup.sh"
 
 script:
   - dotnet build -c Debug PrestaSharp.sln
