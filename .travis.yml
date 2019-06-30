@@ -33,7 +33,7 @@ before_install:
 
 before_script:
   - sudo /etc/init.d/mysql stop
-  - docker-compose up
+  - travis_wait 30 docker-compose up
 
 script:
   - docker run -it bukimedia-mysql "chmod +x /shell-scripts/mysql-setup.sh"
