@@ -1,5 +1,9 @@
 language: csharp
 solution: PrestaSharp.sln
+sudo: required
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.24.1
 
 mono: none
 dotnet: 2.1.502
@@ -24,9 +28,11 @@ script:
 before_install:
   # Load cached docker images
   - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
-  - curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-  - chmod +x /usr/local/bin/docker-compose
-  - docker-compose --version
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - docker-compose -v
+  - docker -v
   - docker-compose up
   - docker run -it bukimedia-mysql "chmod +x /shell-scripts/mysql-setup.sh"
   - docker run -it bukimedia-prestashop "chmod +x /shell-scripts/prestashop-setup.sh"
