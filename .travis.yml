@@ -1,9 +1,5 @@
 language: csharp
 solution: PrestaSharp.sln
-sudo: required
-
-env:
-  DOCKER_COMPOSE_VERSION: 1.24.1
 
 mono: none
 dotnet: 2.1.502
@@ -25,22 +21,20 @@ services:
 before_install:
   # Load cached docker images
   - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-  - docker-compose -v
-  - docker -v
+  - sudo /etc/init.d/mysql stop
+  - docker network create bukimedia-net
+  - docker run -ti --name bukimedia-mysql --network bukimedia-net --env-file .docker/mysql.env -p 3306:3306 -d mysql:5.5
+  - docker run -ti --name bukimedia-prestashop --network bukimedia-net --env-file .docker/prestashop.env -p 8080:80 -d prestashop/prestashop:1.7
 
 before_script:
-  - sudo /etc/init.d/mysql stop
-  - chmod +x .docker/docker-compose-up.sh
-  - .docker/docker-compose-up.sh
-
-script:
+  - docker cp .docker/shell-scripts/ bukimedia-mysql:/shell-scripts
+  - docker cp .docker/shell-scripts/ bukimedia-prestashop:/shell-scripts
   - docker run -it bukimedia-mysql "chmod +x /shell-scripts/mysql-setup.sh"
   - docker run -it bukimedia-prestashop "chmod +x /shell-scripts/prestashop-setup.sh"
   - docker run -it bukimedia-mysql "sh /shell-scripts/mysql-setup.sh"
   - docker run -it bukimedia-prestashop "sh /shell-scripts/prestashop-setup.sh"
+
+script:
   - dotnet build -c Debug PrestaSharp.sln
 
 after_script:

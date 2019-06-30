@@ -1,9 +1,9 @@
 using Bukimedia.PrestaSharp.Factories;
 using NUnit.Framework;
 
-namespace Tests
+namespace PrestaSharp.IntegrationTests
 {
-    public class ManufacturerTests
+    public class ManufacturerTests : BaseTest
     {
 
         private ManufacturerFactory factory;
@@ -11,13 +11,17 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            factory = new ManufacturerFactory("", "", "");
+            factory = new ManufacturerFactory(TestUrl, TestApiKey, null);
         }
 
         [Test]
-        public void Test1()
+        public void Listing()
         {
-            Assert.Pass();
+            var manufacturers = factory.GetAll();
+
+            Assert.AreEqual(2, manufacturers.Count);
+            Assert.AreEqual("Studio Design", manufacturers[0].name);
+            Assert.AreEqual("Graphic Corner", manufacturers[1].name);
         }
     }
 }
