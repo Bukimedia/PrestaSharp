@@ -43,5 +43,5 @@ script:
   - dotnet build -c Debug PrestaSharp.sln
 
 after_script:
-  - dotnet restore PrestaSharp.sln
-  - dotnet test -v=d
+  - dotnet restore PrestaSharp.sln --verbosity minimal
+  - dotnet test --no-build --verbosity normal
