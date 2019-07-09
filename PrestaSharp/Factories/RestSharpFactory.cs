@@ -16,12 +16,12 @@ namespace Bukimedia.PrestaSharp.Factories
         protected string BaseUrl { get; set; }
         protected string Account { get; set; }
         protected string Password { get; set; }
-        
+
         public RestSharpFactory(string baseUrl, string account, string password)
         {
-            this.BaseUrl = baseUrl;
-            this.Account = account;
-            this.Password = password;
+            BaseUrl = baseUrl;
+            Account = account;
+            Password = password;
         }
 
         #region Privates
@@ -47,13 +47,11 @@ namespace Bukimedia.PrestaSharp.Factories
             AddBody(ref request, new List<PrestaShopEntity> {entity});
         }
 
-        private void AddHandlers(ref RestClient client, IRestRequest request)
+        private void AddHandlers(ref RestClient client)
         {
             client.ClearHandlers();
-            client.AddHandler("text/xml", 
-                () => new PrestaSharpDeserializer {RootElement = request.RootElement});
-            client.AddHandler("text/html",
-                () => new PrestaSharpTextErrorDeserializer {RootElement = request.RootElement});
+            client.AddHandler("text/xml", () => new PrestaSharpDeserializer());
+            client.AddHandler("text/html", () => new PrestaSharpTextErrorDeserializer());
         }
 
         #endregion
@@ -74,7 +72,8 @@ namespace Bukimedia.PrestaSharp.Factories
                 var requestParameters = Environment.NewLine;
                 foreach (var parameter in request.Parameters)
                     requestParameters += $"{parameter.Name}: {parameter.Value}{Environment.NewLine}";
-                throw new PrestaSharpException(requestParameters + Environment.NewLine + response.Content, response.ErrorMessage,
+                throw new PrestaSharpException(requestParameters + Environment.NewLine + response.Content,
+                    response.ErrorMessage,
                     response.StatusCode, response.ErrorException);
             }
         }
@@ -88,7 +87,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 BaseUrl = new Uri(BaseUrl)
             };
             AddWsKey(ref request);
-            AddHandlers(ref client, request);
+            AddHandlers(ref client);
             var response = client.Execute<T>(request);
             CheckResponse(response, request);
             return response.Data;
@@ -120,7 +119,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 BaseUrl = new Uri(BaseUrl)
             };
             AddWsKey(ref request);
-            AddHandlers(ref client, request);
+            AddHandlers(ref client);
             var response = client.Execute<T>(request);
             CheckResponse(response, request);
             return response.Data;
@@ -313,7 +312,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var request = new RestRequest
             {
-                Resource = resource, 
+                Resource = resource,
                 RootElement = rootElement
             };
             if (display != null) request.AddParameter("display", display);
@@ -331,7 +330,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var request = new RestRequest
             {
-                Resource = resource, 
+                Resource = resource,
                 Method = Method.POST
             };
             AddBody(ref request, entities);
@@ -347,6 +346,5 @@ namespace Bukimedia.PrestaSharp.Factories
             fileStream.Close();
             return buffer;
         }
-
     }
 }

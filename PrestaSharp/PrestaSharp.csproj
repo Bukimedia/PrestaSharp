@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <RootNamespace>Bukimedia.PrestaSharp</RootNamespace>
@@ -22,7 +22,7 @@
     <Title>Bukimedia PrestaSharp</Title>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="RestSharp" Version="106.6.9" />
+    <PackageReference Include="RestSharp" Version="106.6.10" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
