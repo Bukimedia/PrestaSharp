@@ -26,12 +26,12 @@ namespace Bukimedia.PrestaSharp.Factories
 
         #region Privates
 
-        private void AddWsKey(ref RestRequest request)
+        private void AddWsKey(RestRequest request)
         {
             request.AddParameter("ws_key", Account, ParameterType.QueryString); // used on every request
         }
 
-        private void AddBody(ref RestRequest request, IEnumerable<PrestaShopEntity> entities)
+        private void AddBody(RestRequest request, IEnumerable<PrestaShopEntity> entities)
         {
             request.RequestFormat = DataFormat.Xml;
             request.XmlSerializer = new PrestaSharpSerializer();
@@ -42,12 +42,12 @@ namespace Bukimedia.PrestaSharp.Factories
             request.AddParameter("application/xml", serialized, ParameterType.RequestBody);
         }
 
-        private void AddBody(ref RestRequest request, PrestaShopEntity entity)
+        private void AddBody(RestRequest request, PrestaShopEntity entity)
         {
-            AddBody(ref request, new List<PrestaShopEntity> {entity});
+            AddBody(request, new List<PrestaShopEntity> {entity});
         }
 
-        private void AddHandlers(ref RestClient client)
+        private void AddHandlers(RestClient client)
         {
             client.ClearHandlers();
             client.AddHandler("text/xml", () => new PrestaSharpDeserializer());
@@ -86,8 +86,8 @@ namespace Bukimedia.PrestaSharp.Factories
             {
                 BaseUrl = new Uri(BaseUrl)
             };
-            AddWsKey(ref request);
-            AddHandlers(ref client);
+            AddWsKey(request);
+            AddHandlers(client);
             var response = client.Execute<T>(request);
             CheckResponse(response, request);
             return response.Data;
@@ -118,8 +118,8 @@ namespace Bukimedia.PrestaSharp.Factories
             {
                 BaseUrl = new Uri(BaseUrl)
             };
-            AddWsKey(ref request);
-            AddHandlers(ref client);
+            AddWsKey(request);
+            AddHandlers(client);
             var response = client.Execute<T>(request);
             CheckResponse(response, request);
             return response.Data;
@@ -131,7 +131,7 @@ namespace Bukimedia.PrestaSharp.Factories
             {
                 BaseUrl = new Uri(BaseUrl)
             };
-            AddWsKey(ref request);
+            AddWsKey(request);
             var response = client.Execute<T>(request);
             var xDcoument = XDocument.Parse(response.Content);
             var ids = (from doc in xDcoument.Descendants(rootElement)
@@ -143,7 +143,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(BaseUrl);
-            AddWsKey(ref request);
+            AddWsKey(request);
             var response = client.Execute(request);
             CheckResponse(response, request);
             return response.RawBytes;
@@ -176,7 +176,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 Resource = resource,
                 Method = Method.POST
             };
-            AddBody(ref request, entities);
+            AddBody(request, entities);
             return request;
         }
 
@@ -255,7 +255,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 Method = Method.PUT
             };
             request.AddParameter("id", id, ParameterType.UrlSegment);
-            AddBody(ref request, prestashopEntity);
+            AddBody(request, prestashopEntity);
             return request;
         }
 
@@ -266,7 +266,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 Resource = resource,
                 Method = Method.PUT
             };
-            AddBody(ref request, entities);
+            AddBody(request, entities);
             return request;
         }
 
@@ -333,7 +333,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 Resource = resource,
                 Method = Method.POST
             };
-            AddBody(ref request, entities);
+            AddBody(request, entities);
             request.AddParameter("sendemail", 1);
             return request;
         }
