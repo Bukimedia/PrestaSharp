@@ -147,31 +147,31 @@ namespace Bukimedia.PrestaSharp.Factories
         }
 
 
-        public async Task<T> GetTask(long id)
+        public async Task<T> GetAsync(long id)
         {
             RestRequest request = this.RequestForGet(pluralEntityName, id, singularEntityName);
-            return await this.ExecuteTask<T>(request);
+            return await this.ExecuteAsync<T>(request);
         }
 
-        public async Task<T> AddTask(T Entity)
+        public async Task<T> AddAsync(T Entity)
         {
             long? idAux = Entity.id;
             Entity.id = null;
             List<PrestaSharp.Entities.PrestaShopEntity> Entities = new List<PrestaSharp.Entities.PrestaShopEntity>();
             Entities.Add(Entity);
             RestRequest request = this.RequestForAdd(pluralEntityName, Entities);
-            T aux = await this.ExecuteTask<T>(request);
+            T aux = await this.ExecuteAsync<T>(request);
             Entity.id = idAux;
             return this.Get((long)aux.id);
         }
 
-        public async Task UpdateTask(T Entity)
+        public async Task UpdateAsync(T Entity)
         {
             RestRequest request = this.RequestForUpdate(pluralEntityName, Entity.id, Entity);
-            await this.ExecuteTask<T>(request);
+            await this.ExecuteAsync<T>(request);
         }
 
-        public async Task<List<T>> UpdateListTask(List<T> Entities)
+        public async Task<List<T>> UpdateListAsync(List<T> Entities)
         {
             List<PrestaSharp.Entities.PrestaShopEntity> EntitiesToAdd = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (T Entity in Entities)
@@ -181,24 +181,24 @@ namespace Bukimedia.PrestaSharp.Factories
 
             RestRequest request = this.RequestForUpdateList(pluralEntityName, EntitiesToAdd);
 
-            return await this.ExecuteTask<List<T>>(request);
+            return await this.ExecuteAsync<List<T>>(request);
         }
 
-        public async Task DeleteTask(long id)
+        public async Task DeleteAsync(long id)
         {
             RestRequest request = this.RequestForDelete(pluralEntityName, id);
-            await this.ExecuteTask<T>(request);
+            await this.ExecuteAsync<T>(request);
         }
 
-        public Task DeleteTask(T Entity)
+        public Task DeleteAsync(T Entity)
         {
-            return this.DeleteTask((long)Entity.id);
+            return this.DeleteAsync((long)Entity.id);
         }
 
-        public async Task<List<long>> GetIdsTask()
+        public async Task<List<long>> GetIdsAsync()
         {
             RestRequest request = this.RequestForGet(pluralEntityName, null, "prestashop");
-            return await this.ExecuteForGetIdsTask<List<long>>(request, singularEntityName);
+            return await this.ExecuteForGetIdsAsync<List<long>>(request, singularEntityName);
         }
 
         /// <summary>
@@ -208,10 +208,10 @@ namespace Bukimedia.PrestaSharp.Factories
         /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
         /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
         /// <returns></returns>
-        public async Task<List<T>> GetByFilterTask(Dictionary<string, string> Filter, string Sort, string Limit)
+        public async Task<List<T>> GetByFilterAsync(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter(pluralEntityName, "full", Filter, Sort, Limit, pluralEntityName);
-            return await this.ExecuteTask<List<T>>(request);
+            return await this.ExecuteAsync<List<T>>(request);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param> 
         /// <param name="Display">Fields to display Example: ["id", "reference"]</param>
         /// <returns></returns>
-        public async Task<List<T>> GetByFilterTask(Dictionary<string, string> Filter, string Sort, string Limit, List<string> Display)
+        public async Task<List<T>> GetByFilterAsync(Dictionary<string, string> Filter, string Sort, string Limit, List<string> Display)
         {
             string disp = "full";
             if (Display.Count() >= 1)
@@ -233,7 +233,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 disp += "]";
             }
             RestRequest request = this.RequestForFilter(pluralEntityName, disp, Filter, Sort, Limit, pluralEntityName);
-            return await this.ExecuteTask<List<T>>(request);
+            return await this.ExecuteAsync<List<T>>(request);
         }
 
         /// <summary>
@@ -243,10 +243,10 @@ namespace Bukimedia.PrestaSharp.Factories
         /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
         /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
         /// <returns></returns>
-        public async Task<List<long>> GetIdsByFilterTask(Dictionary<string, string> Filter, string Sort, string Limit)
+        public async Task<List<long>> GetIdsByFilterAsync(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter(pluralEntityName, "[id]", Filter, Sort, Limit, pluralEntityName);
-            List<T> aux = await this.ExecuteTask<List<T>>(request);
+            List<T> aux = await this.ExecuteAsync<List<T>>(request);
             return (from t in aux where t.id.HasValue select t.id.Value).ToList();
         }
 
@@ -254,9 +254,9 @@ namespace Bukimedia.PrestaSharp.Factories
         /// Get all entities.
         /// </summary>
         /// <returns>A list of entities</returns>
-        public Task<List<T>> GetAllTask()
+        public Task<List<T>> GetAllAsync()
         {
-            return this.GetByFilterTask(null, null, null);
+            return this.GetByFilterAsync(null, null, null);
         }
 
         /// <summary>
@@ -264,7 +264,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// </summary>
         /// <param name="Entities"></param>
         /// <returns></returns>
-        public async Task<List<T>> AddListTask(List<T> Entities)
+        public async Task<List<T>> AddListAsync(List<T> Entities)
         {
             List<PrestaSharp.Entities.PrestaShopEntity> EntitiesToAdd = new List<PrestaSharp.Entities.PrestaShopEntity>();
             foreach (T Entity in Entities)
@@ -273,7 +273,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 EntitiesToAdd.Add(Entity);
             }
             RestRequest request = this.RequestForAdd(pluralEntityName, EntitiesToAdd);
-            return await this.ExecuteTask<List<T>>(request);
+            return await this.ExecuteAsync<List<T>>(request);
         }
     }
 }
