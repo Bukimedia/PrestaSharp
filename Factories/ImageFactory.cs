@@ -167,41 +167,41 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.ExecuteForImage(request);
         }
 
-        public Task<List<Entities.image>> GetAllManufacturerImagesTask()
+        public Task<List<Entities.image>> GetAllManufacturerImagesAsync()
         {
             return GetAllImagesAsync("manufacturers");
         }
-        public Task<List<Entities.imagetype>> GetAllManufacturerImageTypesTask()
+        public Task<List<Entities.imagetype>> GetAllManufacturerImageTypesAsync()
         {
             return GetAllImageTypesAsync("manufacturers");
         }
 
-        public Task AddManufacturerImageTask(long ManufacturerId, string ManufacturerImagePath)
+        public Task AddManufacturerImageAsync(long ManufacturerId, string ManufacturerImagePath)
         {
             return AddImageAsync("manufacturers", ManufacturerId, ManufacturerImagePath);
         }
 
-        public Task AddManufacturerImageTask(long ManufacturerId, byte[] ManufacturerImage)
+        public Task AddManufacturerImageAsync(long ManufacturerId, byte[] ManufacturerImage)
         {
             return AddImageAsync("manufacturers", ManufacturerId, ManufacturerImage);
         }
 
-        public Task UpdateManufacturerImageTask(long ManufacturerId, string ManufacturerImagePath)
+        public Task UpdateManufacturerImageAsync(long ManufacturerId, string ManufacturerImagePath)
         {
             return UpdateImageAsync("manufacturers", ManufacturerId, null, ManufacturerImagePath);
         }
 
-        public Task UpdateManufacturerImageTask(long ManufacturerId, byte[] ManufacturerImage)
+        public Task UpdateManufacturerImageAsync(long ManufacturerId, byte[] ManufacturerImage)
         {
             return UpdateImageAsync("manufacturers", ManufacturerId, null, ManufacturerImage);
         }
 
-        public Task DeleteManufacturerImageTask(long ManufacturerId)
+        public Task DeleteManufacturerImageAsync(long ManufacturerId)
         {
             return DeleteImageAsync("manufacturers", ManufacturerId, null);
         }
 
-        public Task<byte[]> GetManufacturerImageTask(long ManufacturerId, long ImageId)
+        public Task<byte[]> GetManufacturerImageAsync(long ManufacturerId, long ImageId)
         {
             RestRequest request = this.RequestForGet("images/manufacturers/" + ManufacturerId, ImageId, "");
             return ExecuteForImageAsync(request);
@@ -310,47 +310,47 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.ExecuteForImage(request);
         }
 
-        public Task<List<Entities.image>> GetAllProductImagesTask()
+        public Task<List<Entities.image>> GetAllProductImagesAsync()
         {
             return this.GetAllImagesAsync("products");
         }
 
-        public Task<List<Entities.imagetype>> GetAllProductImageTypesTask()
+        public Task<List<Entities.imagetype>> GetAllProductImageTypesAsync()
         {
             return this.GetAllImageTypesAsync("products");
         }
 
-        public Task<List<Entities.FilterEntities.declination>> GetProductImagesTask(long ProductId)
+        public Task<List<Entities.FilterEntities.declination>> GetProductImagesAsync(long ProductId)
         {
             return this.GetImagesByInstanceAsync("products", ProductId);
         }
 
-        public async Task<long> AddProductImageTask(long ProductId, string ProductImagePath)
+        public async Task<long> AddProductImageAsync(long ProductId, string ProductImagePath)
         {
             return (await this.AddImageAsync("products", ProductId, ProductImagePath)).id;
         }
 
-        public async Task<long> AddProductImageTask(long ProductId, byte[] ProductImage, string imageFileName = null)
+        public async Task<long> AddProductImageAsync(long ProductId, byte[] ProductImage, string imageFileName = null)
         {
             return (await this.AddImageAsync("products", ProductId, ProductImage, imageFileName)).id;
         }
 
-        public Task UpdateProductImageTask(long ProductId, long ImageId, string ProductImagePath)
+        public Task UpdateProductImageAsync(long ProductId, long ImageId, string ProductImagePath)
         {
             return UpdateImageAsync("products", ProductId, ImageId, ProductImagePath);
         }
 
-        public Task UpdateProductImageTask(long ProductId, long ImageId, byte[] ProductImage)
+        public Task UpdateProductImageAsync(long ProductId, long ImageId, byte[] ProductImage)
         {
             return UpdateImageAsync("products", ProductId, ImageId, ProductImage);
         }
 
-        public Task DeleteProductImageTask(long ProductId, long ImageId)
+        public Task DeleteProductImageAsync(long ProductId, long ImageId)
         {
             return DeleteImageAsync("products", ProductId, ImageId);
         }
 
-        public Task<byte[]> GetProductImageTask(long ProductId, long ImageId)
+        public Task<byte[]> GetProductImageAsync(long ProductId, long ImageId)
         {
             RestRequest request = this.RequestForGet("images/products/" + ProductId, ImageId, "");
             return this.ExecuteForImageAsync(request);
@@ -407,48 +407,48 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.ExecuteForImage(request);
         }
 
-        public Task<List<Entities.image>> GetAllCategoryImagesTask()
+        public Task<List<Entities.image>> GetAllCategoryImagesAsync()
         {
             return GetAllImagesAsync("categories");
         }
 
-        public Task<List<Entities.imagetype>> GetAllCategoryImageTypesTask()
+        public Task<List<Entities.imagetype>> GetAllCategoryImageTypesAsync()
         {
             return GetAllImageTypesAsync("categories");
         }
 
-        public Task AddCategoryImageTask(long? CategoryId, string CategoryImagePath)
+        public Task AddCategoryImageAsync(long? CategoryId, string CategoryImagePath)
         {
             return AddImageAsync("categories", CategoryId, CategoryImagePath);
         }
 
-        public Task AddCategoryImageTask(long? CategoryId, byte[] CategoryImage)
+        public Task AddCategoryImageAsync(long? CategoryId, byte[] CategoryImage)
         {
             return AddImageAsync("categories", CategoryId, CategoryImage);
         }
 
-        public Task UpdateCategoryImageTask(long CategoryId, string CategoryImagePath)
+        public Task UpdateCategoryImageAsync(long CategoryId, string CategoryImagePath)
         {
             return UpdateImageAsync("categories", CategoryId, null, CategoryImagePath);
         }
 
-        public Task UpdateCategoryImageTask(long CategoryId, byte[] CategoryImage)
+        public Task UpdateCategoryImageAsync(long CategoryId, byte[] CategoryImage)
         {
             return UpdateImageAsync("categories", CategoryId, null, CategoryImage);
         }
 
-        public Task DeleteCategoryImageTask(long CategoryID)
+        public Task DeleteCategoryImageAsync(long CategoryID)
         {
             return DeleteImageAsync("categories", CategoryID, null);
         }
 
-        public Task<byte[]> GetCategoryImageTask(long CategoryId, long ImageId)
+        public Task<byte[]> GetCategoryImageAsync(long CategoryId, long ImageId)
         {
             RestRequest request = this.RequestForGet("images/categories/" + CategoryId, ImageId, "");
             return ExecuteForImageAsync(request);
         }
 
-        public Task<byte[]> GetCategoryImageTask(long CategoryId, string TypeName)
+        public Task<byte[]> GetCategoryImageAsync(long CategoryId, string TypeName)
         {
             RestRequest request = this.RequestForGetType("images/categories/" + CategoryId, TypeName, "");
             return ExecuteForImageAsync(request);
