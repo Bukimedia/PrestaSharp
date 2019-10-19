@@ -95,25 +95,6 @@ namespace Bukimedia.PrestaSharp.Factories
             return response.Data;
         }
 
-        protected void ExecuteAsync<T>(RestRequest request) where T : new()
-        {
-            var client = new RestClient(BaseUrl);
-            try
-            {
-                client.ExecuteAsync(request, response =>
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                        Console.WriteLine(response.ToString());
-                    else
-                        Console.WriteLine(response.ToString());
-                });
-            }
-            catch (Exception error)
-            {
-                error.ToString();
-            }
-        }
-
         protected T ExecuteForFilter<T>(RestRequest request) where T : new()
         {
             var client = new RestClient
@@ -151,7 +132,7 @@ namespace Bukimedia.PrestaSharp.Factories
             return response.RawBytes;
         }        
 
-        protected async Task<T> ExecuteTask<T>(RestRequest request) where T : new()
+        protected async Task<T> ExecuteAsync<T>(RestRequest request) where T : new()
         {
             var client = new RestClient(BaseUrl);
             AddWsKey(ref request);
@@ -161,7 +142,7 @@ namespace Bukimedia.PrestaSharp.Factories
             return response.Data;
         }
 
-        protected async Task<List<long>> ExecuteForGetIdsTask<T>(RestRequest request, string rootElement) where T : new()
+        protected async Task<List<long>> ExecuteForGetIdsAsync<T>(RestRequest request, string rootElement) where T : new()
         {
             var client = new RestClient(BaseUrl);
             AddWsKey(ref request);
@@ -171,7 +152,7 @@ namespace Bukimedia.PrestaSharp.Factories
             var ids = xDcoument.Descendants(rootElement).Select(doc => long.Parse(doc.Attribute("id").Value)).ToList();
             return ids;
         }
-        protected async Task<byte[]> ExecuteForImageTask(RestRequest request)
+        protected async Task<byte[]> ExecuteForImageAsync(RestRequest request)
         {
             var client = new RestClient(BaseUrl);
             AddWsKey(ref request);
