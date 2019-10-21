@@ -134,8 +134,8 @@ namespace Bukimedia.PrestaSharp.Factories
         protected async Task<T> ExecuteAsync<T>(RestRequest request) where T : new()
         {
             var client = new RestClient(BaseUrl);
-            AddWsKey(ref request);
-            AddHandlers(ref client, request);
+            AddWsKey(request);
+            AddHandlers(client);
             var response = await client.ExecuteTaskAsync<T>(request);
             CheckResponse(response, request);
             return response.Data;
@@ -144,7 +144,7 @@ namespace Bukimedia.PrestaSharp.Factories
         protected async Task<List<long>> ExecuteForGetIdsAsync<T>(RestRequest request, string rootElement) where T : new()
         {
             var client = new RestClient(BaseUrl);
-            AddWsKey(ref request);
+            AddWsKey(request);
             var response = await client.ExecuteTaskAsync<T>(request);
             CheckResponse(response, request);
             var xDcoument = XDocument.Parse(response.Content);
@@ -154,7 +154,7 @@ namespace Bukimedia.PrestaSharp.Factories
         protected async Task<byte[]> ExecuteForImageAsync(RestRequest request)
         {
             var client = new RestClient(BaseUrl);
-            AddWsKey(ref request);
+            AddWsKey(request);
             var response = await client.ExecuteTaskAsync(request);
             CheckResponse(response, request);
             return response.RawBytes;
