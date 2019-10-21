@@ -19,7 +19,7 @@
     <PackageId>PrestaSharp</PackageId>
     <Version>1.0.5.1-SNAPSHOT</Version>
     <Title>Bukimedia PrestaSharp</Title>
-    <PackageVersion>1.1.0.0</PackageVersion>
+    <PackageVersion>1.1.0.1-SNAPSHOT</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="RestSharp" Version="106.6.10" />
