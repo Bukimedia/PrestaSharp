@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Bukimedia.PrestaSharp.Deserializers;
 using Bukimedia.PrestaSharp.Entities;
@@ -93,25 +94,6 @@ namespace Bukimedia.PrestaSharp.Factories
             return response.Data;
         }
 
-        protected void ExecuteAsync<T>(RestRequest request) where T : new()
-        {
-            var client = new RestClient(BaseUrl);
-            try
-            {
-                client.ExecuteAsync(request, response =>
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                        Console.WriteLine(response.ToString());
-                    else
-                        Console.WriteLine(response.ToString());
-                });
-            }
-            catch (Exception error)
-            {
-                error.ToString();
-            }
-        }
-
         protected T ExecuteForFilter<T>(RestRequest request) where T : new()
         {
             var client = new RestClient
@@ -145,6 +127,35 @@ namespace Bukimedia.PrestaSharp.Factories
             client.BaseUrl = new Uri(BaseUrl);
             AddWsKey(request);
             var response = client.Execute(request);
+            CheckResponse(response, request);
+            return response.RawBytes;
+        }        
+
+        protected async Task<T> ExecuteAsync<T>(RestRequest request) where T : new()
+        {
+            var client = new RestClient(BaseUrl);
+            AddWsKey(request);
+            AddHandlers(client);
+            var response = await client.ExecuteTaskAsync<T>(request);
+            CheckResponse(response, request);
+            return response.Data;
+        }
+
+        protected async Task<List<long>> ExecuteForGetIdsAsync<T>(RestRequest request, string rootElement) where T : new()
+        {
+            var client = new RestClient(BaseUrl);
+            AddWsKey(request);
+            var response = await client.ExecuteTaskAsync<T>(request);
+            CheckResponse(response, request);
+            var xDcoument = XDocument.Parse(response.Content);
+            var ids = xDcoument.Descendants(rootElement).Select(doc => long.Parse(doc.Attribute("id").Value)).ToList();
+            return ids;
+        }
+        protected async Task<byte[]> ExecuteForImageAsync(RestRequest request)
+        {
+            var client = new RestClient(BaseUrl);
+            AddWsKey(request);
+            var response = await client.ExecuteTaskAsync(request);
             CheckResponse(response, request);
             return response.RawBytes;
         }
@@ -208,7 +219,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// <param name="id"></param>
         /// <param name="image"></param>
         /// <returns></returns>
-        protected RestRequest RequestForAddImage(string resource, long? id, byte[] image)
+        protected RestRequest RequestForAddImage(string resource, long? id, byte[] image, string imageFileName = null)
         {
             if (id == null) throw new ApplicationException("The Id field cannot be null.");
 
@@ -218,7 +229,7 @@ namespace Bukimedia.PrestaSharp.Factories
                 Method = Method.POST,
                 RequestFormat = DataFormat.Xml
             };
-            request.AddFile("image", image, "dummy.png");
+            request.AddFile("image", image, string.IsNullOrWhiteSpace(imageFileName) ? "dummy.png" : imageFileName);
             return request;
         }
 
