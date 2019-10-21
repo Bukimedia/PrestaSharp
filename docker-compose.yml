@@ -1,0 +1,25 @@
+version: '2'
+services:
+  bukimedia-mysql:
+    image: mysql:5.5
+    restart: always
+    volumes:
+      - .docker/data:/var/lib/mysql
+      - ./.docker/shell-scripts/:/shell-scripts/
+    env_file:
+      - .docker/mysql.env
+    ports:
+      - 3306:3306
+  bukimedia-prestashop:
+    image: prestashop/prestashop:1.7
+    volumes:
+      - ./.docker/shell-scripts/:/shell-scripts/
+    restart: always
+    links:
+      - bukimedia-mysql:bukimedia-mysql
+    ports:
+      - 8080:80
+    env_file:
+      - .docker/prestashop.env
+    depends_on:
+      - bukimedia-mysql

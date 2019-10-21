@@ -1,5 +1,6 @@
 # PrestaSharp
 
+[![Build Status](https://travis-ci.org/Bukimedia/PrestaSharp.svg?branch=master)](https://travis-ci.org/Bukimedia/PrestaSharp)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/Bukimedia/PrestaSharp.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Bukimedia/PrestaSharp/alerts/)
 [![Language grade: C#](https://img.shields.io/lgtm/grade/csharp/g/Bukimedia/PrestaSharp.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Bukimedia/PrestaSharp/context:csharp)
 
@@ -182,7 +183,7 @@ define('_PS_MODE_DEV_', false);
 to:
 
 ```
-define('_PS_MODE_DEV_', false);
+define('_PS_MODE_DEV_', true);
 ```
 
 More information in the development section of [PrestaShop's documentation](http://doc.prestashop.com/display/PS15/Setting+up+your+local+development+environment).
@@ -200,7 +201,7 @@ This program is distributed in the hope that it will be useful, but without any 
 
 Bukimedia reserves the right to mention of companies or individuals who use this software.
 
-Copyright (C) 2016 Bukimedia
+Copyright (C) 2019 Bukimedia
 - Bukimedia: https://bukimedia.com/
 - Twitter: http://twitter.com/bukimedia
 - GitHub: https://github.com/bukimedia

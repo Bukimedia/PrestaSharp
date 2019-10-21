@@ -1,0 +1,37 @@
+language: csharp
+solution: PrestaSharp.sln
+
+mono: none
+dotnet: 2.1.502
+
+cache:
+  bundler: true
+
+services:
+  - docker
+
+before_install:
+  - sudo /etc/init.d/mysql stop
+  - docker network create bukimedia-net
+  - docker run -ti --name bukimedia-mysql --network bukimedia-net --env-file .docker/mysql.env -p 3306:3306 -d mysql:5.5
+  - docker run -ti --name bukimedia-prestashop --network bukimedia-net --env-file .docker/prestashop.env -p 8080:80 -d prestashop/prestashop:1.7
+  - sleep 1m
+
+install:
+  - docker cp .docker/shell-scripts/ bukimedia-mysql:/shell-scripts
+  - docker cp .docker/shell-scripts/ bukimedia-prestashop:/shell-scripts
+  - docker exec -ti bukimedia-mysql bash -c "chmod +x /shell-scripts/mysql-setup.sh"
+  - docker exec -ti bukimedia-prestashop bash -c "chmod +x /shell-scripts/prestashop-setup.sh"
+  - docker exec -ti bukimedia-prestashop bash -c "sh /shell-scripts/prestashop-setup.sh"
+  - docker exec -ti bukimedia-mysql bash -c "sh /shell-scripts/mysql-setup.sh"
+
+before_script:
+  - sed -i -e 's/<TargetFrameworks>netstandard2.0;net452<\/TargetFrameworks>/<TargetFramework>netstandard2.0<\/TargetFramework>/g' "PrestaSharp/PrestaSharp.csproj"
+  - sed -i -e 's/<TargetFrameworks>netcoreapp2.1;net452<\/TargetFrameworks>/<TargetFramework>netcoreapp2.1<\/TargetFramework>/g' "PrestaSharp.IntegrationTests/PrestaSharp.IntegrationTests.csproj"
+
+script:
+  - dotnet build -c Debug PrestaSharp.sln
+
+after_script:
+  - dotnet restore PrestaSharp.sln --verbosity minimal
+  - dotnet test --no-build --verbosity normal
