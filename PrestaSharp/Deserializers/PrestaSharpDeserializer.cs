@@ -129,7 +129,8 @@ namespace Bukimedia.PrestaSharp.Deserializers
                 }
                 else if (type.IsPrimitive)
                 {
-                    prop.SetValue(x, value.ChangeType(type, Culture), null);
+                    if (!String.IsNullOrEmpty(value.ToString()))
+                        prop.SetValue(x, value.ChangeType(type, Culture), null);
                 }
                 else if (type.IsEnum)
                 {
