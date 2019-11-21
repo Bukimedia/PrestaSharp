@@ -61,6 +61,7 @@ Bukimedia.PrestaSharp.Entities.stock_available MyStockAvailable = StockAvailable
 MyStockAvailable.quantity = 99;	// Number of available products
 MyStockAvailable.out_of_stock = 1; // Must enable orders
 StockAvailableFactory.Update(MyStockAvailable);
+```
 
 
 ## Advanced usage
