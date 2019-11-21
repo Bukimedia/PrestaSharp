@@ -52,6 +52,10 @@ namespace Bukimedia.PrestaSharp.Entities
         /// </summary>
         public int is_virtual { get; set; }
 
+        public long additional_delivery_times { get; set; }
+        public List<Entities.AuxEntities.language> delivery_in_stock { get; set; }
+        public List<Entities.AuxEntities.language> delivery_out_stock { get; set; }
+
         public long state { get; set; }
         /// <summary>
         /// It´s a logical bool.
@@ -78,7 +82,7 @@ namespace Bukimedia.PrestaSharp.Entities
         /// </summary>
         public int active { get; set; }
         public string redirect_type { get; set; }
-        public long id_product_redirected { get; set; }
+        public long id_type_redirected { get; set; }
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
@@ -128,6 +132,8 @@ namespace Bukimedia.PrestaSharp.Entities
 
         public product()
         {
+            this.delivery_in_stock = new List<AuxEntities.language>();
+            this.delivery_out_stock = new List<AuxEntities.language>();
             this.meta_description = new List<AuxEntities.language>();
             this.meta_keywords = new List<AuxEntities.language>();
             this.meta_title = new List<AuxEntities.language>();
