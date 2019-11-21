@@ -45,24 +45,10 @@ ManufacturerFactory.Delete(Manufacturer);
 3) Add an image:
 
 ```
-Bukimedia.PrestaSharp.Entities.product MyProduct = new Bukimedia.PrestaSharp.Entities.product();
-ProductFactory ProductFactory = new ProductFactory(BaseUrl, Account, Password);
-MyProduct = ProductFactory.Add(MyProduct);
-ImageFactory ImageFactory = new ImageFactory(BaseUrl, Account, Password);
+Bukimedia.PrestaSharp.Entities.product MyProduct = new Bukimedia.PrestaSharp.Entities.product()
+MyProduct = ProductFactory.Add(MyProduct)
 ImageFactory.AddProductImage((long)MyProduct.id, "C:\\MyImage.jpg");
 ```
-
-4) Set quantity of products:
-
-```
-StockAvailableFactory StockAvailableFactory = new StockAvailableFactory(BaseUrl, Account, Password);
-long stockAvailableId = product.associations.stock_availables[0].id;
-Bukimedia.PrestaSharp.Entities.stock_available MyStockAvailable = StockAvailableFactory.Get(stockAvailableId);
-MyStockAvailable.quantity = 99;	// Number of available products
-MyStockAvailable.out_of_stock = 1; // Must enable orders
-StockAvailableFactory.Update(MyStockAvailable);
-```
-
 
 ## Advanced usage
 1) Get all. This sample retrieves the list of manufacturers:
