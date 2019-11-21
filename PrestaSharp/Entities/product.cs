@@ -113,11 +113,11 @@ namespace Bukimedia.PrestaSharp.Entities
         /// <summary>
         /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
         /// </summary>
-        public string date_add { get; set; }
+        public string date_add { get; }
         /// <summary>
         /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
         /// </summary>
-        public string date_upd { get; set; }
+        public string date_upd { get; }
         public long pack_stock_type { get; set; }
         public List<Entities.AuxEntities.language> meta_description { get; set; }
         public List<Entities.AuxEntities.language> meta_keywords { get; set; }
