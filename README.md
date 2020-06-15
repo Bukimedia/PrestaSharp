@@ -127,6 +127,7 @@ List<long> PrestaSharpOrderIds = this.OrderFactory.GetIdsByFilter(filter, "id_DE
 - Address
 - Carriers
 - Carts
+- Cart Rules
 - Categories
 - Combinations
 - Currencies
