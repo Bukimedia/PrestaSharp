@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Xml.Linq;
-using RestSharp.Extensions;
-using System.Globalization;
 using System.Xml;
-using System.ComponentModel;
-using RestSharp.Deserializers;
+using System.Xml.Linq;
 using RestSharp;
-using RestSharp.Serialization;
+using RestSharp.Extensions;
 using RestSharp.Serialization.Xml;
 
 namespace Bukimedia.PrestaSharp.Deserializers
 {
     public class PrestaSharpDeserializer : IXmlDeserializer
     {
+        //RootElement comes from RestSharp. It's value is taken from Request.RootElement
         public string RootElement { get; set; }
         public string Namespace { get; set; }
         public string DateFormat { get; set; }
@@ -32,12 +31,23 @@ namespace Bukimedia.PrestaSharp.Deserializers
             if (string.IsNullOrEmpty(response.Content))
                 return default(T);
 
-            var doc = XDocument.Parse(response.Content);
-            var root = doc.Root;
-            if (RootElement.HasValue() && doc.Root != null)
+            XDocument doc = XDocument.Parse(response.Content);
+            XElement root;
+
+            var objType = typeof(T);
+            XElement firstChild = doc.Root.Descendants().FirstOrDefault();
+
+            if (doc.Root == null || firstChild?.Name == null)
             {
-                root = doc.Root.Element(RootElement.AsNamespaced(Namespace));
+                string finalResponseError = "Deserialization problem. Root is null or response has no child.";
+                if (!string.IsNullOrWhiteSpace(response.ErrorMessage))
+                {
+                    finalResponseError += $" Additionnal information is: {response.ErrorMessage}";
+                }
+                throw new PrestaSharpException(response.Content, finalResponseError, response.StatusCode, response.ErrorException);
             }
+
+            root = doc.Root.Element(firstChild.Name.ToString().AsNamespaced(Namespace));
 
             // autodetect xml namespace
             if (!Namespace.HasValue())
@@ -46,9 +56,9 @@ namespace Bukimedia.PrestaSharp.Deserializers
             }
 
             var x = Activator.CreateInstance<T>();
-            var objType = x.GetType();
+            bool isSubclassOfRawGeneric = objType.IsSubclassOfRawGeneric(typeof(List<>));
 
-            if (objType.IsSubclassOfRawGeneric(typeof(List<>)))
+            if (isSubclassOfRawGeneric)
             {
                 x = (T)HandleListDerivative(x, root, objType.Name, objType);
             }
