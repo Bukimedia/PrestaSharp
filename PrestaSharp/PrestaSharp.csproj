@@ -7,14 +7,14 @@
     <Authors>Bukimedia, oromand</Authors>
     <Product>PrestaSharp.Extended</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageTags>prestashop rest webservice official prestasharp bukimedia</PackageTags>
+    <PackageTags>prestashop rest webservice official prestasharp</PackageTags>
     <PackageReleaseNotes>Fixed deserialization problems</PackageReleaseNotes>
     <Copyright>Copyright (C) 2019 Bukimedia</Copyright>
     <RepositoryType>Dependency</RepositoryType>
     <PackageProjectUrl>https://github.com/oromand/PrestaSharp/</PackageProjectUrl>
     <PackageIconUrl>https://avatars0.githubusercontent.com/u/5653635?s=200&amp;amp;v=4</PackageIconUrl>
     <projectUrl>https://github.com/oromand/PrestaSharp/</projectUrl>
-    <Description>CSharp .Net client library for the PrestaShop API via web service</Description>
+    <Description>Fork from the official Prestasharp Nuget. Attempting to fix the stability issues.</Description>
     <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.en.html</PackageLicenseUrl>
     <PackageId>PrestaSharp.Extended</PackageId>
     <Version>1.2.0</Version>
