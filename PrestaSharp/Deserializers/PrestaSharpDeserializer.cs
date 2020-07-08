@@ -85,7 +85,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
             }
         }
 
-        protected virtual void Map(object x, XElement root)
+        public virtual void Map(object x, XElement root)
         {
             var objType = x.GetType();
             var props = objType.GetProperties();

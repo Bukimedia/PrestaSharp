@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<prestashop xmlns:xlink="http://www.w3.org/1999/xlink">
+  <fake_object>
+    <id><![CDATA[62]]></id>
+    <string_property xlink:href="http://prestashop.local/api/products/20"><![CDATA[This is my value]]></string_property>
+    <int_property xlink:href="http://prestashop.local/api/combinations/42"><![CDATA[42]]></int_property>
+    <decimal_property xlink:href="http://prestashop.local/api/shops/1"><![CDATA[1.2]]></decimal_property>
+  </fake_object>
+</prestashop>
