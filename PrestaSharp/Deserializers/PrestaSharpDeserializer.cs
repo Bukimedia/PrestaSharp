@@ -140,7 +140,9 @@ namespace Bukimedia.PrestaSharp.Deserializers
                 else if (type.IsPrimitive)
                 {
                     if (!String.IsNullOrEmpty(value.ToString()))
-                        prop.SetValue(x, value.ChangeType(type, Culture), null);
+                    {
+                        prop.SetValue(x, System.Convert.ChangeType(value, type, Culture), null);
+                    }
                 }
                 else if (type.IsEnum)
                 {
@@ -369,7 +371,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
             }
             else if (t.IsPrimitive)
             {
-                item = element.Value.ChangeType(t, Culture);
+                item = System.Convert.ChangeType(element.Value, t, Culture);
             }
             else
             {

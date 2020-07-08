@@ -22,7 +22,7 @@
     <PackageVersion>1.2.0</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="RestSharp" Version="106.6.10" />
+    <PackageReference Include="RestSharp" Version="106.11.4" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
