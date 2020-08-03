@@ -2,7 +2,7 @@ namespace PrestaSharp.IntegrationTests
 {
     public class BaseTest
     {
-        protected const string TestUrl = "http://prestashop.local/api";
-        protected const string TestApiKey = "GLPLF5YF3S3UW9X7U4EWCP5ABXQUJ6PW";
+        protected const string TestUrl = "http://localhost:81/prestashop/api";
+        protected const string TestApiKey = "N7ZF5UEB1BIPETB68ZJ2AT1SLLTXCVUP";
     }
 }
