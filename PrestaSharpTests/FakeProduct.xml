@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<prestashop xmlns:xlink="http://www.w3.org/1999/xlink">
+  <product>
+    <id><![CDATA[74]]></id>
+    <id_manufacturer xlink:href="http://cbrshop.instore-solution.fr/api/manufacturers/5"><![CDATA[5]]></id_manufacturer>
+    <id_supplier><![CDATA[0]]></id_supplier>
+    <id_category_default xlink:href="http://cbrshop.instore-solution.fr/api/categories/11"><![CDATA[11]]></id_category_default>
+    <new></new>
+    <cache_default_attribute><![CDATA[935]]></cache_default_attribute>
+    <id_default_image xlink:href="http://cbrshop.instore-solution.fr/api/images/products/74/105" notFilterable="true"><![CDATA[105]]></id_default_image>
+    <id_default_combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/935" notFilterable="true"><![CDATA[935]]></id_default_combination>
+    <id_tax_rules_group xlink:href="http://cbrshop.instore-solution.fr/api/tax_rule_groups/1"><![CDATA[1]]></id_tax_rules_group>
+    <position_in_category notFilterable="true"><![CDATA[3]]></position_in_category>
+    <manufacturer_name notFilterable="true"><![CDATA[PARSONS ]]></manufacturer_name>
+    <quantity notFilterable="true"><![CDATA[0]]></quantity>
+    <type notFilterable="true"><![CDATA[simple]]></type>
+    <id_shop_default><![CDATA[1]]></id_shop_default>
+    <reference><![CDATA[C21]]></reference>
+    <supplier_reference></supplier_reference>
+    <location></location>
+    <width><![CDATA[0.000000]]></width>
+    <height><![CDATA[0.000000]]></height>
+    <depth><![CDATA[0.000000]]></depth>
+    <weight><![CDATA[0.000000]]></weight>
+    <quantity_discount><![CDATA[0]]></quantity_discount>
+    <ean13></ean13>
+    <isbn></isbn>
+    <upc></upc>
+    <cache_is_pack><![CDATA[0]]></cache_is_pack>
+    <cache_has_attachments><![CDATA[1]]></cache_has_attachments>
+    <is_virtual><![CDATA[0]]></is_virtual>
+    <state><![CDATA[1]]></state>
+    <additional_delivery_times><![CDATA[0]]></additional_delivery_times>
+    <delivery_in_stock>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[]]></language>
+    </delivery_in_stock>
+    <delivery_out_stock>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[]]></language>
+    </delivery_out_stock>
+    <on_sale><![CDATA[0]]></on_sale>
+    <online_only><![CDATA[0]]></online_only>
+    <ecotax><![CDATA[0.000000]]></ecotax>
+    <minimal_quantity><![CDATA[0]]></minimal_quantity>
+    <low_stock_threshold></low_stock_threshold>
+    <low_stock_alert><![CDATA[0]]></low_stock_alert>
+    <price><![CDATA[0.000000]]></price>
+    <wholesale_price><![CDATA[0.000000]]></wholesale_price>
+    <unity></unity>
+    <unit_price_ratio><![CDATA[0.000000]]></unit_price_ratio>
+    <additional_shipping_cost><![CDATA[0.00]]></additional_shipping_cost>
+    <customizable><![CDATA[0]]></customizable>
+    <text_fields><![CDATA[0]]></text_fields>
+    <uploadable_files><![CDATA[0]]></uploadable_files>
+    <active><![CDATA[1]]></active>
+    <redirect_type><![CDATA[301-category]]></redirect_type>
+    <id_type_redirected><![CDATA[0]]></id_type_redirected>
+    <available_for_order><![CDATA[0]]></available_for_order>
+    <available_date><![CDATA[0000-00-00]]></available_date>
+    <show_condition><![CDATA[0]]></show_condition>
+    <condition><![CDATA[new]]></condition>
+    <show_price><![CDATA[0]]></show_price>
+    <indexed><![CDATA[1]]></indexed>
+    <visibility><![CDATA[both]]></visibility>
+    <advanced_stock_management><![CDATA[0]]></advanced_stock_management>
+    <date_add><![CDATA[2020-07-13 11:41:48]]></date_add>
+    <date_upd><![CDATA[2020-07-21 12:21:07]]></date_upd>
+    <pack_stock_type><![CDATA[0]]></pack_stock_type>
+    <meta_description>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[]]></language>
+    </meta_description>
+    <meta_keywords>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[]]></language>
+    </meta_keywords>
+    <meta_title>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[]]></language>
+    </meta_title>
+    <link_rewrite>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[c21]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[c21]]></language>
+    </link_rewrite>
+    <name>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[PALAN MANUEL A CHAÎNE]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[PALAN MANUEL A CHAÎNE]]></language>
+    </name>
+    <description>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[<p>PALAN MANUEL A CHAÎNE<img src="http://cbrshop.instore-solution.fr/img/cms/FT/FT_C21.png" alt="" width="1200" height="849" /></p>]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[<p>PALAN MANUEL A CHAÎNE</p>]]></language>
+    </description>
+    <description_short>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[]]></language>
+    </description_short>
+    <available_now>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[]]></language>
+    </available_now>
+    <available_later>
+      <language id="1" xlink:href="http://cbrshop.instore-solution.fr/api/languages/1"><![CDATA[]]></language>
+      <language id="2" xlink:href="http://cbrshop.instore-solution.fr/api/languages/2"><![CDATA[]]></language>
+    </available_later>
+    <associations>
+      <categories nodeType="category" api="categories">
+        <category xlink:href="http://cbrshop.instore-solution.fr/api/categories/2">
+          <id><![CDATA[2]]></id>
+        </category>
+        <category xlink:href="http://cbrshop.instore-solution.fr/api/categories/10">
+          <id><![CDATA[10]]></id>
+        </category>
+        <category xlink:href="http://cbrshop.instore-solution.fr/api/categories/11">
+          <id><![CDATA[11]]></id>
+        </category>
+        <category xlink:href="http://cbrshop.instore-solution.fr/api/categories/25">
+          <id><![CDATA[25]]></id>
+        </category>
+        <category xlink:href="http://cbrshop.instore-solution.fr/api/categories/623">
+          <id><![CDATA[623]]></id>
+        </category>
+      </categories>
+      <images nodeType="image" api="images">
+        <image xlink:href="http://cbrshop.instore-solution.fr/api/images/products/74/105">
+          <id><![CDATA[105]]></id>
+        </image>
+        <image xlink:href="http://cbrshop.instore-solution.fr/api/images/products/74/38">
+          <id><![CDATA[38]]></id>
+        </image>
+      </images>
+      <combinations nodeType="combination" api="combinations">
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/935">
+          <id><![CDATA[935]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/936">
+          <id><![CDATA[936]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/937">
+          <id><![CDATA[937]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/938">
+          <id><![CDATA[938]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/939">
+          <id><![CDATA[939]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/940">
+          <id><![CDATA[940]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/941">
+          <id><![CDATA[941]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/942">
+          <id><![CDATA[942]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/943">
+          <id><![CDATA[943]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/944">
+          <id><![CDATA[944]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/945">
+          <id><![CDATA[945]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/946">
+          <id><![CDATA[946]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/947">
+          <id><![CDATA[947]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/948">
+          <id><![CDATA[948]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/949">
+          <id><![CDATA[949]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/950">
+          <id><![CDATA[950]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/951">
+          <id><![CDATA[951]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/952">
+          <id><![CDATA[952]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/953">
+          <id><![CDATA[953]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/954">
+          <id><![CDATA[954]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/955">
+          <id><![CDATA[955]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/956">
+          <id><![CDATA[956]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/957">
+          <id><![CDATA[957]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/958">
+          <id><![CDATA[958]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/959">
+          <id><![CDATA[959]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/960">
+          <id><![CDATA[960]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/961">
+          <id><![CDATA[961]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/962">
+          <id><![CDATA[962]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/963">
+          <id><![CDATA[963]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/964">
+          <id><![CDATA[964]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/965">
+          <id><![CDATA[965]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/966">
+          <id><![CDATA[966]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/967">
+          <id><![CDATA[967]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/968">
+          <id><![CDATA[968]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/969">
+          <id><![CDATA[969]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/970">
+          <id><![CDATA[970]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/971">
+          <id><![CDATA[971]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/972">
+          <id><![CDATA[972]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/973">
+          <id><![CDATA[973]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/974">
+          <id><![CDATA[974]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/975">
+          <id><![CDATA[975]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/976">
+          <id><![CDATA[976]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/977">
+          <id><![CDATA[977]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/978">
+          <id><![CDATA[978]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/979">
+          <id><![CDATA[979]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/980">
+          <id><![CDATA[980]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/981">
+          <id><![CDATA[981]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/982">
+          <id><![CDATA[982]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/983">
+          <id><![CDATA[983]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/984">
+          <id><![CDATA[984]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/985">
+          <id><![CDATA[985]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/986">
+          <id><![CDATA[986]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/987">
+          <id><![CDATA[987]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/988">
+          <id><![CDATA[988]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/989">
+          <id><![CDATA[989]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/990">
+          <id><![CDATA[990]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/991">
+          <id><![CDATA[991]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/992">
+          <id><![CDATA[992]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/993">
+          <id><![CDATA[993]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/994">
+          <id><![CDATA[994]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/995">
+          <id><![CDATA[995]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/996">
+          <id><![CDATA[996]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/997">
+          <id><![CDATA[997]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/998">
+          <id><![CDATA[998]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/999">
+          <id><![CDATA[999]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1000">
+          <id><![CDATA[1000]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1001">
+          <id><![CDATA[1001]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1002">
+          <id><![CDATA[1002]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1003">
+          <id><![CDATA[1003]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1004">
+          <id><![CDATA[1004]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1005">
+          <id><![CDATA[1005]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1006">
+          <id><![CDATA[1006]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1007">
+          <id><![CDATA[1007]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1008">
+          <id><![CDATA[1008]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1009">
+          <id><![CDATA[1009]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1010">
+          <id><![CDATA[1010]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1011">
+          <id><![CDATA[1011]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1012">
+          <id><![CDATA[1012]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1013">
+          <id><![CDATA[1013]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1014">
+          <id><![CDATA[1014]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1015">
+          <id><![CDATA[1015]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1016">
+          <id><![CDATA[1016]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1017">
+          <id><![CDATA[1017]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1018">
+          <id><![CDATA[1018]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1019">
+          <id><![CDATA[1019]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1020">
+          <id><![CDATA[1020]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1021">
+          <id><![CDATA[1021]]></id>
+        </combination>
+        <combination xlink:href="http://cbrshop.instore-solution.fr/api/combinations/1022">
+          <id><![CDATA[1022]]></id>
+        </combination>
+      </combinations>
+      <product_option_values nodeType="product_option_value" api="product_option_values">
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/39">
+          <id><![CDATA[39]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/40">
+          <id><![CDATA[40]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/41">
+          <id><![CDATA[41]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/42">
+          <id><![CDATA[42]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/43">
+          <id><![CDATA[43]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/44">
+          <id><![CDATA[44]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/45">
+          <id><![CDATA[45]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/46">
+          <id><![CDATA[46]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/47">
+          <id><![CDATA[47]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/48">
+          <id><![CDATA[48]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/49">
+          <id><![CDATA[49]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/50">
+          <id><![CDATA[50]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/51">
+          <id><![CDATA[51]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/52">
+          <id><![CDATA[52]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/53">
+          <id><![CDATA[53]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/54">
+          <id><![CDATA[54]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/55">
+          <id><![CDATA[55]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/56">
+          <id><![CDATA[56]]></id>
+        </product_option_value>
+        <product_option_value xlink:href="http://cbrshop.instore-solution.fr/api/product_option_values/57">
+          <id><![CDATA[57]]></id>
+        </product_option_value>
+      </product_option_values>
+      <product_features nodeType="product_feature" api="product_features"/>
+      <tags nodeType="tag" api="tags"/>
+      <stock_availables nodeType="stock_available" api="stock_availables">
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1072">
+          <id><![CDATA[1072]]></id>
+          <id_product_attribute><![CDATA[0]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1073">
+          <id><![CDATA[1073]]></id>
+          <id_product_attribute><![CDATA[935]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1074">
+          <id><![CDATA[1074]]></id>
+          <id_product_attribute><![CDATA[936]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1075">
+          <id><![CDATA[1075]]></id>
+          <id_product_attribute><![CDATA[937]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1076">
+          <id><![CDATA[1076]]></id>
+          <id_product_attribute><![CDATA[938]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1077">
+          <id><![CDATA[1077]]></id>
+          <id_product_attribute><![CDATA[939]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1078">
+          <id><![CDATA[1078]]></id>
+          <id_product_attribute><![CDATA[940]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1079">
+          <id><![CDATA[1079]]></id>
+          <id_product_attribute><![CDATA[941]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1080">
+          <id><![CDATA[1080]]></id>
+          <id_product_attribute><![CDATA[942]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1081">
+          <id><![CDATA[1081]]></id>
+          <id_product_attribute><![CDATA[943]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1082">
+          <id><![CDATA[1082]]></id>
+          <id_product_attribute><![CDATA[944]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1083">
+          <id><![CDATA[1083]]></id>
+          <id_product_attribute><![CDATA[945]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1084">
+          <id><![CDATA[1084]]></id>
+          <id_product_attribute><![CDATA[946]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1085">
+          <id><![CDATA[1085]]></id>
+          <id_product_attribute><![CDATA[947]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1086">
+          <id><![CDATA[1086]]></id>
+          <id_product_attribute><![CDATA[948]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1087">
+          <id><![CDATA[1087]]></id>
+          <id_product_attribute><![CDATA[949]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1088">
+          <id><![CDATA[1088]]></id>
+          <id_product_attribute><![CDATA[950]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1089">
+          <id><![CDATA[1089]]></id>
+          <id_product_attribute><![CDATA[951]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1090">
+          <id><![CDATA[1090]]></id>
+          <id_product_attribute><![CDATA[952]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1091">
+          <id><![CDATA[1091]]></id>
+          <id_product_attribute><![CDATA[953]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1092">
+          <id><![CDATA[1092]]></id>
+          <id_product_attribute><![CDATA[954]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1093">
+          <id><![CDATA[1093]]></id>
+          <id_product_attribute><![CDATA[955]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1094">
+          <id><![CDATA[1094]]></id>
+          <id_product_attribute><![CDATA[956]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1095">
+          <id><![CDATA[1095]]></id>
+          <id_product_attribute><![CDATA[957]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1096">
+          <id><![CDATA[1096]]></id>
+          <id_product_attribute><![CDATA[958]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1097">
+          <id><![CDATA[1097]]></id>
+          <id_product_attribute><![CDATA[959]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1098">
+          <id><![CDATA[1098]]></id>
+          <id_product_attribute><![CDATA[960]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1099">
+          <id><![CDATA[1099]]></id>
+          <id_product_attribute><![CDATA[961]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1100">
+          <id><![CDATA[1100]]></id>
+          <id_product_attribute><![CDATA[962]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1101">
+          <id><![CDATA[1101]]></id>
+          <id_product_attribute><![CDATA[963]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1102">
+          <id><![CDATA[1102]]></id>
+          <id_product_attribute><![CDATA[964]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1103">
+          <id><![CDATA[1103]]></id>
+          <id_product_attribute><![CDATA[965]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1104">
+          <id><![CDATA[1104]]></id>
+          <id_product_attribute><![CDATA[966]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1105">
+          <id><![CDATA[1105]]></id>
+          <id_product_attribute><![CDATA[967]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1106">
+          <id><![CDATA[1106]]></id>
+          <id_product_attribute><![CDATA[968]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1107">
+          <id><![CDATA[1107]]></id>
+          <id_product_attribute><![CDATA[969]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1108">
+          <id><![CDATA[1108]]></id>
+          <id_product_attribute><![CDATA[970]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1109">
+          <id><![CDATA[1109]]></id>
+          <id_product_attribute><![CDATA[971]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1110">
+          <id><![CDATA[1110]]></id>
+          <id_product_attribute><![CDATA[972]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1111">
+          <id><![CDATA[1111]]></id>
+          <id_product_attribute><![CDATA[973]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1112">
+          <id><![CDATA[1112]]></id>
+          <id_product_attribute><![CDATA[974]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1113">
+          <id><![CDATA[1113]]></id>
+          <id_product_attribute><![CDATA[975]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1114">
+          <id><![CDATA[1114]]></id>
+          <id_product_attribute><![CDATA[976]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1115">
+          <id><![CDATA[1115]]></id>
+          <id_product_attribute><![CDATA[977]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1116">
+          <id><![CDATA[1116]]></id>
+          <id_product_attribute><![CDATA[978]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1117">
+          <id><![CDATA[1117]]></id>
+          <id_product_attribute><![CDATA[979]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1118">
+          <id><![CDATA[1118]]></id>
+          <id_product_attribute><![CDATA[980]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1119">
+          <id><![CDATA[1119]]></id>
+          <id_product_attribute><![CDATA[981]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1120">
+          <id><![CDATA[1120]]></id>
+          <id_product_attribute><![CDATA[982]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1121">
+          <id><![CDATA[1121]]></id>
+          <id_product_attribute><![CDATA[983]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1122">
+          <id><![CDATA[1122]]></id>
+          <id_product_attribute><![CDATA[984]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1123">
+          <id><![CDATA[1123]]></id>
+          <id_product_attribute><![CDATA[985]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1124">
+          <id><![CDATA[1124]]></id>
+          <id_product_attribute><![CDATA[986]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1125">
+          <id><![CDATA[1125]]></id>
+          <id_product_attribute><![CDATA[987]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1126">
+          <id><![CDATA[1126]]></id>
+          <id_product_attribute><![CDATA[988]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1127">
+          <id><![CDATA[1127]]></id>
+          <id_product_attribute><![CDATA[989]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1128">
+          <id><![CDATA[1128]]></id>
+          <id_product_attribute><![CDATA[990]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1129">
+          <id><![CDATA[1129]]></id>
+          <id_product_attribute><![CDATA[991]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1130">
+          <id><![CDATA[1130]]></id>
+          <id_product_attribute><![CDATA[992]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1131">
+          <id><![CDATA[1131]]></id>
+          <id_product_attribute><![CDATA[993]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1132">
+          <id><![CDATA[1132]]></id>
+          <id_product_attribute><![CDATA[994]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1133">
+          <id><![CDATA[1133]]></id>
+          <id_product_attribute><![CDATA[995]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1134">
+          <id><![CDATA[1134]]></id>
+          <id_product_attribute><![CDATA[996]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1135">
+          <id><![CDATA[1135]]></id>
+          <id_product_attribute><![CDATA[997]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1136">
+          <id><![CDATA[1136]]></id>
+          <id_product_attribute><![CDATA[998]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1137">
+          <id><![CDATA[1137]]></id>
+          <id_product_attribute><![CDATA[999]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1138">
+          <id><![CDATA[1138]]></id>
+          <id_product_attribute><![CDATA[1000]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1139">
+          <id><![CDATA[1139]]></id>
+          <id_product_attribute><![CDATA[1001]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1140">
+          <id><![CDATA[1140]]></id>
+          <id_product_attribute><![CDATA[1002]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1141">
+          <id><![CDATA[1141]]></id>
+          <id_product_attribute><![CDATA[1003]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1142">
+          <id><![CDATA[1142]]></id>
+          <id_product_attribute><![CDATA[1004]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1143">
+          <id><![CDATA[1143]]></id>
+          <id_product_attribute><![CDATA[1005]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1144">
+          <id><![CDATA[1144]]></id>
+          <id_product_attribute><![CDATA[1006]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1145">
+          <id><![CDATA[1145]]></id>
+          <id_product_attribute><![CDATA[1007]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1146">
+          <id><![CDATA[1146]]></id>
+          <id_product_attribute><![CDATA[1008]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1147">
+          <id><![CDATA[1147]]></id>
+          <id_product_attribute><![CDATA[1009]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1148">
+          <id><![CDATA[1148]]></id>
+          <id_product_attribute><![CDATA[1010]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1149">
+          <id><![CDATA[1149]]></id>
+          <id_product_attribute><![CDATA[1011]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1150">
+          <id><![CDATA[1150]]></id>
+          <id_product_attribute><![CDATA[1012]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1151">
+          <id><![CDATA[1151]]></id>
+          <id_product_attribute><![CDATA[1013]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1152">
+          <id><![CDATA[1152]]></id>
+          <id_product_attribute><![CDATA[1014]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1153">
+          <id><![CDATA[1153]]></id>
+          <id_product_attribute><![CDATA[1015]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1154">
+          <id><![CDATA[1154]]></id>
+          <id_product_attribute><![CDATA[1016]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1155">
+          <id><![CDATA[1155]]></id>
+          <id_product_attribute><![CDATA[1017]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1156">
+          <id><![CDATA[1156]]></id>
+          <id_product_attribute><![CDATA[1018]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1157">
+          <id><![CDATA[1157]]></id>
+          <id_product_attribute><![CDATA[1019]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1158">
+          <id><![CDATA[1158]]></id>
+          <id_product_attribute><![CDATA[1020]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1159">
+          <id><![CDATA[1159]]></id>
+          <id_product_attribute><![CDATA[1021]]></id_product_attribute>
+        </stock_available>
+        <stock_available xlink:href="http://cbrshop.instore-solution.fr/api/stock_availables/1160">
+          <id><![CDATA[1160]]></id>
+          <id_product_attribute><![CDATA[1022]]></id_product_attribute>
+        </stock_available>
+      </stock_availables>
+      <accessories nodeType="product" api="products"/>
+      <product_bundle nodeType="product" api="products"/>
+    </associations>
+  </product>
+</prestashop>

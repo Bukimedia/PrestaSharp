@@ -4,7 +4,7 @@
     <RootNamespace>Bukimedia.PrestaSharp</RootNamespace>
     <AssemblyName>Bukimedia.PrestaSharp</AssemblyName>
     <Company>Bukimedia</Company>
-    <Authors>Bukimedia</Authors>
+    <Authors>Bukimedia, oromand</Authors>
     <Product>PrestaSharp</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>prestashop rest webservice official prestasharp</PackageTags>
@@ -15,7 +15,7 @@
     <RepositoryType>Dependency</RepositoryType>
     <PackageProjectUrl>http://bukimedia.github.io/PrestaSharp/</PackageProjectUrl>
     <PackageIconUrl>https://avatars0.githubusercontent.com/u/5653635?s=200&amp;amp;v=4</PackageIconUrl>
-    <projectUrl>https://github.com/oromand/PrestaSharp/</projectUrl>
+    <projectUrl>https://github.com/Bukimedia/PrestaSharp/</projectUrl>
     <Description>Fork from the official Prestasharp Nuget. Attempting to fix the stability issues.</Description>
     <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.en.html</PackageLicenseUrl>
     <PackageId>PrestaSharp.Extended</PackageId>
