@@ -45,9 +45,23 @@ ManufacturerFactory.Delete(Manufacturer);
 3) Add an image:
 
 ```
-Bukimedia.PrestaSharp.Entities.product MyProduct = new Bukimedia.PrestaSharp.Entities.product()
-MyProduct = ProductFactory.Add(MyProduct)
+Bukimedia.PrestaSharp.Entities.product MyProduct = new Bukimedia.PrestaSharp.Entities.product();
+ProductFactory ProductFactory = new ProductFactory(BaseUrl, Account, Password);
+MyProduct = ProductFactory.Add(MyProduct);
+ImageFactory ImageFactory = new ImageFactory(BaseUrl, Account, Password);
 ImageFactory.AddProductImage((long)MyProduct.id, "C:\\MyImage.jpg");
+```
+
+4) Set quantity of products:
+The quantity of a product may not be updated directly in the 'product' entity. You need to update 'stock_available' entity.
+
+```
+StockAvailableFactory StockAvailableFactory = new StockAvailableFactory(BaseUrl, Account, Password);
+long stockAvailableId = product.associations.stock_availables[0].id;
+Bukimedia.PrestaSharp.Entities.stock_available MyStockAvailable = StockAvailableFactory.Get(stockAvailableId);
+MyStockAvailable.quantity = 99;	// Number of available products
+MyStockAvailable.out_of_stock = 1; // Must enable orders
+StockAvailableFactory.Update(MyStockAvailable);
 ```
 
 ## Advanced usage
