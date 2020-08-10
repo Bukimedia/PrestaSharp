@@ -1,16 +1,13 @@
-﻿using RestSharp.Serializers;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using RestSharp.Extensions;
-using System.Collections;
+using RestSharp.Serializers;
 
 namespace Bukimedia.PrestaSharp.Serializers
 {
-    class PrestaSharpSerializer : XmlSerializer 
+    class PrestaSharpSerializer : XmlSerializer
     {
         public PrestaSharpSerializer()
             : base()
@@ -188,12 +185,12 @@ namespace Bukimedia.PrestaSharp.Serializers
             {
                 output = obj.ToString().ToLowerInvariant();
             }
-            else if(obj is decimal)
+            else if (obj is decimal)
             {
                 output = obj.ToString().Replace(",", ".");
             }
 
             return output.ToString();
-        }        
+        }
     }
 }

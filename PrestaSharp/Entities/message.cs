@@ -1,4 +1,5 @@
 ﻿using System.Xml.Serialization;
+using RestSharp.Serializers;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
@@ -10,11 +11,13 @@ namespace Bukimedia.PrestaSharp.Entities
         public long? id_order { get; set; }
         public long? id_customer { get; set; }
         public long? id_employee { get; set; }
+        [SerializeAsAttribute(Name = "message")]
         [XmlElement(ElementName = "message")]
         public string Message { get; set; }
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
+        [SerializeAsAttribute(Name = "private")]
         [XmlElement(ElementName = "private")]
         public int Private { get; set; }
 
