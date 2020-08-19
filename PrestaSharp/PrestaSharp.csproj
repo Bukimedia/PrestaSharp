@@ -11,7 +11,7 @@
     <PackageReleaseNotes>Added deliveries, price_ranges and weight_ranges implementation</PackageReleaseNotes>
     <PackageTags>prestashop rest webservice official prestasharp bukimedia</PackageTags>
     <PackageReleaseNotes>* Integrated 1.7.x improvments.</PackageReleaseNotes>
-    <Copyright>Copyright (C) 2019 Bukimedia</Copyright>
+    <Copyright>Copyright (C) 2020 Bukimedia</Copyright>
     <RepositoryType>Dependency</RepositoryType>
     <PackageProjectUrl>http://bukimedia.github.io/PrestaSharp/</PackageProjectUrl>
     <PackageIconUrl>https://api.nuget.org/v3-flatcontainer/prestasharp/1.1.0/icon</PackageIconUrl>
