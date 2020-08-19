@@ -22,6 +22,7 @@ namespace Bukimedia.PrestaSharp.Entities
         /// It´s a logical bool.
         /// </summary>
         [XmlElement(ElementName = "private")]
+        [SerializeAsAttribute(Name = "private")]
         public int Private { get; set; }
         public string date_add { get; set; }
         /// <summary>
