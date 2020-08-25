@@ -30,6 +30,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public long? id_order_invoice { get; set; }
         public long? id_warehouse { get; set; }
         public long? id_shop { get; set; }
+        public long? id_customization { get; set; }
         public string product_name { get; set; }
         public int product_quantity { get; set; }
         public int product_quantity_in_stock { get; set; }
