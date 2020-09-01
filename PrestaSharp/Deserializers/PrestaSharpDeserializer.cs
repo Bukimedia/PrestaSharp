@@ -31,7 +31,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
             if (string.IsNullOrEmpty(response.Content))
                 return default(T);
 
-            XDocument doc = XDocument.Parse(response.Content);
+            XDocument doc = XDocument.Parse(response.Content.Trim());
             XElement root;
 
             var objType = typeof(T);
