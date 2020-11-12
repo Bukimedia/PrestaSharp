@@ -1,10 +1,4 @@
-﻿using RestSharp.Serializers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
@@ -12,11 +6,11 @@ namespace Bukimedia.PrestaSharp.Entities
     public class cart : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
-		public long? id_address_delivery { get; set; }
-		public long? id_address_invoice { get; set; }
-		public long? id_currency { get; set; }
-		public long? id_guest { get; set; }
-		public long? id_customer { get; set; }
+        public long? id_address_delivery { get; set; }
+        public long? id_address_invoice { get; set; }
+        public long? id_currency { get; set; }
+        public long? id_guest { get; set; }
+        public long? id_customer { get; set; }
         public long? id_lang { get; set; }
         public long? id_shop_group { get; set; }
         public long? id_shop { get; set; }
@@ -38,7 +32,7 @@ namespace Bukimedia.PrestaSharp.Entities
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
-        public int allow_seperated_package { get; set; }   
+        public int allow_seperated_package { get; set; }
         /// <summary>
         /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
         /// </summary>

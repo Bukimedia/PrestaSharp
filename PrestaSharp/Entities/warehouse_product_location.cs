@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bukimedia.PrestaSharp.Entities
+﻿namespace Bukimedia.PrestaSharp.Entities
 {
     public class warehouse_product_location : PrestaShopEntity, IPrestaShopFactoryEntity
     {

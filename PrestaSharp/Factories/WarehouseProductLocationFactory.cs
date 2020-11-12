@@ -1,10 +1,4 @@
 ﻿using Bukimedia.PrestaSharp.Entities;
-using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bukimedia.PrestaSharp.Factories
 {
@@ -16,6 +10,6 @@ namespace Bukimedia.PrestaSharp.Factories
         public WarehouseProductLocationFactory(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
-        }        
+        }
     }
 }

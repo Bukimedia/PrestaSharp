@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RestSharp;
+using RestSharp.Extensions;
+using RestSharp.Serialization.Xml;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,9 +10,6 @@ using System.Linq;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Serialization.Xml;
 
 namespace Bukimedia.PrestaSharp.Deserializers
 {
@@ -29,7 +29,9 @@ namespace Bukimedia.PrestaSharp.Deserializers
         public virtual T Deserialize<T>(IRestResponse response)
         {
             if (string.IsNullOrEmpty(response.Content))
+            {
                 return default(T);
+            }
 
             XDocument doc = XDocument.Parse(response.Content);
             XElement root;
@@ -95,7 +97,9 @@ namespace Bukimedia.PrestaSharp.Deserializers
                 var type = prop.PropertyType;
 
                 if (!type.IsPublic || !prop.CanWrite)
+                {
                     continue;
+                }
 
                 var name = prop.Name.AsNamespaced(Namespace);
                 var value = GetValueFromXml(root, name, prop);

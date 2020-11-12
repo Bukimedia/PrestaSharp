@@ -1,9 +1,7 @@
 ﻿using Bukimedia.PrestaSharp.Entities;
 using RestSharp;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Bukimedia.PrestaSharp.Factories
@@ -48,7 +46,7 @@ namespace Bukimedia.PrestaSharp.Factories
             {
                 EntitiesToAdd.Add(Entity);
             }
-            
+
             RestRequest request = this.RequestForUpdateList(pluralEntityName, EntitiesToAdd);
 
             return this.Execute<List<T>>(request);

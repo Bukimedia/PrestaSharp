@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
-	[XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-	public class address : PrestaShopEntity, IPrestaShopFactoryEntity
+    [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
+    public class address : PrestaShopEntity, IPrestaShopFactoryEntity
     {
-		public long? id { get; set; }
+        public long? id { get; set; }
         public long? id_customer { get; set; }
         public long? id_manufacturer { get; set; }
         public long? id_supplier { get; set; }
@@ -30,17 +26,17 @@ namespace Bukimedia.PrestaSharp.Entities
         public string phone_mobile { get; set; }
         public string dni { get; set; }
         public int deleted { get; set; }
-		/// <summary>
-		/// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
-		/// </summary>
+        /// <summary>
+        /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
+        /// </summary>
         public string date_add { get; set; }
-		/// <summary>
-		/// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
-		/// </summary>
+        /// <summary>
+        /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
+        /// </summary>
         public string date_upd { get; set; }
 
-		public address()
-		{
-		}
-	}
+        public address()
+        {
+        }
+    }
 }

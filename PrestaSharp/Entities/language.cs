@@ -1,16 +1,9 @@
-﻿using RestSharp.Serializers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-    public class language: PrestaShopEntity, IPrestaShopFactoryEntity
+    public class language : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
         public string name { get; set; }

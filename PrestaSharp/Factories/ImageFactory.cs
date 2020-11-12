@@ -1,9 +1,6 @@
-﻿using Bukimedia.PrestaSharp.Factories;
-using RestSharp;
-using System;
+﻿using RestSharp;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Bukimedia.PrestaSharp.Factories
@@ -249,7 +246,10 @@ namespace Bukimedia.PrestaSharp.Factories
             post = GetProductImages(ProductId);
 
             dif = post.Except(pre, new Helpers.CompareDeclination()).ToList();
-            if (dif.Count > 0) r = dif[0].id;
+            if (dif.Count > 0)
+            {
+                r = dif[0].id;
+            }
 
             return r;
         }
@@ -273,7 +273,11 @@ namespace Bukimedia.PrestaSharp.Factories
             post = GetProductImages(ProductId);
 
             dif = post.Except(pre, new Helpers.CompareDeclination()).ToList();
-            if (dif.Count > 0) r = dif[0].id;
+            if (dif.Count > 0)
+            {
+                r = dif[0].id;
+            }
+
             return r;
         }
 
