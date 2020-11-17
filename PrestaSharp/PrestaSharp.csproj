@@ -8,9 +8,8 @@
     <Product>PrestaSharp</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>prestashop rest webservice official prestasharp</PackageTags>
-    <PackageReleaseNotes>Added deliveries, price_ranges and weight_ranges implementation</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed deserialization of list</PackageReleaseNotes>
     <PackageTags>prestashop rest webservice official prestasharp bukimedia</PackageTags>
-    <PackageReleaseNotes>* Integrated 1.7.x improvments.</PackageReleaseNotes>
     <Copyright>Copyright (C) 2019 Bukimedia</Copyright>
     <RepositoryType>Dependency</RepositoryType>
     <PackageProjectUrl>http://bukimedia.github.io/PrestaSharp/</PackageProjectUrl>
@@ -20,7 +19,7 @@
     <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.en.html</PackageLicenseUrl>
     <PackageId>PrestaSharp</PackageId>
     <Title>Bukimedia PrestaSharp</Title>
-    <PackageVersion>1.2.7</PackageVersion>
+    <PackageVersion>1.2.9</PackageVersion>
     <RepositoryUrl>https://github.com/Bukimedia/PrestaSharp</RepositoryUrl>
     <Description>CSharp .Net client library for the PrestaShop API via web service</Description>
   </PropertyGroup>
