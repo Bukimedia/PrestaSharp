@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RestSharp;
+using RestSharp.Extensions;
+using RestSharp.Serialization.Xml;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,9 +10,6 @@ using System.Linq;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Serialization.Xml;
 
 namespace Bukimedia.PrestaSharp.Deserializers
 {
@@ -31,7 +31,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
             if (string.IsNullOrEmpty(response.Content))
                 return default(T);
 
-            XDocument doc = XDocument.Parse(response.Content);
+            XDocument doc = XDocument.Parse(response.Content.Trim());
             XElement root;
 
             var objType = typeof(T);
@@ -47,7 +47,6 @@ namespace Bukimedia.PrestaSharp.Deserializers
                 throw new PrestaSharpException(response.Content, finalResponseError, response.StatusCode, response.ErrorException);
             }
 
-            root = doc.Root.Element(firstChild.Name.ToString().AsNamespaced(Namespace));
 
             // autodetect xml namespace
             if (!Namespace.HasValue())
@@ -60,10 +59,11 @@ namespace Bukimedia.PrestaSharp.Deserializers
 
             if (isSubclassOfRawGeneric)
             {
-                x = (T)HandleListDerivative(x, root, objType.Name, objType);
+                x = (T)HandleListDerivative(x, doc.Root, objType.Name, objType);
             }
             else
             {
+                root = doc.Root.Element(firstChild.Name.ToString().AsNamespaced(Namespace));
                 Map(x, root);
             }
 
