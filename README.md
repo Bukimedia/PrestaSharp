@@ -129,7 +129,7 @@ List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_AS
 
 ```
 DateTime StartDate = new DateTime (2016, 1, 1);
-DateTime StartDate = new DateTime (2016, 1, 31);
+DateTime EndDate = new DateTime (2016, 1, 31);
 Dictionary<string, string> filter = new Dictionary<string, string>();
 string dFrom = string.Format("{0:yyyy-MM-dd HH:mm:ss}", StartDate);
 string dTo = string.Format("{0:yyyy-MM-dd HH:mm:ss}", EndDate);
