@@ -125,7 +125,15 @@ dtn.Add("name", "[Metall]%");
 List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
 ```
 
-9) Get by filter by range date. This sample retrieves the orders in a date range:
+9) Get ids by filter. This sample retrieves the list of the manufacturers ids which name is "Metallica", "Nirvana" or "Pantera":
+
+```
+Dictionary<string, string> dtn = new Dictionary<string, string>();
+dtn.Add("name", "[Metallica|Nirvana|Pantera]");
+List<long> ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
+```
+
+10) Get by filter by range date. This sample retrieves the orders in a date range:
 
 ```
 DateTime StartDate = new DateTime (2016, 1, 1);
