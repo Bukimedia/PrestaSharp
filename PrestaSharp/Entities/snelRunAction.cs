@@ -18,6 +18,7 @@ namespace Bukimedia.PrestaSharp.Entities
 		public long? id { get; set; } //needed for class but it's 
 		public long? run_id { get; set; }
 		public string run_name { get; set; }
+		public long? id_product { get; set; }
 		public string date_created { get; set; }
 		public string date_launched { get; set; }
 
