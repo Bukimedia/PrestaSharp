@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities.AuxEntities
@@ -12,9 +8,9 @@ namespace Bukimedia.PrestaSharp.Entities.AuxEntities
     {
         public List<AuxEntities.group> groups { get; set; }
 
-		public AssociationsCustomer()
+        public AssociationsCustomer()
         {
-			this.groups = new List<group>();
+            this.groups = new List<group>();
         }
     }
 }

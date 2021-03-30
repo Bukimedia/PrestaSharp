@@ -1,10 +1,4 @@
-﻿using RestSharp.Serializers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
@@ -12,7 +6,7 @@ namespace Bukimedia.PrestaSharp.Entities
     public class order_payment : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
-		public string order_reference { get; set; }
+        public string order_reference { get; set; }
         public long? id_currency { get; set; }
         public decimal amount { get; set; }
         public string payment_method { get; set; }
@@ -20,7 +14,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public string transaction_id { get; set; }
         public string card_number { get; set; }
         public string card_brand { get; set; }
-         /// <summary>
+        /// <summary>
         /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
         /// </summary>
         public string card_expiration { get; set; }

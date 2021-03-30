@@ -1,9 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿
+/* Modification non fusionnée à partir du projet 'PrestaSharp (net452)'
+Avant :
+using System;
+Après :
+using Bukimedia.PrestaSharp.Entities.FilterEntities;
+using System;
+*/
+using Bukimedia.PrestaSharp.Entities.FilterEntities;
+using System.
+/* Modification non fusionnée à partir du projet 'PrestaSharp (net452)'
+Avant :
 using System.Threading.Tasks;
 using Bukimedia.PrestaSharp.Entities.FilterEntities;
+Après :
+using System.Threading.Tasks;
+*/
+Collections.Generic;
 
 namespace Bukimedia.PrestaSharp.Helpers
 {

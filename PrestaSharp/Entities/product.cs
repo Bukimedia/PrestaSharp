@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿
+/* Modification non fusionnée à partir du projet 'PrestaSharp (net452)'
+Avant :
+using System;
+Après :
 using Bukimedia.PrestaSharp.Lib;
+using System;
+*/
+using Bukimedia.PrestaSharp.Lib;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
     public class product : PrestaShopEntity, IPrestaShopFactoryEntity
     {
-        public long? id { get; set; } 
+        public long? id { get; set; }
         public long? id_manufacturer { get; set; }
         public long? id_supplier { get; set; }
         public long? id_category_default { get; set; }
@@ -64,7 +68,7 @@ namespace Bukimedia.PrestaSharp.Entities
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
-        public int online_only { get; set; }        
+        public int online_only { get; set; }
         public decimal ecotax { get; set; }
         public long minimal_quantity { get; set; }
         public int low_stock_alert { get; set; }
@@ -73,10 +77,10 @@ namespace Bukimedia.PrestaSharp.Entities
         public decimal wholesale_price { get; set; }
         public string unity { get; set; }
         public decimal unit_price_ratio { get; set; }
-        public decimal additional_shipping_cost { get; set; }   
+        public decimal additional_shipping_cost { get; set; }
         public sbyte customizable { get; set; }
         public sbyte text_fields { get; set; }
-        public sbyte uploadable_files { get; set; }        
+        public sbyte uploadable_files { get; set; }
         /// <summary>
         /// It´s a logical bool.
         /// </summary>

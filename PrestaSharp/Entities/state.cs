@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
-	[XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
-	public class state : PrestaShopEntity, IPrestaShopFactoryEntity
-	{
-		public long? id { get; set; }
+    [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities")]
+    public class state : PrestaShopEntity, IPrestaShopFactoryEntity
+    {
+        public long? id { get; set; }
         public long? id_zone { get; set; }
         public long? id_country { get; set; }
         public string iso_code { get; set; }
@@ -20,7 +16,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public int active { get; set; }
 
         public state()
-		{
-		}
-	}
+        {
+        }
+    }
 }

@@ -1,10 +1,4 @@
-﻿using RestSharp.Serializers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
@@ -12,12 +6,12 @@ namespace Bukimedia.PrestaSharp.Entities
     public class order : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
-		public long? id_address_delivery { get; set; }
-		public long? id_address_invoice { get; set; }
-		public long? id_cart { get; set; }
-		public long? id_currency { get; set; }
-		public long? id_lang { get; set; }
-		public long? id_customer { get; set; }
+        public long? id_address_delivery { get; set; }
+        public long? id_address_invoice { get; set; }
+        public long? id_cart { get; set; }
+        public long? id_currency { get; set; }
+        public long? id_lang { get; set; }
+        public long? id_customer { get; set; }
         public long? id_carrier { get; set; }
         public long? current_state { get; set; }
         public string module { get; set; }

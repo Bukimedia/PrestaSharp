@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Xml.Serialization;
-using RestSharp.Serializers;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities.AuxEntities
 {
     [Serializable]
     [DataContract]
     [XmlType(Namespace = "Bukimedia/PrestaSharp/Entities/AuxEntities")]
-    public class language: PrestaShopEntity
+    public class language : PrestaShopEntity
     {
         [XmlAttribute]
         [DataMember]

@@ -1,9 +1,4 @@
 ﻿using RestSharp.Serializers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities
@@ -12,7 +7,7 @@ namespace Bukimedia.PrestaSharp.Entities
     public class customer_message : PrestaShopEntity, IPrestaShopFactoryEntity
     {
         public long? id { get; set; }
-		public long? id_employee { get; set; }
+        public long? id_employee { get; set; }
         public long? id_customer_thread { get; set; }
         public string ip_address { get; set; }
         public string message { get; set; }
@@ -22,6 +17,7 @@ namespace Bukimedia.PrestaSharp.Entities
         /// It´s a logical bool.
         /// </summary>
         [XmlElement(ElementName = "private")]
+        [SerializeAsAttribute(Name = "private")]
         public int Private { get; set; }
         public string date_add { get; set; }
         /// <summary>

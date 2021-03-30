@@ -1,3 +1,7 @@
+using Bukimedia.PrestaSharp.Deserializers;
+using Bukimedia.PrestaSharp.Entities;
+using Bukimedia.PrestaSharp.Serializers;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -5,10 +9,6 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Bukimedia.PrestaSharp.Deserializers;
-using Bukimedia.PrestaSharp.Entities;
-using Bukimedia.PrestaSharp.Serializers;
-using RestSharp;
 
 namespace Bukimedia.PrestaSharp.Factories
 {
@@ -38,14 +38,17 @@ namespace Bukimedia.PrestaSharp.Factories
             request.XmlSerializer = new PrestaSharpSerializer();
             var serialized = string.Empty;
             foreach (var entity in entities)
-                serialized += ((PrestaSharpSerializer) request.XmlSerializer).PrestaSharpSerialize(entity);
+            {
+                serialized += ((PrestaSharpSerializer)request.XmlSerializer).PrestaSharpSerialize(entity);
+            }
+
             serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
             request.AddParameter("application/xml", serialized, ParameterType.RequestBody);
         }
 
         private void AddBody(RestRequest request, PrestaShopEntity entity)
         {
-            AddBody(request, new List<PrestaShopEntity> {entity});
+            AddBody(request, new List<PrestaShopEntity> { entity });
         }
 
         private void AddHandlers(RestClient client)
@@ -72,7 +75,10 @@ namespace Bukimedia.PrestaSharp.Factories
             {
                 var requestParameters = Environment.NewLine;
                 foreach (var parameter in request.Parameters)
+                {
                     requestParameters += $"{parameter.Name}: {parameter.Value}{Environment.NewLine}";
+                }
+
                 throw new PrestaSharpException(requestParameters + Environment.NewLine + response.Content,
                     response.ErrorMessage,
                     response.StatusCode, response.ErrorException);
@@ -117,7 +123,7 @@ namespace Bukimedia.PrestaSharp.Factories
             var response = client.Execute<T>(request);
             var xDcoument = XDocument.Parse(response.Content);
             var ids = (from doc in xDcoument.Descendants(rootElement)
-                select long.Parse(doc.Attribute("id").Value)).ToList();
+                       select long.Parse(doc.Attribute("id").Value)).ToList();
             return ids;
         }
 
@@ -129,7 +135,7 @@ namespace Bukimedia.PrestaSharp.Factories
             var response = client.Execute(request);
             CheckResponse(response, request);
             return response.RawBytes;
-        }        
+        }
 
         protected async Task<T> ExecuteAsync<T>(RestRequest request) where T : new()
         {
@@ -200,7 +206,10 @@ namespace Bukimedia.PrestaSharp.Factories
         /// <returns></returns>
         protected RestRequest RequestForAddImage(string resource, long? id, string imagePath)
         {
-            if (id == null) throw new ApplicationException("The Id field cannot be null.");
+            if (id == null)
+            {
+                throw new ApplicationException("The Id field cannot be null.");
+            }
 
             var request = new RestRequest
             {
@@ -221,7 +230,10 @@ namespace Bukimedia.PrestaSharp.Factories
         /// <returns></returns>
         protected RestRequest RequestForAddImage(string resource, long? id, byte[] image, string imageFileName = null)
         {
-            if (id == null) throw new ApplicationException("The Id field cannot be null.");
+            if (id == null)
+            {
+                throw new ApplicationException("The Id field cannot be null.");
+            }
 
             var request = new RestRequest
             {
@@ -257,7 +269,10 @@ namespace Bukimedia.PrestaSharp.Factories
 
         protected RestRequest RequestForUpdate(string resource, long? id, PrestaShopEntity prestashopEntity)
         {
-            if (id == null) throw new ApplicationException("Id is required to update something.");
+            if (id == null)
+            {
+                throw new ApplicationException("Id is required to update something.");
+            }
 
             var request = new RestRequest
             {
@@ -283,7 +298,11 @@ namespace Bukimedia.PrestaSharp.Factories
 
         protected RestRequest RequestForDeleteImage(string resource, long? resourceId, long? imageId)
         {
-            if (resourceId == null) throw new ApplicationException("Id is required to delete something.");
+            if (resourceId == null)
+            {
+                throw new ApplicationException("Id is required to delete something.");
+            }
+
             var request = new RestRequest
             {
                 RootElement = "prestashop",
@@ -291,13 +310,21 @@ namespace Bukimedia.PrestaSharp.Factories
                 Method = Method.DELETE,
                 RequestFormat = DataFormat.Xml
             };
-            if (imageId != null) request.Resource += "/" + imageId;
+            if (imageId != null)
+            {
+                request.Resource += "/" + imageId;
+            }
+
             return request;
         }
 
         protected RestRequest RequestForDelete(string resource, long? id)
         {
-            if (id == null) throw new ApplicationException("Id is required to delete something.");
+            if (id == null)
+            {
+                throw new ApplicationException("Id is required to delete something.");
+            }
+
             var request = new RestRequest
             {
                 RootElement = "prestashop",
@@ -326,12 +353,28 @@ namespace Bukimedia.PrestaSharp.Factories
                 Resource = resource,
                 RootElement = rootElement
             };
-            if (display != null) request.AddParameter("display", display);
+            if (display != null)
+            {
+                request.AddParameter("display", display);
+            }
+
             if (filter != null)
+            {
                 foreach (var key in filter.Keys)
+                {
                     request.AddParameter("filter[" + key + "]", filter[key]);
-            if (!string.IsNullOrEmpty(sort)) request.AddParameter("sort", sort);
-            if (!string.IsNullOrEmpty(limit)) request.AddParameter("limit", limit);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(sort))
+            {
+                request.AddParameter("sort", sort);
+            }
+
+            if (!string.IsNullOrEmpty(limit))
+            {
+                request.AddParameter("limit", limit);
+            }
             // Support for filter by date range
             request.AddParameter("date", "1");
             return request;
@@ -353,7 +396,7 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
             var buffer = new byte[fileStream.Length];
-            fileStream.Read(buffer, 0, (int) fileStream.Length);
+            fileStream.Read(buffer, 0, (int)fileStream.Length);
             fileStream.Close();
             return buffer;
         }

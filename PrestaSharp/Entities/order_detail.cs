@@ -1,10 +1,4 @@
-﻿using RestSharp.Serializers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
@@ -30,6 +24,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public long? id_order_invoice { get; set; }
         public long? id_warehouse { get; set; }
         public long? id_shop { get; set; }
+        public long? id_customization { get; set; }
         public string product_name { get; set; }
         public int product_quantity { get; set; }
         public int product_quantity_in_stock { get; set; }

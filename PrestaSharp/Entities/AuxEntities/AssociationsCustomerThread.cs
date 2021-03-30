@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Entities.AuxEntities
@@ -14,7 +10,7 @@ namespace Bukimedia.PrestaSharp.Entities.AuxEntities
 
         public AssociationsCustomerThread()
         {
-			this.customer_messages = new List<customer_message>();
+            this.customer_messages = new List<customer_message>();
         }
     }
 }
