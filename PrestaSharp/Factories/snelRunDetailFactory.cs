@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 
 namespace Bukimedia.PrestaSharp.Factories
 {
-    class snelRunDetailFactory : GenericFactory<snelRunDetail>
+    public class snelRunDetailFactory : GenericFactory<snelRunDetail>
     {
         protected override string singularEntityName { get { return "snelRunDetail"; } }
         protected override string pluralEntityName { get { return "snelRunDetails"; } }
