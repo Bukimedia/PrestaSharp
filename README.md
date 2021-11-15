@@ -123,7 +123,7 @@ List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_AS
 ```csharp
 Dictionary<string, string> dtn = new Dictionary<string, string>();
 dtn.Add("name", "[Metall]%");
-List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
+List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "9,5");
 ```
 
 9) Get ids by filter. This sample retrieves the list of the manufacturers ids which name is "Metallica", "Nirvana" or "Pantera":
