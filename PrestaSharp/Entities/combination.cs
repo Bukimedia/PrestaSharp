@@ -17,6 +17,8 @@ namespace Bukimedia.PrestaSharp.Entities
         public string location { get; set; }
         public string ean13 { get; set; }
         public string upc { get; set; }
+        public string isbn { get; set; }
+        public string mpn { get; set; }
         public int quantity { get; set; }
         public string reference { get; set; }
         public string supplier_reference { get; set; }
