@@ -1,5 +1,6 @@
 using RestSharp.Serializers;
 using System.Xml.Serialization;
+using RestSharp.Serializers;
 
 namespace Bukimedia.PrestaSharp.Entities
 {
@@ -17,6 +18,7 @@ namespace Bukimedia.PrestaSharp.Entities
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
+        [SerializeAsAttribute(Name = "private")]
         [XmlElement(ElementName = "private")]
         public int Private { get; set; }
 

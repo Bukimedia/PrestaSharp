@@ -1,5 +1,7 @@
 using Bukimedia.PrestaSharp.Factories;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PrestaSharp.IntegrationTests
 {
@@ -39,6 +41,64 @@ namespace PrestaSharp.IntegrationTests
             Assert.AreEqual("Mountain fox - Vector graphics", products[16].name[0].Value);
             Assert.AreEqual("Brown bear - Vector graphics", products[17].name[0].Value);
             Assert.AreEqual("Hummingbird - Vector graphics", products[18].name[0].Value);
+        }
+
+        [Test]
+        public void AddList()
+        {
+            System.Collections.Generic.List<Bukimedia.PrestaSharp.Entities.product> inputProducts = new System.Collections.Generic.List<Bukimedia.PrestaSharp.Entities.product>() {
+            new Bukimedia.PrestaSharp.Entities.product()
+            {
+                reference ="NEWREF",
+                name = new System.Collections.Generic.List<Bukimedia.PrestaSharp.Entities.AuxEntities.language>()
+                {
+                    new Bukimedia.PrestaSharp.Entities.AuxEntities.language()
+                    {
+                        id = 1,
+                        Value = "NEW REF PRODUCT",
+                    }
+                },
+                type = "simple",
+                link_rewrite = new List<Bukimedia.PrestaSharp.Entities.AuxEntities.language>()
+                        {
+                            new Bukimedia.PrestaSharp.Entities.AuxEntities.language()
+                            {
+                                id = 1,
+                                Value = Bukimedia.PrestaSharp.Lib.Functions.GetLinkRewrite("new ref1")
+                            },
+
+
+                        },
+                },
+            new Bukimedia.PrestaSharp.Entities.product()
+            {
+                reference ="NEWREF2",
+                name = new System.Collections.Generic.List<Bukimedia.PrestaSharp.Entities.AuxEntities.language>()
+                {
+                    new Bukimedia.PrestaSharp.Entities.AuxEntities.language()
+                    {
+                        id = 1,
+                        Value = "NEW REF PRODUCT2",
+                    }
+                },
+                type = "simple",
+                link_rewrite = new List<Bukimedia.PrestaSharp.Entities.AuxEntities.language>()
+                        {
+                            new Bukimedia.PrestaSharp.Entities.AuxEntities.language()
+                            {
+                                id = 1,
+                                Value = Bukimedia.PrestaSharp.Lib.Functions.GetLinkRewrite("new ref2")
+                            },
+
+
+                        },
+                }
+            };
+            var response = factory.AddList(inputProducts);
+
+            Assert.IsTrue(response != null);
+            Assert.IsTrue(response.Count == 2);
+            Assert.IsTrue(response.ElementAt(0).id.HasValue);
         }
     }
 }

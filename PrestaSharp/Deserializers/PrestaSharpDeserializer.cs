@@ -33,7 +33,7 @@ namespace Bukimedia.PrestaSharp.Deserializers
                 return default(T);
             }
 
-            XDocument doc = XDocument.Parse(response.Content);
+            XDocument doc = XDocument.Parse(response.Content.Trim());
             XElement root;
 
             var objType = typeof(T);
@@ -49,7 +49,6 @@ namespace Bukimedia.PrestaSharp.Deserializers
                 throw new PrestaSharpException(response.Content, finalResponseError, response.StatusCode, response.ErrorException);
             }
 
-            root = doc.Root.Element(firstChild.Name.ToString().AsNamespaced(Namespace));
 
             // autodetect xml namespace
             if (!Namespace.HasValue())
@@ -62,10 +61,11 @@ namespace Bukimedia.PrestaSharp.Deserializers
 
             if (isSubclassOfRawGeneric)
             {
-                x = (T)HandleListDerivative(x, root, objType.Name, objType);
+                x = (T)HandleListDerivative(x, doc.Root, objType.Name, objType);
             }
             else
             {
+                root = doc.Root.Element(firstChild.Name.ToString().AsNamespaced(Namespace));
                 Map(x, root);
             }
 

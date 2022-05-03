@@ -17,69 +17,70 @@ PrestaSharp uses the RestSharp library to consume the Prestashop services.
 PrestaSharp is [available on NuGet](https://www.nuget.org/packages/PrestaSharp/). Use the package manager
 console to install it:
 
-```
+```powershell
 Install-Package PrestaSharp
 ```
 
 ## Basic usage
 1) Initiate a client instance:
 
-```
-string BaseUrl = "http://www.myweb.com/api";
-string Account = "ASDLKJOIQWEPROQWUPRPOQPPRQOW";
-string Password = "";
-ManufacturerFactory ManufacturerFactory = new ManufacturerFactory(BaseUrl, Account, Password);
+```csharp
+string baseUrl = "http://www.myweb.com/api";
+string account = "ASDLKJOIQWEPROQWUPRPOQPPRQOW";
+string password = "";
+
+ManufacturerFactory manufacturerFactory = new ManufacturerFactory(baseUrl, account, password);
 ```
 
 2) Perform CRUD actions through the client:
 
-```
-Bukimedia.PrestaSharp.Entities.manufacturer Manufacturer = ManufacturerFactory.Get(6);
-Manufacturer.name = "Iron Maiden";
-Manufacturer.active = 1;        
-ManufacturerFactory.Add(Manufacturer);
-ManufacturerFactory.Update(Manufacturer);
-ManufacturerFactory.Delete(Manufacturer);
+```csharp
+Bukimedia.PrestaSharp.Entities.manufacturer manufacturer = manufacturerFactory.Get(6);
+manufacturer.name = "Iron Maiden";
+manufacturer.active = 1;
+manufacturerFactory.Add(manufacturer);
+manufacturerFactory.Update(manufacturer);
+manufacturerFactory.Delete(manufacturer);
 ```
 
 3) Add an image:
 
-```
-Bukimedia.PrestaSharp.Entities.product MyProduct = new Bukimedia.PrestaSharp.Entities.product();
-ProductFactory ProductFactory = new ProductFactory(BaseUrl, Account, Password);
-MyProduct = ProductFactory.Add(MyProduct);
-ImageFactory ImageFactory = new ImageFactory(BaseUrl, Account, Password);
-ImageFactory.AddProductImage((long)MyProduct.id, "C:\\MyImage.jpg");
+```csharp
+Bukimedia.PrestaSharp.Entities.product myProduct = new Bukimedia.PrestaSharp.Entities.product();
+ProductFactory productFactory = new ProductFactory(baseUrl, account, password);
+myProduct = productFactory.Add(myProduct);
+ImageFactory imageFactory = new ImageFactory(baseUrl, account, password);
+imageFactory.AddProductImage((long)myProduct.id, "C:\\MyImage.jpg");
 ```
 
 4) Set quantity of products:
 The quantity of a product may not be updated directly in the 'product' entity. You need to update 'stock_available' entity.
 
-```
-StockAvailableFactory StockAvailableFactory = new StockAvailableFactory(BaseUrl, Account, Password);
-long stockAvailableId = product.associations.stock_availables[0].id;
-Bukimedia.PrestaSharp.Entities.stock_available MyStockAvailable = StockAvailableFactory.Get(stockAvailableId);
-MyStockAvailable.quantity = 99;	// Number of available products
-MyStockAvailable.out_of_stock = 1; // Must enable orders
-StockAvailableFactory.Update(MyStockAvailable);
+```csharp
+StockAvailableFactory stockAvailableFactory = new StockAvailableFactory(baseUrl, account, password);
+long stockAvailableId = myProduct.associations.stock_availables[0].id;
+Bukimedia.PrestaSharp.Entities.stock_available myStockAvailable = stockAvailableFactory.Get(stockAvailableId);
+myStockAvailable.quantity = 99; // Number of available products
+myStockAvailable.out_of_stock = 1; // Must enable orders
+stockAvailableFactory.Update(myStockAvailable);
 ```
 
 ## Advanced usage
 1) Get all. This sample retrieves the list of manufacturers:
 
-```
+```csharp
 List<manufacturer> manufacturers = ManufacturerFactory.GetAll();
 ```
 
 2) Get ids. This sample retrieves the list of the manufacturer ids:
 
-```
+```csharp
 List<long> ids = ManufacturerFactory.GetIds();
 ```
 
 3) Get by filter. This sample retrieves the list of manufacturers which name is "Metallica":
 
-```
+```csharp
 Dictionary<string, string> dtn = new Dictionary<string, string>();
 dtn.Add("name", "Metallica");
 List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
@@ -87,7 +88,7 @@ List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, nu
 
 4) Get by filter with wildcards. This sample retrieves the manufacturers which name starts with "Metall":
 
-```
+```csharp
 Dictionary<string, string> dtn = new Dictionary<string, string>();
 dtn.Add("name", "[Metall]%");
 List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, null);
@@ -95,7 +96,7 @@ List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, null, nu
 
 5) Get ids by filter. This sample retrieves the list of the manufacturers ids which name is "Metallica":
 
-```
+```csharp
 Dictionary<string, string> dtn = new Dictionary<string, string>();
 dtn.Add("name", "Metallica");
 List<long> ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
@@ -103,7 +104,7 @@ List<long> ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
 
 6) Get ids by filter with wildcards. This sample retrieves the list of the manufacturers ids which name starts with "Metall":
 
-```
+```csharp
 Dictionary<string, string> dtn = new Dictionary<string, string>();
 dtn.Add("name", "[Metall]%");
 List<long> ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
@@ -111,7 +112,7 @@ List<long> ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
 
 7) Get by complex filter. This sample retrieves the top five manufacturers in ascendent sorting which name starts with "Metall":
 
-```
+```csharp
 Dictionary<string, string> dtn = new Dictionary<string, string>();
 dtn.Add("name", "[Metall]%");
 List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "5");
@@ -119,22 +120,30 @@ List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_AS
 
 8) Get by filter for pagination. This sample retrieves the top five manufacturers from tenth position in ascendent sorting which name starts with "Metall":
 
-```
+```csharp
 Dictionary<string, string> dtn = new Dictionary<string, string>();
 dtn.Add("name", "[Metall]%");
-List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "[9,5]");
+List<manufacturer> manufacturers = ManufacturerFactory.GetByFilter(dtn, "name_ASC", "9,5");
 ```
 
-9) Get by filter by range date. This sample retrieves the orders in a date range:
+9) Get ids by filter. This sample retrieves the list of the manufacturers ids which name is "Metallica", "Nirvana" or "Pantera":
 
+```csharp
+Dictionary<string, string> dtn = new Dictionary<string, string>();
+dtn.Add("name", "[Metallica|Nirvana|Pantera]");
+List<long> ids = ManufacturerFactory.GetIdsByFilter(dtn, null, null);
 ```
-DateTime StartDate = new DateTime (2016, 1, 1);
-DateTime StartDate = new DateTime (2016, 1, 31);
+
+10) Get by filter by range date. This sample retrieves the orders in a date range:
+
+```csharp
+DateTime startDate = new DateTime (2016, 1, 1);
+DateTime endDate = new DateTime (2016, 1, 31);
 Dictionary<string, string> filter = new Dictionary<string, string>();
-string dFrom = string.Format("{0:yyyy-MM-dd HH:mm:ss}", StartDate);
-string dTo = string.Format("{0:yyyy-MM-dd HH:mm:ss}", EndDate);
+string dFrom = string.Format("{0:yyyy-MM-dd HH:mm:ss}", startDate);
+string dTo = string.Format("{0:yyyy-MM-dd HH:mm:ss}", endDate);
 filter.Add("date_add", "[" + dFrom + "," + dTo + "]");
-List<long> PrestaSharpOrderIds = this.OrderFactory.GetIdsByFilter(filter, "id_DESC", null);
+List<long> prestaSharpOrderIds = this.OrderFactory.GetIdsByFilter(filter, "id_DESC", null);
 ```
 
 ## Supported resources
@@ -190,23 +199,18 @@ List<long> PrestaSharpOrderIds = this.OrderFactory.GetIdsByFilter(filter, "id_DE
 
 Enabling debugging in PrestaShop would make PrestaSharp exceptions more verbose, to enable that, edit ```/config/defines.inc.php``` file in your PrestaShop website and edit this code block:
 
-```
+```php
 define('_PS_MODE_DEV_', false);
 ```
 
 to:
 
-```
+```php
 define('_PS_MODE_DEV_', true);
 ```
 
 More information in the development section of [PrestaShop's documentation](http://doc.prestashop.com/display/PS15/Setting+up+your+local+development+environment).
 
-## Help & Discussion
-
-If your problem is how to implement anything with PrestaSharp or make a question,
-please, refer to our Slack group: 
-[PrestaSharp Slack Group](https://join.slack.com/t/prestasharp/shared_invite/enQtNTM2OTI1OTg0NzUyLTY4NDdkZDFmY2EwMGE4MTMzZjk5YzZiMTk3MzUwNzUxNTdhMWEwZjFjNDJiZTIyMjI0MDM0NTcwMzIzNGI0Njc)
 
 ## License
 PrestaSharp is GNU General Public License (GPL)

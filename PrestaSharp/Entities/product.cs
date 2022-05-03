@@ -43,6 +43,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public string ean13 { get; set; }
         public string upc { get; set; }
         public string isbn { get; set; }
+        public string mpn { get; set; }
         /// <summary>
         /// It´s a logical bool.
         /// </summary>
@@ -117,11 +118,11 @@ namespace Bukimedia.PrestaSharp.Entities
         /// <summary>
         /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
         /// </summary>
-        public string date_add { get; }
+        public string date_add { get; set; }
         /// <summary>
         /// It´s a logical DateTime. Format YYYY-MM-DD HH:MM:SS.
         /// </summary>
-        public string date_upd { get; }
+        public string date_upd { get; set; }
         public long pack_stock_type { get; set; }
         public List<Entities.AuxEntities.language> meta_description { get; set; }
         public List<Entities.AuxEntities.language> meta_keywords { get; set; }
