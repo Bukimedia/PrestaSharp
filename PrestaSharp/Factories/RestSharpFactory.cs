@@ -357,5 +357,60 @@ namespace Bukimedia.PrestaSharp.Factories
             fileStream.Close();
             return buffer;
         }
+        protected T ExecuteForAttachment<T>(RestRequest Request) where T : new()
+        {
+            var client = new RestClient();
+            client.BaseUrl = new Uri(this.BaseUrl);
+            //client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Request.AddParameter("ws_key", this.Account, ParameterType.QueryString);
+            // Aggiunto meccanismo di "bypass" del controllo sulla validità del certificato SSL
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+            // Fine modifica
+            var response = client.Execute<T>(Request);
+            if (response.StatusCode == HttpStatusCode.InternalServerError
+                || response.StatusCode == HttpStatusCode.ServiceUnavailable
+                || response.StatusCode == HttpStatusCode.BadRequest
+                || response.StatusCode == HttpStatusCode.Unauthorized
+                || response.StatusCode == HttpStatusCode.MethodNotAllowed
+                || response.StatusCode == HttpStatusCode.Forbidden
+                || response.StatusCode == HttpStatusCode.NotFound
+                || response.StatusCode == 0)
+            {
+                string RequestParameters = Environment.NewLine;
+                foreach (RestSharp.Parameter Parameter in Request.Parameters)
+                {
+                    RequestParameters += Parameter.Name + "=" + Parameter.Value + Environment.NewLine + Environment.NewLine;
+                }
+                var Exception = new PrestaSharpException(RequestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
+                throw Exception;
+            }
+            return response.Data;
+        }
+        protected RestRequest RequestForAddAttachment(string filePath)
+        {
+            var request = new RestRequest();
+            request.Resource = "/attachments/file/";
+            request.Method = Method.POST;
+            request.RequestFormat = DataFormat.Xml;
+            string fileName = System.IO.Path.GetFileName(filePath);
+            request.AddParameter("name", fileName);
+            request.AddParameter("file_name", fileName);
+            request.AddFile("file", filePath, "application/pdf");
+            return request;
+        }
+        protected RestRequest RequestForUpdateAttachment(string filePath, long id)
+        {
+            var request = new RestRequest();
+            request.Resource = "/attachments/file/" + id;
+            request.Method = Method.PUT;
+            request.RequestFormat = DataFormat.Xml;
+            string fileName = System.IO.Path.GetFileName(filePath);
+            request.AddParameter("name", fileName);
+            request.AddParameter("file_name", fileName);
+            request.AddFile("file", filePath, "application/pdf");
+            return request;
+        }
     }
 }
