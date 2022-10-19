@@ -18,5 +18,19 @@ namespace Bukimedia.PrestaSharp.Factories
             : base(BaseUrl, Account, SecretKey)
         {
         }
+
+        /// <summary>
+        /// Gets from eshop product final price with tax
+        /// and price rules (discount) applied
+        /// Entities.product.final_price
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Entities.product</returns>
+        public Entities.product GetFinalPrice(long id)
+        {
+            RestRequest request = base.RequestForGet(pluralEntityName, id, singularEntityName);
+            request.Resource += "?price[final_price][use_tax]=1";
+            return base.Execute<Entities.product>(request);
+        }
     }
 }
