@@ -23,6 +23,17 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.Execute<T>(request);
         }
 
+        /// <summary>
+        /// Checks if the id exists and return true or false
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool Check(long id)
+        {
+            RestRequest request = this.RequestForHead(pluralEntityName, id);
+            return this.ExecuteHead(request);
+        }
+
         public T Add(T Entity)
         {
             long? idAux = Entity.id;
@@ -146,11 +157,16 @@ namespace Bukimedia.PrestaSharp.Factories
             return this.Execute<List<T>>(request);
         }
 
-
         public async Task<T> GetAsync(long id)
         {
             RestRequest request = this.RequestForGet(pluralEntityName, id, singularEntityName);
             return await this.ExecuteAsync<T>(request);
+        }
+
+        public async Task<bool> CheckAsync(long id)
+        {
+            RestRequest request = this.RequestForHead(pluralEntityName, id);
+            return await this.ExecuteHeadAsync(request);
         }
 
         public async Task<T> AddAsync(T Entity)

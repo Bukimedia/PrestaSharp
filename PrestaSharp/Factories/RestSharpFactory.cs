@@ -94,6 +94,23 @@ namespace Bukimedia.PrestaSharp.Factories
             return response.Data;
         }
 
+        protected bool ExecuteHead(RestRequest request)
+        {
+            bool r = false;
+            var client = new RestClient
+            {
+                BaseUrl = new Uri(BaseUrl)
+            };
+            AddWsKey(request);
+            AddHandlers(client);
+            var response = client.Execute(request);
+            if(response.StatusCode == HttpStatusCode.OK)
+            {
+                r = true;
+            }
+            return r;
+        }
+
         protected T ExecuteForFilter<T>(RestRequest request) where T : new()
         {
             var client = new RestClient
@@ -139,6 +156,23 @@ namespace Bukimedia.PrestaSharp.Factories
             var response = await client.ExecuteTaskAsync<T>(request);
             CheckResponse(response, request);
             return response.Data;
+        }
+
+        protected async Task<bool> ExecuteHeadAsync(RestRequest request)
+        {
+            bool r = false;
+            var client = new RestClient
+            {
+                BaseUrl = new Uri(BaseUrl)
+            };
+            AddWsKey(request);
+            AddHandlers(client);
+            var response = await client.ExecuteTaskAsync(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                r = true;
+            }
+            return r;
         }
 
         protected async Task<List<long>> ExecuteForGetIdsAsync<T>(RestRequest request, string rootElement) where T : new()
@@ -188,6 +222,16 @@ namespace Bukimedia.PrestaSharp.Factories
                 Method = Method.POST
             };
             AddBody(request, entities);
+            return request;
+        }
+
+        protected RestRequest RequestForHead(string resource, long? id)
+        {
+            var request = new RestRequest
+            {
+                Resource = resource + "/" + id,
+                Method = Method.HEAD
+            };
             return request;
         }
 
@@ -290,6 +334,19 @@ namespace Bukimedia.PrestaSharp.Factories
                 Resource = "/images/" + resource + "/" + resourceId,
                 Method = Method.DELETE,
                 RequestFormat = DataFormat.Xml
+            };
+            if (imageId != null) request.Resource += "/" + imageId;
+            return request;
+        }
+
+        protected RestRequest RequestForHeadImage(string resource, long? resourceId, long? imageId)
+        {
+            if (resourceId == null) throw new ApplicationException("Id is required to check if exists something.");
+
+            var request = new RestRequest
+            {
+                Resource = "/images/" + resource + "/" + resourceId,
+                Method = Method.HEAD,
             };
             if (imageId != null) request.Resource += "/" + imageId;
             return request;
