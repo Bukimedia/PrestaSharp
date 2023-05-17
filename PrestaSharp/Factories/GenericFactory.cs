@@ -28,7 +28,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool Check(long id)
+        public bool CheckIfExists(long id)
         {
             RestRequest request = this.RequestForHead(pluralEntityName, id);
             return this.ExecuteHead(request);
@@ -163,7 +163,12 @@ namespace Bukimedia.PrestaSharp.Factories
             return await this.ExecuteAsync<T>(request);
         }
 
-        public async Task<bool> CheckAsync(long id)
+        /// <summary>
+        /// Checks if the id exists and return true or false
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<bool> CheckIfExistsAsync(long id)
         {
             RestRequest request = this.RequestForHead(pluralEntityName, id);
             return await this.ExecuteHeadAsync(request);

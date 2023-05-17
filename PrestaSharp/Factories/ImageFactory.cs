@@ -181,7 +181,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// </summary>
         /// <param name="ManufacturerId"></param>
         /// <returns></returns>
-        public bool CheckManufacturerImage(long ManufacturerId)
+        public bool CheckIfExistsManufacturerImage(long ManufacturerId)
         {
             return CheckImage("manufacturers", ManufacturerId, null);
         }
@@ -231,7 +231,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// </summary>
         /// <param name="ManufacturerId"></param>
         /// <returns></returns>
-        public async Task<bool> CheckManufacturerImageAsync(long ManufacturerId)
+        public async Task<bool> CheckIfExistsManufacturerImageAsync(long ManufacturerId)
         {
             return await CheckImageAsync("manufacturers", ManufacturerId, null);
         }
@@ -324,12 +324,14 @@ namespace Bukimedia.PrestaSharp.Factories
         }
 
         /// <summary>
-        /// Checks if the specific product image exists and return true or false
+        /// If Image ID is null checks if product have any images
+        /// else checks if the specific product image exists
+        /// and return true or false
         /// </summary>
         /// <param name="ProductId"></param>
         /// <param name="ImageId"></param>
         /// <returns></returns>
-        public bool CheckProductImage(long ProductId, long ImageId)
+        public bool CheckIfExistsProductImage(long ProductId, long? ImageId)
         {
             return CheckImage("products", ProductId, ImageId);
         }
@@ -381,12 +383,14 @@ namespace Bukimedia.PrestaSharp.Factories
         }
 
         /// <summary>
-        /// Checks if the specific product image exists and return true or false
+        /// If Image ID is null checks if product have any images
+        /// else checks if the specific product image exists
+        /// and return true or false
         /// </summary>
         /// <param name="ProductId"></param>
         /// <param name="ImageId"></param>
         /// <returns></returns>
-        public async Task<bool> CheckProductImageAsync(long ProductId, long ImageId)
+        public async Task<bool> CheckIfExistsProductImageAsync(long ProductId, long ImageId)
         {
             return await CheckImageAsync("products", ProductId, ImageId);
         }
@@ -441,7 +445,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// </summary>
         /// <param name="CategoryID"></param>
         /// <returns></returns>
-        public bool CheckCategoryImage(long CategoryID)
+        public bool CheckIfExistsCategoryImage(long CategoryID)
         {
             return CheckImage("categories", CategoryID, null);
         }
@@ -498,7 +502,7 @@ namespace Bukimedia.PrestaSharp.Factories
         /// </summary>
         /// <param name="CategoryID"></param>
         /// <returns></returns>
-        public async Task<bool> CheckCategoryImageAsync(long CategoryID)
+        public async Task<bool> CheckIfExistsCategoryImageAsync(long CategoryID)
         {
             return await CheckImageAsync("categories", CategoryID, null);
         }
