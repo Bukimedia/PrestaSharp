@@ -30,6 +30,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public long? id_order_invoice { get; set; }
         public long? id_warehouse { get; set; }
         public long? id_shop { get; set; }
+        public long? id_customization { get; set; }
         public string product_name { get; set; }
         public int product_quantity { get; set; }
         public int product_quantity_in_stock { get; set; }
@@ -42,6 +43,7 @@ namespace Bukimedia.PrestaSharp.Entities
         public decimal reduction_amount_tax_excl { get; set; }
         public decimal product_quantity_discount { get; set; }
         public string product_ean13 { get; set; }
+        public string product_isbn { get; set; }
         public string product_upc { get; set; }
         public string product_reference { get; set; }
         public string product_supplier_reference { get; set; }
@@ -60,6 +62,8 @@ namespace Bukimedia.PrestaSharp.Entities
         public decimal purchase_supplier_price { get; set; }
         public decimal original_product_price { get; set; }
         public decimal original_wholesale_price { get; set; }
+        public decimal total_refunded_tax_excl { get; set; }
+        public decimal total_refunded_tax_incl { get; set; }
 
         public order_detail()
         {
