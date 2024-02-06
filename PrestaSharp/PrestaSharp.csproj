@@ -1,32 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
-    <RootNamespace>Bukimedia.PrestaSharp</RootNamespace>
-    <AssemblyName>Bukimedia.PrestaSharp</AssemblyName>
-    <Company>Bukimedia</Company>
-    <Authors>Bukimedia, oromand</Authors>
-    <Product>PrestaSharp</Product>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageTags>prestashop rest webservice official prestasharp</PackageTags>
-    <PackageReleaseNotes>Fixed deserialization of list</PackageReleaseNotes>
-    <PackageTags>prestashop rest webservice official prestasharp bukimedia</PackageTags>
-    <Copyright>Copyright (C) 2019 Bukimedia</Copyright>
-    <RepositoryType>Dependency</RepositoryType>
-    <PackageProjectUrl>http://bukimedia.github.io/PrestaSharp/</PackageProjectUrl>
-    <PackageIconUrl>https://api.nuget.org/v3-flatcontainer/prestasharp/1.1.0/icon</PackageIconUrl>
-    <projectUrl>https://github.com/Bukimedia/PrestaSharp/</projectUrl>
-    <Description>CSharp .Net client library for the PrestaShop API via web service</Description>
-    <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.en.html</PackageLicenseUrl>
-    <PackageId>PrestaSharp</PackageId>
-    <Title>Bukimedia PrestaSharp</Title>
-    <PackageVersion>1.2.9</PackageVersion>
-    <RepositoryUrl>https://github.com/Bukimedia/PrestaSharp</RepositoryUrl>
-    <Description>CSharp .Net client library for the PrestaShop API via web service</Description>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="RestSharp" Version="106.12.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;</TargetFrameworks>
+		<RootNamespace>Bukimedia.PrestaSharp</RootNamespace>
+		<AssemblyName>Bukimedia.PrestaSharp</AssemblyName>
+		<Company>Bukimedia</Company>
+		<Authors>Bukimedia, oromand</Authors>
+		<Product>PrestaSharp</Product>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageTags>prestashop rest webservice official prestasharp</PackageTags>
+		<PackageReleaseNotes>Fixed deserialization of list</PackageReleaseNotes>
+		<PackageTags>prestashop rest webservice official prestasharp bukimedia</PackageTags>
+		<Copyright>Copyright (C) 2019 Bukimedia</Copyright>
+		<RepositoryType>Dependency</RepositoryType>
+		<PackageProjectUrl>http://bukimedia.github.io/PrestaSharp/</PackageProjectUrl>
+		<PackageIconUrl>https://api.nuget.org/v3-flatcontainer/prestasharp/1.1.0/icon</PackageIconUrl>
+		<projectUrl>https://github.com/Bukimedia/PrestaSharp/</projectUrl>
+		<Description>CSharp .Net client library for the PrestaShop API via web service</Description>
+		<PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.en.html</PackageLicenseUrl>
+		<PackageId>PrestaSharp</PackageId>
+		<Title>Bukimedia PrestaSharp</Title>
+		<PackageVersion>1.3.0</PackageVersion>
+		<RepositoryUrl>https://github.com/Bukimedia/PrestaSharp</RepositoryUrl>
+		<Description>CSharp .Net client library for the PrestaShop API via web service</Description>
+		<LangVersion>10</LangVersion>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="RestSharp" Version="110.2.0" />
+		<PackageReference Include="RestSharp.Serializers.Xml" Version="110.2.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Properties\" />
+	</ItemGroup>
 </Project>
