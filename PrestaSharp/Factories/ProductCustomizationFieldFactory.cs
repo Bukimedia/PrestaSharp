@@ -7,7 +7,7 @@ namespace Bukimedia.PrestaSharp.Factories
 {
     public class ProductCustomizationFieldFactory : GenericFactory<customization_field>
     {
-        protected override string singularEntityName { get { return "customization_fields"; } }
+        protected override string singularEntityName { get { return "customization_field"; } }
         protected override string pluralEntityName { get { return "product_customization_fields"; } }
 
         public ProductCustomizationFieldFactory(string BaseUrl, string Account, string SecretKey)

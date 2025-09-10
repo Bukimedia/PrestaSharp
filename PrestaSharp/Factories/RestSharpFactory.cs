@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http.Headers;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Bukimedia.PrestaSharp.Entities;
 using RestSharp;
+using RestSharp.Serializers;
 using RestSharp.Serializers.Xml;
 
 namespace Bukimedia.PrestaSharp.Factories
@@ -35,6 +38,11 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             request.RequestFormat = DataFormat.Xml;
             var serialized = string.Empty;
+            Serializer.XMLSerializer xmlSerializer = new Serializer.XMLSerializer();
+            foreach (var entity in entities)
+            {
+                serialized += xmlSerializer.Serialize(entity);
+            }
             serialized = "<prestashop>\n" + serialized + "\n</prestashop>";
             request.AddParameter("application/xml", serialized, ParameterType.RequestBody);
         }
@@ -74,7 +82,8 @@ namespace Bukimedia.PrestaSharp.Factories
         {
             var client = new RestClient(
                 options => { options.BaseUrl = new Uri(BaseUrl); },
-                configureSerialization: s => s.UseXmlSerializer()
+                configureSerialization: s => s.UseSerializer(() => new PrestaSharp.Serializer.RestCustomSerializer())
+                //configureSerialization: s => s.UseXmlSerializer(null, "prestashop", true)
             );
             return client;
         }
@@ -123,7 +132,7 @@ namespace Bukimedia.PrestaSharp.Factories
 
         protected byte[] ExecuteForImage(RestRequest request)
         {
-            var client = new RestClient();
+            var client = GetClient();
             AddWsKey(request);
             var response = client.Execute(request);
             CheckResponse(response, request);

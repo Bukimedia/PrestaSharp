@@ -77,6 +77,9 @@ namespace Bukimedia.PrestaSharp.Entities
         public decimal total_wrapping_tax_incl { get; set; }
         public decimal total_wrapping_tax_excl { get; set; }
         public string shipping_number { get; set; }
+
+        public int? round_mode { get; set; }
+        public int? round_type { get; set; }
         public decimal conversion_rate { get; set; }
         public string reference { get; set; }
         public AuxEntities.AssociationsOrder associations { get; set; }

@@ -227,3 +227,5 @@ pip-log.txt
 #############
 
 .docker/data
+/PrestaSharp/Entities/boxnow_entry.cs
+/PrestaSharp/Factories/BoxnowEntryFactory.cs
